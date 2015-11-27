@@ -108,7 +108,6 @@ RHNET_ab_groups set [_grpID, _group];										// Keep count of spawned groups
 		_rank = "CORPORAL";
 	};
 	_unit = _group createUnit [_x, getPosATL _portal, [], 0, "NONE"];
-	//_unit = _x createUnit [(getPosATL _portal), _group, _poInit, _poDiff, _rank];
 	{
 		if (_x isKindOf ["smokeShell", configFile >> "CfgMagazines"]) then {
 			_unit removeMagazine _x;
