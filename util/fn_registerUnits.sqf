@@ -15,19 +15,19 @@
 */
 
 private["_master","_removeUnit","_removeMaster","_syncedUnits","_acceptedGroups","_acceptedUnits","_i","_vehicle"];
-_master				= _this select 0;
-_removeUnit			= _this select 1;
-_removeMaster		= _this select 2;
+_master				= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+_removeUnit			= [_this, 1, true, [true]] call BIS_fnc_param;
+_removeMaster		= [_this, 2, false, [false]] call BIS_fnc_param;
+
+if (isNull _master) exitWith {[_master,true,"the master object is missing"] spawn Actionbuilder_fnc_debugHint; []};
 
 _syncedUnits		= _master call BIS_fnc_moduleUnits;
 _acceptedGroups		= [];
 _acceptedUnits		= [];
 
-if (count _syncedUnits < 1) exitWith {[_master,true,"there are no units synchronized to the portal"] spawn Actionbuilder_fnc_debugHint; _acceptedUnits};
-if (isNull _removeUnit) then {_removeUnit = false};
-if (isNull _removeMaster) then {_removeMaster = false};
+if (count _syncedUnits < 1) exitWith {[_master,true,"there are no units synchronized to the portal"] spawn Actionbuilder_fnc_debugHint; []};
 
-// ADD OBJECTS AND LIST GROUPS
+// 1. List objects and groups
 {
 	if (isNull group _x) then {
 		_acceptedUnits pushBack _x;
@@ -39,7 +39,7 @@ if (isNull _removeMaster) then {_removeMaster = false};
 	};
 } forEach _syncedUnits;
 
-// ADD UNITS INTO GROUPS
+// 2. Add units into the listed groups
 {
 	_i = count _acceptedUnits;
 	_acceptedUnits set [_i, [_x]];												// ["obj1","obj2",["grp1"]]
