@@ -373,8 +373,8 @@ link195[] = {170,89};
 link196[] = {171,26};
 link197[] = {172,8};
 link198[] = {172,130};
-globals[] = {25.000000,1,0,0,0,640,480,1,276,0,1,-172.938843,1081.110474,1248.755615,-262.047028,750,1271,1};
-window[] = {0,-1,-1,-1,-1,1193,156,2076,156,1,768};
+globals[] = {25.000000,1,0,0,0,640,480,1,276,0,1,-893.075378,1961.217896,5865.401367,4209.238770,2206,1280,1};
+window[] = {2,-1,-1,-1,-1,1141,104,2024,104,3,2224};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -1324,7 +1324,7 @@ class FSM
     class spawn
     {
       name = "spawn";
-      init = /*%FSM<STATEINIT""">*/"[_portal] spawn RHNET_ab_portalFnc;" \n
+      init = /*%FSM<STATEINIT""">*/"//[_portal] spawn RHNET_ab_portalFnc;" \n
        "_ok = 1;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links

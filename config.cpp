@@ -30,6 +30,15 @@ class CfgFunctions {
 			class moduleWaypoint {};
 
 		};
+		class Components {
+			
+			file = "\RHNET\rhnet_actionbuilder\components";
+			
+			class unitSpawn {};
+			
+			class transmit {};
+			
+		}
 		class Utility {
 			
 			file = "\RHNET\rhnet_actionbuilder\util";
@@ -39,6 +48,8 @@ class CfgFunctions {
 			class listClients {};
 			
 			class objectsAhead {};
+			
+			class registerUnits {};
 			
 		};
 	};

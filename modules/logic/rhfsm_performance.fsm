@@ -28,7 +28,7 @@ link11[] = {9,2};
 link12[] = {10,2};
 link13[] = {11,2};
 globals[] = {25.000000,1,0,0,0,640,480,1,22,6316128,1,-906.604370,651.952759,745.954956,-312.937500,1884,1280,1};
-window[] = {2,-1,-1,-1,-1,1089,52,1972,52,3,1902};
+window[] = {2,-1,-1,-1,-1,1063,26,1946,26,3,1902};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -102,7 +102,7 @@ class FSM
     class halt_actionbuild
     {
       name = "halt_actionbuild";
-      init = /*%FSM<STATEINIT""">*/"RHNET_ab_buffer = 4;" \n
+      init = /*%FSM<STATEINIT""">*/"ACTIONBUILDER_buffer = 4;" \n
        "_timer = time;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -124,7 +124,7 @@ class FSM
     class slow_actionbuild
     {
       name = "slow_actionbuild";
-      init = /*%FSM<STATEINIT""">*/"RHNET_ab_buffer = 0.5;" \n
+      init = /*%FSM<STATEINIT""">*/"ACTIONBUILDER_buffer = 0.5;" \n
        "_timer = time;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -146,7 +146,7 @@ class FSM
     class continue
     {
       name = "continue";
-      init = /*%FSM<STATEINIT""">*/"RHNET_ab_buffer = 0.01;" \n
+      init = /*%FSM<STATEINIT""">*/"ACTIONBUILDER_buffer = 0.01;" \n
        "_timer = time;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links

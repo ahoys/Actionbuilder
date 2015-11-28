@@ -1,37 +1,45 @@
 /*
+	File: fn_modulePortal.sqf
+	Author: Ari Höysniemi
 
-	Author: Raunhofer
-	Last Update: d05/m10/y15
-	
-	Title: PORTAL MODULE
-	Description: Initializes the portal module for Actionbuilder
-	
-	Duty: Hides and saves all connected custom units. Registers the portal.
+	Description:
+	Initializes a new portal
 
+	Parameter(s):
+	0: OBJECT - portal module
+
+	Returns:
+	Nothing
 */
 
-// --- Check for headless clients -----------------------------------------------------------------------------------------------------
+// No clients allowed -----------------------------------------------------------------------------
 if (!isServer) exitWith {false};
 
-// --- Initialize the portal function
-if (isNil "RHNET_ab_portalFnc") then {
-	RHNET_ab_portalFnc = compileFinal preprocessFileLineNumbers "RHNET\rhnet_actionbuilder\modules\components\rh_Portal.sqf";
-	RHNET_ab_customSync = compileFinal preprocessFileLineNumbers "RHNET\rhnet_actionbuilder\modules\scripts\customSync.sqf";
-	publicVariable "RHNET_ab_portalFnc";
+// Required functions -----------------------------------------------------------------------------
+if (isNil "Actionbuilder_fnc_unitSpawn" || isNil "Actionbuilder_fnc_registerUnits") exitWith {
+	["Could not find a required function!"] call BIS_fnc_error;
+	false
 };
 
-// --- Wait until the initialization is done
-waitUntil {(!isNil "RHNET_ab_locations") && (!isNil "RHNET_ab_locations_used") && (!isNil "RHNET_ab_customSync") && (!isNil "RHNET_ab_portalFnc")};
+// Initialize variables if required ---------------------------------------------------------------
+if (isNil "ACTIONBUILDER_portals") then {ACTIONBUILDER_portals = []};
+if (isNil "ACTIONBUILDER_portal_objects") then {ACTIONBUILDER_portal_objects = []};
+if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
 
-// --- This portal module
-private ["_portal","_customSync"];
-_portal = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+// Define portal ----------------------------------------------------------------------------------
+private["_portal","_unitSync"];
+_portal		= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+_unitSync	= [_portal,true,false] call Actionbuilder_fnc_registerUnits;
 
-// --- Hide connected units
-_customSync = [_portal] call RHNET_ab_customSync;
+// Register portal --------------------------------------------------------------------------------
+ACTIONBUILDER_portal_objects	pushBack [_portal, (_unitSync select 0)];
+ACTIONBUILDER_portal_groups		pushBack [_portal, (_unitSync select 1)];
+ACTIONBUILDER_portals			pushBack _portal;
 
-// --- Register this portal
-RHNET_ab_locations set [(count RHNET_ab_locations),_portal];
-publicVariable "RHNET_ab_locations";
+diag_log "ACTIONBUILDER PORTAL ------------------------------------------------";
+diag_log format ["Portal: %1", _portal];
+diag_log format ["ACTIONBUILDER_portal_objects: %1", ACTIONBUILDER_portal_objects];
+diag_log format ["ACTIONBUILDER_portal_objects: %1", ACTIONBUILDER_portal_groups];
+diag_log format ["ACTIONBUILDER_portals: %1", ACTIONBUILDER_portals];
 
 true

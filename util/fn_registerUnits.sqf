@@ -11,53 +11,62 @@
 	2 (Optional): BOOL - true to remove object after the registeration (default: false)
 
 	Returns:
-	ARRAY - List of objects, groups and units. Ex. ["obj1","obj2",["grp1","leader","man1"..."man n","veh1"..."veh n"],["grp2"...]]
+	ARRAY - List of objects, groups and units. Ex. [["obj1","obj2"..."objN"],[["grp1","side","leader","man1"..."manN"],["grp2","side","leader","man1"..."manN"]]]
 */
 
-private["_master","_removeUnit","_removeMaster","_syncedUnits","_acceptedGroups","_acceptedUnits","_i","_vehicle"];
+private["_master","_removeUnit","_removeMaster","_syncedUnits","_acceptedObjects","_acceptedGroups","_vehicle","_acceptedUnits"];
 _master				= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
 _removeUnit			= [_this, 1, true, [true]] call BIS_fnc_param;
 _removeMaster		= [_this, 2, false, [false]] call BIS_fnc_param;
 
-if (isNull _master) exitWith {[_master,true,"the master object is missing"] spawn Actionbuilder_fnc_debugHint; []};
+if (isNull _master) exitWith {["The master object is null. The master object should be an actual object."] call BIS_fnc_error; []};
 
 _syncedUnits		= _master call BIS_fnc_moduleUnits;
+_acceptedObjects	= [];
 _acceptedGroups		= [];
-_acceptedUnits		= [];
 
-if (count _syncedUnits < 1) exitWith {[_master,true,"there are no units synchronized to the portal"] spawn Actionbuilder_fnc_debugHint; []};
+if (count _syncedUnits < 1) exitWith {["%1 has no units synchronized.", _master] call BIS_fnc_error; []};
 
-// 1. List objects and groups
+// Loop through all synchronized units and categorize them either into objects or groups
 {
 	if (isNull group _x) then {
-		_acceptedUnits pushBack _x;
+		// Caregory: object - ["obj1","obj2"..."objN"]
+		_acceptedObjects pushBack _x;
 		if (_removeUnit) then {deleteVehicle _x};
 	} else {
-		if !(group _x in _acceptedGroups) then {
-			_acceptedGroups pushBack group _x;
+		// Category: group - ["grp1","side","leader","man1"..."manN"],["grp2","side","leader","man1"..."manN"]
+		if (!isNull _x) then {
+			if ((_acceptedGroups find [group _x]) < 0) then {
+				// Register group and define its side and leader
+				_acceptedGroups pushBack [group _x];
+				(_acceptedGroups select (count _acceptedGroups - 1)) pushBack (side _x);
+				(_acceptedGroups select (count _acceptedGroups - 1)) pushBack (leader _x);
+				{
+					// Add units for the group
+					_vehicle = vehicle _x;
+					if ((_vehicle isKindOf "Man") && (_x == _vehicle)) then {
+						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack _x;
+					};
+					if ((_vehicle isKindOf "LandVehicle") || (_vehicle isKindOf "Air") || (_vehicle isKindOf "Ship")) then {
+						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack (typeOf _x);
+						if (_removeUnit) then {
+							{
+								deleteVehicle _x;
+							} forEach crew _vehicle;
+						};
+					};
+					if (_removeUnit) then {deleteVehicle _x};
+				} forEach units (group _x);
+			};
 		};
 	};
 } forEach _syncedUnits;
 
-// 2. Add units into the listed groups
-{
-	_i = count _acceptedUnits;
-	_acceptedUnits set [_i, [_x]];												// ["obj1","obj2",["grp1"]]
-	(_acceptedUnits select _i) set [1, leader _x];								// ["obj1","obj2",["grp1","man1"]]
-	{
-		_vehicle = vehicle _x;
-		if ((_vehicle isKindOf "Man") && (_x == _vehicle) && (leader _x != _x)) then {
-			(_acceptedUnits select _i) pushBack _x;								// ["obj1","obj2",["grp1","man1","man2", ... "mann"]]
-		};
-		if ((_vehicle isKindOf "LandVehicle") || (_vehicle isKindOf "Air") || (_vehicle isKindOf "Ship")) then {
-			(_acceptedUnits select _i) pushBack (typeOf _x);					// ["obj1","obj2",["grp1","man1","man2", ... "mann","veh1", ... "vehn"]]
-			{
-				if (_removeUnit) then {deleteVehicle _x};
-			} forEach crew _vehicle;
-		};
-		if (_removeUnit) then {deleteVehicle _x};								// remove from world
-	} forEach units _x;
-} forEach _acceptedGroups;
 if (_removeMaster) then {deleteVehicle _master};
+
+_acceptedUnits = [_acceptedObjects] + [_acceptedGroups];
+diag_log format ["ACTIONBUILDER - _acceptedObjects: %1", _acceptedObjects];
+diag_log format ["ACTIONBUILDER - _acceptedGroups: %1", _acceptedGroups];
+diag_log format ["ACTIONBUILDER - _acceptedUnits: %1", _acceptedUnits];
 
 _acceptedUnits
