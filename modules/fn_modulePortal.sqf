@@ -15,33 +15,25 @@
 // No clients allowed -----------------------------------------------------------------------------
 if (!isServer) exitWith {false};
 
-// Required functions -----------------------------------------------------------------------------
-if (isNil "Actionbuilder_fnc_spawnUnits" || isNil "Actionbuilder_fnc_registerUnits") exitWith {
-	["Could not find a required function!"] call BIS_fnc_error;
-	false
-};
+private ["_portal","_modules","_actionpoints","_waypoints","_type"];
+_portal 		= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+_modules 		= _ap call BIS_fnc_moduleModules;
+_actionpoints	= [];
+_waypoints		= [];
 
-// Initialize variables if required ---------------------------------------------------------------
-if (isNil "ACTIONBUILDER_portals") then {ACTIONBUILDER_portals = []};
-if (isNil "ACTIONBUILDER_portal_objects") then {ACTIONBUILDER_portal_objects = []};
-if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
-if (isNil "ACTIONBUILDER_portal_spawned") then {ACTIONBUILDER_portal_spawned = []};
-
-// Define portal ----------------------------------------------------------------------------------
-private["_portal","_unitSync"];
-_portal		= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
-_unitSync	= [_portal,true,false] call Actionbuilder_fnc_registerUnits;
-
-// Register portal --------------------------------------------------------------------------------
-if (((count (_unitSync select 0)) < 1) && ((count (_unitSync select 1)) < 1)) exitWith {false};
-if ((count (_unitSync select 0)) > 0) then {
-	ACTIONBUILDER_portal_objects pushBack _portal;
-	ACTIONBUILDER_portal_objects pushBack (_unitSync select 0);	// [portal1,[objects],portal2,[objects]]
-};
-if ((count (_unitSync select 1)) > 0) then {
-	ACTIONBUILDER_portal_groups pushBack _portal;
-	ACTIONBUILDER_portal_groups pushBack (_unitSync select 1);	// [portal1,[groups],portal2,[groups]]
-};
-ACTIONBUILDER_portals pushBack _portal;
+// Make sure there are actionpoints available -----------------------------------------------------
+{
+	_type = typeOf _x;
+	if (_type == "RHNET_ab_moduleACTIONPOINT_F") then {
+		_actionpoints pushBack _x;
+	};
+	if (_type == "RHNET_ab_moduleWP_F") then {
+		_waypoints pushBack _x;
+	};
+	if ((_type != "RHNET_ab_moduleACTIONPOINT_F") && (_type != "RHNET_ab_moduleWP_F")) exitWith {
+		["Not supported module %1 synchronized into portal %2.", typeOf _x, _ap] call BIS_fnc_error;
+		false
+	};
+} forEach _modules;
 
 true

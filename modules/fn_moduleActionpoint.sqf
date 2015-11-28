@@ -22,14 +22,30 @@ if (!isServer) then {
 };
 
 // Required functions -----------------------------------------------------------------------------
-if (isNil "Actionbuilder_fnc_listClients" || isNil "Actionbuilder_fnc_transmit") exitWith {
-	["Could not find a required function!"] call BIS_fnc_error;
-	false
+if (isNil "Actionbuilder_fnc_listClients" || 
+	isNil "Actionbuilder_fnc_transmit" || 
+	isNil "Actionbuilder_fnc_removeSynchronized" ||
+	isNil "Actionbuilder_fnc_getSynchronized") exitWith {
+		["Missing Actionbuilder functions!"] call BIS_fnc_error;
+		false
 };
 
 // Initialize the Actionbuilder module ------------------------------------------------------------
-private ["_ap"];
-_ap = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+private ["_ap","_modules","_portals","_units"];
+_ap 		= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+_modules 	= _ap call BIS_fnc_moduleModules;
+_portals	= [];
+
+// Make sure there are portals available ----------------------------------------------------------
+{
+	if ((typeOf _x) == "RHNET_ab_modulePORTAL_F") then {
+		_portals pushBack _x;
+	} else {
+		["Not supported module %1 synchronized into actionpoint %2.", typeOf _x, _ap] call BIS_fnc_error;
+	};
+} forEach _modules;
+
+if (count _portals < 1) exitWith {["Actionpoint %1 has no portals synchronized.", _ap] call BIS_fnc_error; false};
 
 // Initialize all the required variables ----------------------------------------------------------
 if (isServer) then {
@@ -37,7 +53,32 @@ if (isServer) then {
 	if (isNil "ACTIONBUILDER_buffer") then {ACTIONBUILDER_buffer = 0.1};
 	if (isNil "ACTIONBUILDER_performance") then {ACTIONBUILDER_performance = [] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_performance.fsm"};
 	if (isNil "ACTIONBUILDER_debug") then {ACTIONBUILDER_debug = []};
+	if (isNil "ACTIONBUILDER_portals") then {ACTIONBUILDER_portals = []};
+	if (isNil "ACTIONBUILDER_portal_objects") then {ACTIONBUILDER_portal_objects = []};
+	if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
+	if (isNil "ACTIONBUILDER_portal_spawned") then {ACTIONBUILDER_portal_spawned = []};
 	if (_ap getVariable ["Debug",false]) then {ACTIONBUILDER_debug pushBack _ap};
+	
+	// Register units from the portals
+	{
+		_units = [_x] call Actionbuilder_fnc_getSynchronized;
+		if (((count (_units select 0)) > 0) || ((count (_units select 1)) > 0)) then {
+			if ((count (_units select 0)) > 0) then {
+				ACTIONBUILDER_portal_objects pushBack _x;
+				ACTIONBUILDER_portal_objects pushBack (_units select 0);
+			};
+			if ((count (_units select 1)) > 0) then {
+				ACTIONBUILDER_portal_groups pushBack _x;
+				ACTIONBUILDER_portal_groups pushBack (_units select 1);
+			};
+			ACTIONBUILDER_portals pushBack _x;
+		};
+	} forEach _portals;
+	// Remove synchronized units of portals
+	{
+		[_x, false] spawn Actionbuilder_fnc_removeSynchronized;
+	} forEach _portals;
+	
 };
 
 // Initialize all the required multiplayer variables ----------------------------------------------
