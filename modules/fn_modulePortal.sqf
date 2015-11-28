@@ -32,14 +32,15 @@ _portal		= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
 _unitSync	= [_portal,true,false] call Actionbuilder_fnc_registerUnits;
 
 // Register portal --------------------------------------------------------------------------------
-ACTIONBUILDER_portal_objects	pushBack [_portal, (_unitSync select 0)];
-ACTIONBUILDER_portal_groups		pushBack [_portal, (_unitSync select 1)];
-ACTIONBUILDER_portals			pushBack _portal;
-
-diag_log "ACTIONBUILDER PORTAL ------------------------------------------------";
-diag_log format ["Portal: %1", _portal];
-diag_log format ["ACTIONBUILDER_portal_objects: %1", ACTIONBUILDER_portal_objects];
-diag_log format ["ACTIONBUILDER_portal_objects: %1", ACTIONBUILDER_portal_groups];
-diag_log format ["ACTIONBUILDER_portals: %1", ACTIONBUILDER_portals];
+if (((count (_unitSync select 0)) < 1) && ((count (_unitSync select 1)) < 1)) exitWith {false};
+if ((count (_unitSync select 0)) > 0) then {
+	ACTIONBUILDER_portal_objects pushBack _portal;
+	ACTIONBUILDER_portal_objects pushBack (_unitSync select 0);	// [portal1,[objects],portal2,[objects]]
+};
+if ((count (_unitSync select 1)) > 0) then {
+	ACTIONBUILDER_portal_groups pushBack _portal;
+	ACTIONBUILDER_portal_groups pushBack (_unitSync select 1);	// [portal1,[groups],portal2,[groups]]
+};
+ACTIONBUILDER_portals pushBack _portal;
 
 true

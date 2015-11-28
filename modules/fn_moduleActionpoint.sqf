@@ -59,7 +59,6 @@ if (isServer) then {
 	};
 	//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_actionpoint.fsm";
 	//waitUntil {completedFSM _actionfsm};
-	diag_log format ["ACTIONPOINT FINISHED: %1 (SERVER), registered: %2",_ap, ACTIONBUILDER_actionpoints];
 } else {
 	{
 		if (_x select 0 == _ap) then {

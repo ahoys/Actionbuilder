@@ -11,7 +11,7 @@
 	2 (Optional): BOOL - true to remove object after the registeration (default: false)
 
 	Returns:
-	ARRAY - List of objects, groups and units. Ex. [["obj1","obj2"..."objN"],[["grp1","side","leader","man1"..."manN"],["grp2","side","leader","man1"..."manN"]]]
+	ARRAY - List of objects, groups and units. Ex. [["obj1","obj2"..."objN"],[["side","man1"..."manN"],["side","man1"..."manN"]]]
 */
 
 private["_master","_removeUnit","_removeMaster","_syncedUnits","_acceptedObjects","_acceptedGroups","_vehicle","_acceptedUnits"];
@@ -34,13 +34,11 @@ if (count _syncedUnits < 1) exitWith {["%1 has no units synchronized.", _master]
 		_acceptedObjects pushBack _x;
 		if (_removeUnit) then {deleteVehicle _x};
 	} else {
-		// Category: group - ["grp1","side","leader","man1"..."manN"],["grp2","side","leader","man1"..."manN"]
+		// Category: group - ["side","man1"..."manN"],["grp2","side","leader","man1"..."manN"]
 		if (!isNull _x) then {
 			if ((_acceptedGroups find [group _x]) < 0) then {
 				// Register group and define its side and leader
-				_acceptedGroups pushBack [group _x];
-				(_acceptedGroups select (count _acceptedGroups - 1)) pushBack (side _x);
-				(_acceptedGroups select (count _acceptedGroups - 1)) pushBack (leader _x);
+				_acceptedGroups pushBack [side _x];
 				{
 					// Add units for the group
 					_vehicle = vehicle _x;
@@ -64,9 +62,5 @@ if (count _syncedUnits < 1) exitWith {["%1 has no units synchronized.", _master]
 
 if (_removeMaster) then {deleteVehicle _master};
 
-_acceptedUnits = [_acceptedObjects] + [_acceptedGroups];
-diag_log format ["ACTIONBUILDER - _acceptedObjects: %1", _acceptedObjects];
-diag_log format ["ACTIONBUILDER - _acceptedGroups: %1", _acceptedGroups];
-diag_log format ["ACTIONBUILDER - _acceptedUnits: %1", _acceptedUnits];
-
+_acceptedUnits = [_acceptedObjects,_acceptedGroups];
 _acceptedUnits
