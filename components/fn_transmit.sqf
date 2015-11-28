@@ -13,9 +13,9 @@
 	Nothing
 */
 
-_actionpointsC	= count (["RHNET_ab_moduleAP_F"] call Actionbuilder_fnc_listClients});
-_portalsC		= count (["RHNET_ab_modulePORTAL_F"] call Actionbuilder_fnc_listClients});
-_waypointsC		= count (["RHNET_ab_moduleWP_F"] call Actionbuilder_fnc_listClients});
+_actionpointsC	= count (["RHNET_ab_moduleAP_F"] call Actionbuilder_fnc_listClients);
+_portalsC		= count (["RHNET_ab_modulePORTAL_F"] call Actionbuilder_fnc_listClients);
+_waypointsC		= count (["RHNET_ab_moduleWP_F"] call Actionbuilder_fnc_listClients);
 
 // Wait initialization
 waitUntil {

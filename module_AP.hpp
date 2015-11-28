@@ -203,7 +203,7 @@ class RHNET_ab_moduleAP_F : Module_F
 		class Debug {
 			displayName = "Debug";
 			description = "Reveal debug messages and notifications from the main core";
-			typeName = "NUMBER";
+			typeName = "BOOL";
 			class Values {
 				class dbug0 {
 					name = "Hide";

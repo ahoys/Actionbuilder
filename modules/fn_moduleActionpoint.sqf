@@ -36,6 +36,8 @@ if (isServer) then {
 	if (isNil "ACTIONBUILDER_actionpoints") then {ACTIONBUILDER_actionpoints = []};
 	if (isNil "ACTIONBUILDER_buffer") then {ACTIONBUILDER_buffer = 0.1};
 	if (isNil "ACTIONBUILDER_performance") then {ACTIONBUILDER_performance = [] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_performance.fsm"};
+	if (isNil "ACTIONBUILDER_debug") then {ACTIONBUILDER_debug = []};
+	if (_ap getVariable ["Debug",false]) then {ACTIONBUILDER_debug pushBack _ap};
 };
 
 // Initialize all the required multiplayer variables ----------------------------------------------

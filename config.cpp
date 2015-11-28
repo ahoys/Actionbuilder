@@ -34,7 +34,7 @@ class CfgFunctions {
 			
 			file = "\RHNET\rhnet_actionbuilder\components";
 			
-			class unitSpawn {};
+			class spawnUnits {};
 			
 			class transmit {};
 			

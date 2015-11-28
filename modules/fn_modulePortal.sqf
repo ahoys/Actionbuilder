@@ -16,7 +16,7 @@
 if (!isServer) exitWith {false};
 
 // Required functions -----------------------------------------------------------------------------
-if (isNil "Actionbuilder_fnc_unitSpawn" || isNil "Actionbuilder_fnc_registerUnits") exitWith {
+if (isNil "Actionbuilder_fnc_spawnUnits" || isNil "Actionbuilder_fnc_registerUnits") exitWith {
 	["Could not find a required function!"] call BIS_fnc_error;
 	false
 };
@@ -25,6 +25,7 @@ if (isNil "Actionbuilder_fnc_unitSpawn" || isNil "Actionbuilder_fnc_registerUnit
 if (isNil "ACTIONBUILDER_portals") then {ACTIONBUILDER_portals = []};
 if (isNil "ACTIONBUILDER_portal_objects") then {ACTIONBUILDER_portal_objects = []};
 if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
+if (isNil "ACTIONBUILDER_portal_spawned") then {ACTIONBUILDER_portal_spawned = []};
 
 // Define portal ----------------------------------------------------------------------------------
 private["_portal","_unitSync"];

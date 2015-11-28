@@ -43,17 +43,18 @@ if (count _syncedUnits < 1) exitWith {["%1 has no units synchronized.", _master]
 					// Add units for the group
 					_vehicle = vehicle _x;
 					if ((_vehicle isKindOf "Man") && (_x == _vehicle)) then {
-						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack _x;
+						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack (typeOf _x);
+						if (_removeUnit) then {deleteVehicle _x};
 					};
 					if ((_vehicle isKindOf "LandVehicle") || (_vehicle isKindOf "Air") || (_vehicle isKindOf "Ship")) then {
-						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack (typeOf _x);
+						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack (typeOf _vehicle);
 						if (_removeUnit) then {
 							{
 								deleteVehicle _x;
 							} forEach crew _vehicle;
+							deleteVehicle _vehicle;
 						};
 					};
-					if (_removeUnit) then {deleteVehicle _x};
 				} forEach units (group _x);
 			};
 		};
