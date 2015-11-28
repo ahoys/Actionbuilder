@@ -31,7 +31,7 @@ if (count _syncedUnits < 1) exitWith {["%1 has no units synchronized.", _master]
 {
 	if (isNull group _x) then {
 		// Caregory: object - ["obj1","obj2"..."objN"]
-		_acceptedObjects pushBack _x;
+		_acceptedObjects pushBack (typeOf _x);
 		if (_removeUnit) then {deleteVehicle _x};
 	} else {
 		// Category: group - ["side","man1"..."manN"],["grp2","side","leader","man1"..."manN"]
