@@ -21,14 +21,24 @@ _removeMaster	= [_this, 1, false, [false]] call BIS_fnc_param;
 _synchronized	= _master call BIS_fnc_moduleUnits;
 
 {
-	_vehicle = vehicle _x;
-	if (_vehicle isKindOf "Man") then {
+	if (isNull (group _x)) then {
+		// Empty object
 		deleteVehicle _x;
 	} else {
-		{
-			deleteVehicle _x;
-		} forEach crew _vehicle;
-		deleteVehicle _vehicle;
+		// Group
+		if (!isNull _x) then {
+			{
+				_vehicle = vehicle _x;
+				if (_vehicle isKindOf "Man") then {
+					deleteVehicle _x;
+				} else {
+					{
+						deleteVehicle _x;
+					} forEach crew _vehicle;
+					deleteVehicle _vehicle;
+				};
+			} forEach units (group _x);
+		};
 	};
 } forEach _synchronized;
 

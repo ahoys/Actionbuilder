@@ -12,6 +12,23 @@ class RHNET_ab_modulePORTAL_F : Module_F
 	functionPriority = 1;
 
 	class Arguments {
+		class p_Positioning {
+			displayName = "Unit Positioning";
+			description = "Where units are located, when they are spawned";
+			typeName = "STRING";
+			class Values {
+				class v_pos0 {
+					name = "Original position";
+					value = "NONE";
+					default = 1;
+				};
+				class v_pos1 {
+					name = "Portal position";
+					value = "PORTAL";
+				};
+			};
+		};
+		
 		class p_MinDist {
 			displayName = "Safezone";
 			description = "Stop spawning, if there are playable units too close the portal";

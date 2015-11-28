@@ -14,7 +14,7 @@
 	ARRAY - List of objects, groups and units. Ex. [["obj1","obj2"..."objN"],[["side","man1"..."manN"],["side","man1"..."manN"]]]
 */
 
-private["_master","_syncedUnits","_acceptedObjects","_acceptedGroups","_vehicle","_acceptedUnits"];
+private["_master","_syncedUnits","_acceptedObjects","_acceptedGroups","_position","_direction","_vehicle","_acceptedUnits"];
 _master				= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
 
 if (isNull _master) exitWith {["The master object is null. The master object should be an actual object."] call BIS_fnc_error; []};
@@ -22,6 +22,8 @@ if (isNull _master) exitWith {["The master object is null. The master object sho
 _syncedUnits		= _master call BIS_fnc_moduleUnits;
 _acceptedObjects	= [];
 _acceptedGroups		= [];
+_position			= [];
+_direction			= 0;
 
 if (count _syncedUnits < 1) exitWith {["%1 has no units synchronized.", _master] call BIS_fnc_error; []};
 
@@ -29,7 +31,9 @@ if (count _syncedUnits < 1) exitWith {["%1 has no units synchronized.", _master]
 {
 	if (isNull group _x) then {
 		// Caregory: object - ["obj1","obj2"..."objN"]
-		_acceptedObjects pushBack (typeOf _x);
+		_position = getPosATL _x;
+		_direction = getDir _x;
+		_acceptedObjects pushBack [(typeOf _x), _position, _direction];
 	} else {
 		// Category: group - ["side","man1"..."manN"],["grp2","side","leader","man1"..."manN"]
 		if (!isNull _x) then {
@@ -39,11 +43,13 @@ if (count _syncedUnits < 1) exitWith {["%1 has no units synchronized.", _master]
 				{
 					// Add units for the group
 					_vehicle = vehicle _x;
+					_position = getPosATL _x;
+					_direction = getDir _x;
 					if ((_vehicle isKindOf "Man") && (_x == _vehicle)) then {
-						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack (typeOf _x);
+						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack [(typeOf _x), _position, _direction];
 					};
 					if ((_vehicle isKindOf "LandVehicle") || (_vehicle isKindOf "Air") || (_vehicle isKindOf "Ship")) then {
-						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack (typeOf _vehicle);
+						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack [(typeOf _vehicle), _position, _direction];
 					};
 				} forEach units (group _x);
 			};

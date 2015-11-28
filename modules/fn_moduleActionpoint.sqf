@@ -24,8 +24,9 @@ if (!isServer) then {
 // Required functions -----------------------------------------------------------------------------
 if (isNil "Actionbuilder_fnc_listClients" || 
 	isNil "Actionbuilder_fnc_transmit" || 
+	isNil "Actionbuilder_fnc_getSynchronized" ||
 	isNil "Actionbuilder_fnc_removeSynchronized" ||
-	isNil "Actionbuilder_fnc_getSynchronized") exitWith {
+	isNil "Actionbuilder_fnc_spawnUnits") exitWith {
 		["Missing Actionbuilder functions!"] call BIS_fnc_error;
 		false
 };
