@@ -15,7 +15,7 @@
 */
 
 private["_master","_syncedUnits","_acceptedObjects","_acceptedGroups","_position","_direction","_vehicle","_acceptedUnits"];
-_master				= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+_master = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
 
 if (isNull _master) exitWith {["The master object is null. The master object should be an actual object."] call BIS_fnc_error; []};
 

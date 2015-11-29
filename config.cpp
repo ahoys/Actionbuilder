@@ -38,6 +38,8 @@ class CfgFunctions {
 			
 			class transmit {};
 			
+			class assignWp {};
+			
 		}
 		class Utility {
 			

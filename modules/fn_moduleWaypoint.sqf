@@ -1,31 +1,52 @@
 /*
+	File: fn_moduleWaypoint.sqf
+	Author: Ari Höysniemi
 
-	Author: Raunhofer
-	Last Update: d05/m10/y15
-	
-	Title: WAYPOINT MODULE
-	Description: Initializes the waypoint module for Actionbuilder
+	Description:
+	Initializes and registers a new waypoint.
+	The most important task is to make sure the waypoint is placed correctly.
 
+	Parameter(s):
+	0: OBJECT - waypoint module
+
+	Returns:
+	BOOL - true if successful registeration
 */
 
-// --- Check for headless clients -----------------------------------------------------------------------------------------------------
+// No clients allowed -----------------------------------------------------------------------------
 if (!isServer) exitWith {false};
 
-// --- Initialize the waypoint function
-if (isNil "RHNET_ab_waypointFnc") then {
-	RHNET_ab_waypointFnc = compileFinal preprocessFileLineNumbers "RHNET\rhnet_actionbuilder\modules\components\rh_Waypoint.sqf";
-	publicVariable "RHNET_ab_waypointFnc";
+private["_waypoint","_modules","_linked","_return","_type"];
+_waypoint	= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+_modules	= _waypoint call BIS_fnc_moduleModules;
+_linked		= [];
+_return		= true;
+
+if ((formationLeader _waypoint) != _waypoint) exitWith {
+	["Waypoint %1 is grouped to %2. Waypoints should NEVER be grouped to anything as their positions may change!", _waypoint, formationLeader _waypoint] call BIS_fnc_error;
+	false
 };
 
-// --- This waypoint module
-private ["_module"];
-_module = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+// Make sure there are portals or other waypoints available ---------------------------------------
+{
+	_type = typeOf _x;
+	if ((_type == "RHNET_ab_moduleWP_F") || (_type == "RHNET_ab_modulePORTAL_F")) then {
+		_linked pushBack _x;
+	};
+	if (!(_type == "RHNET_ab_moduleWP_F") && !(_type == "RHNET_ab_modulePORTAL_F")) exitWith {
+		["Not supported module %1 synchronized into waypoint %2.", typeOf _x, _waypoint] call BIS_fnc_error;
+		_return = false;
+	};
+} forEach _modules;
 
-// --- Wait until the main initialization is done
-waitUntil {(!isNil "RHNET_ab_locations") && (!isNil "RHNET_ab_locations_used")};
+// Register the waypoint --------------------------------------------------------------------------
+if (((count _linked) < 1) && (_return)) exitWith {
+	["Waypoint %1 has no synchronizations. Synchronize the waypoint to portals or other waypoints.", _waypoint] call BIS_fnc_error;
+	false
+};
 
-// --- Register this waypoint
-RHNET_ab_locations set [(count RHNET_ab_locations),_module];
-publicVariable "RHNET_ab_locations";
+if (_return) then {
+	ACTIONBUILDER_waypoints pushBack [_waypoint, getPosATL _waypoint];
+};
 
-true
+_return

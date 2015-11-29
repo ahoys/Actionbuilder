@@ -3,24 +3,24 @@
 	Author: Ari Höysniemi
 
 	Description:
-	Initializes a new portal
+	Validates a new portal.
 
 	Parameter(s):
 	0: OBJECT - portal module
 
 	Returns:
-	Nothing
+	BOOL - true if valid placement
 */
 
 // No clients allowed -----------------------------------------------------------------------------
 if (!isServer) exitWith {false};
 
-private ["_portal","_modules","_actionpoints","_waypoints","_type"];
+private ["_portal","_modules","_linked","_return","_type"];
 _portal 		= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
 _modules 		= _portal call BIS_fnc_moduleModules;
 _varPositioning	= _portal getVariable ["p_Positioning","PORTAL"];
-_actionpoints	= [];
-_waypoints		= [];
+_linked			= [];
+_return			= true;
 
 if (((formationLeader _portal) != _portal) && (_varPositioning == "PORTAL")) exitWith {
 	_portal setVariable ["p_Positioning","NONE"];
@@ -32,15 +32,17 @@ if (((formationLeader _portal) != _portal) && (_varPositioning == "PORTAL")) exi
 {
 	_type = typeOf _x;
 	if (_type == "RHNET_ab_moduleAP_F") then {
-		_actionpoints pushBack _x;
+		_linked pushBack _x;
 	};
-	if (_type == "RHNET_ab_moduleWP_F") then {
-		_waypoints pushBack _x;
-	};
-	if ((_type != "RHNET_ab_moduleAP_F") && (_type != "RHNET_ab_moduleWP_F")) exitWith {
+	if (!(_type == "RHNET_ab_moduleAP_F") && !(_type == "RHNET_ab_moduleWP_F")) exitWith {
 		["Not supported module %1 synchronized into portal %2.", typeOf _x, _portal] call BIS_fnc_error;
-		false
+		_return = false;
 	};
 } forEach _modules;
 
-true
+if (((count _linked) < 1) && (_return)) exitWith {
+	["Portal %1 has no master. Synchronize the portal to a actionpoint.", _portal] call BIS_fnc_error;
+	false
+};
+
+_return
