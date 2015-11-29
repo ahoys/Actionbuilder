@@ -39,7 +39,6 @@ _portal = [_this, 1, objNull, [objNull]] call BIS_fnc_param;
 if (isNull _ap || isNull _portal) exitWith {["Required objects missing, either ap: %1 or portal: %2 is not valid.", _ap, _portal] call BIS_fnc_error; false};
 
 // Required variables
-_varDebug		= _ap getVariable ["Debug",false];
 _varInit		= _portal getVariable ["p_UnitInit",""];
 _varPositioning	= _portal getVariable ["p_Positioning","PORTAL"];
 _varSafezone	= _portal getVariable ["p_MinDist",400];

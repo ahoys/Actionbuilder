@@ -199,23 +199,6 @@ class RHNET_ab_moduleAP_F : Module_F
 				};
 			};
 		};
-		
-		class Debug {
-			displayName = "Debug";
-			description = "Reveal debug messages and notifications from the main core";
-			typeName = "BOOL";
-			class Values {
-				class dbug0 {
-					name = "Hide";
-					value = 0;
-					default = 1;
-				};
-				class dbug1 {
-					name = "Show";
-					value = 1;
-				};
-			};
-		};
 	};
 
 	class ModuleDescription : ModuleDescription {

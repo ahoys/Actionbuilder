@@ -45,8 +45,6 @@ class CfgFunctions {
 			
 			file = "\RHNET\rhnet_actionbuilder\util";
 			
-			class debugHint {};
-			
 			class listClients {};
 			
 			class objectsAhead {};

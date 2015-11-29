@@ -54,12 +54,10 @@ if (isServer) then {
 	if (isNil "ACTIONBUILDER_actionpoints") then {ACTIONBUILDER_actionpoints = []};
 	if (isNil "ACTIONBUILDER_buffer") then {ACTIONBUILDER_buffer = 0.1};
 	if (isNil "ACTIONBUILDER_performance") then {ACTIONBUILDER_performance = [] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_performance.fsm"};
-	if (isNil "ACTIONBUILDER_debug") then {ACTIONBUILDER_debug = []};
 	if (isNil "ACTIONBUILDER_portals") then {ACTIONBUILDER_portals = []};
 	if (isNil "ACTIONBUILDER_portal_objects") then {ACTIONBUILDER_portal_objects = []};
 	if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
 	if (isNil "ACTIONBUILDER_portal_spawned") then {ACTIONBUILDER_portal_spawned = []};
-	if (_ap getVariable ["Debug",false]) then {ACTIONBUILDER_debug pushBack _ap};
 	
 	// Register units from the portals
 	{
@@ -76,6 +74,7 @@ if (isServer) then {
 			ACTIONBUILDER_portals pushBack _x;
 		};
 	} forEach _portals;
+	
 	// Remove synchronized units of portals
 	{
 		[_x, false] spawn Actionbuilder_fnc_removeSynchronized;
