@@ -7,7 +7,7 @@
 
 	Parameter(s):
 	0: OBJECT - caller Actionpoint
-	1: OBJECT - object that can be found from the ACTIONBUILDER_portals
+	1: OBJECT - spawner
 
 	Returns:
 	BOOL - true, if success
@@ -19,6 +19,7 @@ private[
 	"_groupId",
 	"_objects",
 	"_groups",
+	"_waypoints",
 	"_direction",
 	"_position",
 	"_players",
@@ -36,7 +37,7 @@ private[
 _ap = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
 _portal = [_this, 1, objNull, [objNull]] call BIS_fnc_param;
 
-if (isNull _ap || isNull _portal) exitWith {["Required objects missing, either ap: %1 or portal: %2 is not valid.", _ap, _portal] call BIS_fnc_error; false};
+if (isNull _ap || isNull _portal) exitWith {["Required objects missing, either actionpoint or portal is not valid."] call BIS_fnc_error; false};
 
 // Required variables
 _varInit		= _portal getVariable ["p_UnitInit",""];
@@ -77,7 +78,6 @@ if (_groupId >= 0) then {_groups = ACTIONBUILDER_portal_groups select (_groupId 
 // 2/2 Spawn groups
 {
 	_group = createGroup (_x select 0);
-	ACTIONBUILDER_portal_spawned pushBack _group;
 	_i = 0;
 	{
 		if (_i > 0) then {
@@ -113,6 +113,8 @@ if (_groupId >= 0) then {_groups = ACTIONBUILDER_portal_groups select (_groupId 
 		};
 		_i = _i + 1;
 	} forEach _x;
+	// ATTACH INTO A WAYPOINT NETWORK
+	[_group, _portal] spawn Actionbuilder_fnc_assignWp;
 } forEach _groups;
 
 true

@@ -17,8 +17,7 @@ if (!isServer && hasInterface) exitWith {false};
 
 // Headless clients must wait for everything to get ready -----------------------------------------
 if (!isServer) then {
-	waitUntil {!isNil "ACTIONBUILDER_signal"};
-	if (!ACTIONBUILDER_signal) exitWith {false};
+	waitUntil {!isNil "ACTIONBUILDER_portal_objects" && !isNil "ACTIONBUILDER_portal_groups" && !isNil "ACTIONBUILDER_workload"};
 };
 
 // Required functions -----------------------------------------------------------------------------
@@ -34,9 +33,9 @@ if (isNil "Actionbuilder_fnc_listClients" ||
 
 // Initialize the Actionbuilder module ------------------------------------------------------------
 private ["_ap","_modules","_portals","_units"];
-_ap 		= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
-_modules 	= _ap call BIS_fnc_moduleModules;
-_portals	= [];
+_ap 			= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+_modules 		= _ap call BIS_fnc_moduleModules;
+_portals		= [];
 
 // Make sure there are portals available ----------------------------------------------------------
 {
@@ -57,9 +56,8 @@ if (isServer) then {
 	if (isNil "ACTIONBUILDER_portals") then {ACTIONBUILDER_portals = []};
 	if (isNil "ACTIONBUILDER_portal_objects") then {ACTIONBUILDER_portal_objects = []};
 	if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
-	if (isNil "ACTIONBUILDER_portal_spawned") then {ACTIONBUILDER_portal_spawned = []};
-	
-	// Register units from the portals
+
+	// Initialize portals by registering units and waypoints
 	{
 		_units = [_x] call Actionbuilder_fnc_getSynchronized;
 		if (((count (_units select 0)) > 0) || ((count (_units select 1)) > 0)) then {

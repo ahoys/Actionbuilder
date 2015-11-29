@@ -45,8 +45,4 @@ if (((count _linked) < 1) && (_return)) exitWith {
 	false
 };
 
-if (_return) then {
-	ACTIONBUILDER_waypoints pushBack [_waypoint, getPosATL _waypoint];
-};
-
 _return

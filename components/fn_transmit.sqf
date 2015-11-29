@@ -35,13 +35,8 @@ waitUntil {
 };
 
 // All done, transmit
-publicVariable "ACTIONBUILDER_portals";
 publicVariable "ACTIONBUILDER_portal_objects";
 publicVariable "ACTIONBUILDER_portal_groups";
 publicVariable "ACTIONBUILDER_workload";
-
-// Signal clients to continue
-ACTIONBUILDER_signal = true;
-publicVariable "ACTIONBUILDER_signal";
 
 true
