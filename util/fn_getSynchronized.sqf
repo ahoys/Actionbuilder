@@ -43,12 +43,13 @@ if (count _syncedUnits < 1) exitWith {["%1 has no units synchronized.", _master]
 				{
 					// Add units for the group
 					_vehicle = vehicle _x;
-					_position = getPosATL _x;
 					_direction = getDir _x;
 					if ((_vehicle isKindOf "Man") && (_x == _vehicle)) then {
+						_position = getPosATL _x;
 						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack [(typeOf _x), _position, _direction];
 					};
 					if ((_vehicle isKindOf "LandVehicle") || (_vehicle isKindOf "Air") || (_vehicle isKindOf "Ship")) then {
+						_position = position _x;
 						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack [(typeOf _vehicle), _position, _direction];
 					};
 				} forEach units (group _x);

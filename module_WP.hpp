@@ -60,11 +60,15 @@ class RHNET_ab_moduleWP_F : Module_F
 					value = "FIRE";
 				};
 				class wp_type10 {
-					name = "KILL UNITS";
-					value = "KILL";
+					name = "NEUTRALIZE GROUP";
+					value = "NEUTRALIZE";
 				};
 				class wp_type11 {
-					name = "REMOVE UNITS";
+					name = "KILL GROUP";
+					value = "KILL";
+				};
+				class wp_type12 {
+					name = "REMOVE GROUP";
 					value = "REMOVE";
 				};
 			};

@@ -64,9 +64,7 @@ while {count _candidates < 1} do {
 		_candidatesH pushBack _x;
 	};
 } forEach _candidates;
-
-diag_log format ["WAYPOINT CANDIDATES: %1",_candidates];
-
+diag_log "ACTIONBUILDER WAYPOINT ----------------------------------";
 // Select a new waypoint
 if (count _candidatesH > 0) then {
 	_candidatesA = [_group, _candidatesH, [_location, true]] call Actionbuilder_fnc_objectsAhead;
@@ -77,7 +75,6 @@ if (count _candidatesH > 0) then {
 	};
 } else {
 	_candidatesA = [_group, _candidates, [_location, true]] call Actionbuilder_fnc_objectsAhead;
-	diag_log format ["WAYPOINT CANDIDATES AHEAD: %1", _candidatesA];
 	if (count _candidatesA > 0) then {
 		_nextLocation = _candidatesA select floor random count _candidatesA;
 	} else {
@@ -85,10 +82,8 @@ if (count _candidatesH > 0) then {
 	};
 };
 
-diag_log format ["WAYPOINT SUCCESS! Group %1 Next location: %2, Previous: %3", _group, _nextLocation, _location];
-
 // Assign a new waypoint --------------------------------------------------------------------------
-/*
+
 _wpType			= _nextLocation getVariable ["WpType","MOVE"];
 _wpBehaviour	= _nextLocation getVariable ["WpBehaviour","UNCHANGED"];
 _wpSpeed		= _nextLocation getVariable ["WpSpeed","UNCHANGED"];
@@ -97,7 +92,104 @@ _wpMode			= _nextLocation getVariable ["WpMode","NO CHANGE"];
 _wpWait			= _nextLocation getVariable ["WpWait",0];
 _wpPlacement	= _nextLocation getVariable ["WpPlacement",0];
 _wpSpecial		= _nextLocation getVariable ["WpSpecial",0];
-_wpStatement	= ["true", format ["[%1,%2,%3] spawn Actionbuilder_fnc_assignWp", _group, _nextLocation, _previousLocation]];
+_wpStatement	= ["true", format ["[%1,%2,%3] spawn Actionbuilder_fnc_assignWp", _group, _nextLocation, _location]];
+_wpLocation		= getPosATL _nextLocation;
+_wpCompletion	= 8;
+_leader			= leader _group;
+_vehicle		= vehicle _leader;
+
+// Special property: wait								// Does not work	
+if (typeName _wpWait == "SCALAR") then {
+	sleep _wpWait;
+};
+
+// Special property: punish
+switch (_wpType) do {
+	case "KILL": {[_group, "KILL"] call Actionbuilder_fnc_punish};
+	case "NEUTRALIZE": {[_group, "NEUTRALIZE"] call Actionbuilder_fnc_punish};
+	case "REMOVE": {[_group, "REMOVE"] call Actionbuilder_fnc_punish};
+};
+
+if (!alive _leader) exitWith {true};
+diag_log "Yhä jatkuu!";
+
+// Special property: placement
+// 1: Look for players
+if (_wpPlacement == 1) then {
+	_bestDistance = -1;
+	_target = objNull;
+	{
+		if !(vehicle _x isKindOf "Air") then {
+			if (((_x distance _nextLocation) < _bestDistance) || (_bestDistance < 0)) then {
+				_target = _x;
+			};
+		};
+	} forEach (switchableUnits + playableUnits);
+	_wpLocation = getPosATL _target;
+};
+
+// Adjust completion distance
+if (_vehicle isKindOf "MAN") then {_wpCompletion = 2};
+if (_vehicle isKindOf "AIR") then {_wpCompletion = 30; _wpLocation set [2, (_wpLocation select 2) + 100]};
+if (_vehicle isKindOf "CAR") then {_wpCompletion = 5};
+if (_vehicle isKindOf "TANK") then {_wpCompletion = 8};
+if (_vehicle isKindOf "SHIP") then {_wpCompletion = 20};
+
+
+
+/*
+// Special property: type
+// KILL: kill all units in the group
+if (_wpType == "REMOVE") exitWith {
+	{
+		if (_x isKindOf "MAN") then {
+			deleteVehicle _x;
+		} else {
+			{
+				deleteVehicle _x;
+			} forEach crew _x;
+			deleteVehicle vehicle _x;
+		};
+	} forEach units _group;
+	true
+};
+
+// Special property: type
+// KILL: kill all units in the group
+if (_wpType == "KILL") exitWith {
+	{
+		if (_x isKindOf "MAN") then {
+			_x setDamage 1;
+		} else {
+			{
+				_x setDamage 1;
+			} forEach crew _x;
+			(vehicle _x) setDamage 1;
+		};
+	} forEach units _group;
+	true
+};
+
+// Special property: type
+// NEUTRALIZE: kill all units in the group
+if (_wpType == "NEUTRALIZE") exitWith {
+	{
+		if (_x isKindOf "MAN") then {
+			_x spawn BIS_fnc_neutralizeUnit;
+		} else {
+			{
+				_x setDamage 1;
+			} forEach crew _x;
+			_x spawn BIS_fnc_neutralizeUnit;
+		};
+	} forEach units _group;
+	true
+};
 */
+// Special property: reusability
+// 1: Waypoint can be used only once
+if (_wpSpecial == 1) then {
+	deleteVehicle _nextLocation;
+};
 
 true

@@ -53,6 +53,8 @@ class CfgFunctions {
 			
 			class removeSynchronized {};
 			
+			class punish {};
+			
 		};
 	};
 };
