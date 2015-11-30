@@ -27,7 +27,8 @@ if (isNil "Actionbuilder_fnc_listClients" ||
 	isNil "Actionbuilder_fnc_removeSynchronized" ||
 	isNil "Actionbuilder_fnc_spawnUnits" ||
 	isNil "Actionbuilder_fnc_assignWp" ||
-	isNil "Actionbuilder_fnc_punish") exitWith {
+	isNil "Actionbuilder_fnc_punish" ||
+	isNil "Actionbuilder_fnc_target") exitWith {
 		["Missing Actionbuilder functions!"] call BIS_fnc_error;
 		false
 };
@@ -58,6 +59,7 @@ if (isServer) then {
 	if (isNil "ACTIONBUILDER_portal_objects") then {ACTIONBUILDER_portal_objects = []};
 	if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
 	if (isNil "ACTIONBUILDER_carbage") then {ACTIONBUILDER_carbage = []};
+	if (isNil "ACTIONBUILDER_waypoint_used") then {ACTIONBUILDER_waypoint_used = []};
 
 	// Initialize portals by registering units and waypoints
 	{

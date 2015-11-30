@@ -33,7 +33,7 @@ if (isNil "_group" || isNil "_location") exitWith {
 
 // Find all waypoint possibilities
 {
-	if ((typeOf _x == "RHNET_ab_moduleWP_f") && (_x != _previousLocation)) then {
+	if ((typeOf _x == "RHNET_ab_moduleWP_f") && (_x != _previousLocation) && !(_x in ACTIONBUILDER_waypoint_used)) then {
 		_candidate = _x;
 		_valid = true;
 		{
@@ -96,6 +96,7 @@ _wpLocation		= getPosATL _nextLocation;
 _wpCompletion	= 8;
 _leader			= leader _group;
 _vehicle		= vehicle _leader;
+_skip			= false;
 
 // Special property: wait								// Does not work	
 if (typeName _wpWait == "SCALAR") then {
@@ -110,12 +111,11 @@ if ((_wpType == "KILL") || (_wpType == "NEUTRALIZE") || (_wpType == "REMOVE") ||
 	{
 		[_x, _wpType] spawn Actionbuilder_fnc_punish;
 	} forEach _otherUnits;
+	if (!alive _leader) exitWith {false};
+	_skip = true;
 };
 
-if (!alive _leader) exitWith {true};
-diag_log format ["Yhä jatkuu %1 jälkeen!", _wpType];
-
-// Special property: placement
+// Special property: placement							// Not tested
 // 1: Look for players
 if (_wpPlacement == 1) then {
 	_bestDistance = -1;
@@ -130,68 +130,40 @@ if (_wpPlacement == 1) then {
 	_wpLocation = getPosATL _target;
 };
 
-// Adjust completion distance
+// Special property: target
+// Affects entire group and objects linked to the waypoint
+if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
+	_otherUnits = _nextLocation call BIS_fnc_moduleUnits;
+	if (count _otherUnits > 0) then {
+		_result = [_group, _otherUnits, _wpType] spawn Actionbuilder_fnc_target;
+	} else {
+		_result = [_group, _nextLocation, _wpType] spawn Actionbuilder_fnc_target;
+	};
+	if (_result) then {
+		// Let the units target for a while.
+		_skip = true;
+		sleep 5;
+	};
+};
+
+// Adjust completion distance							// Not tested
 if (_vehicle isKindOf "MAN") then {_wpCompletion = 2};
 if (_vehicle isKindOf "AIR") then {_wpCompletion = 30; _wpLocation set [2, (_wpLocation select 2) + 100]};
 if (_vehicle isKindOf "CAR") then {_wpCompletion = 5};
 if (_vehicle isKindOf "TANK") then {_wpCompletion = 8};
 if (_vehicle isKindOf "SHIP") then {_wpCompletion = 20};
 
-
-
-/*
-// Special property: type
-// KILL: kill all units in the group
-if (_wpType == "REMOVE") exitWith {
-	{
-		if (_x isKindOf "MAN") then {
-			deleteVehicle _x;
-		} else {
-			{
-				deleteVehicle _x;
-			} forEach crew _x;
-			deleteVehicle vehicle _x;
-		};
-	} forEach units _group;
-	true
-};
-
-// Special property: type
-// KILL: kill all units in the group
-if (_wpType == "KILL") exitWith {
-	{
-		if (_x isKindOf "MAN") then {
-			_x setDamage 1;
-		} else {
-			{
-				_x setDamage 1;
-			} forEach crew _x;
-			(vehicle _x) setDamage 1;
-		};
-	} forEach units _group;
-	true
-};
-
-// Special property: type
-// NEUTRALIZE: kill all units in the group
-if (_wpType == "NEUTRALIZE") exitWith {
-	{
-		if (_x isKindOf "MAN") then {
-			_x spawn BIS_fnc_neutralizeUnit;
-		} else {
-			{
-				_x setDamage 1;
-			} forEach crew _x;
-			_x spawn BIS_fnc_neutralizeUnit;
-		};
-	} forEach units _group;
-	true
-};
-*/
-// Special property: reusability
+// Special property: reusability						// Not tested
 // 1: Waypoint can be used only once
 if (_wpSpecial == 1) then {
-	deleteVehicle _nextLocation;
+	ACTIONBUILDER_waypoint_used pushBack _nextLocation;
+	publicVariable ACTIONBUILDER_waypoint_used;
 };
+
+// Skip to the next waypoint if required
+if (_skip) exitWith {
+	[_group, _nextLocation, _location] spawn Actionbuilder_fnc_assignWp;
+	true
+}
 
 true

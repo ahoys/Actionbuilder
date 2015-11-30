@@ -15,23 +15,21 @@
 
 _actionpointsC	= count (["RHNET_ab_moduleAP_F"] call Actionbuilder_fnc_listClients);
 _portalsC		= count (["RHNET_ab_modulePORTAL_F"] call Actionbuilder_fnc_listClients);
-_waypointsC		= count (["RHNET_ab_moduleWP_F"] call Actionbuilder_fnc_listClients);
 
 // Wait initialization
 waitUntil {
 	!isNil "ACTIONBUILDER_actionpoints" && 
 	!isNil "ACTIONBUILDER_portals" && 
-	!isNil "ACTIONBUILDER_waypoints" && 
 	!isNil "ACTIONBUILDER_portal_objects" && 
 	!isNil "ACTIONBUILDER_portal_objects" &&
-	!isNil "ACTIONBUILDER_workload"
+	!isNil "ACTIONBUILDER_workload" &&
+	!isNil "ACTIONBUILDER_waypoint_used"
 };
 
 // Wait for every module to get registered
 waitUntil {
 	(count ACTIONBUILDER_actionpoints >= _actionpointsC) && 
-	(count ACTIONBUILDER_portals >= _portalsC) && 
-	(count ACTIONBUILDER_waypoints >= _waypointsC)
+	(count ACTIONBUILDER_portals >= _portalsC)
 };
 
 // All done, transmit
