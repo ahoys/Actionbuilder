@@ -85,6 +85,7 @@ if (_groupId >= 0) then {_groups = ACTIONBUILDER_portal_groups select (_groupId 
 			if (_varPositioning == "NONE") then {
 				_position = _x select 1;
 				_direction = _x select 2;
+				diag_log format ["ACTIONBUILDER: positioning: %1",_position];
 			};
 			if (_varSafezone > 0) then {
 				{

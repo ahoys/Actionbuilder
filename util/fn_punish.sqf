@@ -41,7 +41,11 @@ if (typeName _target == "GROUP") exitWith {
 			};
 			case "NEUTRALIZE": {
 				if ((alive _unit) && (_i < _limit)) then {
-					_unit spawn BIS_fnc_neutralizeUnit;
+					if (diag_fps > 12) then {
+						_unit spawn BIS_fnc_neutralizeUnit;
+					} else {
+						_unit setDamage 1;
+					};
 					sleep 0.5;
 					_i = _i + 1;
 				};
@@ -77,7 +81,11 @@ if (typeName _target == "OBJECT") exitWith {
 			_target setDamage 1;
 		};
 		case "NEUTRALIZE": {
-			_target spawn BIS_fnc_neutralizeUnit;
+			if (diag_fps > 12) then {
+				_target spawn BIS_fnc_neutralizeUnit;
+			} else {
+				_target setDamage 1;
+			};
 		};
 		case "REMOVE": {
 			deleteVehicle _target;
