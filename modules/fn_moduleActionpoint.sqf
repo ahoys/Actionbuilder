@@ -28,7 +28,7 @@ if (isNil "Actionbuilder_fnc_listClients" ||
 	isNil "Actionbuilder_fnc_spawnUnits" ||
 	isNil "Actionbuilder_fnc_assignWp" ||
 	isNil "Actionbuilder_fnc_punish" ||
-	isNil "Actionbuilder_fnc_target") exitWith {
+	isNil "Actionbuilder_fnc_command") exitWith {
 		["Missing Actionbuilder functions!"] call BIS_fnc_error;
 		false
 };

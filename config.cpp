@@ -55,7 +55,7 @@ class CfgFunctions {
 			
 			class punish {};
 			
-			class target {};
+			class command {};
 			
 		};
 	};

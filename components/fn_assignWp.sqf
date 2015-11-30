@@ -130,14 +130,14 @@ if (_wpPlacement == 1) then {
 	_wpLocation = getPosATL _target;
 };
 
-// Special property: target
+// Special property: command
 // Affects entire group and objects linked to the waypoint
 if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
 	_otherUnits = _nextLocation call BIS_fnc_moduleUnits;
 	if (count _otherUnits > 0) then {
-		_result = [_group, _otherUnits, _wpType] spawn Actionbuilder_fnc_target;
+		_result = [_group, _otherUnits, _wpType] spawn Actionbuilder_fnc_command;
 	} else {
-		_result = [_group, _nextLocation, _wpType] spawn Actionbuilder_fnc_target;
+		_result = [_group, _nextLocation, _wpType] spawn Actionbuilder_fnc_command;
 	};
 	if (_result) then {
 		// Let the units target for a while.
