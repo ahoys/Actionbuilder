@@ -104,20 +104,17 @@ if (typeName _wpWait == "SCALAR") then {
 };
 
 // Special property: punish
-if ((_wpType == "KILL") || (_wpType == "NEUTRALIZE") || (_wpType == "REMOVE")) then {
+// Affects entire group and objects linked to the waypoint
+if ((_wpType == "KILL") || (_wpType == "NEUTRALIZE") || (_wpType == "REMOVE") || (_wpType == "HURT") || (_wpType == "HEAL")) then {
+	[_group, _wpType] call Actionbuilder_fnc_punish;
 	_otherUnits = _nextLocation call BIS_fnc_moduleUnits;
-	if (((count _otherUnits + count units _group) > 16) && (_wpType == "NEUTRALIZE")) then {
-		["Too many units to be neutralized! Neutralizing is heavy."] call BIS_fnc_error;
-	} else {
-		[_group, _wpType] call Actionbuilder_fnc_punish;
-		{
-			[_x, _wpType] spawn Actionbuilder_fnc_punish;
-		} forEach _otherUnits;
-	};
+	{
+		[_x, _wpType] spawn Actionbuilder_fnc_punish;
+	} forEach _otherUnits;
 };
 
 if (!alive _leader) exitWith {true};
-diag_log "Yhä jatkuu!";
+diag_log format ["Yhä jatkuu %1 jälkeen!", _wpType];
 
 // Special property: placement
 // 1: Look for players
