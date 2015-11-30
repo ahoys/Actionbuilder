@@ -27,53 +27,55 @@ if (isNil "_target") exitWith {
 
 if (typeName _target == "GROUP") exitWith {
 	{
-		_unit = _x;
-		_vehicle = vehicle _unit;
-		if (_vehicle != _unit) then {
-			{
-				deleteVehicle _x;
-			} forEach crew _vehicle;
-			_unit = _vehicle;
-		};
-		switch (_punish) do {
-			case "KILL": { 
-				_unit setDamage 1;
+		if (!isNil "_x") then {
+			_unit = _x;
+			_vehicle = vehicle _unit;
+			if (_vehicle != _unit) then {
+				{
+					deleteVehicle _x;
+				} forEach crew _vehicle;
+				_unit = _vehicle;
 			};
-			case "NEUTRALIZE": {
-				if ((alive _unit) && (_i < _limit)) then {
-					if (diag_fps > 12) then {
-						_unit spawn BIS_fnc_neutralizeUnit;
+			switch (_punish) do {
+				case "KILL": { 
+					_unit setDamage 1;
+				};
+				case "NEUTRALIZE": {
+					if ((alive _unit) && (_i < _limit)) then {
+						if (diag_fps > 12) then {
+							_unit spawn BIS_fnc_neutralizeUnit;
+						} else {
+							_unit setDamage 1;
+						};
+						sleep 0.5;
+						_i = _i + 1;
+					};
+				};
+				case "REMOVE": { 
+					deleteVehicle _unit;
+				};
+				case "HURT": {
+					if (damage _unit < 0.3) then {
+						_unit setDamage ([0.4,0.5,0.6,0.7] select floor random 4);
 					} else {
-						_unit setDamage 1;
-					};
-					sleep 0.5;
-					_i = _i + 1;
-				};
-			};
-			case "REMOVE": { 
-				deleteVehicle _unit;
-			};
-			case "HURT": {
-				if (damage _unit < 0.3) then {
-					_unit setDamage ([0.4,0.5,0.6,0.7] select floor random 4);
-				} else {
-					if (damage _unit < 0.99) then {
-						_unit setDamage (damage _unit + ((1 - damage _unit) / 2));
+						if (damage _unit < 0.99) then {
+							_unit setDamage (damage _unit + ((1 - damage _unit) / 2));
+						};
 					};
 				};
+				case "HEAL": {
+					_unit setDamage 0;
+				};
 			};
-			case "HEAL": {
-				_unit setDamage 0;
+			if (!isNil "ACTIONBUILDER_carbage") then {
+				if (!alive _unit) then {ACTIONBUILDER_carbage pushBack _unit};
 			};
-		};
-		if (!isNil "ACTIONBUILDER_carbage") then {
-			if (!alive _unit) then {ACTIONBUILDER_carbage pushBack _unit};
 		};
 	} forEach units _target;
 	true
 };
 
-if ((!alive _target) && (_punish != "REMOVE")) exitWith {false};
+if (((!alive _target) && (_punish != "REMOVE")) || isNil "_target") exitWith {false};
 
 if (typeName _target == "OBJECT") exitWith {
 	switch (_punish) do {

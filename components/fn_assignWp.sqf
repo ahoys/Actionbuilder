@@ -164,6 +164,6 @@ if (_wpSpecial == 1) then {
 if (_skip) exitWith {
 	[_group, _nextLocation, _location] spawn Actionbuilder_fnc_assignWp;
 	true
-}
+};
 
 true
