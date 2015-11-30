@@ -104,10 +104,16 @@ if (typeName _wpWait == "SCALAR") then {
 };
 
 // Special property: punish
-switch (_wpType) do {
-	case "KILL": {[_group, "KILL"] call Actionbuilder_fnc_punish};
-	case "NEUTRALIZE": {[_group, "NEUTRALIZE"] call Actionbuilder_fnc_punish};
-	case "REMOVE": {[_group, "REMOVE"] call Actionbuilder_fnc_punish};
+if ((_wpType == "KILL") || (_wpType == "NEUTRALIZE") || (_wpType == "REMOVE")) then {
+	_otherUnits = _nextLocation call BIS_fnc_moduleUnits;
+	if (((count _otherUnits + count units _group) > 16) && (_wpType == "NEUTRALIZE")) then {
+		["Too many units to be neutralized! Neutralizing is heavy."] call BIS_fnc_error;
+	} else {
+		[_group, _wpType] call Actionbuilder_fnc_punish;
+		{
+			[_x, _wpType] spawn Actionbuilder_fnc_punish;
+		} forEach _otherUnits;
+	};
 };
 
 if (!alive _leader) exitWith {true};
