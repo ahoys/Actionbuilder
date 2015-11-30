@@ -57,6 +57,7 @@ if (isServer) then {
 	if (isNil "ACTIONBUILDER_portals") then {ACTIONBUILDER_portals = []};
 	if (isNil "ACTIONBUILDER_portal_objects") then {ACTIONBUILDER_portal_objects = []};
 	if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
+	if (isNil "ACTIONBUILDER_carbage") then {ACTIONBUILDER_carbage = []};
 
 	// Initialize portals by registering units and waypoints
 	{

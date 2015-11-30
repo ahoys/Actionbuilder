@@ -83,7 +83,6 @@ if (count _candidatesH > 0) then {
 };
 
 // Assign a new waypoint --------------------------------------------------------------------------
-
 _wpType			= _nextLocation getVariable ["WpType","MOVE"];
 _wpBehaviour	= _nextLocation getVariable ["WpBehaviour","UNCHANGED"];
 _wpSpeed		= _nextLocation getVariable ["WpSpeed","UNCHANGED"];

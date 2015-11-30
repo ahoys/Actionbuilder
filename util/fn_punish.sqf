@@ -17,7 +17,7 @@
 private["_target","_punish","_limit","_i"];
 _target 	= [_this, 0, grpNull, [grpNull, objNull]] call BIS_fnc_param;
 _punish 	= [_this, 1, "KILL", [""]] call BIS_fnc_param;
-_limit 		= [_this, 1, 8, [0]] call BIS_fnc_param;
+_limit 		= [_this, 2, 8, [0]] call BIS_fnc_param;
 _i			= 0;
 
 if (isNil "_target") exitWith {
@@ -42,6 +42,7 @@ if (typeName _target == "GROUP") exitWith {
 			case "NEUTRALIZE": {
 				if ((alive _unit) && (_i < _limit)) then {
 					_unit spawn BIS_fnc_neutralizeUnit;
+					sleep 0.5;
 					_i = _i + 1;
 				};
 			};
@@ -50,20 +51,25 @@ if (typeName _target == "GROUP") exitWith {
 			};
 			case "HURT": {
 				if (damage _unit < 0.3) then {
-					_unit setDamage [0.4,0.5,0.6,0.7] select floor random;
+					_unit setDamage ([0.4,0.5,0.6,0.7] select floor random 4);
 				} else {
-					_unit setDamage (damage _unit + ((1 - damage _unit) / 2));
+					if (damage _unit < 0.99) then {
+						_unit setDamage (damage _unit + ((1 - damage _unit) / 2));
+					};
 				};
 			};
 			case "HEAL": {
 				_unit setDamage 0;
 			};
 		};
+		if (!isNil "ACTIONBUILDER_carbage") then {
+			if (!alive _unit) then {ACTIONBUILDER_carbage pushBack _unit};
+		};
 	} forEach units _target;
 	true
 };
 
-if (!alive _target) exitWith {false};
+if ((!alive _target) && (_punish != "REMOVE")) exitWith {false};
 
 if (typeName _target == "OBJECT") exitWith {
 	switch (_punish) do {
@@ -78,14 +84,19 @@ if (typeName _target == "OBJECT") exitWith {
 		};
 		case "HURT": { 
 			if (damage _target < 0.3) then {
-				setDamage [0.4,0.5,0.6,0.7] select floor random;
+				_target setDamage ([0.4,0.5,0.6,0.7] select floor random 4);
 			} else {
-				_target setDamage (damage _target + ((1 - damage _target) / 2));
+				if (damage _target < 0.99) then {
+					_target setDamage (damage _target + ((1 - damage _target) / 2));
+				};
 			};
 		};
 		case "HEAL": { 
 			_target setDamage 0;
 		};
+	};
+	if (!isNil "ACTIONBUILDER_carbage") then {
+		if (!alive _target) then {ACTIONBUILDER_carbage pushBack _target};
 	};
 	true
 };
