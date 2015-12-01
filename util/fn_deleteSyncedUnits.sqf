@@ -1,5 +1,5 @@
 /*
-	File: fn_removeSynchronized.sqf
+	File: fn_deleteSyncedUnits.sqf
 	Author: Ari Höysniemi
 
 	Description:

@@ -23,8 +23,8 @@ if (!isServer) then {
 // Required functions -----------------------------------------------------------------------------
 if (isNil "Actionbuilder_fnc_getTypes" || 
 	isNil "Actionbuilder_fnc_transmit" || 
-	isNil "Actionbuilder_fnc_getSynchronized" ||
-	isNil "Actionbuilder_fnc_removeSynchronized" ||
+	isNil "Actionbuilder_fnc_getSyncedUnits" ||
+	isNil "Actionbuilder_fnc_deleteSyncedUnits" ||
 	isNil "Actionbuilder_fnc_spawnUnits" ||
 	isNil "Actionbuilder_fnc_assignWp" ||
 	isNil "Actionbuilder_fnc_punish" ||
@@ -64,7 +64,7 @@ if (isServer) then {
 	// Initialize portals by registering units and waypoints
 	{
 		_portal = _x;
-		_units = [_x] call Actionbuilder_fnc_getSynchronized;
+		_units = [_x] call Actionbuilder_fnc_getSyncedUnits;
 		_i = 0;
 		{
 			if (count _x > 0) then {
@@ -86,7 +86,7 @@ if (isServer) then {
 	
 	// Remove synchronized units of portals
 	{
-		[_x, false] spawn Actionbuilder_fnc_removeSynchronized;
+		[_x, false] spawn Actionbuilder_fnc_deleteSyncedUnits;
 	} forEach _portals;
 	
 };

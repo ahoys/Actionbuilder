@@ -49,9 +49,9 @@ class CfgFunctions {
 			
 			class objectsAhead {};
 			
-			class getSynchronized {};
+			class getSyncedUnits {};
 			
-			class removeSynchronized {};
+			class deleteSyncedUnits {};
 			
 			class punish {};
 			
