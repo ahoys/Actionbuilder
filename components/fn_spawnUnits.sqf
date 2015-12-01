@@ -6,8 +6,7 @@
 	Spawns all of the units from the portal
 
 	Parameter(s):
-	0: OBJECT - caller Actionpoint
-	1: OBJECT - spawner
+	0: OBJECT - spawner
 
 	Returns:
 	BOOL - true, if success
@@ -34,10 +33,9 @@ private[
 	"_u",
 	"_unit"
 ];
-_ap = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
-_portal = [_this, 1, objNull, [objNull]] call BIS_fnc_param;
+_portal = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
 
-if (isNull _ap || isNull _portal) exitWith {["Required objects missing, either actionpoint or portal is not valid."] call BIS_fnc_error; false};
+if (isNil "_portal") exitWith {["Required portal missing."] call BIS_fnc_error; false};
 
 // Required variables
 _varInit		= _portal getVariable ["p_UnitInit",""];

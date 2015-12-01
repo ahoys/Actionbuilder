@@ -82,7 +82,7 @@ if (count _candidatesH > 0) then {
 	};
 };
 
-// Assign a new waypoint --------------------------------------------------------------------------
+// Initialize the new waypoint --------------------------------------------------------------------
 _wpType			= _nextLocation getVariable ["WpType","MOVE"];
 _wpBehaviour	= _nextLocation getVariable ["WpBehaviour","UNCHANGED"];
 _wpSpeed		= _nextLocation getVariable ["WpSpeed","UNCHANGED"];
@@ -91,9 +91,13 @@ _wpMode			= _nextLocation getVariable ["WpMode","NO CHANGE"];
 _wpWait			= _nextLocation getVariable ["WpWait",0];
 _wpPlacement	= _nextLocation getVariable ["WpPlacement",0];
 _wpSpecial		= _nextLocation getVariable ["WpSpecial",0];
-_wpStatement	= ["true", format ["[%1,%2,%3] spawn Actionbuilder_fnc_assignWp", _group, _nextLocation, _location]];
+//_wpStateText	= format ['[%1,%2,%3] spawn Actionbuilder_fnc_assignWp;', _group, _nextLocation, _location];
+//_wpStateText	= format ["['ankka'] spawn Actionbuilder_fnc_assignWp", _group, _nextLocation, _location];
+//_wpStateText	= "[group this, CORRECT, P1] spawn Actionbuilder_fnc_assignWp";
+_wpStateText	= format ["[group this, %1, %2] spawn Actionbuilder_fnc_assignWp", _nextLocation, _location];
+_wpStatement	= ["true", _wpStateText];
 _wpLocation		= getPosATL _nextLocation;
-_wpCompletion	= 8;
+_wpRadius		= 8;
 _leader			= leader _group;
 _vehicle		= vehicle _leader;
 _skip			= false;
@@ -147,11 +151,11 @@ if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
 };
 
 // Adjust completion distance							// Not tested
-if (_vehicle isKindOf "MAN") then {_wpCompletion = 2};
-if (_vehicle isKindOf "AIR") then {_wpCompletion = 30; _wpLocation set [2, (_wpLocation select 2) + 100]};
-if (_vehicle isKindOf "CAR") then {_wpCompletion = 5};
-if (_vehicle isKindOf "TANK") then {_wpCompletion = 8};
-if (_vehicle isKindOf "SHIP") then {_wpCompletion = 20};
+if (_vehicle isKindOf "MAN") then {_wpRadius = 2};
+if (_vehicle isKindOf "AIR") then {_wpRadius = 30; _wpLocation set [2, (_wpLocation select 2) + 100]};
+if (_vehicle isKindOf "CAR") then {_wpRadius = 5};
+if (_vehicle isKindOf "TANK") then {_wpRadius = 8};
+if (_vehicle isKindOf "SHIP") then {_wpRadius = 20};
 
 // Special property: reusability						// Not tested
 // 1: Waypoint can be used only once
@@ -165,5 +169,28 @@ if (_skip) exitWith {
 	[_group, _nextLocation, _location] spawn Actionbuilder_fnc_assignWp;
 	true
 };
+
+diag_log format ["%1, %2, %3", _group, _wpLocation, _wpRadius];
+diag_log format ["%1, %2, %3, %4, %5, %6",
+_wpType,
+_wpBehaviour,
+_wpSpeed,
+_wpFormation,
+_wpMode,
+_wpStatement
+];
+
+// TODO: SVA
+
+// Assign the new waypoint ------------------------------------------------------------------------
+_group = _group addWaypoint [_wpLocation, _wpRadius];
+_group setWaypointType _wpType;
+_group setWaypointBehaviour _wpBehaviour;
+_group setWaypointSpeed _wpSpeed;
+_group setWaypointFormation _wpFormation;
+_group setWaypointCombatMode _wpMode;
+_group setWaypointStatements _wpStatement;
+
+// TODO: GETIN, FORCE GETIN
 
 true

@@ -43,7 +43,7 @@ private [
 _portal		= _this select 0;
 _group 		= "";
 
-if (isNull _portal) exitWith {
+if (isNil "_portal") exitWith {
 	diag_log "Actionbuilder: rh_Portal encountered an initialization error.";
 	false
 };

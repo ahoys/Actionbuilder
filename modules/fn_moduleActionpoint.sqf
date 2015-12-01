@@ -60,21 +60,28 @@ if (isServer) then {
 	if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
 	if (isNil "ACTIONBUILDER_carbage") then {ACTIONBUILDER_carbage = []};
 	if (isNil "ACTIONBUILDER_waypoint_used") then {ACTIONBUILDER_waypoint_used = []};
-
+	
 	// Initialize portals by registering units and waypoints
 	{
+		_portal = _x;
 		_units = [_x] call Actionbuilder_fnc_getSynchronized;
-		if (((count (_units select 0)) > 0) || ((count (_units select 1)) > 0)) then {
-			if ((count (_units select 0)) > 0) then {
-				ACTIONBUILDER_portal_objects pushBack _x;
-				ACTIONBUILDER_portal_objects pushBack (_units select 0);
+		_i = 0;
+		{
+			if (count _x > 0) then {
+				switch (_i) do {
+					case 0: {
+						ACTIONBUILDER_portal_objects pushBack _portal;
+						ACTIONBUILDER_portal_objects pushBack _x;
+					};
+					case 1: {
+						ACTIONBUILDER_portal_groups pushBack _portal;
+						ACTIONBUILDER_portal_groups pushBack _x;
+					};
+				};
 			};
-			if ((count (_units select 1)) > 0) then {
-				ACTIONBUILDER_portal_groups pushBack _x;
-				ACTIONBUILDER_portal_groups pushBack (_units select 1);
-			};
-			ACTIONBUILDER_portals pushBack _x;
-		};
+			_i = _i + 1;
+		} forEach _units;
+		ACTIONBUILDER_portals pushBack _x;
 	} forEach _portals;
 	
 	// Remove synchronized units of portals
@@ -86,7 +93,7 @@ if (isServer) then {
 
 // Initialize all the required multiplayer variables ----------------------------------------------
 if (isServer && isMultiplayer) then {
-	if (isNil "ACTIONBUILDER_clients") then {ACTIONBUILDER_clients = ["HeadlessClient_F"] call Actionbuilder_fnc_getTypes};
+	if (isNil "ACTIONBUILDER_clients") then {ACTIONBUILDER_clients = ["HeadlessClient_F", true, 1] call Actionbuilder_fnc_getTypes};
 	if (isNil "ACTIONBUILDER_workload") then {ACTIONBUILDER_workload = []};
 	if (isNil "ACTIONBUILDER_transmit") then {ACTIONBUILDER_transmit = [] spawn Actionbuilder_fnc_transmit};
 	if (count ACTIONBUILDER_clients > 0) then {

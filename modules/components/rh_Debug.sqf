@@ -18,7 +18,7 @@ _msg	= _this select 2;
 
 // --- Print message -------------------------------------------------------------------------------------
 
-if (isNull _mod) then {_mod = "(MODULE DELETED)"};
+if (isNil "_mod") then {_mod = "(MODULE DELETED)"};
 
 if (_state == 1) then {
 	hintSilent format ["ACTIONBUILDER DEBUG\n\n- module -\n%1\n\n- message -\n%2", _mod, _msg];

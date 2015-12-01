@@ -3,7 +3,7 @@
 	Author: Ari Höysniemi
 
 	Description:
-	Return a list of clients of desired type
+	Return a list of units of desired type
 	
 	Parameter(s):
 	0: STRING - type of the entity, ex. "HeadlessClient_F"
@@ -11,7 +11,7 @@
 	2: NUMBER (optional) - 0 to return all entities, 1 only alive, 2 only dead (default: 0)
 
 	Returns:
-	ARRAY - List of clients available and occupied by a client
+	ARRAY - List of units of desired type
 */
 
 private["_entityType","_serverOnly","_aliveState","_entities"];
@@ -34,15 +34,17 @@ if (_aliveState == 0) exitWith {entities _entityType};
 
 // Return either alive or dead entities of given type
 {
-	switch (_aliveState) do {
-		case 1: {
-			if (alive) then {
-				_entities pushBack _x;
+	if (!isNil "_x") then {
+		switch (_aliveState) do {
+			case 1: {
+				if (alive _x) then {
+					_entities pushBack _x;
+				};
 			};
-		};
-		case 2: {
-			if (!alive) then {
-				_entities pushBack _x;
+			case 2: {
+				if (!alive _x) then {
+					_entities pushBack _x;
+				};
 			};
 		};
 	};
