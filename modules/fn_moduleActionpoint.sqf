@@ -21,7 +21,7 @@ if (!isServer) then {
 };
 
 // Required functions -----------------------------------------------------------------------------
-if (isNil "Actionbuilder_fnc_listClients" || 
+if (isNil "Actionbuilder_fnc_getTypes" || 
 	isNil "Actionbuilder_fnc_transmit" || 
 	isNil "Actionbuilder_fnc_getSynchronized" ||
 	isNil "Actionbuilder_fnc_removeSynchronized" ||
@@ -86,7 +86,7 @@ if (isServer) then {
 
 // Initialize all the required multiplayer variables ----------------------------------------------
 if (isServer && isMultiplayer) then {
-	if (isNil "ACTIONBUILDER_clients") then {ACTIONBUILDER_clients = ["HeadlessClient_F"] call Actionbuilder_fnc_listClients};
+	if (isNil "ACTIONBUILDER_clients") then {ACTIONBUILDER_clients = ["HeadlessClient_F"] call Actionbuilder_fnc_getTypes};
 	if (isNil "ACTIONBUILDER_workload") then {ACTIONBUILDER_workload = []};
 	if (isNil "ACTIONBUILDER_transmit") then {ACTIONBUILDER_transmit = [] spawn Actionbuilder_fnc_transmit};
 	if (count ACTIONBUILDER_clients > 0) then {
