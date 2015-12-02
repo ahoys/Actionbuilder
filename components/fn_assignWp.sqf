@@ -41,7 +41,8 @@ private[
 	"_otherUnits",
 	"_bestDistance",
 	"_target",
-	"_otherUnits"
+	"_otherUnits",
+	"_key"
 ];
 _group				= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
 _portalId			= [_this, 1, -1, [0]] call BIS_fnc_param;
@@ -118,7 +119,6 @@ if (typeName _wpWait == "NUMBER") then {
 // Go back to the previous waypoint
 if (_wpType == "UTURN") exitWith {
 	if (typeOf _location != "RHNET_ab_modulePORTAL_f") exitWith {
-		diag_log format ["UTURN! group: %1, _nextLocation: %2, _location: %3", _group, _nextLocation, _location];
 		[_group, _portalId, _locationId, _nextLocationId] spawn Actionbuilder_fnc_assignWp;
 		false
 	};
@@ -167,10 +167,17 @@ if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
 };
 
 // Special property: reusability						// Not tested
-// 1: Waypoint can be used only once
+// 1: Waypoint can be used only once / group
 if (_wpSpecial == 1) then {
-	ACTIONBUILDER_waypoint_used pushBack _nextLocation;
-	publicVariable ACTIONBUILDER_waypoint_used;
+	_key = ACTIONBUILDER_locations_denied find _group;
+	if (_key < 0) then {
+		ACTIONBUILDER_locations_denied pushBack _group;
+		ACTIONBUILDER_locations_denied pushBack [_nextLocation];
+		diag_log format ["DENIED: %1", ACTIONBUILDER_locations_denied];
+	} else {
+		(ACTIONBUILDER_locations_denied select (_key + 1)) pushBack _nextLocation;
+	};
+	publicVariable "ACTIONBUILDER_locations_denied";	// Might affect HC
 };
 
 // Completion distance

@@ -228,7 +228,7 @@ class RHNET_ab_moduleWP_F : Module_F
 					default = 1;
 				};
 				class wp_spec1 {
-					name = "Cannot be reused";
+					name = "Cannot be reused by the group";
 					value = 1;
 				};
 				class wp_spec2 {

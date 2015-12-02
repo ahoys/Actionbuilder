@@ -7,7 +7,7 @@
 	
 	Other calls are not supported.
 */
-private["_group","_location","_previousLocation","_usedWaypoints","_candidates","_candidatesLocked","_candidatesPriority","_candidatesAhead","_selected"];
+private["_group","_location","_previousLocation","_usedWaypoints","_candidates","_candidatesLocked","_candidatesPriority","_candidatesAhead","_selected","_deniedKey","_denied"];
 
 _group				= _this select 0;
 _location			= _this select 1;
@@ -18,10 +18,18 @@ _candidatesLocked	= [];
 _candidatesPriority	= [];
 _candidatesAhead	= [];
 _selected			= objNull;
+_deniedKey			= ACTIONBUILDER_locations_denied find _group;
+
+if (_deniedKey >= 0) then {
+	_denied = ACTIONBUILDER_locations_denied select (_deniedKey + 1);
+	diag_log format ["ACTIONBUILDER deniedKey: %1, %2", _deniedKey, _denied];
+} else {
+	_denied = [];
+};
 
 // 1a. Find all possibilities
 {
-	if ((typeOf _x == "RHNET_ab_moduleWP_f") && (_x != _previousLocation) && !(_x in ACTIONBUILDER_locations_denied)) then {
+	if ((typeOf _x == "RHNET_ab_moduleWP_f") && (_x != _previousLocation) && !(_x in _denied)) then {
 		_wp = _x;
 		_valid = true;
 		{
