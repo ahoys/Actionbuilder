@@ -29,7 +29,8 @@ if (isNil "Actionbuilder_fnc_getTypes" ||
 	isNil "Actionbuilder_fnc_assignWp" ||
 	isNil "Actionbuilder_fnc_punish" ||
 	isNil "Actionbuilder_fnc_command" ||
-	isNil "Actionbuilder_fnc_getClosestSynced") exitWith {
+	isNil "Actionbuilder_fnc_getClosestSynced" ||
+	isNil "Actionbuilder_fnc_isValidkey") exitWith {
 		["Missing Actionbuilder functions!"] call BIS_fnc_error;
 		false
 };
@@ -56,11 +57,11 @@ if (isServer) then {
 	if (isNil "ACTIONBUILDER_actionpoints") then {ACTIONBUILDER_actionpoints = []};
 	if (isNil "ACTIONBUILDER_buffer") then {ACTIONBUILDER_buffer = 0.1};
 	if (isNil "ACTIONBUILDER_performance") then {ACTIONBUILDER_performance = [] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_performance.fsm"};
-	if (isNil "ACTIONBUILDER_portals") then {ACTIONBUILDER_portals = []};
+	if (isNil "ACTIONBUILDER_locations") then {ACTIONBUILDER_locations = []};
 	if (isNil "ACTIONBUILDER_portal_objects") then {ACTIONBUILDER_portal_objects = []};
 	if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
 	if (isNil "ACTIONBUILDER_carbage") then {ACTIONBUILDER_carbage = []};
-	if (isNil "ACTIONBUILDER_waypoint_used") then {ACTIONBUILDER_waypoint_used = []};
+	if (isNil "ACTIONBUILDER_waypoint_used") then {ACTIONBUILDER_waypoint_used = []}; // Turha
 	
 	// Initialize portals by registering units and waypoints
 	{
@@ -82,7 +83,7 @@ if (isServer) then {
 			};
 			_i = _i + 1;
 		} forEach _units;
-		ACTIONBUILDER_portals pushBack _x;
+		ACTIONBUILDER_locations pushBack _x;
 	} forEach _portals;
 	
 	// Remove synchronized units of portals

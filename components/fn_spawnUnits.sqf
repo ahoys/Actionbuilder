@@ -113,7 +113,7 @@ if (_groupId >= 0) then {_groups = ACTIONBUILDER_portal_groups select (_groupId 
 		_i = _i + 1;
 	} forEach _x;
 	// ATTACH INTO A WAYPOINT NETWORK
-	[_group, _portal] spawn Actionbuilder_fnc_assignWp;
+	[_group, ACTIONBUILDER_locations find _portal] spawn Actionbuilder_fnc_assignWp;
 } forEach _groups;
 
 true

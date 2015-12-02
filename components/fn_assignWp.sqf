@@ -7,27 +7,76 @@
 
 	Parameter(s):
 	0: OBJECT - target group
-	1: OBJECT - current location
-	2: OBJECT - previous location
+	1: NUMBER - current location id
+	2: NUMBER - previous location id
 
 	Returns:
 	BOOL - true, if success
 */
 
-private[];
-_group				= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
-_location 			= [_this, 1, objNull, [objNull]] call BIS_fnc_param;
-_previousLocation	= [_this, 2, objNull, [objNull]] call BIS_fnc_param;
-_nextLocation		= objNull;
-_candidates			= [];	// Open wp possibilities
-_candidatesF		= [];	// Locked wp possibilities
-_candidatesH		= [];	// High priority wp possibilities
-_candidatesA		= [];	// Ahead positioned wp possibilities
+private[
+	"_group",
+	"_locationId",
+	"_previousLocationId",
+	"_nextLocation",
+	"_nextLocationId",
+	"_location",
+	"_previousLocation",
+	"_candidate",
+	"_candidatesA",
+	"_candidatesF",
+	"_candidatesH",
+	"_valid",
+	"_candidates",
+	"_wpType",
+	"_wpBehaviour",
+	"_wpSpeed",
+	"_wpFormation",
+	"_wpMode",
+	"_wpWait",
+	"_wpPlacement",
+	"_wpSpecial",
+	"_wpStateText",
+	"_wpStatement",
+	"_wpLocation",
+	"_wpRadius",
+	"_leader",
+	"_vehicle",
+	"_skip",
+	"_otherUnits",
+	"_bestDistance",
+	"_target",
+	"_otherUnits"
+];
 
-if (isNil "_group" || isNil "_location") exitWith {
-	["Required parameters missing!"] call BIS_fnc_error;
+_group				= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
+_locationId 		= [_this, 1, -1, [0]] call BIS_fnc_param;
+_previousLocationId	= [_this, 2, -1, [0]] call BIS_fnc_param;
+_nextLocation		= objNull;
+_location			= objNull;
+_previousLocation	= objNull;
+_candidates			= [];		// Open wp possibilities
+_candidatesF		= [];		// Locked wp possibilities
+_candidatesH		= [];		// High priority wp possibilities
+_candidatesA		= [];		// Ahead positioned wp possibilities
+
+// Group or location can't be empty
+if (isNil "_group") exitWith {
+	["Required parameters missing or invalid!"] call BIS_fnc_error;
 	false
 };
+
+// Validate given IDs
+if (!([ACTIONBUILDER_locations, _locationId] call Actionbuilder_fnc_isValidKey)) exitWith {
+	["Invalid location ID!"] call BIS_fnc_error;
+	false
+};
+
+if ([ACTIONBUILDER_locations, _previousLocationId] call Actionbuilder_fnc_isValidKey) then {
+	_previousLocation = ACTIONBUILDER_locations select _previousLocationId;
+};
+
+_location = ACTIONBUILDER_locations select _locationId;
 
 // Find a new waypoint ----------------------------------------------------------------------------
 
@@ -64,7 +113,7 @@ while {count _candidates < 1} do {
 		_candidatesH pushBack _x;
 	};
 } forEach _candidates;
-diag_log "ACTIONBUILDER WAYPOINT ----------------------------------";
+
 // Select a new waypoint
 if (count _candidatesH > 0) then {
 	_candidatesA = [_group, _candidatesH, [_location, true]] call Actionbuilder_fnc_objectsAhead;
@@ -82,6 +131,8 @@ if (count _candidatesH > 0) then {
 	};
 };
 
+_nextLocationId = _nextLocation find ACTIONBUILDER_locations;
+
 // Initialize the new waypoint --------------------------------------------------------------------
 _wpType			= _nextLocation getVariable ["WpType","MOVE"];
 _wpBehaviour	= _nextLocation getVariable ["WpBehaviour","UNCHANGED"];
@@ -91,19 +142,19 @@ _wpMode			= _nextLocation getVariable ["WpMode","NO CHANGE"];
 _wpWait			= _nextLocation getVariable ["WpWait",0];
 _wpPlacement	= _nextLocation getVariable ["WpPlacement",0];
 _wpSpecial		= _nextLocation getVariable ["WpSpecial",0];
-_wpStateText	= format ["[group this, %1, %2] spawn Actionbuilder_fnc_assignWp", _nextLocation, _location];
+_wpStateText	= format ["[group this, %1, %2] spawn Actionbuilder_fnc_assignWp", _nextLocationId, _locationId];
 _wpStatement	= ["true", _wpStateText];
 _wpLocation		= [_nextLocation] call Actionbuilder_fnc_getClosestSynced;
 _wpRadius		= 8;
 _leader			= leader _group;
 _vehicle		= vehicle _leader;
 _skip			= false;
-diag_log format ["ACTIONBUILDER: loc: %1", _wpLocation];
+
 // Use a waypoint location if there are no valid units synchronized to the waypoint
 if (isNull _wpLocation) then {
 	_wpLocation = getPosATL _nextLocation;
 };
-diag_log format ["ACTIONBUILDER: loc: %1", _wpLocation];
+
 // Special property: wait								// Does not work	
 if (typeName _wpWait == "SCALAR") then {
 	sleep _wpWait;

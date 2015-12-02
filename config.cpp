@@ -59,6 +59,8 @@ class CfgFunctions {
 			
 			class command {};
 			
+			class isValidkey {};
+			
 		};
 	};
 };

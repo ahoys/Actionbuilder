@@ -22,6 +22,7 @@ _varPositioning	= _portal getVariable ["p_Positioning","PORTAL"];
 _linked			= [];
 _return			= true;
 
+// Waypoint should not be grouped to other units --------------------------------------------------
 if (((formationLeader _portal) != _portal) && (_varPositioning == "PORTAL")) exitWith {
 	_portal setVariable ["p_Positioning","NONE"];
 	["Portal %1 is grouped to %2. Portals should NEVER be grouped to anything as their positions may change!", _portal, formationLeader _portal] call BIS_fnc_error;
