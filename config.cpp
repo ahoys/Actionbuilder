@@ -53,6 +53,8 @@ class CfgFunctions {
 			
 			class deleteSyncedUnits {};
 			
+			class getClosestSynced {};
+			
 			class punish {};
 			
 			class command {};

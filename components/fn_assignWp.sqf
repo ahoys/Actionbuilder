@@ -98,12 +98,12 @@ _wpRadius		= 8;
 _leader			= leader _group;
 _vehicle		= vehicle _leader;
 _skip			= false;
-
+diag_log format ["ACTIONBUILDER: loc: %1", _wpLocation];
 // Use a waypoint location if there are no valid units synchronized to the waypoint
 if (isNull _wpLocation) then {
 	_wpLocation = getPosATL _nextLocation;
 };
-
+diag_log format ["ACTIONBUILDER: loc: %1", _wpLocation];
 // Special property: wait								// Does not work	
 if (typeName _wpWait == "SCALAR") then {
 	sleep _wpWait;
