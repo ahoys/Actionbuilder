@@ -44,9 +44,10 @@ private[
 	"_otherUnits"
 ];
 _group				= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
-_locationId 		= [_this, 1, -1, [0]] call BIS_fnc_param;
-_previousLocationId	= [_this, 2, -1, [0]] call BIS_fnc_param;
-_ignoreDistance		= [_this, 3, false, [false]] call BIS_fnc_param;
+_portalId			= [_this, 1, -1, [0]] call BIS_fnc_param;
+_locationId 		= [_this, 2, -1, [0]] call BIS_fnc_param;
+_previousLocationId	= [_this, 3, -1, [0]] call BIS_fnc_param;
+_portal				= ACTIONBUILDER_locations select _portalId;
 _nextLocation		= objNull;
 _location			= objNull;
 _previousLocation	= objNull;
@@ -58,6 +59,11 @@ if (isNil "_group") exitWith {
 };
 
 // Validate given IDs
+if (!([ACTIONBUILDER_locations, _portalId] call Actionbuilder_fnc_isValidKey)) exitWith {
+	["Invalid portal ID!"] call BIS_fnc_error;
+	false
+};
+
 if (!([ACTIONBUILDER_locations, _locationId] call Actionbuilder_fnc_isValidKey)) exitWith {
 	["Invalid location ID!"] call BIS_fnc_error;
 	false
@@ -88,7 +94,7 @@ _wpMode			= _nextLocation getVariable ["WpMode","NO CHANGE"];
 _wpWait			= _nextLocation getVariable ["WpWait",0];
 _wpPlacement	= _nextLocation getVariable ["WpPlacement",0];
 _wpSpecial		= _nextLocation getVariable ["WpSpecial",0];
-_wpStateText	= format ["[group this, %1, %2] spawn Actionbuilder_fnc_assignWp", _nextLocationId, _locationId];
+_wpStateText	= format ["[group this, %1, %2, %3] spawn Actionbuilder_fnc_assignWp", _portalId, _nextLocationId, _locationId];
 _wpStatement	= ["true", _wpStateText];
 _wpLocation		= [_nextLocation] call Actionbuilder_fnc_getClosestSynced;
 _wpRadius		= 8;
@@ -113,7 +119,7 @@ if (typeName _wpWait == "NUMBER") then {
 if (_wpType == "UTURN") exitWith {
 	if (typeOf _location != "RHNET_ab_modulePORTAL_f") exitWith {
 		diag_log format ["UTURN! group: %1, _nextLocation: %2, _location: %3", _group, _nextLocation, _location];
-		[_group, _locationId, _nextLocationId, true] spawn Actionbuilder_fnc_assignWp;
+		[_group, _portalId, _locationId, _nextLocationId] spawn Actionbuilder_fnc_assignWp;
 		false
 	};
 };
@@ -177,22 +183,24 @@ if (_vehicle isKindOf "SHIP") then {_wpRadius = 20};
 // Already next to the waypoint
 if (
 		(_wpDistance < (_wpRadius + 4)) && 
-		(!_ignoreDistance) && 
-		((_wpType == "MOVE") || (_wpType == "SAD")) && 
+		(_wpType == "MOVE") && 
 		((_wpBehaviour == "UNCHANGED") || (_wpFormation == "UNCHANGED") || (_wpMode == "UNCHANGED"))
 	) then {
 	_skip = true;
 	sleep (ACTIONBUILDER_buffer + 0.5);
 };
 
-// TODO: SVA
+// Special property: send vehicles away
+if (_wpType == "SVA") then {							// Not tested
+	[_group, _portal] call Actionbuilder_fnc_sva;
+};
 
 // Skip to the next waypoint if required
 if (_skip) exitWith {
-	[_group, _nextLocationId, _locationId] spawn Actionbuilder_fnc_assignWp;
+	[_group, _portalId, _nextLocationId, _locationId] spawn Actionbuilder_fnc_assignWp;
 	true
 };
-if (_wpType == "UTURN") then {diag_log "EI PITÄS OLLA TÄÄLLÄ!"};
+
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: ASSIGN THE WAYPOINT TO THE GROUP
 

@@ -31,7 +31,8 @@ if (isNil "Actionbuilder_fnc_getTypes" ||
 	isNil "Actionbuilder_fnc_command" ||
 	isNil "Actionbuilder_fnc_getClosestSynced" ||
 	isNil "Actionbuilder_fnc_isValidkey" ||
-	isNil "Actionbuilder_fnc_selectWp") exitWith {
+	isNil "Actionbuilder_fnc_selectWp" ||
+	isNil "Actionbuilder_fnc_sva") exitWith {
 		["Missing Actionbuilder functions!"] call BIS_fnc_error;
 		false
 };
