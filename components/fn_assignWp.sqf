@@ -41,6 +41,7 @@ private[
 	"_wpLocation",
 	"_wpRadius",
 	"_leader",
+	"_wpDistance",
 	"_vehicle",
 	"_skip",
 	"_otherUnits",
@@ -48,7 +49,6 @@ private[
 	"_target",
 	"_otherUnits"
 ];
-
 _group				= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
 _locationId 		= [_this, 1, -1, [0]] call BIS_fnc_param;
 _previousLocationId	= [_this, 2, -1, [0]] call BIS_fnc_param;
@@ -78,7 +78,8 @@ if ([ACTIONBUILDER_locations, _previousLocationId] call Actionbuilder_fnc_isVali
 
 _location = ACTIONBUILDER_locations select _locationId;
 
-// Find a new waypoint ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// NEXT OBJECTIVE: SELECT A NEW WAYPOINT
 
 // Find all waypoint possibilities
 {
@@ -132,8 +133,11 @@ if (count _candidatesH > 0) then {
 };
 
 _nextLocationId = ACTIONBUILDER_locations find _nextLocation;
-diag_log "ACTIONBUILDER WP -----------------------------------------";
-// Initialize the new waypoint --------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------
+// NEXT OBJECTIVE: DEFINE THE SELECTED WAYPOINT
+
+// Collect the required variables
 _wpType			= _nextLocation getVariable ["WpType","MOVE"];
 _wpBehaviour	= _nextLocation getVariable ["WpBehaviour","UNCHANGED"];
 _wpSpeed		= _nextLocation getVariable ["WpSpeed","UNCHANGED"];
@@ -148,15 +152,16 @@ _wpLocation		= [_nextLocation] call Actionbuilder_fnc_getClosestSynced;
 _wpRadius		= 8;
 _leader			= leader _group;
 _vehicle		= vehicle _leader;
+_wpDistance		= _leader distance _wpLocation;
 _skip			= false;
 
-// Use a waypoint location if there are no valid units synchronized to the waypoint
+// Use the waypoint's location if there are no valid units synchronized to the waypoint
 if (isNull _wpLocation) then {
 	_wpLocation = getPosATL _nextLocation;
 };
 
 // Special property: wait								// Does not work	
-if (typeName _wpWait == "SCALAR") then {
+if (typeName _wpWait == "NUMBER") then {
 	sleep _wpWait;
 };
 
@@ -173,12 +178,12 @@ if ((_wpType == "KILL") || (_wpType == "NEUTRALIZE") || (_wpType == "REMOVE") ||
 };
 
 // Special property: placement							// Not tested
-// 1: Look for players
+// 0: original positioning, 1: look for players
 if (_wpPlacement == 1) then {
 	_bestDistance = -1;
 	_target = objNull;
 	{
-		if !(vehicle _x isKindOf "Air") then {
+		if !((vehicle _x isKindOf "Air") || (vehicle _x isKindOf "Ship")) then {
 			if (((_x distance _nextLocation) < _bestDistance) || (_bestDistance < 0)) then {
 				_target = _x;
 			};
@@ -197,18 +202,10 @@ if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
 		_result = [_group, _nextLocation, _wpType] spawn Actionbuilder_fnc_command;
 	};
 	if (_result) then {
-		// Let the units target for a while.
 		_skip = true;
 		sleep 5;
 	};
 };
-
-// Adjust completion distance							// Not tested
-if (_vehicle isKindOf "MAN") then {_wpRadius = 2};
-if (_vehicle isKindOf "AIR") then {_wpRadius = 30; _wpLocation set [2, (_wpLocation select 2) + 100]};
-if (_vehicle isKindOf "CAR") then {_wpRadius = 5};
-if (_vehicle isKindOf "TANK") then {_wpRadius = 8};
-if (_vehicle isKindOf "SHIP") then {_wpRadius = 20};
 
 // Special property: reusability						// Not tested
 // 1: Waypoint can be used only once
@@ -217,25 +214,35 @@ if (_wpSpecial == 1) then {
 	publicVariable ACTIONBUILDER_waypoint_used;
 };
 
-// Skip to the next waypoint if required
-if (_skip) exitWith {
-	[_group, _nextLocation, _location] spawn Actionbuilder_fnc_assignWp;
-	true
-};
+// Completion distance
+if (_vehicle isKindOf "MAN") then {_wpRadius = 2};
+if (_vehicle isKindOf "AIR") then {_wpRadius = 30; _wpLocation set [2, (_wpLocation select 2) + 100]};
+if (_vehicle isKindOf "CAR") then {_wpRadius = 5};
+if (_vehicle isKindOf "TANK") then {_wpRadius = 8};
+if (_vehicle isKindOf "SHIP") then {_wpRadius = 20};
 
-diag_log format ["%1, %2, %3", _group, _wpLocation, _wpRadius];
-diag_log format ["%1, %2, %3, %4, %5, %6",
-_wpType,
-_wpBehaviour,
-_wpSpeed,
-_wpFormation,
-_wpMode,
-_wpStatement
-];
+// Already next to the waypoint
+if (
+		(_wpDistance < (_wpRadius + 4)) && 
+		((_wpType == "MOVE") || (_wpType == "SAD")) && 
+		((_wpBehaviour == "UNCHANGED") || (_wpFormation == "UNCHANGED") || (_wpMode == "UNCHANGED"))
+	) then {
+	_skip = true;
+	sleep (ACTIONBUILDER_buffer + 0.5);
+};
 
 // TODO: SVA
 
-// Assign the new waypoint ------------------------------------------------------------------------
+// Skip to the next waypoint if required
+if (_skip) exitWith {
+	[_group, _nextLocationId, _locationId] spawn Actionbuilder_fnc_assignWp;
+	true
+};
+
+// ----------------------------------------------------------------------------
+// NEXT OBJECTIVE: ASSIGN THE WAYPOINT TO THE GROUP
+
+// Assign the new waypoint
 _group = _group addWaypoint [_wpLocation, _wpRadius];
 _group setWaypointType _wpType;
 _group setWaypointBehaviour _wpBehaviour;
