@@ -46,6 +46,7 @@ private[
 _group				= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
 _locationId 		= [_this, 1, -1, [0]] call BIS_fnc_param;
 _previousLocationId	= [_this, 2, -1, [0]] call BIS_fnc_param;
+_ignoreDistance		= [_this, 3, false, [false]] call BIS_fnc_param;
 _nextLocation		= objNull;
 _location			= objNull;
 _previousLocation	= objNull;
@@ -75,7 +76,6 @@ _nextLocation 	= [_group, _location, _previousLocation] call Actionbuilder_fnc_s
 if (isNull _nextLocation) exitWith {false};
 _nextLocationId	= ACTIONBUILDER_locations find _nextLocation;
 
-
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: DEFINE THE SELECTED WAYPOINT
 
@@ -94,7 +94,6 @@ _wpLocation		= [_nextLocation] call Actionbuilder_fnc_getClosestSynced;
 _wpRadius		= 8;
 _leader			= leader _group;
 _vehicle		= vehicle _leader;
-_wpDistance		= _leader distance _wpLocation;
 _skip			= false;
 
 // Use the waypoint's location if there are no valid units synchronized to the waypoint
@@ -102,9 +101,21 @@ if (isNull _wpLocation) then {
 	_wpLocation = getPosATL _nextLocation;
 };
 
+_wpDistance		= _leader distance _wpLocation;
+
 // Special property: wait								// Does not work	
 if (typeName _wpWait == "NUMBER") then {
 	sleep _wpWait;
+};
+
+// Special property: u-turn
+// Go back to the previous waypoint
+if (_wpType == "UTURN") exitWith {
+	if (typeOf _location != "RHNET_ab_modulePORTAL_f") exitWith {
+		diag_log format ["UTURN! group: %1, _nextLocation: %2, _location: %3", _group, _nextLocation, _location];
+		[_group, _locationId, _nextLocationId, true] spawn Actionbuilder_fnc_assignWp;
+		false
+	};
 };
 
 // Special property: punish
@@ -166,6 +177,7 @@ if (_vehicle isKindOf "SHIP") then {_wpRadius = 20};
 // Already next to the waypoint
 if (
 		(_wpDistance < (_wpRadius + 4)) && 
+		(!_ignoreDistance) && 
 		((_wpType == "MOVE") || (_wpType == "SAD")) && 
 		((_wpBehaviour == "UNCHANGED") || (_wpFormation == "UNCHANGED") || (_wpMode == "UNCHANGED"))
 	) then {
@@ -180,7 +192,7 @@ if (_skip) exitWith {
 	[_group, _nextLocationId, _locationId] spawn Actionbuilder_fnc_assignWp;
 	true
 };
-
+if (_wpType == "UTURN") then {diag_log "EI PITÄS OLLA TÄÄLLÄ!"};
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: ASSIGN THE WAYPOINT TO THE GROUP
 

@@ -18,56 +18,60 @@ class RHNET_ab_moduleWP_F : Module_F
 			description = "What kind of waypoint is this";
 			typeName = "STRING";
 			class Values {
-				class wp_type0 {
+				class wp_typeMOVE {
 					name = "MOVE";
 					value = "MOVE";
 					default = 1;
 				};
-				class wp_type1 {
+				class wp_typeSAD {
 					name = "SEEK AND DESTROY";
 					value = "SAD";
 				};
-				class wp_type2 {
+				class wp_typeUTURN {
+					name = "U-TURN";
+					value = "UTURN";
+				};
+				class wp_typeGUARD {
 					name = "GUARD";
 					value = "GUARD";
 				};
-				class wp_type3 {
+				class wp_typeDISMISSED {
 					name = "DISMISSED";
 					value = "DISMISS";
 				};
-				class wp_type4 {
+				class wp_typeLT {
 					name = "LOAD TRANSPORT";
 					value = "GETIN";
 				};
-				class wp_type5 {
+				class wp_typeUT {
 					name = "UNLOAD TRANSPORT";
 					value = "UNLOAD";
 				};
-				class wp_type6 {
+				class wp_typeFT {
 					name = "FORCE TRANSPORT";
 					value = "FORCE";
 				};
-				class wp_type7 {
+				class wp_typeSVA {
 					name = "SEND VEHICLES TO BE REMOVED";
 					value = "SVA";
 				};
-				class wp_type8 {
+				class wp_typeCT {
 					name = "COMMAND TARGET";
 					value = "TARGET";
 				};
-				class wp_type9 {
+				class wp_typeCF {
 					name = "COMMAND FIRE";
 					value = "FIRE";
 				};
-				class wp_type10 {
+				class wp_typeNG {
 					name = "NEUTRALIZE GROUP";
 					value = "NEUTRALIZE";
 				};
-				class wp_type11 {
+				class wp_typeKG {
 					name = "KILL GROUP";
 					value = "KILL";
 				};
-				class wp_type12 {
+				class wp_typeRG {
 					name = "REMOVE GROUP";
 					value = "REMOVE";
 				};
