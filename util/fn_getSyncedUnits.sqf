@@ -62,41 +62,5 @@ _i					= 0;
 	};
 } forEach _syncedUnits;
 
-/*
-// Loop through all synchronized units and categorize them either into objects or groups
-{
-	if (isNull group _x) then {
-		// Caregory: object - ["obj1","obj2"..."objN"]
-		_direction = getDir _x;
-		_acceptedObjects pushBack [(typeOf _x), (getPos _x), _direction];
-	} else {
-		// Category: group - ["side","man1"..."manN"],["grp2","side","leader","man1"..."manN"]
-		if (!isNil "_x") then {
-			if ((_acceptedGroups find [group _x]) < 0) then {
-				// Register group and define its side
-				_acceptedGroups pushBack [side _x];
-				{
-					// Add units for the group
-					_vehicle = vehicle _x;
-					_direction = getDir _x;
-					if (_x == _vehicle) then {
-						_position = getPosATL _x;
-						(_acceptedGroups select (count _acceptedGroups - 1)) pushBack [(typeOf _x), _position, _direction];
-					} else {
-						if !(_x in _crew) then {
-							_position = getPosATL _vehicle;
-							(_acceptedGroups select (count _acceptedGroups - 1)) pushBack [(typeOf _vehicle), _position, _direction];
-							{
-								_crew pushBack _x;
-							} forEach crew _vehicle;
-						};
-					};
-				} forEach units (group _x);
-			};
-		};
-	};
-} forEach _syncedUnits;
-*/
 _acceptedUnits = [_acceptedObjects, _acceptedGroups];
-diag_log format ["%1", _acceptedUnits];
 _acceptedUnits

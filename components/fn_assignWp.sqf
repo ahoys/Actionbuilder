@@ -131,8 +131,8 @@ if (count _candidatesH > 0) then {
 	};
 };
 
-_nextLocationId = _nextLocation find ACTIONBUILDER_locations;
-
+_nextLocationId = ACTIONBUILDER_locations find _nextLocation;
+diag_log "ACTIONBUILDER WP -----------------------------------------";
 // Initialize the new waypoint --------------------------------------------------------------------
 _wpType			= _nextLocation getVariable ["WpType","MOVE"];
 _wpBehaviour	= _nextLocation getVariable ["WpBehaviour","UNCHANGED"];
