@@ -40,6 +40,8 @@ class CfgFunctions {
 			
 			class assignWp {};
 			
+			class selectWp {};
+			
 		}
 		class Utility {
 			

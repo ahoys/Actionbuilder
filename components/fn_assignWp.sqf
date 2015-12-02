@@ -22,12 +22,6 @@ private[
 	"_nextLocationId",
 	"_location",
 	"_previousLocation",
-	"_candidate",
-	"_candidatesA",
-	"_candidatesF",
-	"_candidatesH",
-	"_valid",
-	"_candidates",
 	"_wpType",
 	"_wpBehaviour",
 	"_wpSpeed",
@@ -55,10 +49,6 @@ _previousLocationId	= [_this, 2, -1, [0]] call BIS_fnc_param;
 _nextLocation		= objNull;
 _location			= objNull;
 _previousLocation	= objNull;
-_candidates			= [];		// Open wp possibilities
-_candidatesF		= [];		// Locked wp possibilities
-_candidatesH		= [];		// High priority wp possibilities
-_candidatesA		= [];		// Ahead positioned wp possibilities
 
 // Group or location can't be empty
 if (isNil "_group") exitWith {
@@ -81,58 +71,10 @@ _location = ACTIONBUILDER_locations select _locationId;
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: SELECT A NEW WAYPOINT
 
-// Find all waypoint possibilities
-{
-	if ((typeOf _x == "RHNET_ab_moduleWP_f") && (_x != _previousLocation) && !(_x in ACTIONBUILDER_waypoint_used)) then {
-		_candidate = _x;
-		_valid = true;
-		{
-			if !(triggerActivated _x) exitWith {_candidatesF pushBack _candidate; _valid = false};
-		} forEach (_candidate call BIS_fnc_moduleTriggers);
-		if (_valid) then {_candidates pushBack _candidate};
-	};
-} forEach (_location call BIS_fnc_moduleModules);
+_nextLocation 	= [_group, _location, _previousLocation] call Actionbuilder_fnc_selectWp;
+if (isNull _nextLocation) exitWith {false};
+_nextLocationId	= ACTIONBUILDER_locations find _nextLocation;
 
-// No waypoints available
-if (count (_candidates + _candidatesF) < 1) exitWith {false};
-
-// Only conditional waypoints available
-while {count _candidates < 1} do {
-	{
-		_candidate = _x;
-		{
-			if (triggerActivated _x) exitWith {_candidates pushBack _candidate};
-			sleep .05;
-		} forEach (_candidate call BIS_fnc_moduleTriggers);
-		sleep .05;
-	} forEach _candidatesF;
-};
-
-// Look for high priority waypoints
-{
-	if (_x getVariable ["WpSpecial", 0] == 2) then {
-		_candidatesH pushBack _x;
-	};
-} forEach _candidates;
-
-// Select a new waypoint
-if (count _candidatesH > 0) then {
-	_candidatesA = [_group, _candidatesH, [_location, true]] call Actionbuilder_fnc_objectsAhead;
-	if (count _candidatesA > 0) then {
-		_nextLocation = _candidatesA select floor random count _candidatesA;
-	} else {
-		_nextLocation = _candidatesH select floor random count _candidatesH;
-	};
-} else {
-	_candidatesA = [_group, _candidates, [_location, true]] call Actionbuilder_fnc_objectsAhead;
-	if (count _candidatesA > 0) then {
-		_nextLocation = _candidatesA select floor random count _candidatesA;
-	} else {
-		_nextLocation = _candidates select floor random count _candidates;
-	};
-};
-
-_nextLocationId = ACTIONBUILDER_locations find _nextLocation;
 
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: DEFINE THE SELECTED WAYPOINT
@@ -193,7 +135,7 @@ if (_wpPlacement == 1) then {
 };
 
 // Special property: command
-// Affects entire group and objects linked to the waypoint
+// Affects the entire group and objects linked to the waypoint
 if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
 	_otherUnits = _nextLocation call BIS_fnc_moduleUnits;
 	if (count _otherUnits > 0) then {

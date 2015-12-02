@@ -30,7 +30,8 @@ if (isNil "Actionbuilder_fnc_getTypes" ||
 	isNil "Actionbuilder_fnc_punish" ||
 	isNil "Actionbuilder_fnc_command" ||
 	isNil "Actionbuilder_fnc_getClosestSynced" ||
-	isNil "Actionbuilder_fnc_isValidkey") exitWith {
+	isNil "Actionbuilder_fnc_isValidkey" ||
+	isNil "Actionbuilder_fnc_selectWp") exitWith {
 		["Missing Actionbuilder functions!"] call BIS_fnc_error;
 		false
 };
@@ -61,7 +62,7 @@ if (isServer) then {
 	if (isNil "ACTIONBUILDER_portal_objects") then {ACTIONBUILDER_portal_objects = []};
 	if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
 	if (isNil "ACTIONBUILDER_carbage") then {ACTIONBUILDER_carbage = []};
-	if (isNil "ACTIONBUILDER_waypoint_used") then {ACTIONBUILDER_waypoint_used = []}; // Turha
+	if (isNil "ACTIONBUILDER_locations_denied") then {ACTIONBUILDER_locations_denied = []};
 	
 	// Initialize portals by registering units and waypoints
 	{
