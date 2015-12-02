@@ -91,16 +91,18 @@ _wpMode			= _nextLocation getVariable ["WpMode","NO CHANGE"];
 _wpWait			= _nextLocation getVariable ["WpWait",0];
 _wpPlacement	= _nextLocation getVariable ["WpPlacement",0];
 _wpSpecial		= _nextLocation getVariable ["WpSpecial",0];
-//_wpStateText	= format ['[%1,%2,%3] spawn Actionbuilder_fnc_assignWp;', _group, _nextLocation, _location];
-//_wpStateText	= format ["['ankka'] spawn Actionbuilder_fnc_assignWp", _group, _nextLocation, _location];
-//_wpStateText	= "[group this, CORRECT, P1] spawn Actionbuilder_fnc_assignWp";
 _wpStateText	= format ["[group this, %1, %2] spawn Actionbuilder_fnc_assignWp", _nextLocation, _location];
 _wpStatement	= ["true", _wpStateText];
-_wpLocation		= getPosATL _nextLocation;
+_wpLocation		= [_nextLocation] call Actionbuilder_fnc_getClosestSynced;
 _wpRadius		= 8;
 _leader			= leader _group;
 _vehicle		= vehicle _leader;
 _skip			= false;
+
+// Use a waypoint location if there are no valid units synchronized to the waypoint
+if (isNull _wpLocation) then {
+	_wpLocation = getPosATL _nextLocation;
+};
 
 // Special property: wait								// Does not work	
 if (typeName _wpWait == "SCALAR") then {
