@@ -22,11 +22,7 @@ _modules	= _waypoint call BIS_fnc_moduleModules;
 _linked		= [];
 _return		= true;
 
-// Waypoint can't be empty ------------------------------------------------------------------------
-if (isNil "_waypoint") exitWith {
-	["Required waypoint module missing!"] call BIS_fnc_error;
-	false
-};
+waitUntil {!isNil "ACTIONBUILDER_locations" && !isNil "ACTIONBUILDER_portal_objects" && !isNil "ACTIONBUILDER_portal_groups"};
 
 // Waypoint should not be grouped to other units --------------------------------------------------
 if ((formationLeader _waypoint) != _waypoint) exitWith {

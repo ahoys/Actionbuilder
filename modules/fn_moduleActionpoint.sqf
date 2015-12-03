@@ -21,18 +21,20 @@ if (!isServer) then {
 };
 
 // Required functions -----------------------------------------------------------------------------
-if (isNil "Actionbuilder_fnc_getTypes" || 
+if (isNil "Actionbuilder_fnc_portalSpawn" || 
 	isNil "Actionbuilder_fnc_transmit" || 
-	isNil "Actionbuilder_fnc_getSyncedUnits" ||
-	isNil "Actionbuilder_fnc_deleteSyncedUnits" ||
-	isNil "Actionbuilder_fnc_spawnUnits" ||
 	isNil "Actionbuilder_fnc_assignWp" ||
+	isNil "Actionbuilder_fnc_selectWp" ||
+	isNil "Actionbuilder_fnc_sva" ||
+	isNil "Actionbuilder_fnc_getTypes" ||
+	isNil "Actionbuilder_fnc_objectsAhead" ||
+	isNil "Actionbuilder_fnc_getSyncedObjects" ||
+	isNil "Actionbuilder_fnc_getSyncedGroups" ||
+	isNil "Actionbuilder_fnc_deleteSyncedUnits" ||
+	isNil "Actionbuilder_fnc_getClosestSynced" ||
 	isNil "Actionbuilder_fnc_punish" ||
 	isNil "Actionbuilder_fnc_command" ||
-	isNil "Actionbuilder_fnc_getClosestSynced" ||
-	isNil "Actionbuilder_fnc_isValidkey" ||
-	isNil "Actionbuilder_fnc_selectWp" ||
-	isNil "Actionbuilder_fnc_sva") exitWith {
+	isNil "Actionbuilder_fnc_isValidkey") exitWith {
 		["Missing Actionbuilder functions!"] call BIS_fnc_error;
 		false
 };
@@ -64,35 +66,11 @@ if (isServer) then {
 	if (isNil "ACTIONBUILDER_portal_groups") then {ACTIONBUILDER_portal_groups = []};
 	if (isNil "ACTIONBUILDER_carbage") then {ACTIONBUILDER_carbage = []};
 	if (isNil "ACTIONBUILDER_locations_denied") then {ACTIONBUILDER_locations_denied = []};
-	
-	// Initialize portals by registering units and waypoints
-	{
-		_portal = _x;
-		_units = [_x] call Actionbuilder_fnc_getSyncedUnits;
-		_i = 0;
-		{
-			if (count _x > 0) then {
-				switch (_i) do {
-					case 0: {
-						ACTIONBUILDER_portal_objects pushBack _portal;
-						ACTIONBUILDER_portal_objects pushBack _x;
-					};
-					case 1: {
-						ACTIONBUILDER_portal_groups pushBack _portal;
-						ACTIONBUILDER_portal_groups pushBack _x;
-					};
-				};
-			};
-			_i = _i + 1;
-		} forEach _units;
-		ACTIONBUILDER_locations pushBack _x;
-	} forEach _portals;
-	
-	// Remove synchronized units of portals
-	{
-		[_x, false] spawn Actionbuilder_fnc_deleteSyncedUnits;
-	} forEach _portals;
-	
+	if (isNil "ACTIONBUILDER_groupProgression") then {ACTIONBUILDER_groupProgression = []}; // [group,origin,current,last,next];
+	_actionpointsC	= count (["RHNET_ab_moduleAP_F"] call Actionbuilder_fnc_getTypes);
+	_portalC 		= count (["RHNET_ab_modulePORTAL_F"] call Actionbuilder_fnc_getTypes); // MONTA AP:TA LUKEE JA JUOKSEE RAAH
+	_waypointC 		= count (["RHNET_ab_moduleWP_F"] call Actionbuilder_fnc_getTypes);
+	waitUntil {count ACTIONBUILDER_locations >= (_actionpointsC + _portalC + _waypointC)};
 };
 
 // Initialize all the required multiplayer variables ----------------------------------------------
@@ -110,7 +88,6 @@ if (isServer && isMultiplayer) then {
 
 // Register actionpoint and execute the main loop -------------------------------------------------
 if (isServer) then {
-	ACTIONBUILDER_actionpoints pushBack _ap;
 	if (isMultiplayer) then {
 		if (count ACTIONBUILDER_workload > 0) exitWith {true};
 	};

@@ -34,7 +34,7 @@ class CfgFunctions {
 			
 			file = "\RHNET\rhnet_actionbuilder\components";
 			
-			class spawnUnits {};
+			class portalSpawn {};
 			
 			class transmit {};
 			
@@ -53,7 +53,9 @@ class CfgFunctions {
 			
 			class objectsAhead {};
 			
-			class getSyncedUnits {};
+			class getSyncedObjects {};
+			
+			class getSyncedGroups {};
 			
 			class deleteSyncedUnits {};
 			

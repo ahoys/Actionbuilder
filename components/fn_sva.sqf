@@ -23,7 +23,7 @@ _crew		= [];
 		};
 	};
 } forEach _units;
-diag_log format ["In vehicles: %1", _inVehicles];
+
 _time = time;
 waitUntil {(count _inVehicles < 1) || ((_time + 16) < time)};
 

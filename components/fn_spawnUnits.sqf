@@ -9,7 +9,7 @@
 	0: OBJECT - spawner
 
 	Returns:
-	BOOL - true, if success
+	BOOL - true if success
 */
 
 private[
