@@ -33,7 +33,7 @@ _synchronized	= _master call BIS_fnc_moduleUnits;
 					deleteVehicle _x;
 				} else {
 					{
-						deleteVehicle _x;
+						_vehicle deleteVehicleCrew _x;
 					} forEach crew _vehicle;
 					deleteVehicle _vehicle;
 				};
