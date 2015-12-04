@@ -2,11 +2,23 @@
 	File: fn_sva.sqf
 	Author: Ari Höysniemi
 	
+	Note:
+	This is an actionbuilder component, outside calls are not supported
+	
 	Extension for:
 	fn_assignWp.sqf
-	
-	Other calls are not supported.
+
+	Description:
+	Sends vehicles away -waypoint
+
+	Parameter(s):
+	0: GROUP - the target group
+	1: PORTAL - the origin portal
+
+	Returns:
+	BOOL - true if success
 */
+
 private["_units","_portal","_inVehicles","_crew","_units"];
 
 _units		= units (_this select 0);

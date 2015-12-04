@@ -1,6 +1,9 @@
 /*
 	File: fn_assignWp.sqf
 	Author: Ari Höysniemi
+	
+	Note:
+	This is an actionbuilder component, outside calls are not supported
 
 	Description:
 	Assigns a new waypoint to a group

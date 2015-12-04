@@ -1,6 +1,9 @@
 /*
 	File: fn_cleanPortals.sqf
 	Author: Ari Höysniemi
+	
+	Note:
+	This is an actionbuilder component, outside calls are not supported
 
 	Description:
 	Remove units synced to portals, when everything is ready

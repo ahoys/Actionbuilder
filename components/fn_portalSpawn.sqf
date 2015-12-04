@@ -1,6 +1,9 @@
 /*
 	File: fn_portalSpawn.sqf
 	Author: Ari Höysniemi
+	
+	Note:
+	This is an actionbuilder component, outside calls are not supported
 
 	Description:
 	Spawns all of the portal's registered units

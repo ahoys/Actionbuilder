@@ -2,10 +2,22 @@
 	File: fn_selectWp.sqf
 	Author: Ari Höysniemi
 	
+	Note:
+	This is an actionbuilder component, outside calls are not supported
+	
 	Extension for:
 	fn_assignWp.sqf
 	
-	Other calls are not supported.
+	Description:
+	Select a portal
+
+	Parameter(s):
+	0: OBJECT - target group
+	1: OBJECT - current location
+	2: OBJECT - previous location
+
+	Returns:
+	OBJECT - the selected portal
 */
 private["_group","_location","_previousLocation","_usedWaypoints","_candidates","_candidatesLocked","_candidatesPriority","_candidatesAhead","_selected","_deniedKey","_denied"];
 

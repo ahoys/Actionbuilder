@@ -1,6 +1,9 @@
 /*
 	File: fn_transmit.sqf
 	Author: Ari Höysniemi
+	
+	Note:
+	This is an actionbuilder component, outside calls are not supported
 
 	Description:
 	Transmits all essential Actionbuilder variables to other clients,

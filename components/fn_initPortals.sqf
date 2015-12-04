@@ -1,6 +1,9 @@
 /*
 	File: fn_initPortals.sqf
 	Author: Ari Höysniemi
+	
+	Note:
+	This is an actionbuilder component, outside calls are not supported
 
 	Description:
 	Validates portals
@@ -9,11 +12,10 @@
 	NOTHING
 
 	Returns:
-	ARRAY - portals
+	BOOL - true if success
 */
 
-private["_portals","_portal","_objects","_groups"];
-_portals = ["RHNET_ab_modulePORTAL_F"] call Actionbuilder_fnc_getTypes;
+private["_portal","_objects","_groups"];
 
 {
 	
@@ -28,7 +30,7 @@ _portals = ["RHNET_ab_modulePORTAL_F"] call Actionbuilder_fnc_getTypes;
 	ACTIONBUILDER_portal_groups pushBack _portal;
 	ACTIONBUILDER_portal_groups pushBack [_groups];
 	
-} forEach _portals;
+} forEach ACTIONBUILDER_portals;
 
 {
 	
@@ -38,6 +40,6 @@ _portals = ["RHNET_ab_modulePORTAL_F"] call Actionbuilder_fnc_getTypes;
 	// Register portal
 	ACTIONBUILDER_locations pushBack _x;
 	
-} forEach _portals;
+} forEach ACTIONBUILDER_portals;
 
-_portals
+true
