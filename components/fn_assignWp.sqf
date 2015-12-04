@@ -10,8 +10,6 @@
 
 	Parameter(s):
 	0: OBJECT - target group
-	1: NUMBER - current location id
-	2: NUMBER - previous location id
 
 	Returns:
 	BOOL - true, if success
