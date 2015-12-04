@@ -6,7 +6,7 @@
 	Return a list of units of desired type
 	
 	Parameter(s):
-	0: STRING/BOOL - type of the entity, ex. "HeadlessClient_F" or object of desired type
+	0: STRING/OBJECT - type of the entity, ex. "HeadlessClient_F" or object of desired type
 	1 (optional): BOOL - true to allow only server executions (default: true)
 	2 (optional): NUMBER - 0 to return all entities, 1 only alive, 2 only dead (default: 0)
 
