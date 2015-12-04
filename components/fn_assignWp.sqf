@@ -51,6 +51,7 @@ _group				= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
 _portalId			= [_this, 1, -1, [0]] call BIS_fnc_param;
 _locationId 		= [_this, 2, -1, [0]] call BIS_fnc_param;
 _previousLocationId	= [_this, 3, -1, [0]] call BIS_fnc_param;
+_portalSpawn		= [_this, 4, false, [false]] call BIS_fnc_param;
 _portal				= ACTIONBUILDER_portals select _portalId;
 _nextLocation		= objNull;
 _location			= objNull;
@@ -63,13 +64,19 @@ if (isNil "_group") exitWith {
 };
 
 // Validate given IDs
-if (!([ACTIONBUILDER_portals, _portalId] call Actionbuilder_fnc_isValidKey)) exitWith {
-	["Invalid portal ID!"] call BIS_fnc_error;
+if !([ACTIONBUILDER_portals, _portalId] call Actionbuilder_fnc_isValidKey) exitWith {
+	diag_log format ["id: %1, array: %2", _portalId, ACTIONBUILDER_portals];
+	["Invalid portal ID: %1 for ACTIONBUILDER_portals", _portalId] call BIS_fnc_error;
 	false
 };
 
-if (!([ACTIONBUILDER_waypoints, _locationId] call Actionbuilder_fnc_isValidKey)) exitWith {
-	["Invalid location ID!"] call BIS_fnc_error;
+if (_portalSpawn && !([ACTIONBUILDER_portals, _locationId] call Actionbuilder_fnc_isValidKey)) exitWith {
+	["Invalid ID: %1 for ACTIONBUILDER_portals", _locationId] call BIS_fnc_error;
+	false
+};
+
+if (!_portalSpawn && !([ACTIONBUILDER_waypoints, _locationId] call Actionbuilder_fnc_isValidKey)) exitWith {
+	["Invalid ID: %1 for ACTIONBUILDER_waypoints", _locationId] call BIS_fnc_error;
 	false
 };
 
@@ -77,7 +84,8 @@ if ([ACTIONBUILDER_waypoints, _previousLocationId] call Actionbuilder_fnc_isVali
 	_previousLocation = ACTIONBUILDER_waypoints select _previousLocationId;
 };
 
-_location = ACTIONBUILDER_waypoints select _locationId;
+// Select location
+if (_portalSpawn) then {_location = ACTIONBUILDER_portals select _locationId} else {_location = ACTIONBUILDER_waypoints select _locationId};
 
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: SELECT A NEW WAYPOINT

@@ -31,9 +31,10 @@ if (!isServer) then {
 
 // Required functions -----------------------------------------------------------------------------
 if (
+	isNil "Actionbuilder_fnc_modulePortal" ||
+	isNil "Actionbuilder_fnc_moduleWaypoint" ||
 	isNil "Actionbuilder_fnc_initPortals" ||
-	isNil "Actionbuilder_fnc_portalSpawn" || 
-	isNil "Actionbuilder_fnc_transmit" || 
+	isNil "Actionbuilder_fnc_portalSpawn" ||
 	isNil "Actionbuilder_fnc_assignWp" ||
 	isNil "Actionbuilder_fnc_selectWp" ||
 	isNil "Actionbuilder_fnc_sva" ||
