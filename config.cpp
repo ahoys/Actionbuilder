@@ -42,7 +42,7 @@ class CfgFunctions {
 			
 			class selectWp {};
 			
-			class sva {};
+			class WpSva {};
 			
 		}
 		class Utility {

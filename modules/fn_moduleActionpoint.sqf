@@ -37,7 +37,8 @@ if (
 	isNil "Actionbuilder_fnc_portalSpawn" ||
 	isNil "Actionbuilder_fnc_assignWp" ||
 	isNil "Actionbuilder_fnc_selectWp" ||
-	isNil "Actionbuilder_fnc_sva" ||
+	isNil "Actionbuilder_fnc_wpSva" ||
+	isNil "Actionbuilder_fnc_wpTransportation" ||
 	isNil "Actionbuilder_fnc_getTypes" ||
 	isNil "Actionbuilder_fnc_objectsAhead" ||
 	isNil "Actionbuilder_fnc_getSyncedObjects" ||

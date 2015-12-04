@@ -1,5 +1,5 @@
 /*
-	File: fn_sva.sqf
+	File: fn_wpSva.sqf
 	Author: Ari Höysniemi
 	
 	Note:
