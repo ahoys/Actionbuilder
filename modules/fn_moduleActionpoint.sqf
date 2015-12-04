@@ -76,6 +76,8 @@ if (isServer && _valid) then {
 		ACTIONBUILDER_performance 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_performance.fsm";
 		ACTIONBUILDER_portals			= ["RHNET_ab_modulePORTAL_F"] call Actionbuilder_fnc_getTypes;
 		ACTIONBUILDER_waypoints			= ["RHNET_ab_moduleWP_F"] call Actionbuilder_fnc_getTypes;
+		ACTIONBUILDER_locations			pushBack ACTIONBUILDER_portals;
+		ACTIONBUILDER_locations			pushBack ACTIONBUILDER_waypoints;
 		ACTIONBUILDER_portals			= [] call Actionbuilder_fnc_initPortals;
 		if (isMultiplayer) then {
 			ACTIONBUILDER_workload 		= [];

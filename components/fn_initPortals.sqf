@@ -37,9 +37,6 @@ private["_portal","_objects","_groups"];
 	// Delete units
 	[_x, false] spawn Actionbuilder_fnc_deleteSyncedUnits;
 	
-	// Register portal
-	ACTIONBUILDER_locations pushBack _x;
-	
 } forEach ACTIONBUILDER_portals;
 
 true
