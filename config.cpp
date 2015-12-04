@@ -34,6 +34,8 @@ class CfgFunctions {
 			
 			file = "\RHNET\rhnet_actionbuilder\components";
 			
+			class initPortals {};
+			
 			class portalSpawn {};
 			
 			class transmit {};

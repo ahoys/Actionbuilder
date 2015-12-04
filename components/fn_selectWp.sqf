@@ -22,7 +22,6 @@ _deniedKey			= ACTIONBUILDER_locations_denied find _group;
 
 if (_deniedKey >= 0) then {
 	_denied = ACTIONBUILDER_locations_denied select (_deniedKey + 1);
-	diag_log format ["ACTIONBUILDER deniedKey: %1, %2", _deniedKey, _denied];
 } else {
 	_denied = [];
 };

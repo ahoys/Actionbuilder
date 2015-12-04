@@ -173,7 +173,6 @@ if (_wpSpecial == 1) then {
 	if (_key < 0) then {
 		ACTIONBUILDER_locations_denied pushBack _group;
 		ACTIONBUILDER_locations_denied pushBack [_nextLocation];
-		diag_log format ["DENIED: %1", ACTIONBUILDER_locations_denied];
 	} else {
 		(ACTIONBUILDER_locations_denied select (_key + 1)) pushBack _nextLocation;
 	};
