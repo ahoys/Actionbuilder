@@ -15,7 +15,7 @@
 // Only the server and headless clients are allowed to continue -----------------------------------
 if (!isServer && hasInterface) exitWith {false};
 
-private ["_ap","_modules","_portals","_units","_worker"];
+private ["_ap","_modules","_portals","_worker"];
 _ap 	= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
 
 // Headless clients must wait for everything to get ready -----------------------------------------
