@@ -19,12 +19,14 @@
 
 private[
 	"_group",
-	"_locationId",
-	"_previousLocationId",
 	"_nextLocation",
-	"_nextLocationId",
+	"_key",
+	"_query",
+	"_id",
+	"_portal",
 	"_location",
 	"_previousLocation",
+	"_bannedLocations",
 	"_wpType",
 	"_wpBehaviour",
 	"_wpSpeed",
@@ -33,7 +35,6 @@ private[
 	"_wpWait",
 	"_wpPlacement",
 	"_wpSpecial",
-	"_wpStateText",
 	"_wpStatement",
 	"_wpLocation",
 	"_wpRadius",
@@ -43,56 +44,42 @@ private[
 	"_skip",
 	"_otherUnits",
 	"_bestDistance",
-	"_target",
-	"_otherUnits",
-	"_key"
+	"_target"
 ];
-_group				= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
-_portalId			= [_this, 1, -1, [0]] call BIS_fnc_param;
-_locationId 		= [_this, 2, -1, [0]] call BIS_fnc_param;
-_previousLocationId	= [_this, 3, -1, [0]] call BIS_fnc_param;
-_portalSpawn		= [_this, 4, false, [false]] call BIS_fnc_param;
-_portal				= ACTIONBUILDER_portals select _portalId;
-_nextLocation		= objNull;
-_location			= objNull;
-_previousLocation	= objNull;
 
-// Group or location can't be empty
+// ----------------------------------------------------------------------------
+// FIRST OBJECTIVE: COLLECT REQUIRED DATA ABOUT THE REQUEST
+
+_group					= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
+_nextLocation			= objNull;
+
+// Group can't be empty
 if (isNil "_group") exitWith {
-	["Required parameters missing or invalid!"] call BIS_fnc_error;
+	["Required group parameter is missing or invalid!"] call BIS_fnc_error;
 	false
 };
 
-// Validate given IDs
-if !([ACTIONBUILDER_portals, _portalId] call Actionbuilder_fnc_isValidKey) exitWith {
-	diag_log format ["id: %1, array: %2", _portalId, ACTIONBUILDER_portals];
-	["Invalid portal ID: %1 for ACTIONBUILDER_portals", _portalId] call BIS_fnc_error;
-	false
+// Group query
+_key					= ACTIONBUILDER_groupProgress find _group;
+if (_key < 0) 			exitWith {["Group %1 could not be found from the register.", _group] call BIS_fnc_error; false};
+_query					= ACTIONBUILDER_groupProgress select (_key + 1);
+_id						= _query select 0;
+_portal					= _query select 1;
+if (_id == 0) then {
+	_location			= _portal;
+	_previousLocation 	= objNull;
+	_bannedLocations	= [];
+} else {
+	_location			= _query select 2;
+	_previousLocation 	= _query select 3;
+	_bannedLocations	= _query select 4;
 };
-
-if (_portalSpawn && !([ACTIONBUILDER_portals, _locationId] call Actionbuilder_fnc_isValidKey)) exitWith {
-	["Invalid ID: %1 for ACTIONBUILDER_portals", _locationId] call BIS_fnc_error;
-	false
-};
-
-if (!_portalSpawn && !([ACTIONBUILDER_waypoints, _locationId] call Actionbuilder_fnc_isValidKey)) exitWith {
-	["Invalid ID: %1 for ACTIONBUILDER_waypoints", _locationId] call BIS_fnc_error;
-	false
-};
-
-if ([ACTIONBUILDER_waypoints, _previousLocationId] call Actionbuilder_fnc_isValidKey) then {
-	_previousLocation = ACTIONBUILDER_waypoints select _previousLocationId;
-};
-
-// Select location
-if (_portalSpawn) then {_location = ACTIONBUILDER_portals select _locationId} else {_location = ACTIONBUILDER_waypoints select _locationId};
 
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: SELECT A NEW WAYPOINT
 
-_nextLocation 	= [_group, _location, _previousLocation] call Actionbuilder_fnc_selectWp;
+_nextLocation = [_location, _previousLocation, _bannedLocations] call Actionbuilder_fnc_selectWp;
 if (isNull _nextLocation) exitWith {false};
-_nextLocationId	= ACTIONBUILDER_waypoints find _nextLocation;
 
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: DEFINE THE SELECTED WAYPOINT
@@ -106,8 +93,7 @@ _wpMode			= _nextLocation getVariable ["WpMode","NO CHANGE"];
 _wpWait			= _nextLocation getVariable ["WpWait",0];
 _wpPlacement	= _nextLocation getVariable ["WpPlacement",0];
 _wpSpecial		= _nextLocation getVariable ["WpSpecial",0];
-_wpStateText	= format ["[group this, %1, %2, %3] spawn Actionbuilder_fnc_assignWp", _portalId, _nextLocationId, _locationId];
-_wpStatement	= ["true", _wpStateText];
+_wpStatement	= ["true", "[group this] spawn Actionbuilder_fnc_assignWp"];
 _wpLocation		= [_nextLocation] call Actionbuilder_fnc_getClosestSynced;
 _wpRadius		= 8;
 _leader			= leader _group;
@@ -119,7 +105,7 @@ if (isNull _wpLocation) then {
 	_wpLocation = getPosATL _nextLocation;
 };
 
-_wpDistance		= _leader distance _wpLocation;
+_wpDistance = _leader distance _wpLocation;
 
 // Special property: wait								// Does not work	
 if (typeName _wpWait == "NUMBER") then {
@@ -130,10 +116,16 @@ if (typeName _wpWait == "NUMBER") then {
 // Go back to the previous waypoint
 if (_wpType == "UTURN") exitWith {
 	if (typeOf _location != "RHNET_ab_modulePORTAL_f") exitWith {
-		[_group, _portalId, _locationId, _nextLocationId] spawn Actionbuilder_fnc_assignWp;
+		((ACTIONBUILDER_groupProgress select (_key + 1)) select 2) pushBack _location;
+		((ACTIONBUILDER_groupProgress select (_key + 1)) select 3) pushBack _nextLocation;
+		[_group] spawn Actionbuilder_fnc_assignWp;
 		false
 	};
 };
+
+// Update register
+((ACTIONBUILDER_groupProgress select (_key + 1)) select 2) pushBack _nextLocation;
+((ACTIONBUILDER_groupProgress select (_key + 1)) select 3) pushBack _location;
 
 // Special property: punish
 // Affects entire group and objects linked to the waypoint
@@ -180,14 +172,7 @@ if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
 // Special property: reusability						// Not tested
 // 1: Waypoint can be used only once / group
 if (_wpSpecial == 1) then {
-	_key = ACTIONBUILDER_waypoints_denied find _group;
-	if (_key < 0) then {
-		ACTIONBUILDER_waypoints_denied pushBack _group;
-		ACTIONBUILDER_waypoints_denied pushBack [_nextLocation];
-	} else {
-		(ACTIONBUILDER_waypoints_denied select (_key + 1)) pushBack _nextLocation;
-	};
-	publicVariable "ACTIONBUILDER_waypoints_denied";	// Might affect HC
+	((ACTIONBUILDER_groupProgress select (_key + 1)) select 4) pushBack _nextLocation;
 };
 
 // Completion distance
@@ -214,7 +199,7 @@ if (_wpType == "SVA") then {							// Not tested
 
 // Skip to the next waypoint if required
 if (_skip) exitWith {
-	[_group, _portalId, _nextLocationId, _locationId] spawn Actionbuilder_fnc_assignWp;
+	[_group] spawn Actionbuilder_fnc_assignWp;
 	true
 };
 

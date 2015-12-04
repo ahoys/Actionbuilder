@@ -12,35 +12,27 @@
 	Select a portal
 
 	Parameter(s):
-	0: OBJECT - target group
-	1: OBJECT - current location
-	2: OBJECT - previous location
+	0: OBJECT - current location
+	1: OBJECT - previous location
+	2: ARRAY - banned locations
 
 	Returns:
-	OBJECT - the selected portal
+	OBJECT - the selected portal if any
 */
-private["_group","_location","_previousLocation","_usedWaypoints","_candidates","_candidatesLocked","_candidatesPriority","_candidatesAhead","_selected","_deniedKey","_denied"];
+private["_location","_previousLocation","_bannedLocations","_candidates","_candidatesLocked","_candidatesPriority","_candidatesAhead","_selected","_wp","_valid"];
 
-_group				= _this select 0;
-_location			= _this select 1;
-_previousLocation	= _this select 2;
-_usedWaypoints		= [];
+_location			= _this select 0;
+_previousLocation	= _this select 1;
+_bannedLocations	= _this select 2;
 _candidates			= [];
 _candidatesLocked	= [];
 _candidatesPriority	= [];
 _candidatesAhead	= [];
 _selected			= objNull;
-_deniedKey			= ACTIONBUILDER_waypoints_denied find _group;
-
-if (_deniedKey >= 0) then {
-	_denied = ACTIONBUILDER_waypoints_denied select (_deniedKey + 1);
-} else {
-	_denied = [];
-};
 
 // 1a. Find all possibilities
 {
-	if ((typeOf _x == "RHNET_ab_moduleWP_f") && (_x != _previousLocation) && !(_x in _denied)) then {
+	if ((typeOf _x == "RHNET_ab_moduleWP_f") && (_x != _previousLocation) && !(_x in _bannedLocations)) then {
 		_wp = _x;
 		_valid = true;
 		{

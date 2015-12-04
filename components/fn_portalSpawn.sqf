@@ -69,6 +69,13 @@ diag_log format ["GRP: %1", _poolGrp];
 	};
 } forEach _poolObj;
 
+if (count _poolGrp > 0) then {
+	_id = ACTIONBUILDER_portals find _portal;
+	if (isNil "ACTIONBUILDER_groupProgress") then {
+			ACTIONBUILDER_groupProgress = [];
+	};
+};
+
 // Groups [side, [[typeOf, getPosATL, getDir]],[[typeOf, getPosATL, getDir]]]
 {
 	if (count _x > 0) then {
@@ -114,9 +121,11 @@ diag_log format ["GRP: %1", _poolGrp];
 				createVehicleCrew _veh;
 				(crew _veh) joinSilent _grp;
 			} forEach (_x select 2);
+			// Register
+			ACTIONBUILDER_groupProgress pushBack _grp;
+			ACTIONBUILDER_groupProgress pushBack [0, _portal, _id, _id, []];
 			// Assign waypoint
-			_id = ACTIONBUILDER_portals find _portal;
-			[_grp, _id, _id, -1, true] spawn Actionbuilder_fnc_assignWp;
+			[_grp] spawn Actionbuilder_fnc_assignWp;
 		};
 	};
 } forEach _poolGrp;
