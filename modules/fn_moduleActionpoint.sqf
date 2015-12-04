@@ -15,9 +15,8 @@
 // Only the server and headless clients are allowed to continue -----------------------------------
 if (!isServer && hasInterface) exitWith {false};
 
-private ["_ap","_valid","_modules","_portals","_units","_worker"];
+private ["_ap","_modules","_portals","_units","_worker"];
 _ap 	= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
-_valid 	= true;
 
 // Headless clients must wait for everything to get ready -----------------------------------------
 if (!isServer) then {
@@ -47,13 +46,13 @@ if (
 	isNil "Actionbuilder_fnc_punish" ||
 	isNil "Actionbuilder_fnc_command" ||
 	isNil "Actionbuilder_fnc_isValidkey"
-	) then {
+	) exitWith {
 		["Missing Actionbuilder functions!"] call BIS_fnc_error;
-		_valid = false;
+		false
 };
 
 // Initialize the Actionbuilder module ------------------------------------------------------------
-if (isServer && _valid) then {
+if (isServer) then {
 	_modules 	= _ap call BIS_fnc_moduleModules;
 	_portals	= [];
 	
@@ -92,7 +91,7 @@ if (isServer && _valid) then {
 };
 
 // Decide workload between headless clients -------------------------------------------------------
-if (isServer && isMultiplayer && _valid) then {
+if (isServer && isMultiplayer) then {
 	if (count ACTIONBUILDER_clients > 0) then {
 		if (ACTIONBUILDER_id >= (count ACTIONBUILDER_clients)) then {
 			ACTIONBUILDER_id = 0
@@ -104,19 +103,20 @@ if (isServer && isMultiplayer && _valid) then {
 };
 
 // Register actionpoint and execute the main loop -------------------------------------------------
-if (isServer && _valid) then {
-	if (isMultiplayer) then {
-		if (count ACTIONBUILDER_workload < 1) then {
+if (isMultiplayer) then {
+	if (isServer && (count ACTIONBUILDER_clients < 1)) then {
+		//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_actionpoint.fsm";
+		//waitUntil {completedFSM _actionfsm};
+	} else {
+		_worker = ACTIONBUILDER_workload select ((ACTIONBUILDER_workload find _ap) + 1);
+		if (_worker == format ["%1", player]) then {
 			//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_actionpoint.fsm";
 			//waitUntil {completedFSM _actionfsm};
 		};
 	};
 } else {
-	_worker = ACTIONBUILDER_workload select ((ACTIONBUILDER_workload find _ap) + 1);
-	if (_worker == format ["%1", player]) then {
-		//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_actionpoint.fsm";
-		//waitUntil {completedFSM _actionfsm};
-	};
+	//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_actionpoint.fsm";
+	//waitUntil {completedFSM _actionfsm};
 };
 
-_valid
+true
