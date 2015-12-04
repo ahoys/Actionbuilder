@@ -51,7 +51,7 @@ _group				= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
 _portalId			= [_this, 1, -1, [0]] call BIS_fnc_param;
 _locationId 		= [_this, 2, -1, [0]] call BIS_fnc_param;
 _previousLocationId	= [_this, 3, -1, [0]] call BIS_fnc_param;
-_portal				= ACTIONBUILDER_locations select _portalId;
+_portal				= ACTIONBUILDER_portals select _portalId;
 _nextLocation		= objNull;
 _location			= objNull;
 _previousLocation	= objNull;
@@ -63,28 +63,28 @@ if (isNil "_group") exitWith {
 };
 
 // Validate given IDs
-if (!([ACTIONBUILDER_locations, _portalId] call Actionbuilder_fnc_isValidKey)) exitWith {
+if (!([ACTIONBUILDER_portals, _portalId] call Actionbuilder_fnc_isValidKey)) exitWith {
 	["Invalid portal ID!"] call BIS_fnc_error;
 	false
 };
 
-if (!([ACTIONBUILDER_locations, _locationId] call Actionbuilder_fnc_isValidKey)) exitWith {
+if (!([ACTIONBUILDER_waypoints, _locationId] call Actionbuilder_fnc_isValidKey)) exitWith {
 	["Invalid location ID!"] call BIS_fnc_error;
 	false
 };
 
-if ([ACTIONBUILDER_locations, _previousLocationId] call Actionbuilder_fnc_isValidKey) then {
-	_previousLocation = ACTIONBUILDER_locations select _previousLocationId;
+if ([ACTIONBUILDER_waypoints, _previousLocationId] call Actionbuilder_fnc_isValidKey) then {
+	_previousLocation = ACTIONBUILDER_waypoints select _previousLocationId;
 };
 
-_location = ACTIONBUILDER_locations select _locationId;
+_location = ACTIONBUILDER_waypoints select _locationId;
 
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: SELECT A NEW WAYPOINT
 
 _nextLocation 	= [_group, _location, _previousLocation] call Actionbuilder_fnc_selectWp;
 if (isNull _nextLocation) exitWith {false};
-_nextLocationId	= ACTIONBUILDER_locations find _nextLocation;
+_nextLocationId	= ACTIONBUILDER_waypoints find _nextLocation;
 
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: DEFINE THE SELECTED WAYPOINT
@@ -172,14 +172,14 @@ if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
 // Special property: reusability						// Not tested
 // 1: Waypoint can be used only once / group
 if (_wpSpecial == 1) then {
-	_key = ACTIONBUILDER_locations_denied find _group;
+	_key = ACTIONBUILDER_waypoints_denied find _group;
 	if (_key < 0) then {
-		ACTIONBUILDER_locations_denied pushBack _group;
-		ACTIONBUILDER_locations_denied pushBack [_nextLocation];
+		ACTIONBUILDER_waypoints_denied pushBack _group;
+		ACTIONBUILDER_waypoints_denied pushBack [_nextLocation];
 	} else {
-		(ACTIONBUILDER_locations_denied select (_key + 1)) pushBack _nextLocation;
+		(ACTIONBUILDER_waypoints_denied select (_key + 1)) pushBack _nextLocation;
 	};
-	publicVariable "ACTIONBUILDER_locations_denied";	// Might affect HC
+	publicVariable "ACTIONBUILDER_waypoints_denied";	// Might affect HC
 };
 
 // Completion distance

@@ -30,10 +30,10 @@ _candidatesLocked	= [];
 _candidatesPriority	= [];
 _candidatesAhead	= [];
 _selected			= objNull;
-_deniedKey			= ACTIONBUILDER_locations_denied find _group;
+_deniedKey			= ACTIONBUILDER_waypoints_denied find _group;
 
 if (_deniedKey >= 0) then {
-	_denied = ACTIONBUILDER_locations_denied select (_deniedKey + 1);
+	_denied = ACTIONBUILDER_waypoints_denied select (_deniedKey + 1);
 } else {
 	_denied = [];
 };

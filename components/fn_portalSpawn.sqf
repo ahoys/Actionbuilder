@@ -115,7 +115,7 @@ diag_log format ["GRP: %1", _poolGrp];
 				(crew _veh) joinSilent _grp;
 			} forEach (_x select 2);
 			// Assign waypoint
-			_id = ACTIONBUILDER_locations find _portal;
+			_id = ACTIONBUILDER_portals find _portal;
 			[_grp, _id, _id] spawn Actionbuilder_fnc_assignWp;
 		};
 	};

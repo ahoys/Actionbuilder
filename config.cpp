@@ -38,8 +38,6 @@ class CfgFunctions {
 			
 			class portalSpawn {};
 			
-			class transmit {};
-			
 			class assignWp {};
 			
 			class selectWp {};

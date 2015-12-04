@@ -22,7 +22,8 @@ _valid 	= true;
 // Headless clients must wait for everything to get ready -----------------------------------------
 if (!isServer) then {
 	waitUntil {
-		!isNil "ACTIONBUILDER_locations" &&
+		!isNil "ACTIONBUILDER_portals" &&
+		!isNil "ACTIONBUILDER_waypoints" &&
 		!isNil "ACTIONBUILDER_portal_objects" && 
 		!isNil "ACTIONBUILDER_portal_groups" && 
 		!isNil "ACTIONBUILDER_workload"
@@ -66,24 +67,26 @@ if (isServer && _valid) then {
 	} forEach _modules;
 	
 	// Initialize all the required variables ----------------------------------------------------------
-	if (isNil "ACTIONBUILDER_locations") then {
-		ACTIONBUILDER_locations 		= [];
-		ACTIONBUILDER_locations_denied	= [];
-		ACTIONBUILDER_portal_objects 	= [];
-		ACTIONBUILDER_portal_groups 	= [];
-		ACTIONBUILDER_groupProgression 	= [];
-		ACTIONBUILDER_buffer 			= 0.1;
-		ACTIONBUILDER_performance 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_performance.fsm";
+	if (isNil "ACTIONBUILDER_portals") then {
 		ACTIONBUILDER_portals			= ["RHNET_ab_modulePORTAL_F"] call Actionbuilder_fnc_getTypes;
 		ACTIONBUILDER_waypoints			= ["RHNET_ab_moduleWP_F"] call Actionbuilder_fnc_getTypes;
-		ACTIONBUILDER_locations			pushBack ACTIONBUILDER_portals;
-		ACTIONBUILDER_locations			pushBack ACTIONBUILDER_waypoints;
-		ACTIONBUILDER_portals			= [] call Actionbuilder_fnc_initPortals;
+		ACTIONBUILDER_waypoints_denied	= [];
+		ACTIONBUILDER_portal_objects 	= [];
+		ACTIONBUILDER_portal_groups 	= [];
+		ACTIONBUILDER_buffer 			= 0.1;
+		ACTIONBUILDER_performance 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_performance.fsm";
+		ACTIONBUILDER_initPortals		= [] call Actionbuilder_fnc_initPortals;
 		if (isMultiplayer) then {
 			ACTIONBUILDER_workload 		= [];
-			ACTIONBUILDER_transmit 		= [] spawn Actionbuilder_fnc_transmit;
 			ACTIONBUILDER_clients 		= ["HeadlessClient_F", true, 1] call Actionbuilder_fnc_getTypes;
 			ACTIONBUILDER_id 			= 0;
+			if (count ACTIONBUILDER_clients > 0) then {
+				publicVariable "ACTIONBUILDER_portals";
+				publicVariable "ACTIONBUILDER_waypoints";
+				publicVariable "ACTIONBUILDER_portal_objects";
+				publicVariable "ACTIONBUILDER_portal_groups";
+				publicVariable "ACTIONBUILDER_workload";
+			};
 		};
 	};
 };
