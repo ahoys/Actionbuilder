@@ -106,7 +106,7 @@ if (isNull _wpLocation) then {
 _wpDistance = _leader distance _wpLocation;
 
 // Special property: wait								// Does not work	
-if (typeName _wpWait == "NUMBER") then {
+if (_wpWait isEqualType 0) then {
 	sleep _wpWait;
 };
 

@@ -172,7 +172,7 @@ if (_wSpecial == 1) then {
 };
 
 // WAIT IF REQUESTED
-if (typeName _wWait == "SCALAR") then {
+if (_wWait isEqualType "SCALAR") then {
 	sleep _wWait;
 } else { _wWait = 0; };
 

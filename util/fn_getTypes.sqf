@@ -30,7 +30,7 @@ if (isNil "_entityType") exitWith {
 };
 
 // If object, figure out its type
-if (typeName _entityType == "OBJECT") then {
+if (_entityType isEqualType objNull) then {
 	_entityType = typeOf _entityType;
 };
 

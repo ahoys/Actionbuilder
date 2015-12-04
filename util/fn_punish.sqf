@@ -25,7 +25,7 @@ if (isNil "_target") exitWith {
 	false
 };
 
-if (typeName _target == "GROUP") exitWith {
+if (_target isEqualType grpNull) exitWith {
 	{
 		if (!isNil "_x") then {
 			_unit = _x;
@@ -77,7 +77,7 @@ if (typeName _target == "GROUP") exitWith {
 
 if (((!alive _target) && (_punish != "REMOVE")) || isNil "_target") exitWith {false};
 
-if (typeName _target == "OBJECT") exitWith {
+if (_target isEqualType "OBJECT") exitWith {
 	switch (_punish) do {
 		case "KILL": { 
 			_target setDamage 1;
