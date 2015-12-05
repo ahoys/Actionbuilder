@@ -216,6 +216,7 @@ if (
 
 // Assign the new waypoint
 _group = _group addWaypoint [_wpLocation, _wpRadius];
+_group setWaypointType _wpType;
 _group setWaypointBehaviour _wpBehaviour;
 _group setWaypointSpeed _wpSpeed;
 _group setWaypointFormation _wpFormation;
@@ -224,30 +225,14 @@ _group setWaypointStatements _wpStatement;
 
 // Special property: transportation
 if ((_wpType == "GETIN") || (_wpType == "UNLOAD") || (_wpType == "FORCE")) then {
-	_group setWaypointType "MOVE";
-	[_group, _wpType] call Actionbuilder_fnc_wpTransportation;
-} else {
-	_group setWaypointType _wpType;
+
 };
 
 if (_wpType == "FORCE") then {
-	// See BIS_fnc_vehicleRoles
-	// BIS_fnc_spawnVehicle
-	_vehicles = [];
-	{
-		if (_x vehicle != _x) then {
-			{
-				_cargoKey = _x find "Cargo";
-			} forEach ([_x] call BIS_fnc_vehicleRoles);
-			_cargoCount = count ((_x select _cargoKey) select 1); // Entä jos kyydis istuu jo joku?
-			_vehicles pushBack _x;
-			_vehicles pushBack _cargoCount;
-		};
-	} forEach units _group;
-	{
-		_x assignAsCargo ();
-		_x moveInCargo ();
-	} forEach units _group;
+	_assigned = [];
+	_units = units _group;
+	// [["Driver",[]],["Turret",[0,1]],["Cargo",[0]]]
+	[_group] call Actionbuilder_fnc_wpTransportation;
 };
 
 true
