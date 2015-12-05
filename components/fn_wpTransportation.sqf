@@ -19,39 +19,31 @@ _outside			= [];						// Still outside
 	};
 } forEach _units;
 
+_outside = _units - _seated;
+
 // Populate primary vehicles
 {
-	{
-		switch (_x select 0) do {
-			case "Driver": {
-				if ((isNull driver _x) && ((count _seated) < _unitsC)) then {
-					// TODO: SELECT DRIVER
+	// Ajatus: yritä tunkea joka paikkaan joku, lopuksi tsekkaa vieläkö on porukkaa
+	if (count _seated < count _units) then {
+		{
+			switch (_x select 0) do {
+				case "Driver": {
+					
 				};
-			};
-			case "Turret": {
-				// Units select gunners
-				{
-				
-				} forEach (_x select 1);
-			};
-			case "Commander": {
-				if ((isNull commander _x) && ((count _seated) < _unitsC)) then {
-					// TODO: SELECT COMMANDER
+				case "Turret": {
+					
 				};
-			};
-			case "Cargo": {
-				// Rest of the units is cargo
-				{
-				
-				} forEach (_x select 1);
-			};
-			default {
-				// Cargo
-				{
-				
-				} forEach (_x select 1);
-			};
-	} [_x] call BIS_fnc_vehicleRoles;
+				case "Commander": {
+					
+				};
+				case "Cargo": {
+					
+				};
+				default {
+					
+				};
+		} [_x] call BIS_fnc_vehicleRoles;
+	};
 } forEach _primaryVehicles;
 
 // If units outside, search for secondary vehicles
