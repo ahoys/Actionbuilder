@@ -224,12 +224,17 @@ _group setWaypointCombatMode _wpMode;
 _group setWaypointStatements _wpStatement;
 
 // Special property: transportation
-if ((_wpType == "GETIN") || (_wpType == "UNLOAD") || (_wpType == "FORCE")) then {
-
+if (_wpType == "GETIN") then {
+	[units _group, false, 100] call Actionbuilder_fnc_wpTransportation;
 };
 
 if (_wpType == "FORCE") then {
 	[units _group, true, 100] call Actionbuilder_fnc_wpTransportation;
+};
+
+// Special property: unload
+if (_wpType == "UNLOAD") then {
+	//[units _group] call Actionbuilder_fnc_wpUnload;
 };
 
 true
