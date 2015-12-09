@@ -229,10 +229,7 @@ if ((_wpType == "GETIN") || (_wpType == "UNLOAD") || (_wpType == "FORCE")) then 
 };
 
 if (_wpType == "FORCE") then {
-	_assigned = [];
-	_units = units _group;
-	// [["Driver",[]],["Turret",[0,1]],["Cargo",[0]]]
-	[_group] call Actionbuilder_fnc_wpTransportation;
+	[units _group, true, 100] call Actionbuilder_fnc_wpTransportation;
 };
 
 true

@@ -1,13 +1,10 @@
-private[];
+private["_units","_force","_range","_primaryVehicles","_seats"];
 
-_units 				= units _this select 0;		// All units to be seated
+_units 				= _this select 0;			// All units to be seated
 _force				= _this select 1;			// Whether to force units in
 _range				= _this select 2;			// Range of secondary vehicles
-_unitsC				= count _units;
 _primaryVehicles	= [];						// Group's own vehicles
-_secondaryVehicles	= [];						// Nearby vehicles
-_seated				= [];						// Already seated units
-_outside			= [];						// Still outside
+_seats				= [];
 
 // Look for primary vehicles and already seated units
 {
@@ -15,45 +12,30 @@ _outside			= [];						// Still outside
 		if !(vehicle _x in _primaryVehicles) then {
 			_primaryVehicles pushBack (vehicle _x);
 		};
-		_seated pushBack _x;
 	};
 } forEach _units;
 
-_outside = _units - _seated;
+// Prioritise seats
+_seats = [_primaryVehicles] call Actionbuilder_fnc_wpPrioritizeSeats;
 
 // Populate primary vehicles
-{
-	// Ajatus: yritä tunkea joka paikkaan joku, lopuksi tsekkaa vieläkö on porukkaa
-	if (count _seated < count _units) then {
-		{
-			switch (_x select 0) do {
-				case "Driver": {
-					
-				};
-				case "Turret": {
-					
-				};
-				case "Commander": {
-					
-				};
-				case "Cargo": {
-					
-				};
-				default {
-					
-				};
-		} [_x] call BIS_fnc_vehicleRoles;
-	};
-} forEach _primaryVehicles;
+_outside = [_units, _seats] call Actionbuilder_fnc_wpPopulateSeats;
 
 // If units outside, search for secondary vehicles
-if ((count _seated) < (count _units)) then {
+if (count _outside > 0) then {
 	// Look for secondary vehicles
+	_secondaryVehicles = nearestObjects [_units select 0, ["Car","Tank","Ship","Air"], _range];
 	
-	// Populate secondary vehicles
+	if (count _secondaryVehicles > 0) then {
+		// Prioritise seats
+		_seats = [_secondaryVehicles] call Actionbuilder_fnc_wpPrioritizeSeats;
+		
+		// Populate secondary vehicles
+		_outside = [_outside, _seats] call Actionbuilder_fnc_wpPopulateSeats;
+	};
 };
 
-// If units outside, return false
-if ((count _seated) < (count _units)) exitWith {false};
+// If still units outside, return false
+if (count _outside > 0) exitWith {false};
 
 true

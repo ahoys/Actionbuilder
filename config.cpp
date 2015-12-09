@@ -44,6 +44,12 @@ class CfgFunctions {
 			
 			class WpSva {};
 			
+			class WpTransportation {};
+			
+			class wpPrioritizeSeats {};
+			
+			class wpPopulateSeats {};
+			
 		}
 		class Utility {
 			
