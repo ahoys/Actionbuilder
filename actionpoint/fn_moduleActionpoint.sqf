@@ -75,7 +75,7 @@ if (isServer) then {
 		ACTIONBUILDER_portal_objects 	= [];
 		ACTIONBUILDER_portal_groups 	= [];
 		ACTIONBUILDER_buffer 			= 0.1;
-		ACTIONBUILDER_performance 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_performance.fsm";
+		ACTIONBUILDER_performance 		= [] execFSM "RHNET\rhnet_actionbuilder\actionpoint\rhfsm_performance.fsm";
 		ACTIONBUILDER_initPortals		= [] call Actionbuilder_fnc_initPortals;
 		if (isMultiplayer) then {
 			ACTIONBUILDER_workload 		= [];
@@ -107,17 +107,17 @@ if (isServer && isMultiplayer) then {
 // Register actionpoint and execute the main loop -------------------------------------------------
 if (isMultiplayer) then {
 	if (isServer && (count ACTIONBUILDER_clients < 1)) then {
-		//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_actionpoint.fsm";
+		//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\actionpoint\rhfsm_actionpoint.fsm";
 		//waitUntil {completedFSM _actionfsm};
 	} else {
 		_worker = ACTIONBUILDER_workload select ((ACTIONBUILDER_workload find _ap) + 1);
 		if (_worker == format ["%1", player]) then {
-			//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_actionpoint.fsm";
+			//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\actionpoint\rhfsm_actionpoint.fsm";
 			//waitUntil {completedFSM _actionfsm};
 		};
 	};
 } else {
-	//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\modules\logic\rhfsm_actionpoint.fsm";
+	//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\actionpoint\rhfsm_actionpoint.fsm";
 	//waitUntil {completedFSM _actionfsm};
 };
 
