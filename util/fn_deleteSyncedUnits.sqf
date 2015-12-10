@@ -16,8 +16,8 @@
 if (!isServer) exitWith {false};
 
 private["_master","_removeMaster"];
-_master			= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
-_removeMaster	= [_this, 1, false, [false]] call BIS_fnc_param;
+_master			= param [0, objNull, [objNull]];
+_removeMaster	= param [1, false, [false]];
 _synchronized	= _master call BIS_fnc_moduleUnits;
 
 {

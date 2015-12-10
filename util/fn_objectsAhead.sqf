@@ -18,10 +18,10 @@
 */
 
 private["_group","_possibilities","_reference","_investigateAll","_refUnit","_c","_subjects","_currentDirection","_currentLocation","_objectsAhead","_target"];
-_group				= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
-_possibilities		= [_this, 1, [], [[objNull]]] call BIS_fnc_param;
-_reference			= [_this, 2, [objNull,true], [[objNull,true]]] call BIS_fnc_param;
-_investigateAll		= [_this, 3, false, [false]] call BIS_fnc_param;
+_group				= param [0, grpNull, [grpNull]];
+_possibilities		= param [1, [], [[objNull]]];
+_reference			= param [2, [objNull, true], [[objNull, true]]];
+_investigateAll		= param [3, false, [false]];
 _refUnit			= _reference select 0;
 _c					= true;
 _subjects			= [];

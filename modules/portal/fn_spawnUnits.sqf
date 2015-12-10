@@ -17,7 +17,7 @@
 
 private[];
 
-_portal = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+_portal = _this select 0;
 
 // Portal must exist
 if (isNil "_portal") exitWith {

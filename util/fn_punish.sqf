@@ -15,9 +15,9 @@
 */
 
 private["_target","_punish","_limit","_i"];
-_target 	= [_this, 0, grpNull, [grpNull, objNull]] call BIS_fnc_param;
-_punish 	= [_this, 1, "KILL", [""]] call BIS_fnc_param;
-_limit 		= [_this, 2, 8, [0]] call BIS_fnc_param;
+_target 	= param [0, grpNull, [grpNull, objNull]];
+_punish 	= param [1, "KILL", [""]];
+_limit 		= param [2, 8, [0]];
 _i			= 0;
 
 if (isNil "_target") exitWith {

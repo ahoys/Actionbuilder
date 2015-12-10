@@ -15,9 +15,9 @@
 */
 
 private["_entityType","_serverOnly","_aliveState","_entities"];
-_entityType	= [_this, 0, "HeadlessClient_F", ["", objNull]] call BIS_fnc_param;
-_serverOnly	= [_this, 1, true, [true]] call BIS_fnc_param;
-_aliveState	= [_this, 2, 0, [0]] call BIS_fnc_param;
+_entityType	= param [0, "HeadlessClient_F", ["", objNull]];
+_serverOnly	= param [1, true, [true]];
+_aliveState	= param [2, 0, [0]];
 _entities	= [];
 
 // Make sure only the allowed clients pass

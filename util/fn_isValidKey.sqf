@@ -14,8 +14,8 @@
 */
 
 private["_array","_key"];
-_array	= [_this, 0, [],[[]]] call BIS_fnc_param;
-_key	= [_this, 1, -1, [0]] call BIS_fnc_param;
+_array	= param [0, [], [[]]];
+_key	= param [1, -1, [0]];
 
 // Array or key can't be empty
 if (isNil "_array" || isNil "_key") exitWith {

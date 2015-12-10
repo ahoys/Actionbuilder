@@ -14,8 +14,8 @@
 */
 
 private["_master","_syncedUnits","_objects"];
-_master = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
-_remove = [_this, 1, false, [false]] call BIS_fnc_param;
+_master = param [0, objNull, [objNull]];
+_remove = param [1, false, [false]];
 
 // Master can't be empty
 if (isNil "_master") exitWith {

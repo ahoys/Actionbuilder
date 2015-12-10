@@ -13,7 +13,7 @@
 */
 
 private["_reference","_units","_closest","_distance","_vehicle"];
-_reference = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+_reference = param [0, objNull, [objNull]];
 
 if (isNil "_reference") exitWith {
 	["Required init reference missing!"] call BIS_fnc_error;

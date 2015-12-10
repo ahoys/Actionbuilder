@@ -15,9 +15,9 @@
 */
 
 private["_executer","_target","_method","_result","_targets","_executers","_unit","_closest","_personalTarget","_distance"];
-_executer	= [_this, 0, grpNull, [grpNull, objNull, []]] call BIS_fnc_param;
-_target		= [_this, 1, objNull, [grpNull, objNull, []]] call BIS_fnc_param;
-_method		= [_this, 2, "TARGET", [""]] call BIS_fnc_param;
+_executer	= param [0, grpNull, [grpNull, objNull, []]];
+_target		= param [1, grpNull, [grpNull, objNull, []]];
+_method		= param [2, "TARGET", [""]];
 _result		= false;
 
 // Executer or subject can't be empty

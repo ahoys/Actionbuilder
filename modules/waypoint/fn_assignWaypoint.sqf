@@ -48,7 +48,7 @@ private[
 // ----------------------------------------------------------------------------
 // FIRST OBJECTIVE: COLLECT REQUIRED DATA ABOUT THE REQUEST
 
-_group					= [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
+_group					= _this select 0;
 _nextLocation			= objNull;
 
 // Group can't be empty
