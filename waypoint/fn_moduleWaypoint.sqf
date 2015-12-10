@@ -3,7 +3,7 @@
 	Author: Ari Höysniemi
 
 	Description:
-	Makes sure everything is set up correctly
+	Makes sure everything is set up correctly in the mission editor
 
 	Parameter(s):
 	0: OBJECT - waypoint module
@@ -16,7 +16,7 @@
 if (!isServer) exitWith {false};
 
 private["_waypoint","_valid","_type"];
-_waypoint	= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+_waypoint	= _this select 0;
 _valid		= false;
 
 // Waypoint should not be grouped to other units --------------------------------------------------

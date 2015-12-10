@@ -6,7 +6,7 @@
 	This is an actionbuilder component, outside calls are not supported
 
 	Description:
-	Validates portals
+	Validates portals, registers units
 
 	Parameter(s):
 	NOTHING

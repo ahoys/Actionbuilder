@@ -16,7 +16,7 @@
 if (!isServer && hasInterface) exitWith {false};
 
 private ["_ap","_modules","_portals","_worker"];
-_ap 	= [_this, 0, objNull, [objNull]] call BIS_fnc_param;
+_ap 	= _this select 0;
 
 // Headless clients must wait for everything to get ready -----------------------------------------
 if (!isServer) then {
