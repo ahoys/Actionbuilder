@@ -16,7 +16,7 @@
 if (!isServer && hasInterface) exitWith {false};
 
 private ["_ap","_modules","_portals","_worker"];
-_ap 	= _this select 0;
+_ap = _this select 0;
 
 // Headless clients must wait for everything to get ready -----------------------------------------
 if (!isServer) then {
@@ -30,27 +30,8 @@ if (!isServer) then {
 };
 
 // Required functions -----------------------------------------------------------------------------
-if (
-	isNil "Actionbuilder_fnc_modulePortal" ||
-	isNil "Actionbuilder_fnc_moduleWaypoint" ||
-	isNil "Actionbuilder_fnc_initPortals" ||
-	isNil "Actionbuilder_fnc_portalSpawn" ||
-	isNil "Actionbuilder_fnc_assignWp" ||
-	isNil "Actionbuilder_fnc_selectWp" ||
-	isNil "Actionbuilder_fnc_wpSva" ||
-	isNil "Actionbuilder_fnc_wpTransportation" ||
-	isNil "Actionbuilder_fnc_getTypes" ||
-	isNil "Actionbuilder_fnc_objectsAhead" ||
-	isNil "Actionbuilder_fnc_getSyncedObjects" ||
-	isNil "Actionbuilder_fnc_getSyncedGroups" ||
-	isNil "Actionbuilder_fnc_deleteSyncedUnits" ||
-	isNil "Actionbuilder_fnc_getClosestSynced" ||
-	isNil "Actionbuilder_fnc_punish" ||
-	isNil "Actionbuilder_fnc_command" ||
-	isNil "Actionbuilder_fnc_isValidkey"
-	) exitWith {
-		["Missing Actionbuilder functions!"] call BIS_fnc_error;
-		false
+if (isNil "ACTIONBUILDER_functionValidity") then {
+	[] call Actionbuilder_fnc_verifyFunctions;
 };
 
 // Initialize the Actionbuilder module ------------------------------------------------------------

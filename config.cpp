@@ -24,6 +24,8 @@ class CfgFunctions {
 			file = "\RHNET\rhnet_actionbuilder\actionpoint";
 
 			class moduleActionpoint {};
+			
+			class verifyFunctions {};
 
 		};
 		class Portal {
