@@ -67,8 +67,8 @@ if (_target isEqualType grpNull) exitWith {
 					_unit setDamage 0;
 				};
 			};
-			if (!isNil "ACTIONBUILDER_carbage") then {
-				if (!alive _unit) then {ACTIONBUILDER_carbage pushBack _unit};
+			if (!isNil "RHNET_AB_L_GARBAGE") then {
+				if (!alive _unit) then {RHNET_AB_L_GARBAGE pushBack _unit};
 			};
 		};
 	} forEach units _target;
@@ -105,8 +105,8 @@ if (_target isEqualType "OBJECT") exitWith {
 			_target setDamage 0;
 		};
 	};
-	if (!isNil "ACTIONBUILDER_carbage") then {
-		if (!alive _target) then {ACTIONBUILDER_carbage pushBack _target};
+	if (!isNil "RHNET_AB_L_GARBAGE") then {
+		if (!alive _target) then {RHNET_AB_L_GARBAGE pushBack _target};
 	};
 	true
 };

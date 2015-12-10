@@ -58,9 +58,9 @@ if (isNil "_group") exitWith {
 };
 
 // Group query
-_key					= ACTIONBUILDER_groupProgress find _group;
+_key					= RHNET_AB_L_GROUPPROGRESS find _group;
 if (_key < 0) 			exitWith {["Group %1 could not be found from the register.", _group] call BIS_fnc_error; false};
-_query					= ACTIONBUILDER_groupProgress select (_key + 1);
+_query					= RHNET_AB_L_GROUPPROGRESS select (_key + 1);
 _id						= _query select 0;
 _portal					= _query select 1;
 if (_id == 0) then {
@@ -114,16 +114,16 @@ if (_wpWait isEqualType 0) then {
 // Go back to the previous waypoint
 if (_wpType == "UTURN") exitWith {
 	if (typeOf _location != "RHNET_ab_modulePORTAL_f") exitWith {
-		((ACTIONBUILDER_groupProgress select (_key + 1)) select 2) pushBack _location;
-		((ACTIONBUILDER_groupProgress select (_key + 1)) select 3) pushBack _nextLocation;
+		((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 2) pushBack _location;
+		((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 3) pushBack _nextLocation;
 		[_group] spawn Actionbuilder_fnc_assignWp;
 		false
 	};
 };
 
 // Update register
-((ACTIONBUILDER_groupProgress select (_key + 1)) select 2) pushBack _nextLocation;
-((ACTIONBUILDER_groupProgress select (_key + 1)) select 3) pushBack _location;
+((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 2) pushBack _nextLocation;
+((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 3) pushBack _location;
 
 // Special property: punish
 // Affects entire group and objects linked to the waypoint
@@ -170,7 +170,7 @@ if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
 // Special property: reusability						// Not tested
 // 1: Waypoint can be used only once / group
 if (_wpSpecial == 1) then {
-	((ACTIONBUILDER_groupProgress select (_key + 1)) select 4) pushBack _nextLocation;
+	((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 4) pushBack _nextLocation;
 };
 
 // Completion distance
@@ -187,7 +187,7 @@ if (
 		((_wpBehaviour == "UNCHANGED") || (_wpFormation == "UNCHANGED") || (_wpMode == "UNCHANGED"))
 	) then {
 	_skip = true;
-	sleep (ACTIONBUILDER_buffer + 0.5);
+	sleep (RHNET_AB_L_BUFFER + 0.5);
 };
 
 // Special property: send vehicles away

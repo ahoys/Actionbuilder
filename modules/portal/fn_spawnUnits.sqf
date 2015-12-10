@@ -36,12 +36,12 @@ _pos		= getPosATL _portal;
 _dir		= getDir _portal;
 
 // Category keys
-_keyObj = ACTIONBUILDER_portal_objects find _portal;
-_keyGrp = ACTIONBUILDER_portal_groups find _portal;
+_keyObj = RHNET_AB_G_PORTAL_OBJECTS find _portal;
+_keyGrp = RHNET_AB_G_PORTAL_GROUPS find _portal;
 
 // Build categories
-if !(_keyObj < 0) then {_poolObj = ACTIONBUILDER_portal_objects select (_keyObj + 1)};
-if !(_keyGrp < 0) then {_poolGrp = ACTIONBUILDER_portal_groups select (_keyGrp + 1)};
+if !(_keyObj < 0) then {_poolObj = RHNET_AB_G_PORTAL_OBJECTS select (_keyObj + 1)};
+if !(_keyGrp < 0) then {_poolGrp = RHNET_AB_G_PORTAL_GROUPS select (_keyGrp + 1)};
 
 diag_log format ["OBJ: %1", _poolObj];
 diag_log format ["GRP: %1", _poolGrp];
@@ -70,9 +70,9 @@ diag_log format ["GRP: %1", _poolGrp];
 } forEach _poolObj;
 
 if (count _poolGrp > 0) then {
-	_id = ACTIONBUILDER_portals find _portal;
-	if (isNil "ACTIONBUILDER_groupProgress") then {
-			ACTIONBUILDER_groupProgress = [];
+	_id = RHNET_AB_G_PORTALS find _portal;
+	if (isNil "RHNET_AB_L_GROUPPROGRESS") then {
+			RHNET_AB_L_GROUPPROGRESS = [];
 	};
 };
 
@@ -122,8 +122,8 @@ if (count _poolGrp > 0) then {
 				(crew _veh) joinSilent _grp;
 			} forEach (_x select 2);
 			// Register
-			ACTIONBUILDER_groupProgress pushBack _grp;
-			ACTIONBUILDER_groupProgress pushBack [0, _portal, _id, _id, []];
+			RHNET_AB_L_GROUPPROGRESS pushBack _grp;
+			RHNET_AB_L_GROUPPROGRESS pushBack [0, _portal, _id, _id, []];
 			// Assign waypoint
 			[_grp] spawn Actionbuilder_fnc_assignWaypoint;
 		};

@@ -24,19 +24,19 @@ private["_portal","_objects","_groups"];
 	_objects	= [_portal] call Actionbuilder_fnc_getSyncedObjects;
 	_groups		= [_portal] call Actionbuilder_fnc_getSyncedGroups;
 		
-	ACTIONBUILDER_portal_objects pushBack _portal;
-	ACTIONBUILDER_portal_objects pushBack [_objects];
+	RHNET_AB_G_PORTAL_OBJECTS pushBack _portal;
+	RHNET_AB_G_PORTAL_OBJECTS pushBack [_objects];
 		
-	ACTIONBUILDER_portal_groups pushBack _portal;
-	ACTIONBUILDER_portal_groups pushBack [_groups];
+	RHNET_AB_G_PORTAL_GROUPS pushBack _portal;
+	RHNET_AB_G_PORTAL_GROUPS pushBack [_groups];
 	
-} forEach ACTIONBUILDER_portals;
+} forEach RHNET_AB_G_PORTALS;
 
 {
 	
 	// Delete units
 	[_x, false] spawn Actionbuilder_fnc_deleteSyncedUnits;
 	
-} forEach ACTIONBUILDER_portals;
+} forEach RHNET_AB_G_PORTALS;
 
 true

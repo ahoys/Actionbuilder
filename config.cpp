@@ -21,7 +21,7 @@ class CfgFunctions {
 	class Actionbuilder {
 		class Actionpoint {
 
-			file = "\RHNET\rhnet_actionbuilder\actionpoint";
+			file = "\RHNET\rhnet_actionbuilder\modules\actionpoint";
 
 			class moduleActionpoint {};
 			
@@ -30,7 +30,7 @@ class CfgFunctions {
 		};
 		class Portal {
 
-			file = "\RHNET\rhnet_actionbuilder\portal";
+			file = "\RHNET\rhnet_actionbuilder\modules\portal";
 			
 			class modulePortal {};
 
@@ -41,7 +41,7 @@ class CfgFunctions {
 		};
 		class Waypoint {
 
-			file = "\RHNET\rhnet_actionbuilder\waypoint";
+			file = "\RHNET\rhnet_actionbuilder\modules\waypoint";
 			
 			class moduleWaypoint {};
 

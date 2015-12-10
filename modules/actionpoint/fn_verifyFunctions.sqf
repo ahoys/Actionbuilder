@@ -47,5 +47,5 @@ if (
 	_valid = true;
 };
 
-ACTIONBUILDER_functionValidity = _valid;
+RHNET_AB_L_FUNCTIONVALIDITY = _valid;
 _valid
