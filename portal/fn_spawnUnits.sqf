@@ -1,5 +1,5 @@
 /*
-	File: fn_portalSpawn.sqf
+	File: fn_spawnUnits.sqf
 	Author: Ari Höysniemi
 	
 	Note:
@@ -9,10 +9,10 @@
 	Spawns all of the portal's registered units
 
 	Parameter(s):
-	0: OBJECT - spawner
+	0: OBJECT - the target portal
 
 	Returns:
-	BOOL - true if success
+	NOTHING
 */
 
 private[];
@@ -125,7 +125,7 @@ if (count _poolGrp > 0) then {
 			ACTIONBUILDER_groupProgress pushBack _grp;
 			ACTIONBUILDER_groupProgress pushBack [0, _portal, _id, _id, []];
 			// Assign waypoint
-			[_grp] spawn Actionbuilder_fnc_assignWp;
+			[_grp] spawn Actionbuilder_fnc_assignWaypoint;
 		};
 	};
 } forEach _poolGrp;

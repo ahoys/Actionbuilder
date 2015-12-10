@@ -1,15 +1,15 @@
 /*
-	File: fn_selectWp.sqf
+	File: fn_selectWaypoint.sqf
 	Author: Ari Höysniemi
 	
 	Note:
 	This is an actionbuilder component, outside calls are not supported
 	
 	Extension for:
-	fn_assignWp.sqf
+	fn_assignWaypoint.sqf
 	
 	Description:
-	Select a portal
+	Select a randomized waypoint
 
 	Parameter(s):
 	0: OBJECT - current location
@@ -19,6 +19,7 @@
 	Returns:
 	OBJECT - the selected portal if any
 */
+
 private["_location","_previousLocation","_bannedLocations","_candidates","_candidatesLocked","_candidatesPriority","_candidatesAhead","_selected","_wp","_valid"];
 
 _location			= _this select 0;

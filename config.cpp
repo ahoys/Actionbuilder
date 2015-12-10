@@ -19,38 +19,45 @@ class CfgFactionClasses {
 
 class CfgFunctions {
 	class Actionbuilder {
-		class Modules {
+		class Actionpoint {
 
-			file = "\RHNET\rhnet_actionbuilder\modules";
+			file = "\RHNET\rhnet_actionbuilder\actionpoint";
 
 			class moduleActionpoint {};
 
+		};
+		class Portal {
+
+			file = "\RHNET\rhnet_actionbuilder\portal";
+			
 			class modulePortal {};
 
-			class moduleWaypoint {};
+			class initPortals {};
+
+			class spawnUnits {};
 
 		};
-		class Components {
+		class Waypoint {
+
+			file = "\RHNET\rhnet_actionbuilder\waypoint";
 			
-			file = "\RHNET\rhnet_actionbuilder\components";
+			class moduleWaypoint {};
+
+			class assignWaypoint {};
+
+			class selectWaypoint {};
 			
-			class initPortals {};
+			class loadVehicles {};
 			
-			class portalSpawn {};
+			class unloadVehicles {};
 			
-			class assignWp {};
+			class prioritizeSeats {};
 			
-			class selectWp {};
+			class populateSeats {};
 			
-			class WpSva {};
-			
-			class WpTransportation {};
-			
-			class wpPrioritizeSeats {};
-			
-			class wpPopulateSeats {};
-			
-		}
+			class sendVehiclesAway {};
+
+		};
 		class Utility {
 			
 			file = "\RHNET\rhnet_actionbuilder\util";

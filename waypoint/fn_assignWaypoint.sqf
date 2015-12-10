@@ -1,5 +1,5 @@
 /*
-	File: fn_assignWp.sqf
+	File: fn_assignWaypoint.sqf
 	Author: Ari Höysniemi
 	
 	Note:
@@ -225,16 +225,16 @@ _group setWaypointStatements _wpStatement;
 
 // Special property: transportation
 if (_wpType == "GETIN") then {
-	[units _group, false, 100] call Actionbuilder_fnc_wpTransportation;
+	[units _group, false, 100] call Actionbuilder_fnc_loadVehicle;
 };
 
 if (_wpType == "FORCE") then {
-	[units _group, true, 100] call Actionbuilder_fnc_wpTransportation;
+	[units _group, true, 100] call Actionbuilder_fnc_loadVehicle;
 };
 
 // Special property: unload
 if (_wpType == "UNLOAD") then {
-	//[units _group] call Actionbuilder_fnc_wpUnload;
+	//[units _group] call Actionbuilder_fnc_unloadVehicle;
 };
 
 true

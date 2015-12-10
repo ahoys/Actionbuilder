@@ -12,7 +12,7 @@
 	NOTHING
 
 	Returns:
-	BOOL - true if success
+	NOTHING
 */
 
 private["_portal","_objects","_groups"];

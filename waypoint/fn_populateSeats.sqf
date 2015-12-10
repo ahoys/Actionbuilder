@@ -1,14 +1,14 @@
 /*
-	File: fn_wpPopulateSeats.sqf
+	File: fn_populateSeats.sqf
 	Author: Ari Höysniemi
 
 	Description:
 	Populate given seats if possible
 
 	Parameter(s):
-	0: OBJECT/ARRAY - unit(s)
-	1: ARRAY - list of prioritized seats
-
+	0: ARRAY - target unit(s)
+	1: ARRAY - list of seats available
+	2: BOOL - true to force populate
 	Returns:
 	ARRAY - units left outside
 */
@@ -16,6 +16,7 @@
 private["_target","_prioritized","_vehicles","_vehicle","_noGunner"];
 _units		= _this select 0;
 _seats		= _this select 1;
+_force		= _this select 2;
 _outside	= [];
 _seated		= [];
 
@@ -32,19 +33,39 @@ switch (typeName _units) do {
 			_veh = _x select 0;
 			switch (_x select 1) do {
 				case "Driver": {
-					_unit moveInDriver _veh;
-					if (vehicle _unit != _unit) exitWith {_seated pushBack _unit};
+					if (_force) then {
+						_unit moveInDriver _veh;
+					} else {
+						_unit assignAsDriver _veh;
+						[_unit] orderGetIn true;
+					};
+					if (vehicle _unit != _unit) exitWith {_seated pushBack _unit}; // Ei ota huomioon get in kävelijöitä
 				};
 				case "Gunner": {
-					_unit moveInGunner _veh;
+					if (_force) then {
+						_unit moveInGunner _veh;
+					} else {
+						_unit assignAsGunner _veh;
+						[_unit] orderGetIn true;
+					};
 					if (vehicle _unit != _unit) exitWith {_seated pushBack _unit};
 				};
 				case "Commander": {
-					_unit moveInCommander _veh;
+					if (_force) then {
+						_unit moveInCommander _veh;
+					} else {
+						_unit assignAsCommander _veh;
+						[_unit] orderGetIn true;
+					};
 					if (vehicle _unit != _unit) exitWith {_seated pushBack _unit};
 				};
 				case "Cargo": {
-					_unit moveInCargo _veh;
+					if (_force) then {
+						_unit moveInCargo _veh;
+					} else {
+						_unit assignAsCargo _veh;
+						[_unit] orderGetIn true;
+					};
 					if (vehicle _unit != _unit) exitWith {_seated pushBack _unit};
 				};
 			};

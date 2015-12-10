@@ -6,7 +6,6 @@ class RHNET_ab_moduleWP_F : Module_F
 	displayName = "Waypoint";
 	category = "RHNET_Actionbuilder";
 	icon = "\RHNET\rhnet_actionbuilder\data\iconWP_ca.paa";
-	//function = "RHNET_ab_modules_fnc_moduleWaypoint";
 	function = "Actionbuilder_fnc_moduleWaypoint";
 	isGlobal = 0;
 	isTriggerActivated = 0;

@@ -1,12 +1,12 @@
 /*
-	File: fn_wpSva.sqf
+	File: fn_sendVehiclesAway.sqf
 	Author: Ari Höysniemi
 	
 	Note:
 	This is an actionbuilder component, outside calls are not supported
 	
 	Extension for:
-	fn_assignWp.sqf
+	fn_assignWaypoint.sqf
 
 	Description:
 	Sends vehicles away -waypoint
