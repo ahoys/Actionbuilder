@@ -76,7 +76,7 @@ if (_id == 0) then {
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: SELECT A NEW WAYPOINT
 
-_nextLocation = [_location, _previousLocation, _bannedLocations] call Actionbuilder_fnc_selectWp;
+_nextLocation = [_location, _previousLocation, _bannedLocations] call Actionbuilder_fnc_selectWaypoint;
 if (isNull _nextLocation) exitWith {false};
 
 // ----------------------------------------------------------------------------
@@ -116,7 +116,7 @@ if (_wpType == "UTURN") exitWith {
 	if (typeOf _location != "RHNET_ab_modulePORTAL_f") exitWith {
 		((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 2) pushBack _location;
 		((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 3) pushBack _nextLocation;
-		[_group] spawn Actionbuilder_fnc_assignWp;
+		[_group] spawn Actionbuilder_fnc_assignWaypoint;
 		false
 	};
 };
@@ -192,12 +192,12 @@ if (
 
 // Special property: send vehicles away
 if (_wpType == "SVA") then {							// Not tested
-	[_group, _portal] call Actionbuilder_fnc_wpSva;
+	[_group, _portal] call Actionbuilder_fnc_sendVehiclesAway;
 };
 
 // Skip to the next waypoint if required
 if (_skip) exitWith {
-	[_group] spawn Actionbuilder_fnc_assignWp;
+	[_group] spawn Actionbuilder_fnc_assignWaypoint;
 	true
 };
 
