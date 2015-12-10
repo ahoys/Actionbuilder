@@ -29,13 +29,14 @@ if ((formationLeader _waypoint) != _waypoint) then {
 	_type = typeOf _x;
 	if ((_type == "RHNET_ab_moduleWP_F") || (_type == "RHNET_ab_modulePORTAL_F")) then {
 		_valid = true;
-	} else {
+	};
+	if ((_type != "RHNET_ab_moduleWP_F") && (_type != "RHNET_ab_modulePORTAL_F")) then {
 		["Not supported module %1 synchronized to waypoint %2.", _type, _waypoint] call BIS_fnc_error;
 	};
 } forEach (_waypoint call BIS_fnc_moduleModules);
 
 if !(_valid) then {
-	["Waypoint %1 has no synchronizations. Synchronize the waypoint to portals or other waypoints.", _waypoint] call BIS_fnc_error;
+	["Waypoint %1 has no valid synchronizations. Synchronize the waypoint to portals or other waypoints.", _waypoint] call BIS_fnc_error;
 };
 
 true

@@ -30,7 +30,8 @@ if (((formationLeader _portal) != _portal) && ((_portal getVariable ["p_Position
 	_type = typeOf _x;
 	if (_type == "RHNET_ab_moduleAP_F") then {
 		_valid = true;
-	} else {
+	};
+	if ((_type != "RHNET_ab_moduleWP_F") && (_type != "RHNET_ab_modulePORTAL_F")) then {
 		["Not supported module %1 synchronized to portal %2.", _type, _portal] call BIS_fnc_error;
 	};
 } forEach (_portal call BIS_fnc_moduleModules);
