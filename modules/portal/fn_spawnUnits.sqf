@@ -123,7 +123,7 @@ if (count _poolGrp > 0) then {
 			} forEach (_x select 2);
 			// Register
 			RHNET_AB_L_GROUPPROGRESS pushBack _grp;
-			RHNET_AB_L_GROUPPROGRESS pushBack [0, _portal, _id, _id, []];
+			RHNET_AB_L_GROUPPROGRESS pushBack [0, _portal, _portal, objNull, []];
 			// Assign waypoint
 			[_grp] spawn Actionbuilder_fnc_assignWaypoint;
 		};

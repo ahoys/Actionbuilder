@@ -91,7 +91,7 @@ _wpMode			= _nextLocation getVariable ["WpMode","NO CHANGE"];
 _wpWait			= _nextLocation getVariable ["WpWait",0];
 _wpPlacement	= _nextLocation getVariable ["WpPlacement",0];
 _wpSpecial		= _nextLocation getVariable ["WpSpecial",0];
-_wpStatement	= ["true", "[group this] spawn Actionbuilder_fnc_assignWp"];
+_wpStatement	= ["true", "[group this] spawn Actionbuilder_fnc_assignWaypoint"];
 _wpLocation		= [_nextLocation] call Actionbuilder_fnc_getClosestSynced;
 _wpRadius		= 8;
 _leader			= leader _group;
@@ -114,16 +114,16 @@ if (_wpWait isEqualType 0) then {
 // Go back to the previous waypoint
 if (_wpType == "UTURN") exitWith {
 	if (typeOf _location != "RHNET_ab_modulePORTAL_f") exitWith {
-		((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 2) pushBack _location;
-		((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 3) pushBack _nextLocation;
+		(RHNET_AB_L_GROUPPROGRESS select (_key + 1)) set [2, _location];
+		(RHNET_AB_L_GROUPPROGRESS select (_key + 1)) set [3, _nextLocation];
 		[_group] spawn Actionbuilder_fnc_assignWaypoint;
 		false
 	};
 };
 
 // Update register
-((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 2) pushBack _nextLocation;
-((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 3) pushBack _location;
+(RHNET_AB_L_GROUPPROGRESS select (_key + 1)) set [2, _nextLocation];
+(RHNET_AB_L_GROUPPROGRESS select (_key + 1)) set [3, _location];
 
 // Special property: punish
 // Affects entire group and objects linked to the waypoint
