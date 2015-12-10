@@ -17,12 +17,12 @@ class RHNET_ab_modulePORTAL_F : Module_F
 			description = "Where units are located, when they are spawned";
 			typeName = "STRING";
 			class Values {
-				class v_pos0 {
+				class PORTAL_ORIGINALPOSITION {
 					name = "Original position";
 					value = "NONE";
 					default = 1;
 				};
-				class v_pos1 {
+				class PORTAL_PORTALPOSITION {
 					name = "Portal position";
 					value = "PORTAL";
 				};
@@ -30,84 +30,84 @@ class RHNET_ab_modulePORTAL_F : Module_F
 		};
 		
 		class p_MinDist {
-			displayName = "Safezone";
+			displayName = "PORTAL_SAFEzone";
 			description = "Stop spawning, if there are playable units too close the portal";
 			typeName = "NUMBER";
 			class Values {
-				class p_sz0 {
+				class PORTAL_SAFE0 {
 					name = "Disabled";
 					value = 0;
 				};
-				class p_sz1 {
+				class PORTAL_SAFE25 {
 					name = "25m";
 					value = 25;
 				};
-				class p_sz2 {
+				class PORTAL_SAFE50 {
 					name = "50m";
 					value = 50;
 				};
-				class p_sz3 {
+				class PORTAL_SAFE100 {
 					name = "100m";
 					value = 100;
 				};
-				class p_sz4 {
+				class PORTAL_SAFE200 {
 					name = "200m";
 					value = 200;
 				};
-				class p_sz5 {
+				class PORTAL_SAFE300 {
 					name = "300m";
 					value = 300;
 				};
-				class p_sz6 {
+				class PORTAL_SAFE400 {
 					name = "400m";
 					value = 400;
 					default = 1;
 				};
-				class p_sz7 {
+				class PORTAL_SAFE500 {
 					name = "500m";
 					value = 500;
 				};
-				class p_sz8 {
+				class PORTAL_SAFE600 {
 					name = "600m";
 					value = 600;
 				};
-				class p_sz9 {
+				class PORTAL_SAFE700 {
 					name = "700m";
 					value = 700;
 				};
-				class p_sz10 {
+				class PORTAL_SAFE800 {
 					name = "800m";
 					value = 800;
 				};
-				class p_sz11 {
+				class PORTAL_SAFE900 {
 					name = "900m";
 					value = 900;
 				};
-				class p_sz12 {
+				class PORTAL_SAFE1000 {
 					name = "1000m";
 					value = 1000;
 				};
-				class p_sz13 {
+				class PORTAL_SAFE2000 {
 					name = "2000m";
 					value = 2000;
 				};
-				class p_sz14 {
+				class PORTAL_SAFE3000 {
 					name = "3000m";
 					value = 3000;
 				};
-				class p_sz15 {
+				class PORTAL_SAFE4000 {
 					name = "4000m";
 					value = 4000;
 				};
-				class p_sz16 {
+				class PORTAL_SAFE5000 {
 					name = "5000m";
 					value = 5000;
 				};
-				class p_sz17 {
+				class PORTAL_SAFE8000 {
 					name = "8000m";
 					value = 8000;
 				};
-				class p_sz18 {
+				class PORTAL_SAFE10000 {
 					name = "10000m";
 					value = 10000;
 				};
@@ -119,12 +119,12 @@ class RHNET_ab_modulePORTAL_F : Module_F
 			description = "What special properties does the unit have";
 			typeName = "STRING";
 			class Values {
-				class v_special0 {
+				class NONE {
 					name = "None";
 					value = "NONE";
 					default = 1;
 				};
-				class v_special1 {
+				class FLY {
 					name = "Flying";
 					value = "FLY";
 				};

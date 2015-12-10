@@ -17,60 +17,60 @@ class RHNET_ab_moduleWP_F : Module_F
 			description = "What kind of waypoint is this";
 			typeName = "STRING";
 			class Values {
-				class wp_typeMOVE {
+				class WP_MOVE {
 					name = "MOVE";
 					value = "MOVE";
 					default = 1;
 				};
-				class wp_typeSAD {
+				class WP_SAD {
 					name = "SEEK AND DESTROY";
 					value = "SAD";
 				};
-				class wp_typeUTURN {
+				class WP_UTURN {
 					name = "U-TURN";
 					value = "UTURN";
 				};
-				class wp_typeGUARD {
+				class WP_GUARD {
 					name = "GUARD";
 					value = "GUARD";
 				};
-				class wp_typeDISMISSED {
+				class WP_DISMISSED {
 					name = "DISMISSED";
 					value = "DISMISS";
 				};
-				class wp_typeLT {
+				class WP_LOADTRANSPORT {
 					name = "LOAD TRANSPORT";
 					value = "GETIN";
 				};
-				class wp_typeUT {
+				class WP_UNLOADTRANSPORT {
 					name = "UNLOAD TRANSPORT";
 					value = "UNLOAD";
 				};
-				class wp_typeFT {
+				class WP_FORCETRANSPORT {
 					name = "FORCE TRANSPORT";
 					value = "FORCE";
 				};
-				class wp_typeSVA {
+				class WP_SVTBR {
 					name = "SEND VEHICLES TO BE REMOVED";
 					value = "SVA";
 				};
-				class wp_typeCT {
+				class WP_COMMANDTARGET {
 					name = "COMMAND TARGET";
 					value = "TARGET";
 				};
-				class wp_typeCF {
+				class WP_COMMANDFIRE {
 					name = "COMMAND FIRE";
 					value = "FIRE";
 				};
-				class wp_typeNG {
+				class WP_NEUTRALIZEGROUP {
 					name = "NEUTRALIZE GROUP";
 					value = "NEUTRALIZE";
 				};
-				class wp_typeKG {
+				class WP_KILLGROUP {
 					name = "KILL GROUP";
 					value = "KILL";
 				};
-				class wp_typeRG {
+				class WP_REMOVEGROUP {
 					name = "REMOVE GROUP";
 					value = "REMOVE";
 				};
@@ -82,28 +82,28 @@ class RHNET_ab_moduleWP_F : Module_F
 			description = "Behaviour of AI units on this waypoint";
 			typeName = "STRING";
 			class Values {
-				class wp_beh0 {
+				class WP_UNCHANGED {
 					name = "UNCHANGED";
 					value = "UNCHANGED";
 					default = 1;
 				};
-				class wp_beh1 {
+				class WP_CARELESS {
 					name = "CARELESS";
 					value = "CARELESS";
 				};
-				class wp_beh2 {
+				class WP_SAFE {
 					name = "SAFE";
 					value = "SAFE";
 				};
-				class wp_beh3 {
+				class WP_AWARE {
 					name = "AWARE";
 					value = "AWARE";
 				};
-				class wp_beh4 {
+				class WP_COMBAT {
 					name = "COMBAT";
 					value = "COMBAT";
 				};
-				class wp_beh5 {
+				class WP_STEALTH {
 					name = "STEALTH";
 					value = "STEALTH";
 				};
@@ -115,20 +115,20 @@ class RHNET_ab_moduleWP_F : Module_F
 			description = "Speed of AI units on this waypoint";
 			typeName = "STRING";
 			class Values {
-				class wp_speed0 {
+				class WP_UNCHANGED {
 					name = "UNCHANGED";
 					value = "UNCHANGED";
 					default = 1;
 				};
-				class wp_speed1 {
+				class WP_LIMITED {
 					name = "LIMITED";
 					value = "LIMITED";
 				};
-				class wp_speed2 {
+				class WP_NORMAL {
 					name = "NORMAL";
 					value = "NORMAL";
 				};
-				class wp_speed3 {
+				class WP_FULL {
 					name = "FULL";
 					value = "FULL";
 				};
@@ -140,20 +140,20 @@ class RHNET_ab_moduleWP_F : Module_F
 			description = "Formation of AI units on this waypoint";
 			typeName = "STRING";
 			class Values {
-				class wp_form0 {
+				class WP_NOCHANGE {
 					name = "NO CHANGE";
 					value = "NO CHANGE";
 					default = 1;
 				};
-				class wp_form1 {
+				class WP_COLUMN {
 					name = "COLUMN";
 					value = "COLUMN";
 				};
-				class wp_form2 {
+				class WP_WEDGE {
 					name = "WEDGE";
 					value = "WEDGE";
 				};
-				class wp_form3 {
+				class WP_LINE {
 					name = "LINE";
 					value = "LINE";
 				};
@@ -164,28 +164,28 @@ class RHNET_ab_moduleWP_F : Module_F
 			displayName = "Combat Mode";
 			description = "Combat behaviour of AI units on this waypoint";
 			class Values {
-				class wp_mode0 {
+				class WP_NOCHANGE {
 					name = "NO CHANGE";
 					value = "NO CHANGE";
 					default = 1;
 				};
-				class wp_mode1 {
+				class WP_BLUE {
 					name = "NEVER FIRE";
 					value = "BLUE";
 				};
-				class wp_mode2 {
+				class WP_GREEN {
 					name = "HOLD FIRE, defend only";
 					value = "GREEN";
 				};
-				class wp_mode3 {
+				class WP_WHITE {
 					name = "HOLD FIRE, engage at will";
 					value = "WHITE";
 				};
-				class wp_mode4 {
+				class WP_YELLOW {
 					name = "FIRE AT WILL";
 					value = "YELLOW";
 				};
-				class wp_mode5 {
+				class WP_RED {
 					name = "FIRE AT WILL, engage at will";
 					value = "RED";
 				};
@@ -204,12 +204,12 @@ class RHNET_ab_moduleWP_F : Module_F
 			description = "Location placement of this waypoint";
 			typeName = "NUMBER";
 			class Values {
-				class wp_place0 {
+				class WP_EDITORPLACEMENT {
 					name = "Editor placement";
 					value = 0;
 					default = 1;
 				};
-				class wp_place1 {
+				class WP_CLOSESTPLAYER {
 					name = "Closest player";
 					value = 1;
 				};
@@ -221,16 +221,16 @@ class RHNET_ab_moduleWP_F : Module_F
 			description = "Special attributes";
 			typeName = "NUMBER";
 			class Values {
-				class wp_spec0 {
+				class WP_NONE {
 					name = "None";
 					value = 0;
 					default = 1;
 				};
-				class wp_spec1 {
+				class WP_CANNOTREUSE {
 					name = "Cannot be reused by the group";
 					value = 1;
 				};
-				class wp_spec2 {
+				class WP_HIGHPRIORITY {
 					name = "High priority";
 					value = 2;
 				};
