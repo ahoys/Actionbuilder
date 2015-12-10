@@ -121,9 +121,9 @@ if (count _poolGrp > 0) then {
 				createVehicleCrew _veh;
 				(crew _veh) joinSilent _grp;
 			} forEach (_x select 2);
-			// Register
+			// Register [id, portal, current location, next location, banned location]
 			RHNET_AB_L_GROUPPROGRESS pushBack _grp;
-			RHNET_AB_L_GROUPPROGRESS pushBack [0, _portal, _portal, objNull, []];
+			RHNET_AB_L_GROUPPROGRESS pushBack [0, _portal, objNull, objNull, []];
 			// Assign waypoint
 			[_grp] spawn Actionbuilder_fnc_assignWaypoint;
 		};

@@ -58,9 +58,9 @@ if (isNil "_group") exitWith {
 };
 
 // Group query
-_key					= RHNET_AB_L_GROUPPROGRESS find _group;
+_key					= (RHNET_AB_L_GROUPPROGRESS find _group) + 1;
 if (_key < 0) 			exitWith {["Group %1 could not be found from the register.", _group] call BIS_fnc_error; false};
-_query					= RHNET_AB_L_GROUPPROGRESS select (_key + 1);
+_query					= RHNET_AB_L_GROUPPROGRESS select _key;
 _id						= _query select 0;
 _portal					= _query select 1;
 if (_id == 0) then {
@@ -114,17 +114,19 @@ if (_wpWait isEqualType 0) then {
 // Go back to the previous waypoint
 if (_wpType == "UTURN") exitWith {
 	if (typeOf _location != "RHNET_ab_modulePORTAL_f") exitWith {
-		(RHNET_AB_L_GROUPPROGRESS select (_key + 1)) set [2, _location];
-		(RHNET_AB_L_GROUPPROGRESS select (_key + 1)) set [3, _nextLocation];
+		(RHNET_AB_L_GROUPPROGRESS select _key) set [0, _id + 1];
+		(RHNET_AB_L_GROUPPROGRESS select _key) set [2, _location];
+		(RHNET_AB_L_GROUPPROGRESS select _key) set [3, _nextLocation];
 		[_group] spawn Actionbuilder_fnc_assignWaypoint;
 		false
 	};
 };
-
 // Update register
-(RHNET_AB_L_GROUPPROGRESS select (_key + 1)) set [2, _nextLocation];
-(RHNET_AB_L_GROUPPROGRESS select (_key + 1)) set [3, _location];
-
+diag_log format ["AB (%1): %2 - - - %3, %4", _group, RHNET_AB_L_GROUPPROGRESS select _key, _location, _nextLocation];
+(RHNET_AB_L_GROUPPROGRESS select _key) set [0, _id + 1];
+(RHNET_AB_L_GROUPPROGRESS select _key) set [2, _nextLocation];
+(RHNET_AB_L_GROUPPROGRESS select _key) set [3, _location];
+diag_log format ["AB (%1): %2", _group, RHNET_AB_L_GROUPPROGRESS select _key];
 // Special property: punish
 // Affects entire group and objects linked to the waypoint
 if ((_wpType == "KILL") || (_wpType == "NEUTRALIZE") || (_wpType == "REMOVE") || (_wpType == "HURT") || (_wpType == "HEAL")) then {
@@ -170,7 +172,7 @@ if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
 // Special property: reusability						// Not tested
 // 1: Waypoint can be used only once / group
 if (_wpSpecial == 1) then {
-	((RHNET_AB_L_GROUPPROGRESS select (_key + 1)) select 4) pushBack _nextLocation;
+	((RHNET_AB_L_GROUPPROGRESS select _key) select 4) pushBack _nextLocation;
 };
 
 // Completion distance
