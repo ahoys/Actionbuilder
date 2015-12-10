@@ -3,75 +3,45 @@
 	Author: Ari Höysniemi
 
 	Description:
-	Populate given seats if possible
+	Populate given seats
 
 	Parameter(s):
-	0: ARRAY - target unit(s)
-	1: ARRAY - list of seats available
+	0: ARRAY - units to be seated [u1, u2, u3]
+	1: ARRAY - list of available seats [[car1, "Driver"],[car2,"Cargo"]]
 	2: BOOL - true to force populate
+	
 	Returns:
-	ARRAY - units left outside
+	ARRAY - units seated
 */
 
-private["_target","_prioritized","_vehicles","_vehicle","_noGunner"];
+private["_units","_seats","_force","_seated","_c","_i"];
 _units		= _this select 0;
 _seats		= _this select 1;
 _force		= _this select 2;
-_outside	= [];
 _seated		= [];
-
-switch (typeName _units) do {
-	case "OBJECT": {_units = [_units]};
-};
+_c			= count _seats;
+_i			= 0;
 
 {
-	_unit = _x;
-	{
-		if (vehicle _unit != _unit) then {
-			_seated pushBack _unit
-		} else {
-			_veh = _x select 0;
-			switch (_x select 1) do {
-				case "Driver": {
-					if (_force) then {
-						_unit moveInDriver _veh;
-					} else {
-						_unit assignAsDriver _veh;
-						[_unit] orderGetIn true;
-					};
-					if (vehicle _unit != _unit) exitWith {_seated pushBack _unit}; // Ei ota huomioon get in kävelijöitä
-				};
-				case "Gunner": {
-					if (_force) then {
-						_unit moveInGunner _veh;
-					} else {
-						_unit assignAsGunner _veh;
-						[_unit] orderGetIn true;
-					};
-					if (vehicle _unit != _unit) exitWith {_seated pushBack _unit};
-				};
-				case "Commander": {
-					if (_force) then {
-						_unit moveInCommander _veh;
-					} else {
-						_unit assignAsCommander _veh;
-						[_unit] orderGetIn true;
-					};
-					if (vehicle _unit != _unit) exitWith {_seated pushBack _unit};
-				};
-				case "Cargo": {
-					if (_force) then {
-						_unit moveInCargo _veh;
-					} else {
-						_unit assignAsCargo _veh;
-						[_unit] orderGetIn true;
-					};
-					if (vehicle _unit != _unit) exitWith {_seated pushBack _unit};
-				};
-			};
+	if (_c <= _i) exitWith {};
+	call {
+		if (_x select 1 == "Driver") exitWith {
+			if (_force) then {(_units select _i) moveInDriver (_x select 0)} else {(_units select _i) assignAsDriver (_x select 0)};
 		};
-	} forEach _seats;
-} forEach _units;
+		if (_x select 1 == "Gunner") exitWith {
+			if (_force) then {(_units select _i) moveInGunner (_x select 0)} else {(_units select _i) assignAsGunner (_x select 0)};
+		};
+		if (_x select 1 == "Commander") exitWith {
+			if (_force) then {(_units select _i) moveInCommander (_x select 0)} else {(_units select _i) assignAsCommander (_x select 0)};
+		};
+		if (_x select 1 == "Cargo") exitWith {
+			if (_force) then {(_units select _i) moveInCargo (_x select 0)} else {(_units select _i) assignAsCargo (_x select 0)};
+		};
+	};
+	_seated pushBack (_units select _i);
+	_i = _i + 1;
+} forEach _seats;
 
-_outside = _units - _seated;
-_outside
+if !(_force) then {_seated orderGetIn true};
+
+_seated
