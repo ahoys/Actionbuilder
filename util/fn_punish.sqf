@@ -67,9 +67,6 @@ if (_target isEqualType grpNull) exitWith {
 					_unit setDamage 0;
 				};
 			};
-			if (!isNil "RHNET_AB_L_GARBAGE") then {
-				if (!alive _unit) then {RHNET_AB_L_GARBAGE pushBack _unit};
-			};
 		};
 	} forEach units _target;
 	true
@@ -104,9 +101,6 @@ if (_target isEqualType "OBJECT") exitWith {
 		case "HEAL": { 
 			_target setDamage 0;
 		};
-	};
-	if (!isNil "RHNET_AB_L_GARBAGE") then {
-		if (!alive _target) then {RHNET_AB_L_GARBAGE pushBack _target};
 	};
 	true
 };
