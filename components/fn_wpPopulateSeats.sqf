@@ -14,8 +14,8 @@
 */
 
 private["_target","_prioritized","_vehicles","_vehicle","_noGunner"];
-_units		= [_this, 0, objNull, [objNull, []]] call BIS_fnc_param;
-_seats		= [_this, 1, [], [[]]] call BIS_fnc_param;
+_units		= _this select 0;
+_seats		= _this select 1;
 _outside	= [];
 _seated		= [];
 

@@ -6,7 +6,7 @@
 	Return vehicle seats in a prioritized order
 
 	Parameter(s):
-	0: OBJECT/ARRAY - target vehicle(s) to be seat prioritized
+	0: ARRAY - target vehicle(s) to be seat prioritized
 
 	Returns:
 	ARRAY - prioritized seats, the most important seats first, vehicle at time. Example: [[veh1, "Driver"].[veh1, "Gunner"].[veh2, "Driver"]]
@@ -14,13 +14,8 @@
 */
 
 private["_target","_prioritized","_vehicles","_vehicle","_noGunner"];
-_target = [_this, 0, objNull, [objNull, []]] call BIS_fnc_param;
+_target = _this select 0;
 _prioritized = [];
-
-switch (typeName _target) do {
-	case "OBJECT": {_vehicles = [_target]};
-	case "ARRAY": {_vehicles = _target};
-};
 
 {
 	_vehicle = _x;
