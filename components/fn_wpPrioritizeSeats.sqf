@@ -42,7 +42,7 @@ switch (typeName _target) do {
 				_seats pushBack [_vehicle, "Cargo"];
 			};
 		};
-	} forEach [_x] call BIS_fnc_vehicleRoles;
+	} forEach ([_x] call BIS_fnc_vehicleRoles);
 } forEach _vehicles;
 
 _prioritized
