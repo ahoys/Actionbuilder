@@ -24,7 +24,7 @@ if (isNil "_target") exitWith {
 	false
 };
 
-// Convert to array
+// Convert into an array
 call {
 	if (_target isEqualType objNull) exitWith {_target = [_target]};
 	if (_target isEqualType grpNull) exitWith {_target = units _target};
