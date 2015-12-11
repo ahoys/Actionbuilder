@@ -49,7 +49,7 @@ switch (typeName _target) do {
 	// Select the closest target
 	{
 		if (!isNil "_x") then {
-			if ((((_unit distance _x) < _distance) || (_distance < 0)) && (alive _x) && (_unit != _x) && (vehicle _x == _x)) then {
+			if ((((_unit distance _x) < _distance) || (_distance < 0)) && (alive _x) && (_unit != _x) && (isNull objectParent _x)) then {
 				_personalTarget = _x;
 				_distance = (_unit distance _x);
 			};
@@ -60,9 +60,9 @@ switch (typeName _target) do {
 	if (isNil "_personalTarget") then {
 		{
 			if (!isNil "_x") then {
-				if ((((_unit distance (vehicle _x)) < _distance) || (_distance < 0)) && (alive (vehicle _x)) && (_unit != _x) && (vehicle _x != _x)) then {
-					_personalTarget = (vehicle _x);
-					_distance = (_unit distance (vehicle _x));
+				if ((((_unit distance objectParent _x) < _distance) || (_distance < 0)) && (alive objectParent _x) && (_unit != _x) && !(isNull objectParent _x)) then {
+					_personalTarget = objectParent _x;
+					_distance = (_unit distance objectParent _x);
 				};
 			};
 		} forEach _targets;

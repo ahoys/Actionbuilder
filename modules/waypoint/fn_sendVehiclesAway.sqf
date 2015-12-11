@@ -27,10 +27,10 @@ _inVehicles	= [];
 _crew		= [];
 
 {
-	if (_x in assignedCargo vehicle _x) then {
+	if (_x in assignedCargo objectParent _x) then {
 		_inVehicles pushBack _x;
 	} else {
-		if (vehicle _x != _x) then {
+		if !(isNull objectParent _x) then {
 			_crew pushBack _x;
 		};
 	};
@@ -46,6 +46,6 @@ _vehWp = _vehicleGroup addWaypoint [_vehicleDestination, 0];
 _vehWp setWaypointType "MOVE";
 _vehWp setWaypointSpeed "NORMAL";
 _vehWP setWaypointCompletionRadius 0;
-_vehWp setWaypointStatements ["true","{deleteVehicle (vehicle _x); deleteVehicle _x} forEach thisList"];
+_vehWp setWaypointStatements ["true","{deleteVehicle objectParent _x; deleteVehicle _x} forEach thisList"];
 
 true

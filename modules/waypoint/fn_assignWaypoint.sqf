@@ -95,7 +95,7 @@ _wpStatement	= ["true", "[group this] spawn Actionbuilder_fnc_assignWaypoint"];
 _wpLocation		= [_nextLocation] call Actionbuilder_fnc_getClosestSynced;
 _wpRadius		= 8;
 _leader			= leader _group;
-_vehicle		= vehicle _leader;
+_vehicle		= objectParent _leader;
 _skip			= false;
 
 // Use the waypoint's location if there are no valid units synchronized to the waypoint
@@ -145,7 +145,7 @@ if (_wpPlacement == 1) then {
 	_bestDistance = -1;
 	_target = objNull;
 	{
-		if !((vehicle _x isKindOf "Air") || (vehicle _x isKindOf "Ship")) then {
+		if !((objectParent _x isKindOf "Air") || (objectParent _x isKindOf "Ship")) then {
 			if (((_x distance _nextLocation) < _bestDistance) || (_bestDistance < 0)) then {
 				_target = _x;
 			};
@@ -176,11 +176,13 @@ if (_wpSpecial == 1) then {
 };
 
 // Completion distance
-if (_vehicle isKindOf "MAN") then {_wpRadius = 2};
-if (_vehicle isKindOf "AIR") then {_wpRadius = 30; _wpLocation set [2, (_wpLocation select 2) + 100]};
-if (_vehicle isKindOf "CAR") then {_wpRadius = 5};
-if (_vehicle isKindOf "TANK") then {_wpRadius = 8};
-if (_vehicle isKindOf "SHIP") then {_wpRadius = 20};
+call {
+	if (isNull _vehicle) exitWith {_wpRadius = 2};
+	if (_vehicle isKindOf "AIR") exitWith {_wpRadius = 30; _wpLocation set [2, (_wpLocation select 2) + 100]};
+	if (_vehicle isKindOf "CAR") exitWith {_wpRadius = 5};
+	if (_vehicle isKindOf "TANK") exitWith {_wpRadius = 8};
+	if (_vehicle isKindOf "SHIP") exitWith {_wpRadius = 20};
+};
 
 // Already next to the waypoint
 if (

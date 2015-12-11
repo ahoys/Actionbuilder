@@ -29,12 +29,11 @@ if (_target isEqualType grpNull) exitWith {
 	{
 		if (!isNil "_x") then {
 			_unit = _x;
-			_vehicle = vehicle _unit;
-			if (_vehicle != _unit) then {
+			if !(isNull objectParent _unit) then {
 				{
 					deleteVehicle _x;
-				} forEach crew _vehicle;
-				_unit = _vehicle;
+				} forEach crew objectParent _unit;
+				_unit = objectParent _x;
 			};
 			switch (_punish) do {
 				case "KILL": { 

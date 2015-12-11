@@ -28,14 +28,13 @@ _synchronized	= _master call BIS_fnc_moduleUnits;
 		// Group
 		if (!isNil "_x") then {
 			{
-				_vehicle = vehicle _x;
-				if (_vehicle isKindOf "Man") then {
+				if (isNull objectParent _x) then {
 					deleteVehicle _x;
 				} else {
 					{
-						_vehicle deleteVehicleCrew _x;
-					} forEach crew _vehicle;
-					deleteVehicle _vehicle;
+						objectParent _x deleteVehicleCrew _x;
+					} forEach crew objectParent _x;
+					deleteVehicle objectParent _x;
 				};
 			} forEach units (group _x);
 		};

@@ -30,9 +30,9 @@ _seats				= [];
 
 // Look for primary vehicles and already seated units
 {
-	if (vehicle _x != _x) then {
-		if !(vehicle _x in _primaryVehicles) then {
-			_primaryVehicles pushBack (vehicle _x);
+	if !(isNull objectParent _x) then {
+		if !(objectParent _x in _primaryVehicles) then {
+			_primaryVehicles pushBack (objectParent _x);
 		};
 	};
 } forEach _units;

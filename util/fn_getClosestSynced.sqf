@@ -12,7 +12,7 @@
 	OBJECT - the closest object, null if none
 */
 
-private["_reference","_units","_closest","_distance","_vehicle"];
+private["_reference","_units","_closest","_distance"];
 _reference = param [0, objNull, [objNull]];
 
 if (isNil "_reference") exitWith {
@@ -29,15 +29,14 @@ _distance = -1;
 {
 	if (!isNil "_x") then {
 		if (((_x distance _reference) < _distance) || (_distance < 0)) then {
-			_vehicle = vehicle _x;
-			if (_vehicle == _x) then {
+			if (isNull objectParent _x) then {
 				// MAN
 				_distance = (_x distance _reference);
 				_closest = _x;
 			} else {
 				// VEHICLE
-				_distance = (_vehicle distance _reference);
-				_closest = _vehicle;
+				_distance = (objectParent _x distance _reference);
+				_closest = objectParent _x;
 			};
 		};
 	};

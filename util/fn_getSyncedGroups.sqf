@@ -43,8 +43,8 @@ _i				= 0;
 					_groups pushBack [];
 					_groups pushBack [];
 					{
-						_veh = vehicle _x;
-						if (_x == _veh) then {
+						_veh = objectParent _x;
+						if (isNull _veh) then {
 							(_groups select (_i+1)) pushBack [typeOf _x, getPosATL _x, getDir _x];
 							if (_remove) then {
 								deleteVehicle _x;
