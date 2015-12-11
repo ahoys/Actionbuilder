@@ -27,17 +27,17 @@ if (isNil "_executer" || isNil "_target") exitWith {
 };
 
 // Convert executers into an array
-switch (typeName _executer) do {
-	case "OBJECT": {_executers = [_executer]};
-	case "GROUP": {_executers = units _executer};
-	case "ARRAY": {_executers = _executer};
+call {
+	if (typeName _executer == "OBJECT") exitWith {_executers = [_executer]};
+	if (typeName _executer == "GROUP") exitWith {_executers = units _executer};
+	if (typeName _executer == "ARRAY") exitWith {_executers = _executer};
 };
 
 // Convert targets into an array
-switch (typeName _target) do {
-	case "OBJECT": {_targets = [_target]};
-	case "GROUP": {_targets = units _target};
-	case "ARRAY": {_targets = _target};
+call {
+	if (typeName _target == "OBJECT") exitWith {_targets = [_target]};
+	if (typeName _target == "GROUP") exitWith {_targets = units _target};
+	if (typeName _target == "ARRAY") exitWith {_targets = _target};
 };
 
 // All executers can have their own targets

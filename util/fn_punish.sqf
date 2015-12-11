@@ -35,11 +35,9 @@ if (_target isEqualType grpNull) exitWith {
 				} forEach crew objectParent _unit;
 				_unit = objectParent _x;
 			};
-			switch (_punish) do {
-				case "KILL": { 
-					_unit setDamage 1;
-				};
-				case "NEUTRALIZE": {
+			call {
+				if (_punish == "KILL") exitWith {_unit setDamage 1};
+				if (_punish == "NEUTRALIZE") exitWith {
 					if ((alive _unit) && (_i < _limit)) then {
 						if (diag_fps > 12) then {
 							_unit spawn BIS_fnc_neutralizeUnit;
@@ -50,10 +48,8 @@ if (_target isEqualType grpNull) exitWith {
 						_i = _i + 1;
 					};
 				};
-				case "REMOVE": { 
-					deleteVehicle _unit;
-				};
-				case "HURT": {
+				if (_punish == "REMOVE") exitWith {deleteVehicle _unit};
+				if (_punish == "HURT") exitWith {
 					if (damage _unit < 0.3) then {
 						_unit setDamage ([0.4,0.5,0.6,0.7] select floor random 4);
 					} else {
@@ -62,9 +58,7 @@ if (_target isEqualType grpNull) exitWith {
 						};
 					};
 				};
-				case "HEAL": {
-					_unit setDamage 0;
-				};
+				if (_punish == "HEAL") exitWith {_unit setDamage 0};
 			};
 		};
 	} forEach units _target;
@@ -74,21 +68,17 @@ if (_target isEqualType grpNull) exitWith {
 if (((!alive _target) && (_punish != "REMOVE")) || isNil "_target") exitWith {false};
 
 if (_target isEqualType "OBJECT") exitWith {
-	switch (_punish) do {
-		case "KILL": { 
-			_target setDamage 1;
-		};
-		case "NEUTRALIZE": {
+	call {
+		if (_punish == "KILL") exitWith {_target setDamage 1};
+		if (_punish == "NEUTRALIZE") exitWith {
 			if (diag_fps > 12) then {
 				_target spawn BIS_fnc_neutralizeUnit;
 			} else {
 				_target setDamage 1;
 			};
 		};
-		case "REMOVE": {
-			deleteVehicle _target;
-		};
-		case "HURT": { 
+		if (_punish == "REMOVE") exitWith {deleteVehicle _target};
+		if (_punish == "HURT") exitWith {
 			if (damage _target < 0.3) then {
 				_target setDamage ([0.4,0.5,0.6,0.7] select floor random 4);
 			} else {
@@ -97,9 +87,7 @@ if (_target isEqualType "OBJECT") exitWith {
 				};
 			};
 		};
-		case "HEAL": { 
-			_target setDamage 0;
-		};
+		if (_punish == "HEAL") exitWith {_target setDamage 0};
 	};
 	true
 };

@@ -40,20 +40,10 @@ if (_aliveState == 0) exitWith {entities _entityType};
 // Return either alive or dead entities of given type
 {
 	if (!isNil "_x") then {
-		switch (_aliveState) do {
-			case 0: {
-				_entities pushBack _x;
-			};
-			case 1: {
-				if (alive _x) then {
-					_entities pushBack _x;
-				};
-			};
-			case 2: {
-				if (!alive _x) then {
-					_entities pushBack _x;
-				};
-			};
+		call {
+			if (_aliveState == 0) exitWith {_entities pushBack _x};
+			if (_aliveState == 1) exitWith {if (alive _x) then {_entities pushBack _x}};
+			if (_aliveState == 2) exitWith {if !(alive _x) then {_entities pushBack _x}};
 		};
 	};
 } forEach (entities _entityType);
