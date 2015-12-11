@@ -15,7 +15,7 @@
 */
 
 private["_target","_punish","_limit","_i"];
-_target 	= param [0, grpNull, [grpNull, objNull]];
+_target 	= param [0, grpNull, [[], grpNull, objNull]];
 _punish 	= param [1, "KILL", [""]];
 _limit 		= param [2, 8, [0]];
 _i			= 0;
@@ -25,7 +25,8 @@ if (isNil "_target") exitWith {
 	false
 };
 
-if (_target isEqualType grpNull) exitWith {
+if (_target isEqualType grpNull || _target isEqualType []) exitWith {
+	if (_target isEqualType grpNull) then {_target = units _target};	// Joku bugi, ei tapa kuin leaderin
 	{
 		if (!isNil "_x") then {
 			_unit = _x;
@@ -61,13 +62,13 @@ if (_target isEqualType grpNull) exitWith {
 				if (_punish == "HEAL") exitWith {_unit setDamage 0};
 			};
 		};
-	} forEach units _target;
+	} forEach _target;
 	true
 };
 
 if (((!alive _target) && (_punish != "REMOVE")) || isNil "_target") exitWith {false};
 
-if (_target isEqualType "OBJECT") exitWith {
+if (_target isEqualType objNull) exitWith {
 	call {
 		if (_punish == "KILL") exitWith {_target setDamage 1};
 		if (_punish == "NEUTRALIZE") exitWith {
