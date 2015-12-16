@@ -16,7 +16,10 @@
 if (!isServer && hasInterface) exitWith {false};
 
 private ["_ap","_modules","_portals","_worker"];
-_ap = _this select 0;
+_ap 		= _this select 0;
+_portals	= [_ap] call Actionbuilder_fnc_modulePortals;
+
+if (count _portals < 1) exitWith {false};
 
 // Headless clients must wait for everything to get ready -----------------------------------------
 if (!isServer) then {
@@ -38,15 +41,6 @@ if (isNil "RHNET_AB_L_FUNCTIONVALIDITY") then {
 if (isServer) then {
 	_modules 	= _ap call BIS_fnc_moduleModules;
 	_portals	= [];
-	
-	// Make sure there are portals available ----------------------------------------------------------
-	{
-		if (typeOf _x == "RHNET_ab_modulePORTAL_F") then {
-			_portals pushBack _x;
-		} else {
-			["Not supported module %1 synchronized to actionpoint %2.", typeOf _x, _ap] call BIS_fnc_error;
-		};
-	} forEach _modules;
 	
 	// Initialize all the required variables ----------------------------------------------------------
 	if (isNil "RHNET_AB_G_PORTALS") then {
@@ -100,7 +94,7 @@ if (isMultiplayer) then {
 } else {
 	diag_log "ACTIONBUILDER ---------------------------------------------------------------";
 	diag_log format ["AP: %1 started", _ap];
-	_actionfsm = [_ap, _portals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
+	_actionfsm = [_ap, [_ap] call Actionbuilder_fnc_modulePortals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
 	waitUntil {completedFSM _actionfsm};
 };
 
