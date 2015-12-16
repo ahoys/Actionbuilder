@@ -49,7 +49,7 @@ class RHNET_ab_moduleAP_F : Module_F
 			};
 		};
 		
-		class UnitsAlive {
+		class PlayersAlive {
 			displayName = "Players Alive";
 			description = "How many playable units there must be alive, to get the actionpoint triggered";
 			typeName = "NUMBER";

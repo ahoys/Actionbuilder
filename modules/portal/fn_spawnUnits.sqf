@@ -43,9 +43,6 @@ _keyGrp = RHNET_AB_G_PORTAL_GROUPS find _portal;
 if !(_keyObj < 0) then {_poolObj = RHNET_AB_G_PORTAL_OBJECTS select (_keyObj + 1)};
 if !(_keyGrp < 0) then {_poolGrp = RHNET_AB_G_PORTAL_GROUPS select (_keyGrp + 1)};
 
-diag_log format ["OBJ: %1", _poolObj];
-diag_log format ["GRP: %1", _poolGrp];
-
 // Objects [typeOf, getPosATL, getDir]
 {
 	if (count _x > 0) then {

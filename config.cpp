@@ -86,6 +86,8 @@ class CfgFunctions {
 			
 			class moduleWaypoints {};
 			
+			class selectRandom {};
+			
 		};
 	};
 };

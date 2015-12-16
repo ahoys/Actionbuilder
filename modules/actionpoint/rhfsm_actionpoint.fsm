@@ -1,8 +1,142 @@
 /*%FSM<COMPILE "D:\Projects\ArmATools\FSM Editor Personal Edition\scriptedFSM.cfg, rhfsm_actionpoint">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"ACTIONPOINT_CORE",0,250,-242.046951,293.368042,-152.046951,343.368042,0.000000,"ACTIONPOINT" \n "CORE START"};
-globals[] = {25.000000,1,0,0,0,640,480,1,2,0,1,-718.698059,264.590332,1423.915527,59.549774,916,1271,1};
+item0[] = {"ACTIONPOINT_CORE",0,250,-250.000000,175.000000,-150.000000,225.000000,0.000000,"ACTIONPOINT" \n "CORE START"};
+item1[] = {"_",3,250,-550.000000,-50.000000,-450.000000,0.000000,0.000000,""};
+item2[] = {"true",8,218,-475.000000,25.000000,-375.000000,75.000000,0.000000,"true"};
+item3[] = {"required_variabl",4,218,-100.000000,375.000000,0.000000,425.000000,2.000000,"required" \n "variables"};
+item4[] = {"missing",1,250,50.000000,375.000000,150.000000,425.000000,0.000000,"missing"};
+item5[] = {"validate",3,250,-250.000000,375.000000,-150.000000,425.000000,0.000000,"validate"};
+item6[] = {"at_least_one_por",4,218,-400.000000,375.000000,-300.000000,425.000000,1.000000,"at least" \n "one portal"};
+item7[] = {"false",4,218,-325.000000,-25.000000,-225.000000,25.000000,1.000000,"false"};
+item8[] = {"no_portals",1,250,-550.000000,375.000000,-450.000000,425.000000,0.000000,"no portals"};
+item9[] = {"begin",8,218,-250.000000,275.000000,-150.000000,325.000000,0.000000,"begin"};
+item10[] = {"done",8,218,-250.000000,475.000000,-150.000000,525.000000,0.000000,"done"};
+item11[] = {"condition",3,250,-250.000000,575.000000,-150.000000,625.000000,0.000000,"condition"};
+item12[] = {"true",8,218,-250.000000,675.000000,-150.000000,725.000000,0.000000,"true"};
+item13[] = {"triggers",4,218,-100.000000,575.000000,0.000000,625.000000,1.000000,"triggers"};
+item14[] = {"trigger__t_condi",3,250,50.000000,575.000000,150.000000,625.000000,0.000000,"trigger _t" \n "condition"};
+item15[] = {"false",4,218,50.000000,675.000000,150.000000,725.000000,2.000000,"false"};
+item16[] = {"true",8,218,200.000000,575.000000,300.000000,625.000000,0.000000,"true"};
+item17[] = {"last_condition",3,250,350.000000,575.000000,450.000000,625.000000,0.000000,"last" \n "condition"};
+item18[] = {"true",8,218,350.000000,675.000000,450.000000,725.000000,0.000000,"true"};
+item19[] = {"false",4,218,500.000000,575.000000,600.000000,625.000000,1.000000,"false"};
+item20[] = {"",7,210,546.000000,521.000061,554.000061,529.000000,0.000000,""};
+item21[] = {"",7,210,95.999969,521.000061,104.000031,529.000000,0.000000,""};
+item22[] = {"waitUntil",3,250,50.000000,775.000000,150.000000,825.000000,0.000000,"waitUntil"};
+item23[] = {"idle",4,218,50.000000,875.000000,150.000000,925.000000,1.000000,"idle"};
+item24[] = {"",7,210,245.999969,696.000000,254.000031,703.999939,0.000000,""};
+item25[] = {"done",8,218,200.000000,775.000000,300.000000,825.000000,0.000000,"done"};
+item26[] = {"",7,210,395.999969,971.000000,404.000031,978.999939,0.000000,""};
+item27[] = {"PartyType",3,250,-250.000000,950.000000,-150.000000,1000.000000,0.000000,"PartyType"};
+item28[] = {"set",8,218,-400.000000,950.000000,-300.000000,1000.000000,0.000000,"set"};
+item29[] = {"how_many_to_exec",3,250,-550.000000,1350.000000,-450.000000,1400.000000,0.000000,"how many" \n "to execute"};
+item30[] = {"set",8,218,-400.000000,1350.000000,-300.000000,1400.000000,0.000000,"set"};
+item31[] = {"portals_availabl",3,250,-850.000000,1350.000000,-750.000000,1400.000000,0.000000,"portals available"};
+item32[] = {"__1",1,250,-750.000000,0.000000,-650.000000,50.000000,0.000000,""};
+item33[] = {"defined",8,218,-700.000000,1375.000000,-600.000000,1425.000000,0.000000,"defined"};
+item34[] = {"some",4,218,-700.000000,1325.000000,-600.000000,1375.000000,1.000000,"some"};
+item35[] = {"set",8,218,-400.000000,1150.000000,-300.000000,1200.000000,0.000000,"set"};
+item36[] = {"not_set",4,218,-250.000000,1250.000000,-150.000000,1300.000000,1.000000,"not" \n "set"};
+item37[] = {"any",4,218,-250.000000,1050.000000,-150.000000,1100.000000,1.000000,"any"};
+item38[] = {"PlayersAlive",3,250,-250.000000,1150.000000,-150.000000,1200.000000,0.000000,"PlayersAlive"};
+item39[] = {"correct_type_fou",3,250,-550.000000,950.000000,-450.000000,1000.000000,0.000000,"correct type" \n "found"};
+item40[] = {"false",4,218,-700.000000,950.000000,-600.000000,1000.000000,1.000000,"false"};
+item41[] = {"true",8,218,-550.000000,1050.000000,-450.000000,1100.000000,0.000000,"true"};
+item42[] = {"more_triggers_to",3,250,-850.000000,950.000000,-750.000000,1000.000000,0.000000,"more" \n "triggers to" \n "check"};
+item43[] = {"true",8,218,-850.000000,1050.000000,-750.000000,1100.000000,0.000000,"true"};
+item44[] = {"PASS_DENIED",4,218,-1000.000000,950.000000,-900.000000,1000.000000,1.000000,"PASS" \n "DENIED"};
+item45[] = {"",7,210,-654.000061,1071.000000,-645.999939,1078.999878,0.000000,""};
+item46[] = {"",7,210,-354.000061,1071.000122,-345.999939,1079.000000,0.000000,""};
+item47[] = {"enough_units_ali",3,250,-550.000000,1150.000000,-450.000000,1200.000000,0.000000,"enough units" \n "alive"};
+item48[] = {"PASS_DENIED",4,218,-1000.000000,1150.000000,-900.000000,1200.000000,1.000000,"PASS" \n "DENIED"};
+item49[] = {"true",8,218,-550.000000,1250.000000,-450.000000,1300.000000,0.000000,"true"};
+item50[] = {"ExecutePortals",3,250,-250.000000,1350.000000,-150.000000,1400.000000,0.000000,"ExecutePortals"};
+item51[] = {"",7,210,-354.000061,1271.000000,-345.999939,1278.999878,0.000000,""};
+item52[] = {"all",4,218,-250.000000,1450.000000,-150.000000,1500.000000,1.000000,"all"};
+item53[] = {"PASS_DENIED",4,218,-1000.000000,1350.000000,-900.000000,1400.000000,1.000000,"PASS" \n "DENIED"};
+item54[] = {"true",8,218,-850.000000,1450.000000,-750.000000,1500.000000,0.000000,"true"};
+item55[] = {"",7,210,-354.000031,1471.000122,-345.999939,1479.000000,0.000000,""};
+item56[] = {"__2",3,250,-250.000000,1550.000000,-150.000000,1600.000000,0.000000,""};
+item57[] = {"",7,210,-316.500061,71.000061,-308.499939,78.999939,0.000000,""};
+item58[] = {"",7,210,-1054.000122,1371.000122,-1046.000000,1379.000000,0.000000,""};
+item59[] = {"",7,210,-1054.000122,1171.000000,-1046.000000,1178.999878,0.000000,""};
+item60[] = {"",7,210,-1054.000000,971.000061,-1045.999878,978.999939,0.000000,""};
+item61[] = {"____FAKE____",9,2440,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,9};
+link1[] = {3,4};
+link2[] = {5,3};
+link3[] = {5,6};
+link4[] = {5,10};
+link5[] = {6,8};
+link6[] = {9,5};
+link7[] = {10,11};
+link8[] = {11,12};
+link9[] = {11,13};
+link10[] = {12,27};
+link11[] = {13,14};
+link12[] = {14,15};
+link13[] = {14,16};
+link14[] = {15,22};
+link15[] = {16,17};
+link16[] = {17,18};
+link17[] = {17,19};
+link18[] = {18,26};
+link19[] = {19,20};
+link20[] = {20,21};
+link21[] = {21,14};
+link22[] = {22,23};
+link23[] = {22,25};
+link24[] = {23,22};
+link25[] = {24,14};
+link26[] = {25,24};
+link27[] = {26,27};
+link28[] = {27,28};
+link29[] = {27,37};
+link30[] = {28,39};
+link31[] = {29,33};
+link32[] = {29,34};
+link33[] = {30,29};
+link34[] = {31,53};
+link35[] = {31,54};
+link36[] = {33,31};
+link37[] = {34,31};
+link38[] = {35,47};
+link39[] = {36,50};
+link40[] = {37,38};
+link41[] = {38,35};
+link42[] = {38,36};
+link43[] = {39,40};
+link44[] = {39,41};
+link45[] = {40,42};
+link46[] = {41,46};
+link47[] = {42,43};
+link48[] = {42,44};
+link49[] = {43,45};
+link50[] = {44,60};
+link51[] = {45,39};
+link52[] = {46,38};
+link53[] = {47,48};
+link54[] = {47,49};
+link55[] = {48,59};
+link56[] = {49,51};
+link57[] = {50,30};
+link58[] = {50,52};
+link59[] = {51,50};
+link60[] = {52,56};
+link61[] = {53,58};
+link62[] = {54,55};
+link63[] = {55,56};
+link64[] = {58,59};
+link65[] = {59,60};
+link66[] = {2,61};
+link67[] = {61,2};
+link68[] = {7,61};
+link69[] = {61,7};
+link70[] = {44,61};
+link71[] = {48,61};
+link72[] = {53,61};
+globals[] = {25.000000,1,0,0,0,640,480,1,84,0,1,-1080.986206,-91.638245,2129.918945,757.145081,916,1271,1};
 window[] = {0,-1,-1,-1,-1,1063,26,1946,26,1,934};
 *//*%FSM</HEAD>*/
 class FSM
@@ -14,6 +148,43 @@ class FSM
     class ACTIONPOINT_CORE
     {
       name = "ACTIONPOINT_CORE";
+      init = /*%FSM<STATEINIT""">*/"private[" \n
+       "	""_ap""," \n
+       "	""_portals""," \n
+       "	""_t""," \n
+       "	""_tCount""" \n
+       "];" \n
+       "" \n
+       "_ap = _this select 0;" \n
+       "_portals = _this select 1;" \n
+       "_triggers = _ap call BIS_fnc_moduleTriggers;" \n
+       "_tCount = count _triggers;" \n
+       "_selectedPortals = [];" \n
+       "" \n
+       "_PartyType = _ap getVariable [""PartyType"",""Any""];" \n
+       "_PlayersAlive = _ap getVariable [""PlayersAlive"",0];" \n
+       "_SafeLock = _ap getVariable [""SafeLock"",128];" \n
+       "_ExecutePortals = _ap getVariable [""ExecutePortals"",-1];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "begin">*/
+        class begin
+        {
+          priority = 0.000000;
+          to="validate";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "_">*/
+    class _
+    {
+      name = "_";
       init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -21,10 +192,503 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
+    /*%FSM<STATE "missing">*/
+    class missing
+    {
+      name = "missing";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "validate">*/
+    class validate
+    {
+      name = "validate";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "required_variabl">*/
+        class required_variabl
+        {
+          priority = 2.000000;
+          to="missing";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""_ap"" || !isNil ""_portals"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "at_least_one_por">*/
+        class at_least_one_por
+        {
+          priority = 1.000000;
+          to="no_portals";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"count _portals < 1"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "done">*/
+        class done
+        {
+          priority = 0.000000;
+          to="condition";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "no_portals">*/
+    class no_portals
+    {
+      name = "no_portals";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "condition">*/
+    class condition
+    {
+      name = "condition";
+      init = /*%FSM<STATEINIT""">*/"_triggers = [_ap] call BIS_fnc_moduleTriggers;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "triggers">*/
+        class triggers
+        {
+          priority = 1.000000;
+          to="trigger__t_condi";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_tCount > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_t = 0;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="PartyType";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "trigger__t_condi">*/
+    class trigger__t_condi
+    {
+      name = "trigger__t_condi";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "false">*/
+        class false
+        {
+          priority = 2.000000;
+          to="waitUntil";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(triggerActivated (_triggers select _t))" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_time = time;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="last_condition";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "last_condition">*/
+    class last_condition
+    {
+      name = "last_condition";
+      init = /*%FSM<STATEINIT""">*/"_t = _t + 1;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "false">*/
+        class false
+        {
+          priority = 1.000000;
+          to="trigger__t_condi";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_tCount <= _t"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="PartyType";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "waitUntil">*/
+    class waitUntil
+    {
+      name = "waitUntil";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "idle">*/
+        class idle
+        {
+          priority = 1.000000;
+          to="waitUntil";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time < (_time + 0.5)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "done">*/
+        class done
+        {
+          priority = 0.000000;
+          to="trigger__t_condi";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "PartyType">*/
+    class PartyType
+    {
+      name = "PartyType";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "any">*/
+        class any
+        {
+          priority = 1.000000;
+          to="PlayersAlive";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_PartyType == ""any"") || (_tCount < 1)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "set">*/
+        class set
+        {
+          priority = 0.000000;
+          to="correct_type_fou";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_t = 0;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "how_many_to_exec">*/
+    class how_many_to_exec
+    {
+      name = "how_many_to_exec";
+      init = /*%FSM<STATEINIT""">*/"_selectedPortals = [_portals, _ExecutePortals, true] call Actionbuilder_fnc_selectRandom;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "some">*/
+        class some
+        {
+          priority = 1.000000;
+          to="portals_availabl";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_ExecutePortals == 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_selectedPortals = [_portals, (random ceil (count _portals)), true] call Actionbuilder_fnc_selectRandom;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "defined">*/
+        class defined
+        {
+          priority = 0.000000;
+          to="portals_availabl";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_selectedPortals = [_portals, _ExecutePortals, true] call Actionbuilder_fnc_selectRandom;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "portals_availabl">*/
+    class portals_availabl
+    {
+      name = "portals_availabl";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "PASS_DENIED">*/
+        class PASS_DENIED
+        {
+          priority = 1.000000;
+          to="____FAKE____";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_selectedPortals isEqualTo []"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="__2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "__1">*/
+    class __1
+    {
+      name = "__1";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "PlayersAlive">*/
+    class PlayersAlive
+    {
+      name = "PlayersAlive";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "not_set">*/
+        class not_set
+        {
+          priority = 1.000000;
+          to="ExecutePortals";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_PlayersAlive < 1"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "set">*/
+        class set
+        {
+          priority = 0.000000;
+          to="enough_units_ali";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "correct_type_fou">*/
+    class correct_type_fou
+    {
+      name = "correct_type_fou";
+      init = /*%FSM<STATEINIT""">*/"_trg = _triggers select _t;" \n
+       "_t = _t + 1;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "false">*/
+        class false
+        {
+          priority = 1.000000;
+          to="more_triggers_to";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_PartyType countType list _trg) < 1"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="PlayersAlive";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "more_triggers_to">*/
+    class more_triggers_to
+    {
+      name = "more_triggers_to";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "PASS_DENIED">*/
+        class PASS_DENIED
+        {
+          priority = 1.000000;
+          to="____FAKE____";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_tCount <= _t"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="correct_type_fou";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "enough_units_ali">*/
+    class enough_units_ali
+    {
+      name = "enough_units_ali";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "PASS_DENIED">*/
+        class PASS_DENIED
+        {
+          priority = 1.000000;
+          to="____FAKE____";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_PlayersAlive > ({alive _x} count (switchableUnits + playableUnits))"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="ExecutePortals";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "ExecutePortals">*/
+    class ExecutePortals
+    {
+      name = "ExecutePortals";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "all">*/
+        class all
+        {
+          priority = 1.000000;
+          to="__2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_ExecutePortals < 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_selectedPortals = _portals;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "set">*/
+        class set
+        {
+          priority = 0.000000;
+          to="how_many_to_exec";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "__2">*/
+    class __2
+    {
+      name = "__2";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "____FAKE____">*/
+    class ____FAKE____
+    {
+      name = "____FAKE____";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "false">*/
+        class false
+        {
+          priority = 1.000000;
+          to="____FAKE____";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="____FAKE____";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
   };
   initState="ACTIONPOINT_CORE";
   finalStates[] =
   {
+    "missing",
+    "no_portals",
+    "__1",
   };
 };
 /*%FSM</COMPILE>*/
