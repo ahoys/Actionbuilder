@@ -15,7 +15,7 @@
 // Only the server and headless clients are allowed to continue -----------------------------------
 if (!isServer && hasInterface) exitWith {false};
 
-private ["_ap","_modules","_portals","_worker"];
+private ["_ap","_portals","_worker"];
 _ap 		= _this select 0;
 _portals	= [_ap, true] call Actionbuilder_fnc_modulePortals;
 
@@ -37,12 +37,8 @@ if (isNil "RHNET_AB_L_FUNCTIONVALIDITY") then {
 	if !([] call Actionbuilder_fnc_verifyFunctions) exitWith {false};
 };
 
-// Initialize the Actionbuilder module ------------------------------------------------------------
+// Initialize Actionbuilder -----------------------------------------------------------------------
 if (isServer) then {
-	_modules 	= _ap call BIS_fnc_moduleModules;
-	_portals	= [];
-	
-	// Initialize all the required variables ----------------------------------------------------------
 	if (isNil "RHNET_AB_G_PORTALS") then {
 		RHNET_AB_G_PORTALS			= ["RHNET_ab_modulePORTAL_F"] call Actionbuilder_fnc_getTypes;
 		RHNET_AB_G_WAYPOINTS		= ["RHNET_ab_moduleWP_F"] call Actionbuilder_fnc_getTypes;
@@ -94,7 +90,7 @@ if (isMultiplayer) then {
 } else {
 	diag_log "ACTIONBUILDER ---------------------------------------------------------------";
 	diag_log format ["AP: %1 started", _ap];
-	_actionfsm = [_ap, [_ap] call Actionbuilder_fnc_modulePortals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
+	_actionfsm = [_ap, _portals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
 	waitUntil {completedFSM _actionfsm};
 };
 
