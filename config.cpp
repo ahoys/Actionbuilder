@@ -26,6 +26,8 @@ class CfgFunctions {
 			class moduleActionpoint {};
 			
 			class verifyFunctions {};
+			
+			class safeLock {};
 
 		};
 		class Portal {
