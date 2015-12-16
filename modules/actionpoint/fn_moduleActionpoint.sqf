@@ -88,18 +88,20 @@ if (isServer && isMultiplayer) then {
 // Register actionpoint and execute the main loop -------------------------------------------------
 if (isMultiplayer) then {
 	if (isServer && (count RHNET_AB_L_CLIENTS < 1)) then {
-		//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\actionpoint\rhfsm_actionpoint.fsm";
+		//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
 		//waitUntil {completedFSM _actionfsm};
 	} else {
 		_worker = RHNET_AB_G_WORKLOAD select ((RHNET_AB_G_WORKLOAD find _ap) + 1);
 		if (_worker == format ["%1", player]) then {
-			//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\actionpoint\rhfsm_actionpoint.fsm";
+			//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
 			//waitUntil {completedFSM _actionfsm};
 		};
 	};
 } else {
-	//_actionfsm = [_ap] execFSM "RHNET\rhnet_actionbuilder\actionpoint\rhfsm_actionpoint.fsm";
-	//waitUntil {completedFSM _actionfsm};
+	diag_log "ACTIONBUILDER ---------------------------------------------------------------";
+	diag_log format ["AP: %1 started", _ap];
+	_actionfsm = [_ap, _portals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
+	waitUntil {completedFSM _actionfsm};
 };
 
 true

@@ -107,13 +107,25 @@ class RHNET_ab_moduleAP_F : Module_F
 					name = "32 units allowed";
 					value = 32;
 				};
+				class AP_SAFELOCK48 {
+					name = "48 units allowed";
+					value = 48;
+				};
 				class AP_SAFELOCK64 {
 					name = "64 units allowed";
 					value = 64;
 				};
+				class AP_SAFELOCK96 {
+					name = "96 units allowed";
+					value = 96;
+				};
 				class AP_SAFELOCK128 {
 					name = "128 units allowed";
 					value = 128;
+				};
+				class AP_SAFELOCK160 {
+					name = "160 units allowed";
+					value = 160;
 				};
 				class AP_SAFELOCK192 {
 					name = "192 units allowed";
@@ -139,10 +151,6 @@ class RHNET_ab_moduleAP_F : Module_F
 				class AP_SAFELOCK1024HC {
 					name = "1024 units allowed (HC-required)";
 					value = 1024;
-				};
-				class AP_SAFELOCK2048HC {
-					name = "2048 units allowed (HC-required)";
-					value = 2048;
 				};
 			};
 		};

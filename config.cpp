@@ -82,6 +82,10 @@ class CfgFunctions {
 			
 			class isValidkey {};
 			
+			class modulePortals {};
+			
+			class moduleWaypoints {};
+			
 		};
 	};
 };
