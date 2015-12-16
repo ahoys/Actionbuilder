@@ -19,17 +19,21 @@ private ["_ap","_portals","_worker"];
 _ap 		= _this select 0;
 _portals	= [_ap, true] call Actionbuilder_fnc_modulePortals;
 
-if (count _portals < 1) exitWith {false};
+if (_portals isEqualTo []) exitWith {
+	["Actionpoint %1 has no function. Synchronize portals to actionpoints.", _ap] call BIS_fnc_error;
+	false
+};
 
 // Headless clients must wait for everything to get ready -----------------------------------------
-if (!isServer) then {
-	waitUntil {
-		!isNil "RHNET_AB_G_PORTALS" &&
-		!isNil "RHNET_AB_G_WAYPOINTS" &&
-		!isNil "RHNET_AB_G_PORTAL_OBJECTS" && 
-		!isNil "RHNET_AB_G_PORTAL_GROUPS" && 
-		!isNil "RHNET_AB_G_WORKLOAD"
+if (!isServer) exitWith {
+	if (isNil "RHNET_AB_L_INIT") then {
+		RHNET_AB_L_INIT = true;
+		if (isNil "Actionbuilder_fnc_remote") exitWith {["Missing remote functionality!"] call BIS_fnc_error; false};
+		"RHNET_AB_G_RECEIVER" addPublicVariableEventHandler {
+			[(_this select 1), (_this select 2)] spawn Actionbuilder_fnc_remote;
+		};
 	};
+	true
 };
 
 // Required functions -----------------------------------------------------------------------------

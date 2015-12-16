@@ -37,6 +37,8 @@ class CfgFunctions {
 			class initPortals {};
 
 			class spawnUnits {};
+			
+			class remote {};
 
 		};
 		class Waypoint {
