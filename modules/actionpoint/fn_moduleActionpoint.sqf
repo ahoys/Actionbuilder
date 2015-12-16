@@ -25,6 +25,7 @@ if (_portals isEqualTo []) exitWith {
 };
 
 // Headless clients must wait for everything to get ready -----------------------------------------
+/*
 if (!isServer) exitWith {
 	if (isNil "RHNET_AB_L_INIT") then {
 		RHNET_AB_L_INIT = true;
@@ -35,7 +36,7 @@ if (!isServer) exitWith {
 	};
 	true
 };
-
+*/
 // Required functions -----------------------------------------------------------------------------
 if (isNil "RHNET_AB_L_FUNCTIONVALIDITY") then {
 	if !([] call Actionbuilder_fnc_verifyFunctions) exitWith {false};
@@ -52,6 +53,7 @@ if (isServer) then {
 		RHNET_AB_L_BUFFER 			= 0.1;
 		RHNET_AB_L_PERFORMANCE 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_performance.fsm";
 		RHNET_AB_L_INITPORTALS		= [] call Actionbuilder_fnc_initPortals;
+		/*
 		if (isMultiplayer) then {
 			RHNET_AB_G_WORKLOAD 	= [];
 			RHNET_AB_L_CLIENTS 		= ["HeadlessClient_F", true, 1] call Actionbuilder_fnc_getTypes;
@@ -64,9 +66,10 @@ if (isServer) then {
 				publicVariable "RHNET_AB_G_WORKLOAD";
 			};
 		};
+		*/
 	};
 };
-
+/*
 // Decide workload between headless clients -------------------------------------------------------
 if (isServer && isMultiplayer) then {
 	if (count RHNET_AB_L_CLIENTS > 0) then {
@@ -78,7 +81,13 @@ if (isServer && isMultiplayer) then {
 		RHNET_AB_L_ID = RHNET_AB_L_ID + 1;
 	};
 };
+*/
+diag_log "ACTIONBUILDER ---------------------------------------------------------------";
+diag_log format ["AP: %1 started", _ap];
+_actionfsm = [_ap, _portals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
+waitUntil {completedFSM _actionfsm};
 
+/*
 // Register actionpoint and execute the main loop -------------------------------------------------
 if (isMultiplayer) then {
 	if (isServer && (count RHNET_AB_L_CLIENTS < 1)) then {
@@ -97,5 +106,5 @@ if (isMultiplayer) then {
 	_actionfsm = [_ap, _portals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
 	waitUntil {completedFSM _actionfsm};
 };
-
+*/
 true
