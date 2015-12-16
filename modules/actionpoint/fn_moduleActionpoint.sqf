@@ -17,7 +17,7 @@ if (!isServer && hasInterface) exitWith {false};
 
 private ["_ap","_modules","_portals","_worker"];
 _ap 		= _this select 0;
-_portals	= [_ap] call Actionbuilder_fnc_modulePortals;
+_portals	= [_ap, true] call Actionbuilder_fnc_modulePortals;
 
 if (count _portals < 1) exitWith {false};
 
