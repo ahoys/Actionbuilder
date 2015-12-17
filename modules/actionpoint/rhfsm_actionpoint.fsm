@@ -179,8 +179,8 @@ link90[] = {7,83};
 link91[] = {83,7};
 link92[] = {82,83};
 link93[] = {83,82};
-globals[] = {25.000000,1,0,0,0,640,480,1,119,0,1,-1751.518677,358.821747,2319.318848,925.488525,1938,1280,1};
-window[] = {2,-1,-1,-1,-1,1167,130,2050,130,3,1956};
+globals[] = {25.000000,1,0,0,0,640,480,1,119,0,1,-1607.637451,460.010193,1515.831787,150.201477,1938,1280,1};
+window[] = {2,-1,-1,-1,-1,1349,312,2232,312,3,1956};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -274,7 +274,7 @@ class FSM
           priority = 2.000000;
           to="fail";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!isNil ""_ap"" || !isNil ""_portals"""/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isNil ""_ap"" || isNil ""_portals"" || isNil ""RHNET_AB_L_DEBUG"""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

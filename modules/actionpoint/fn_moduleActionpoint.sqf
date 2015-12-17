@@ -15,7 +15,7 @@
 // Only the server and headless clients are allowed to continue -----------------------------------
 if (!isServer && hasInterface) exitWith {false};
 
-private ["_ap","_portals","_worker"];
+private["_ap","_portals","_worker"];
 _ap 		= _this select 0;
 _portals	= [_ap, true] call Actionbuilder_fnc_modulePortals;
 
@@ -50,6 +50,7 @@ if (isServer) then {
 		RHNET_AB_L_WAYPOINTS_DENIED	= [];
 		RHNET_AB_G_PORTAL_OBJECTS 	= [];
 		RHNET_AB_G_PORTAL_GROUPS 	= [];
+		RHNET_AB_L_DEBUG			= false;
 		RHNET_AB_L_BUFFER 			= 0.1;
 		RHNET_AB_L_PERFORMANCE 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_performance.fsm";
 		RHNET_AB_L_INITPORTALS		= [] call Actionbuilder_fnc_initPortals;

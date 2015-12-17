@@ -15,7 +15,7 @@
 
 private ["_master","_validate","_return"];
 _master		= param [0, objNull, [objNull]];
-_validate	= param [1, false [false]];
+_validate	= param [1, false, [false]];
 _return		= [];
 
 {
