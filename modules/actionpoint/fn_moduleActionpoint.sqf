@@ -85,7 +85,7 @@ if (isServer && isMultiplayer) then {
 diag_log "ACTIONBUILDER ---------------------------------------------------------------";
 diag_log format ["AP: %1 started", _ap];
 _actionfsm = [_ap, _portals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
-waitUntil {completedFSM _actionfsm};
+//waitUntil {completedFSM _actionfsm};
 
 /*
 // Register actionpoint and execute the main loop -------------------------------------------------
