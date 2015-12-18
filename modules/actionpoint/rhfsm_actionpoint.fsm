@@ -179,8 +179,8 @@ link90[] = {7,83};
 link91[] = {83,7};
 link92[] = {82,83};
 link93[] = {83,82};
-globals[] = {25.000000,1,0,0,0,640,480,1,119,0,1,-1505.215576,562.431946,2272.261719,906.631897,1938,1280,1};
-window[] = {2,-1,-1,-1,-1,1245,208,2128,208,3,1956};
+globals[] = {25.000000,1,0,0,0,640,480,1,119,0,1,-1128.785034,55.877769,2149.654785,1367.214966,1938,1280,1};
+window[] = {2,-1,-1,-32000,-32000,1245,208,2128,208,3,1956};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -217,7 +217,7 @@ class FSM
        "" \n
        "_debugMsg = {" \n
        "	if (RHNET_AB_L_DEBUG) then {" \n
-       "		hintSilent format [""ACTIONBUILDER\nDEBUG\n\nActionpoint:\n%1\n\nMessage:\n%2"", _ap, _msg];" \n
+       "		hintSilent format [""ACTIONBUILDER\nDEBUG\n\nActionpoint:\n%1\n\nMessage:\n%2"", _ap, (_this select 0)];" \n
        "	};" \n
        "	true" \n
        "};"/*%FSM</STATEINIT""">*/;
@@ -264,7 +264,7 @@ class FSM
     class validate
     {
       name = "validate";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"diag_log ""Im online!"";"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -329,7 +329,8 @@ class FSM
           to="trigger__t_condi";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"_tCount > 0"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_t = 0;"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_t = 0;" \n
+           "diag_log ""Triggers found"";"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
         /*%FSM<LINK "true">*/
@@ -799,8 +800,7 @@ class FSM
           to="more_portals";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"[_portal] spawn Actionbuilder_fnc_spawnUnits;" \n
-           "diag_log format [""%1 Spawned some units!""];"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"[_portal] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
