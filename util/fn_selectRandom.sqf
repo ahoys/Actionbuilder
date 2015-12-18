@@ -22,11 +22,13 @@ _unique		= param [2, false, [false]];
 _return		= [];
 _countArray	= count _array;
 
+diag_log format ["ARRAY: %1, COUNT: %2, COUNTARRAY: %3", _array, _count, _countArray];
+
 if (_countArray < 1) exitWith {[]};
 if (_count < 1) exitWith {[]};
 if ((_count > _countArray) && _unique) exitWith {_array};
 
-while (_count > 0) do {
+while {_count > 0} do {
 	_count = _count - 1;
 	if (_unique) then {
 		_i = floor random count _array;

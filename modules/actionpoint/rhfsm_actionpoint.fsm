@@ -205,7 +205,7 @@ link103[] = {96,83};
 link104[] = {84,96};
 link105[] = {96,84};
 link106[] = {89,96};
-globals[] = {25.000000,1,0,0,0,640,480,1,139,0,1,-1597.800659,649.328918,2073.191895,773.451416,2213,1280,1};
+globals[] = {25.000000,1,0,0,0,640,480,1,139,0,1,-1193.588867,371.867371,2191.297852,1285.837158,2213,1280,1};
 window[] = {2,-1,-1,-32000,-32000,1245,208,2128,208,3,2231};
 *//*%FSM</HEAD>*/
 class FSM
@@ -502,7 +502,7 @@ class FSM
     class how_many_to_exec
     {
       name = "how_many_to_exec";
-      init = /*%FSM<STATEINIT""">*/"_selectedPortals = [_portals, _ExecutePortals, true] call Actionbuilder_fnc_selectRandom;"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -513,7 +513,7 @@ class FSM
           to="portals_availabl";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"_ExecutePortals == 0"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_selectedPortals = [_portals, (random ceil (count _portals)), true] call Actionbuilder_fnc_selectRandom;"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_selectedPortals = [_portals, (ceil random (count _portals)), true] call Actionbuilder_fnc_selectRandom;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
         /*%FSM<LINK "defined">*/
@@ -533,7 +533,7 @@ class FSM
     class portals_availabl
     {
       name = "portals_availabl";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"diag_log format [""SELECTED: %1"", _selectedPortals];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -818,7 +818,7 @@ class FSM
     class select_a_portal
     {
       name = "select_a_portal";
-      init = /*%FSM<STATEINIT""">*/"_portal = _portals select _p;" \n
+      init = /*%FSM<STATEINIT""">*/"_portal = _selectedPortals select _p;" \n
        "diag_log format [""Portal: %1"", _portal];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
