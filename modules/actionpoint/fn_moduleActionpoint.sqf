@@ -70,6 +70,10 @@ if (isServer) then {
 		*/
 	};
 };
+
+RHNET_AB_G_AP_SIZE pushBack _ap;
+RHNET_AB_G_AP_SIZE pushBack [_ap] call Actionbuilder_fnc_getApSize;
+
 /*
 // Decide workload between headless clients -------------------------------------------------------
 if (isServer && isMultiplayer) then {

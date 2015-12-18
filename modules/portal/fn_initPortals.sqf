@@ -23,6 +23,7 @@ private["_portal","_objects","_groups"];
 	_portal 	= _x;
 	_objects	= [_portal] call Actionbuilder_fnc_getSyncedObjects;
 	_groups		= [_portal] call Actionbuilder_fnc_getSyncedGroups;
+	_size		= [_portal] call Actionbuilder_fnc_getSyncedSize;
 		
 	RHNET_AB_G_PORTAL_OBJECTS pushBack _portal;
 	RHNET_AB_G_PORTAL_OBJECTS pushBack [_objects];
