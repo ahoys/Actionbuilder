@@ -23,10 +23,6 @@ if (isNil "_array" || isNil "_key") exitWith {
 	false
 };
 
-call {
-	if (_key < 0) exitWith {false};
-	if (_key >= (count _array)) exitWith {false};
-	if (count _array < 1) exitWith {false};
-};
+if ((_key < 0) || (_key >= (count _array)) || (count _array < 1)) exitWith {false};
 
 true
