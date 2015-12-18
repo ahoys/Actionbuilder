@@ -52,7 +52,7 @@ if (isServer) then {
 		RHNET_AB_G_PORTAL_GROUPS 	= [];
 		RHNET_AB_G_AP_SIZE			= [];
 		RHNET_AB_L_DEBUG			= false;
-		RHNET_AB_L_BUFFER 			= 0.1;
+		RHNET_AB_L_BUFFER 			= 0.02;
 		RHNET_AB_L_PERFORMANCE 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_performance.fsm";
 		RHNET_AB_L_INITPORTALS		= [] call Actionbuilder_fnc_initPortals;
 		/*

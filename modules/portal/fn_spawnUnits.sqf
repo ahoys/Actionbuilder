@@ -17,6 +17,7 @@
 
 private[];
 
+_start = time;
 _portal = _this select 0;
 
 // Portal must exist
@@ -126,5 +127,8 @@ if (count _poolGrp > 0) then {
 		};
 	};
 } forEach _poolGrp;
+
+_end = time;
+diag_log format ["SpawnTime: %1", _end - _start];
 
 true

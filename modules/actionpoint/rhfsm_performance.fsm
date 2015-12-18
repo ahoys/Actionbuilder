@@ -1,8 +1,8 @@
 /*%FSM<COMPILE "D:\Projects\ArmATools\FSM Editor Personal Edition\scriptedFSM.cfg, lifecycle">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"start",0,250,-50.000000,-125.000000,50.000000,-75.000000,0.000000,"start"};
-item1[] = {"true",8,218,-50.000000,-25.000000,50.000000,25.000000,0.000000,"true"};
+item0[] = {"start",0,250,-50.000000,-300.000000,50.000000,-250.000000,0.000000,"start"};
+item1[] = {"true",8,218,-50.000000,-200.000000,50.000000,-150.000000,0.000000,"true"};
 item2[] = {"diag_fps",3,250,-50.000000,100.000000,50.000000,150.000000,0.000000,"diag_fps"};
 item3[] = {"critical_14",4,218,-50.000000,275.000000,50.000000,325.000000,2.000000,"critical 14"};
 item4[] = {"halt_actionbuild",3,250,-50.000000,400.000000,50.000000,450.000000,0.000000,"halt" \n "actionbuilder"};
@@ -13,8 +13,11 @@ item8[] = {"continue",3,250,250.000000,-25.000000,350.000000,25.000000,0.000000,
 item9[] = {"cool_down",4,218,-200.000000,-25.000000,-100.000000,25.000000,1.000000,"cool down"};
 item10[] = {"cool_down",4,218,250.000000,400.000000,350.000000,450.000000,1.000000,"cool down"};
 item11[] = {"cool_down",4,218,100.000000,-25.000000,200.000000,25.000000,1.000000,"cool down"};
+item12[] = {"init_time_has_pa",3,250,-50.000000,-100.000000,50.000000,-50.000000,0.000000,"init time" \n "has passed"};
+item13[] = {"false",4,218,100.000000,-100.000000,200.000000,-50.000000,1.000000,"false"};
+item14[] = {"true",8,218,-50.000000,0.000000,50.000000,50.000000,0.000000,"true"};
 link0[] = {0,1};
-link1[] = {1,2};
+link1[] = {1,12};
 link2[] = {2,3};
 link3[] = {2,5};
 link4[] = {2,6};
@@ -27,8 +30,12 @@ link10[] = {8,11};
 link11[] = {9,2};
 link12[] = {10,2};
 link13[] = {11,2};
-globals[] = {25.000000,1,0,0,0,640,480,1,22,6316128,1,-906.604370,651.952759,745.954956,-312.937500,1884,1280,1};
-window[] = {2,-1,-1,-1,-1,1063,26,1946,26,3,1902};
+link14[] = {12,13};
+link15[] = {12,14};
+link16[] = {13,12};
+link17[] = {14,2};
+globals[] = {25.000000,1,0,0,0,640,480,1,27,6316128,1,-895.022827,663.534302,539.140320,-519.752441,1884,1280,1};
+window[] = {2,-1,-1,-1,-1,1375,338,2258,338,3,1902};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -48,7 +55,7 @@ class FSM
         class true
         {
           priority = 0.000000;
-          to="diag_fps";
+          to="init_time_has_pa";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -159,6 +166,38 @@ class FSM
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"time > (_timer + 0.5)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "init_time_has_pa">*/
+    class init_time_has_pa
+    {
+      name = "init_time_has_pa";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "false">*/
+        class false
+        {
+          priority = 1.000000;
+          to="init_time_has_pa";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time < RHNET_AB_L_BUFFER"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="diag_fps";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log format [""PERF TIME: %1"", time];" \n
+           "RHNET_AB_L_BUFFER = 0.1;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };

@@ -205,7 +205,7 @@ link103[] = {96,83};
 link104[] = {84,96};
 link105[] = {96,84};
 link106[] = {89,96};
-globals[] = {25.000000,1,0,0,0,640,480,1,139,0,1,-1628.763428,944.475220,2512.869629,1024.507446,2213,1280,1};
+globals[] = {25.000000,1,0,0,0,640,480,1,139,0,1,-1597.800659,649.328918,2073.191895,773.451416,2213,1280,1};
 window[] = {2,-1,-1,-32000,-32000,1245,208,2128,208,3,2231};
 *//*%FSM</HEAD>*/
 class FSM
@@ -292,7 +292,7 @@ class FSM
     class validate
     {
       name = "validate";
-      init = /*%FSM<STATEINIT""">*/"diag_log ""Im online!"";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -357,8 +357,7 @@ class FSM
           to="trigger__t_condi";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"_tCount > 0"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_t = 0;" \n
-           "diag_log ""Triggers found"";"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_t = 0;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
         /*%FSM<LINK "true">*/
@@ -472,7 +471,7 @@ class FSM
     class PartyType
     {
       name = "PartyType";
-      init = /*%FSM<STATEINIT""">*/"_start = time;"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -819,7 +818,8 @@ class FSM
     class select_a_portal
     {
       name = "select_a_portal";
-      init = /*%FSM<STATEINIT""">*/"_portal = _portals select _p;"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_portal = _portals select _p;" \n
+       "diag_log format [""Portal: %1"", _portal];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -830,9 +830,7 @@ class FSM
           to="more_portals";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"[_portal] spawn Actionbuilder_fnc_spawnUnits;" \n
-           "_stop = time;" \n
-           "diag_log format [""TOTAL TIME: %1"", _stop - _start];"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"[_portal] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
