@@ -50,6 +50,7 @@ if (isServer) then {
 		RHNET_AB_L_WAYPOINTS_DENIED	= [];
 		RHNET_AB_G_PORTAL_OBJECTS 	= [];
 		RHNET_AB_G_PORTAL_GROUPS 	= [];
+		RHNET_AB_G_AP_SIZE			= [];
 		RHNET_AB_L_DEBUG			= false;
 		RHNET_AB_L_BUFFER 			= 0.1;
 		RHNET_AB_L_PERFORMANCE 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_performance.fsm";
@@ -72,7 +73,7 @@ if (isServer) then {
 };
 
 RHNET_AB_G_AP_SIZE pushBack _ap;
-RHNET_AB_G_AP_SIZE pushBack [_ap] call Actionbuilder_fnc_getApSize;
+RHNET_AB_G_AP_SIZE pushBack ([_portals] call Actionbuilder_fnc_getApSize);
 
 /*
 // Decide workload between headless clients -------------------------------------------------------
