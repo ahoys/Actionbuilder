@@ -25,7 +25,7 @@ private["_portal","_objects","_groups"];
 	_groups		= [_portal] call Actionbuilder_fnc_getSyncedGroups;
 		
 	RHNET_AB_G_PORTAL_OBJECTS pushBack _portal;
-	RHNET_AB_G_PORTAL_OBJECTS pushBack [_objects];
+	RHNET_AB_G_PORTAL_OBJECTS pushBack _objects;
 	
 	RHNET_AB_G_PORTAL_GROUPS pushBack _portal;
 	RHNET_AB_G_PORTAL_GROUPS pushBack _groups;		// [p1, [[g1],[g2]], p2, [[g3],[g4]]]

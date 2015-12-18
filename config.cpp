@@ -27,8 +27,6 @@ class CfgFunctions {
 			
 			class verifyFunctions {};
 			
-			class safeLock {};
-			
 			class getApSize {};
 
 		};

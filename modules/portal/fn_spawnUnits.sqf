@@ -59,7 +59,7 @@ _dir		= getDir _portal;
 // Category keys
 _keyObj = RHNET_AB_G_PORTAL_OBJECTS find _portal;
 _keyGrp = RHNET_AB_G_PORTAL_GROUPS find _portal;
-
+diag_log format ["OBJECTS: %1", RHNET_AB_G_PORTAL_OBJECTS];
 // Build categories
 if !(_keyObj < 0) then {_poolObj = RHNET_AB_G_PORTAL_OBJECTS select (_keyObj + 1)};		// [[obj1], [obj2], [obj3]]
 if !(_keyGrp < 0) then {_poolGrp = RHNET_AB_G_PORTAL_GROUPS select (_keyGrp + 1)};		// [[g1], [g2], [g3]]
