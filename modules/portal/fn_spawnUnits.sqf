@@ -15,9 +15,26 @@
 	NOTHING
 */
 
-private[];
+private[
+	"_portal",
+	"_varInit",
+	"_varPos",
+	"_varSafe",
+	"_varSpecial",
+	"_keyObj",
+	"_keyGrp",
+	"_poolObj",
+	"_poolGrp",
+	"_spawn",
+	"_obj",
+	"_pos",
+	"_dir",
+	"_unit",
+	"_id",
+	"_grp",
+	"_veh"
+];
 
-_start = time;
 _portal = _this select 0;
 
 // Portal must exist
@@ -25,6 +42,9 @@ if (isNil "_portal") exitWith {
 	["Requested portal does not exist."] call BIS_fnc_error;
 	false
 };
+
+// Never kill cpus
+waitUntil {diag_fps > 4};
 
 // Portal settings
 _varInit	= _portal getVariable ["p_UnitInit",""];
@@ -127,8 +147,5 @@ if (count _poolGrp > 0) then {
 		};
 	};
 } forEach _poolGrp;
-
-_end = time;
-diag_log format ["SpawnTime: %1", _end - _start];
 
 true
