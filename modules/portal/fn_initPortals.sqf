@@ -26,14 +26,14 @@ private["_portal","_objects","_groups"];
 		
 	RHNET_AB_G_PORTAL_OBJECTS pushBack _portal;
 	RHNET_AB_G_PORTAL_OBJECTS pushBack [_objects];
-		
+	
 	RHNET_AB_G_PORTAL_GROUPS pushBack _portal;
-	RHNET_AB_G_PORTAL_GROUPS pushBack [_groups];
+	RHNET_AB_G_PORTAL_GROUPS pushBack _groups;		// [p1, [[g1],[g2]], p2, [[g3],[g4]]]
 	
 } forEach RHNET_AB_G_PORTALS;
 
 {
-	
+
 	// Delete units
 	[_x, false] spawn Actionbuilder_fnc_deleteSyncedUnits;
 	

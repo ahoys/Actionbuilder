@@ -30,7 +30,7 @@ class RHNET_ab_modulePORTAL_F : Module_F
 		};
 		
 		class p_MinDist {
-			displayName = "PORTAL_SAFEzone";
+			displayName = "Safe Zone";
 			description = "Stop spawning, if there are playable units too close the portal";
 			typeName = "NUMBER";
 			class Values {

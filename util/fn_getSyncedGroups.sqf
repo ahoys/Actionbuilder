@@ -13,7 +13,7 @@
 	ARRAY - List of groups [side,[infantry],[vehicles],side2, ... sideN,[units],[vehicles]]
 */
 
-private["_master","_syncedUnits","_groups","_used","_crew","_i","_grp","_side","_veh"];
+private["_master","_syncedUnits","_groups","_used","_crew","_i","_grp","_side","_veh","_newGrp"];
 _master = param [0, objNull, [objNull]];
 _remove = param [1, false, [false]];
 
@@ -32,38 +32,37 @@ _i				= 0;
 
 // Collect all groups and return
 {
-	if (!isNil "_x") then {
-		_grp = group _x;
-		if !(isNull _grp) then {
+	_grp = group _x;
+	if !(isNull _grp) then {
+		if !(_grp in _used) then {
 			_side = side _grp;
-			if !(_grp in _used) then {
-				if ((_side == WEST) || (_side == EAST) || (_side == RESISTANCE) || (_side == CIVILIAN)) then {
-					_used pushBack _grp;
-					_groups pushBack _side;
-					_groups pushBack [];
-					_groups pushBack [];
-					{
-						_veh = objectParent _x;
-						if (isNull _veh) then {
-							(_groups select (_i+1)) pushBack [typeOf _x, getPosATL _x, getDir _x];
+			if ((_side == WEST) || (_side == EAST) || (_side == RESISTANCE) || (_side == CIVILIAN)) then {
+				_used pushBack _grp;
+				_newGrp = [];
+				_newGrp pushBack _side;
+				_newGrp pushBack [];
+				_newGrp pushBack [];	// [SIDE, [units], [vehicles]]
+				{
+					_veh = objectParent _x;
+					if (isNull _veh) then {
+						(_newGrp select 1) pushBack [typeOf _x, getPosATL _x, getDir _x];
+						if (_remove) then {
+							deleteVehicle _x;
+						};
+					} else {
+						if !(_x in _crew) then {
+							(_newGrp select 2) pushBack [typeOf _veh, getPosATL _veh, getDir _veh];
+							_crew pushBack (crew _veh);
 							if (_remove) then {
-								deleteVehicle _x;
-							};
-						} else {
-							if !(_x in _crew) then {
-								(_groups select (_i+2)) pushBack [typeOf _veh, getPosATL _veh, getDir _veh];
-								_crew pushBack (crew _veh);
-								if (_remove) then {
-									{
-										deleteVehicle _x;
-									} forEach (crew _veh);
-									deleteVehicle _veh;
-								};
+								{
+									deleteVehicle _x;
+								} forEach (crew _veh);
+								deleteVehicle _veh;
 							};
 						};
-					} forEach units _grp;
-					_i = _i + 3;
-				};
+					};
+				} forEach units _grp;
+				_groups pushBack _newGrp;
 			};
 		};
 	};

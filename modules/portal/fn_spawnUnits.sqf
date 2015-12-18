@@ -40,8 +40,8 @@ _keyObj = RHNET_AB_G_PORTAL_OBJECTS find _portal;
 _keyGrp = RHNET_AB_G_PORTAL_GROUPS find _portal;
 
 // Build categories
-if !(_keyObj < 0) then {_poolObj = RHNET_AB_G_PORTAL_OBJECTS select (_keyObj + 1)};
-if !(_keyGrp < 0) then {_poolGrp = RHNET_AB_G_PORTAL_GROUPS select (_keyGrp + 1)};
+if !(_keyObj < 0) then {_poolObj = RHNET_AB_G_PORTAL_OBJECTS select (_keyObj + 1)};		// [[obj1], [obj2], [obj3]]
+if !(_keyGrp < 0) then {_poolGrp = RHNET_AB_G_PORTAL_GROUPS select (_keyGrp + 1)};		// [[g1], [g2], [g3]]
 
 // Objects [typeOf, getPosATL, getDir]
 {
@@ -75,7 +75,7 @@ if (count _poolGrp > 0) then {
 
 // Groups [side, [[typeOf, getPosATL, getDir]],[[typeOf, getPosATL, getDir]]]
 {
-	if (count _x > 0) then {
+	if !(_x isEqualTo []) then {
 		_spawn = true;
 		// Get clearance for the spawning
 		{
