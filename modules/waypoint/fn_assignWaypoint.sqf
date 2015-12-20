@@ -122,11 +122,11 @@ if (_wpType == "UTURN") exitWith {
 	};
 };
 // Update register
-diag_log format ["AB (%1): %2 - - - %3, %4", _group, RHNET_AB_L_GROUPPROGRESS select _key, _location, _nextLocation];
+
 (RHNET_AB_L_GROUPPROGRESS select _key) set [0, _id + 1];
 (RHNET_AB_L_GROUPPROGRESS select _key) set [2, _nextLocation];
 (RHNET_AB_L_GROUPPROGRESS select _key) set [3, _location];
-diag_log format ["AB (%1): %2", _group, RHNET_AB_L_GROUPPROGRESS select _key];
+
 // Special property: punish
 // Affects entire group and objects linked to the waypoint
 if ((_wpType == "KILL") || (_wpType == "NEUTRALIZE") || (_wpType == "REMOVE") || (_wpType == "HURT") || (_wpType == "HEAL")) then {

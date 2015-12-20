@@ -103,6 +103,14 @@ class RHNET_ab_moduleAP_F : Module_F
 			description = "If there are more units overall than allowed, the actionpoint will not activate";
 			typeName = "NUMBER";
 			class Values {
+				class AP_SAFELOCK8 {
+					name = "8 units allowed";
+					value = 8;
+				};
+				class AP_SAFELOCK16 {
+					name = "16 units allowed";
+					value = 16;
+				};
 				class AP_SAFELOCK32 {
 					name = "32 units allowed";
 					value = 32;
@@ -122,6 +130,7 @@ class RHNET_ab_moduleAP_F : Module_F
 				class AP_SAFELOCK128 {
 					name = "128 units allowed";
 					value = 128;
+					default = 1;
 				};
 				class AP_SAFELOCK160 {
 					name = "160 units allowed";
@@ -130,7 +139,6 @@ class RHNET_ab_moduleAP_F : Module_F
 				class AP_SAFELOCK192 {
 					name = "192 units allowed";
 					value = 192;
-					default = 1;
 				};
 				class AP_SAFELOCK256HC {
 					name = "256 units allowed (HC-required)";
