@@ -24,10 +24,7 @@ if (
 	isNil "Actionbuilder_fnc_modulePortal"                 ||
 	isNil "Actionbuilder_fnc_spawnUnits"                   ||
 	isNil "Actionbuilder_fnc_command"                      ||
-	isNil "Actionbuilder_fnc_deleteSyncedUnits"            ||
 	isNil "Actionbuilder_fnc_getClosestSynced"             ||
-	isNil "Actionbuilder_fnc_getSyncedGroups"              ||
-	isNil "Actionbuilder_fnc_getSynchronizedObjectTypes"   ||
 	isNil "Actionbuilder_fnc_getTypes"                     ||
 	isNil "Actionbuilder_fnc_isValidkey"                   ||
 	isNil "Actionbuilder_fnc_objectsAhead"                 ||

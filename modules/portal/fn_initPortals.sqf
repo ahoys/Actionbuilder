@@ -6,7 +6,7 @@
 	This is an actionbuilder component, outside calls are not supported
 
 	Description:
-	Validates portals, registers units
+	Register synchronized groups and objects
 
 	Parameter(s):
 	NOTHING
@@ -15,39 +15,49 @@
 	NOTHING
 */
 
-private["_groups","_newGroup"];
+private["_objects","_groups","_i","_vehicle"];
 
 {
 	
-	// Register objects
-	RHNET_AB_G_PORTAL_OBJECTS pushBack _x;
-	RHNET_AB_G_PORTAL_OBJECTS pushBack ([_x, true] call Actionbuilder_fnc_getSynchronizedObjectTypes);
+	_objects 	= [];
+	_groups		= [];
+	_i			= 0;
 	
-	// Register groups
-	_groups = [];
-	_i = 0;
 	{
-		_groups pushBack [side _x, [], []];
-		{
-			if (isNull objectParent _x) then {
-				((_groups select _i) select 1) pushBack [typeOf _x, getPosATL _x, getDir _x];
-				deleteVehicle _x;
-			} else {
-				_vehicle = objectParent _x;
-				if !((isNull _vehicle) || (_vehicle in ((_groups select _i) select 2))) then {
-					((_groups select _i) select 2) pushBack [typeOf _vehicle, getPosATL _vehicle, getDir _vehicle];
-					{
+		if !(isNull _x) then {
+			if (_x isKindOf "Man") then {
+				_groups pushBack [side _x, [], []];
+				{
+					if (isNull objectParent _x) then {
+						// Man
+						((_groups select _i) select 1) pushBack [typeOf _x, getPosATL _x, getDir _x];
 						deleteVehicle _x;
-					} forEach crew _vehicle;
-					deleteVehicle _vehicle;
+					} else {
+						// Vehicle leader
+						_vehicle = objectParent _x;
+						((_groups select _i) select 2) pushBack [typeOf _vehicle, getPosATL _vehicle, getDir _vehicle];
+						{
+							deleteVehicle _x;
+						} forEach crew _vehicle;
+						deleteVehicle _vehicle;
+					};
+				} forEach units group _x;
+				_i = _i + 1;
+			} else {
+				if (side _x == CIVILIAN) then {
+					// Object
+					_objects pushBack [typeOf _x, getPosATL _x, getDir _x];
+					deleteVehicle _x;
 				};
 			};
-		} forEach units _x;
-		_i = _i + 1;
-	} forEach ([_x, false] call Actionbuilder_fnc_getSynchronizedGroups);
+		};
+	} forEach synchronizedObjects _x;
+	
+	RHNET_AB_G_PORTAL_OBJECTS pushBack _x;
+	RHNET_AB_G_PORTAL_OBJECTS pushBack _objects;
 	
 	RHNET_AB_G_PORTAL_GROUPS pushBack _x;
-	RHNET_AB_G_PORTAL_GROUPS pushBack _groups;		// [p1, [[g1],[g2]], p2, [[g3],[g4]]]
+	RHNET_AB_G_PORTAL_GROUPS pushBack _groups;
 	
 } forEach RHNET_AB_G_PORTALS;
 
