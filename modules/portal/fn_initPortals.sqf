@@ -21,7 +21,7 @@ private["_portal","_objects","_groups"];
 	
 	// Register units
 	_portal 	= _x;
-	_objects	= [_portal] call Actionbuilder_fnc_getSyncedObjects;
+	_objects	= [_portal] call Actionbuilder_fnc_getSynchronizedObjectTypes;
 	_groups		= [_portal] call Actionbuilder_fnc_getSyncedGroups;
 		
 	RHNET_AB_G_PORTAL_OBJECTS pushBack _portal;
