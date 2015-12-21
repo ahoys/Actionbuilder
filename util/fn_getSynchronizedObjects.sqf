@@ -7,7 +7,7 @@
 
 	Parameter(s):
 	0: OBJECT - object with synchronizations
-	1 (Optional): BOOL - true to remove object after the registeration (default: false)
+	1 (Optional): BOOL - true to remove objects after the registeration (default: false)
 
 	Returns:
 	ARRAY of OBJECTs
