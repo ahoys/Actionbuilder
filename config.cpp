@@ -72,15 +72,11 @@ class CfgFunctions {
 			
 			class objectsAhead {};
 			
+			class getSynchronizedClosest {};
+			
 			class getSynchronizedObjects {};
 			
-			class getSynchronizedObjectTypes {};
-			
 			class getSynchronizedGroups {};
-			
-			class getSyncedGroups {};
-			
-			class deleteSyncedUnits {};
 			
 			class getClosestSynced {};
 			
