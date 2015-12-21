@@ -15,27 +15,39 @@
 	NOTHING
 */
 
-private["_portal","_objects","_groups"];
+private["_groups","_newGroup"];
 
 {
 	
-	// Register units
-	_portal 	= _x;
-	_objects	= [_portal] call Actionbuilder_fnc_getSynchronizedObjectTypes;
-	_groups		= [_portal] call Actionbuilder_fnc_getSyncedGroups;
-		
-	RHNET_AB_G_PORTAL_OBJECTS pushBack _portal;
-	RHNET_AB_G_PORTAL_OBJECTS pushBack _objects;
+	// Register objects
+	RHNET_AB_G_PORTAL_OBJECTS pushBack _x;
+	RHNET_AB_G_PORTAL_OBJECTS pushBack ([_x, true] call Actionbuilder_fnc_getSynchronizedObjectTypes);
 	
-	RHNET_AB_G_PORTAL_GROUPS pushBack _portal;
+	// Register groups
+	_groups = [];
+	_i = 0;
+	{
+		_groups pushBack [side _x, [], []];
+		{
+			if (isNull objectParent _x) then {
+				((_groups select _i) select 1) pushBack [typeOf _x, getPosATL _x, getDir _x];
+				deleteVehicle _x;
+			} else {
+				_vehicle = objectParent _x;
+				if !((isNull _vehicle) || (_vehicle in ((_groups select _i) select 2))) then {
+					((_groups select _i) select 2) pushBack [typeOf _vehicle, getPosATL _vehicle, getDir _vehicle];
+					{
+						deleteVehicle _x;
+					} forEach crew _vehicle;
+					deleteVehicle _vehicle;
+				};
+			};
+		} forEach units _x;
+		_i = _i + 1;
+	} forEach ([_x, false] call Actionbuilder_fnc_getSynchronizedGroups);
+	
+	RHNET_AB_G_PORTAL_GROUPS pushBack _x;
 	RHNET_AB_G_PORTAL_GROUPS pushBack _groups;		// [p1, [[g1],[g2]], p2, [[g3],[g4]]]
-	
-} forEach RHNET_AB_G_PORTALS;
-
-{
-
-	// Delete units
-	[_x, false] spawn Actionbuilder_fnc_deleteSyncedUnits;
 	
 } forEach RHNET_AB_G_PORTALS;
 

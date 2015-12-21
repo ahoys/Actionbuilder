@@ -76,7 +76,7 @@ class CfgFunctions {
 			
 			class getSynchronizedObjectTypes {};
 			
-			class getSynchronizedObjects {};
+			class getSynchronizedGroups {};
 			
 			class getSyncedGroups {};
 			
