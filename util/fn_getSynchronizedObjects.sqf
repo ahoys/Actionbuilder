@@ -14,17 +14,17 @@
 */
 
 private["_master","_remove","_objects"];
-_master     = param [0, objNull, [objNull]];
-_remove     = param [1, false, [false]];
-_objects    = [];
+_master		= param [0, objNull, [objNull]];
+_remove		= param [1, false, [false]];
+_objects	= [];
 
 {
-    if ((isNull group _x) && (side _x == CIVILIAN)) then {
-        _objects pushBack _x;
-        if (_remove) then {
-            deleteVehicle _x;
-        };
-    };
+	if ((isNull group _x) && (side _x == CIVILIAN)) then {
+		_objects pushBack _x;
+		if (_remove) then {
+			deleteVehicle _x;
+		};
+	};
 } forEach synchronizedObjects _master;
 
 _objects
