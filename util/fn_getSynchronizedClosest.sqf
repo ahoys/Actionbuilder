@@ -3,7 +3,7 @@
 	Author: Ari Höysniemi
 
 	Description:
-	Return the closest synchronizated object
+	Return the closest synchronizated object (discards logics and triggers)
 
 	Parameter(s):
 	0: OBJECT - object with synchronizations
@@ -13,26 +13,28 @@
 	OBJECT
 */
 
-private["_master","_mirror","_selected","_selectedDistance"];
+private["_master","_excludes","_mirror","_selected","_selectedDistance"];
 _master		= param [0, objNull, [objNull]];
 _mirror		= param [1, false, [false]];
 _selected	= objNull;
 
 {
-	_distance = _x distance _master;
-	if (isNil _selectedDistance) then {
-		_selected 					= _x;
-		_selectedDistance 			= _distance;
-	} else {
-		if (_mirror) then {
-			if (_distance > _selectedDistance) then {
-				_selected 			= _x;
-				_selectedDistance 	= _distance;
-			};
+	if !((_x isKindOf "LOGIC") || (_x isKindOf "EmptyDetector")) then {
+		_distance = _x distance _master;
+		if (isNil "_selectedDistance") then {
+			_selected 					= _x;
+			_selectedDistance 			= _distance;
 		} else {
-			if (_distance < _selectedDistance) then {
-				_selected 			= _x;
-				_selectedDistance 	= _distance;
+			if (_mirror) then {
+				if (_distance > _selectedDistance) then {
+					_selected 			= _x;
+					_selectedDistance 	= _distance;
+				};
+			} else {
+				if (_distance < _selectedDistance) then {
+					_selected 			= _x;
+					_selectedDistance 	= _distance;
+				};
 			};
 		};
 	};
