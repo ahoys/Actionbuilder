@@ -18,14 +18,14 @@
 private["_valid"];
 
 if (
-	isNil "Actionbuilder_fnc_moduleActionpoint"            ||
-	isNil "Actionbuilder_fnc_verifyFunctions"              ||
-	isNil "Actionbuilder_fnc_initPortals"                  ||
-	isNil "Actionbuilder_fnc_modulePortal"                 ||
-	isNil "Actionbuilder_fnc_spawnUnits"                   ||
-	isNil "Actionbuilder_fnc_command"                      ||
-	isNil "Actionbuilder_fnc_getClosestSynced"             ||
-	isNil "Actionbuilder_fnc_getTypes"                     ||
+	isNil "Actionbuilder_fnc_moduleActionpoint"		||
+	isNil "Actionbuilder_fnc_verifyFunctions"		||
+	isNil "Actionbuilder_fnc_initPortals"			||
+	isNil "Actionbuilder_fnc_modulePortal"			||
+	isNil "Actionbuilder_fnc_spawnUnits"			||
+	isNil "Actionbuilder_fnc_command"				||
+	isNil "Actionbuilder_fnc_getClosestSynced"		||
+	isNil "Actionbuilder_fnc_getEqualTypes"			||
 	isNil "Actionbuilder_fnc_isValidkey"                   ||
 	isNil "Actionbuilder_fnc_objectsAhead"                 ||
 	isNil "Actionbuilder_fnc_punish"                       ||

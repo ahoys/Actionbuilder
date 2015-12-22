@@ -1,5 +1,5 @@
 /*
-	File: fn_getTypes.sqf
+	File: fn_getEqualTypes.sqf
 	Author: Ari Höysniemi
 
 	Description:

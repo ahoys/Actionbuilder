@@ -37,10 +37,6 @@ if (!isServer) exitWith {
 	true
 };
 */
-// Required functions -----------------------------------------------------------------------------
-if (isNil "RHNET_AB_L_FUNCTIONVALIDITY") then {
-	if !([] call Actionbuilder_fnc_verifyFunctions) exitWith {false};
-};
 
 // Initialize Actionbuilder -----------------------------------------------------------------------
 if (isServer) then {
@@ -58,7 +54,7 @@ if (isServer) then {
 		/*
 		if (isMultiplayer) then {
 			RHNET_AB_G_WORKLOAD 	= [];
-			RHNET_AB_L_CLIENTS 		= ["HeadlessClient_F", true, 1] call Actionbuilder_fnc_getTypes;
+			RHNET_AB_L_CLIENTS 		= ["HeadlessClient_F", true, 1] call Actionbuilder_fnc_getEqualTypes;
 			RHNET_AB_L_ID 			= 0;
 			if (count RHNET_AB_L_CLIENTS > 0) then {
 				publicVariable "RHNET_AB_G_PORTALS";
