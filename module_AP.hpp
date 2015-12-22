@@ -7,9 +7,10 @@ class RHNET_ab_moduleAP_F : Module_F
 	category = "RHNET_Actionbuilder";
 	icon = "\RHNET\rhnet_actionbuilder\data\iconAP_ca.paa";
 	function = "Actionbuilder_fnc_moduleActionpoint";
-	isGlobal = 1;
+	isGlobal = 0;
 	isTriggerActivated = 0;
 	functionPriority = 2;
+	isDisposable = 0;
 
 	class Arguments {
 		class PartyType {

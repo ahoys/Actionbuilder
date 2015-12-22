@@ -10,6 +10,7 @@ class RHNET_ab_modulePORTAL_F : Module_F
 	isGlobal = 0;
 	isTriggerActivated = 0;
 	functionPriority = 1;
+	isDisposable = 0;
 
 	class Arguments {
 		class p_Positioning {
