@@ -6,12 +6,11 @@
 	Return a list of units of desired type
 	
 	Parameter(s):
-	0: STRING/OBJECT - type of the entity, ex. "HeadlessClient_F" or object of desired type
-	1 (optional): BOOL - true to allow only server executions (default: true)
-	2 (optional): NUMBER - 0 to return all entities, 1 only alive, 2 only dead (default: 0)
+	0: STRING/OBJECT - type of the entity or an object of the desired type
+	1: OBJECT - true to find equal types among synchronized units of the given object
 
 	Returns:
-	ARRAY - List of units of desired type
+	ARRAY of OBJECTs - A list of units of the desired type
 */
 
 private["_type","_master","_entities"];

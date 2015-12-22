@@ -25,8 +25,6 @@ class CfgFunctions {
 
 			class moduleActionpoint {};
 			
-			class verifyFunctions {};
-			
 			class getApSize {};
 
 		};

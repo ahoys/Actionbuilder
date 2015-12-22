@@ -19,7 +19,7 @@ _validate	= param [1, false, [false]];
 _return		= [];
 
 {
-	if (_x isKindOf "RHNET_ab_modulePORTAL_F") then {
+	if (_x isEqualType "RHNET_ab_modulePORTAL_F") then {
 		_return pushBack _x;
 	} else {
 		if (_validate) then {
