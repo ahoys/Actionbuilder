@@ -23,14 +23,13 @@ if (_portals isEqualTo []) exitWith {
 };
 
 // Initialize master variables if required --------------------------------------------------------
-if (isNil "RHNET_AB_G_PORTALS") then {
-	RHNET_AB_G_PORTALS 			= entities "RHNET_ab_modulePORTAL_F";
-	RHNET_AB_L_WAYPOINTS_DENIED	= [];
+if (isNil "RHNET_AB_G_AP_SIZE") then {
 	RHNET_AB_G_AP_SIZE			= [];
+	RHNET_AB_L_WAYPOINTS_DENIED	= [];
 	RHNET_AB_L_DEBUG			= false;
 	RHNET_AB_L_BUFFER 			= 0.02;
 	RHNET_AB_L_PERFORMANCE 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_performance.fsm";
-	RHNET_AB_L_DELETE			= [RHNET_AB_G_PORTALS, ["LOGIC"]] call Actionbuilder_fnc_deleteSynchronized;
+	RHNET_AB_L_DELETE			= [RHNET_AB_G_PORTALS, ["RHNET_ab_moduleAP_F","RHNET_ab_moduleWP_F"]] call Actionbuilder_fnc_deleteSynchronized;
 };
 
 RHNET_AB_G_AP_SIZE pushBack _ap;

@@ -14,8 +14,8 @@
 */
 
 private["_masters","_excludes","_vehicle"];
-_masters	= param [0, [], [[]]];
-_excludes	= param [1, [], [[]]];
+_masters	= param [0, [], [[objNull]]];
+_excludes	= param [1, [], [[""]]];
 
 {
 	{

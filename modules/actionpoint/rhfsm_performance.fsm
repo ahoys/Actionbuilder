@@ -34,8 +34,8 @@ link14[] = {12,13};
 link15[] = {12,14};
 link16[] = {13,12};
 link17[] = {14,2};
-globals[] = {25.000000,1,0,0,0,640,480,1,27,6316128,1,-895.022827,663.534302,539.140320,-519.752441,1884,1280,1};
-window[] = {2,-1,-1,-1,-1,1375,338,2258,338,3,1902};
+globals[] = {25.000000,1,0,0,0,640,480,1,27,6316128,1,-895.022827,663.534302,539.140320,-519.752441,1653,1040,1};
+window[] = {2,-1,-1,-1,-1,1219,182,2102,182,3,1671};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -196,8 +196,7 @@ class FSM
           to="diag_fps";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"diag_log format [""PERF TIME: %1"", time];" \n
-           "RHNET_AB_L_BUFFER = 0.1;"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"RHNET_AB_L_BUFFER = 0.1;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };

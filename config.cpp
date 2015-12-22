@@ -34,8 +34,6 @@ class CfgFunctions {
 			
 			class modulePortal {};
 
-			class initPortals {};
-
 			class spawnUnits {};
 			
 			class remote {};
@@ -77,8 +75,6 @@ class CfgFunctions {
 			class getSynchronizedObjects {};
 			
 			class getSynchronizedGroups {};
-			
-			class getClosestSynced {};
 			
 			class punish {};
 			

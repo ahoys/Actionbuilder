@@ -22,7 +22,8 @@ if ([_portal, false] call Actionbuilder_fnc_moduleActionpoints isEqualTo []) exi
 };
 
 // Initialize master variables if required --------------------------------------------------------
-if (isNil "RHNET_AB_G_PORTAL_OBJECTS" || isNil "RHNET_AB_G_PORTAL_GROUPS") then {
+if (isNil "RHNET_AB_G_PORTALS") then {
+	RHNET_AB_G_PORTALS			= [];
 	RHNET_AB_G_PORTAL_OBJECTS	= [];
 	RHNET_AB_G_PORTAL_GROUPS	= [];
 };

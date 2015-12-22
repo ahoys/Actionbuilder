@@ -205,8 +205,8 @@ link103[] = {96,83};
 link104[] = {84,96};
 link105[] = {96,84};
 link106[] = {89,96};
-globals[] = {25.000000,1,0,0,0,640,480,1,139,0,1,-1193.588867,371.867371,2191.297852,1285.837158,2213,1280,1};
-window[] = {2,-1,-1,-32000,-32000,1245,208,2128,208,3,2231};
+globals[] = {25.000000,1,0,0,0,640,480,1,139,0,1,-1742.871704,921.149658,2458.187012,981.330750,1572,1040,1};
+window[] = {2,-1,-1,-1,-1,1115,78,1998,78,3,1590};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -818,8 +818,7 @@ class FSM
     class select_a_portal
     {
       name = "select_a_portal";
-      init = /*%FSM<STATEINIT""">*/"_portal = _selectedPortals select _p;" \n
-       "diag_log format [""Portal: %1"", _portal];"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_portal = _selectedPortals select _p;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
