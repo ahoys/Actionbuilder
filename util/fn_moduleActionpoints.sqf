@@ -1,16 +1,16 @@
 /*
-	File: fn_moduleWaypoints.sqf
+	File: fn_moduleActionpoints.sqf
 	Author: Ari Höysniemi
 
 	Description:
-	Returns synchronized waypoint modules
+	Returns synchronized actionpoint modules
 
 	Parameter(s):
 	0: OBJECT - master object
 	1: BOOL - true to give an error on other module synchronizations
 
 	Returns:
-	ARRAY - a list of waypoints
+	ARRAY - a list of portals
 */
 
 private ["_master","_validate","_return"];
@@ -19,7 +19,7 @@ _validate	= param [1, false, [false]];
 _return		= [];
 
 {
-	if (_x isKindOf "RHNET_ab_moduleWP_F") then {
+	if (_x isKindOf "RHNET_ab_moduleAP_F") then {
 		_return pushBack _x;
 	} else {
 		if (_validate) then {

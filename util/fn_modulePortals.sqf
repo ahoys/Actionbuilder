@@ -28,6 +28,6 @@ _return		= [];
 			};
 		};
 	};
-} forEach (synchronizedObjects _master);
+} forEach synchronizedObjects _master;
 
 _return

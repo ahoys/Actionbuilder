@@ -70,6 +70,8 @@ class CfgFunctions {
 			
 			class objectsAhead {};
 			
+			class deleteSynchronized {};
+			
 			class getSynchronizedClosest {};
 			
 			class getSynchronizedObjects {};
@@ -83,6 +85,8 @@ class CfgFunctions {
 			class command {};
 			
 			class isValidkey {};
+			
+			class moduleActionpoints {};
 			
 			class modulePortals {};
 			

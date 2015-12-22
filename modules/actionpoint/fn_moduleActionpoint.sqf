@@ -12,17 +12,42 @@
 	Nothing
 */
 
-// Only the server and headless clients are allowed to continue -----------------------------------
-if (!isServer && hasInterface) exitWith {false};
-
-private["_ap","_portals","_worker"];
+private["_ap","_portals"];
 _ap 		= _this select 0;
 _portals	= [_ap, true] call Actionbuilder_fnc_modulePortals;
 
+// The actionpoint should have portals as slaves --------------------------------------------------
 if (_portals isEqualTo []) exitWith {
 	["Actionpoint %1 has no function. Synchronize portals to actionpoints.", _ap] call BIS_fnc_error;
 	false
 };
+
+// Initialize master variables if required --------------------------------------------------------
+if (isNil "RHNET_AB_G_PORTALS") then {
+	RHNET_AB_G_PORTALS 			= entities "RHNET_ab_modulePORTAL_F";
+	RHNET_AB_L_WAYPOINTS_DENIED	= [];
+	RHNET_AB_G_AP_SIZE			= [];
+	RHNET_AB_L_DEBUG			= false;
+	RHNET_AB_L_BUFFER 			= 0.02;
+	RHNET_AB_L_PERFORMANCE 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_performance.fsm";
+	RHNET_AB_L_DELETE			= [RHNET_AB_G_PORTALS, ["LOGIC"]] call Actionbuilder_fnc_deleteSynchronized;
+};
+
+RHNET_AB_G_AP_SIZE pushBack _ap;
+RHNET_AB_G_AP_SIZE pushBack ([_portals] call Actionbuilder_fnc_getApSize);
+
+// Execute ----------------------------------------------------------------------------------------
+_actionfsm = [_ap, _portals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
+
+
+
+
+
+
+
+
+
+
 
 // Headless clients must wait for everything to get ready -----------------------------------------
 /*
@@ -36,7 +61,7 @@ if (!isServer) exitWith {
 	};
 	true
 };
-*/
+
 
 // Initialize Actionbuilder -----------------------------------------------------------------------
 if (isServer) then {
@@ -44,14 +69,11 @@ if (isServer) then {
 		RHNET_AB_G_PORTALS			= entities "RHNET_ab_modulePORTAL_F";
 		RHNET_AB_G_WAYPOINTS		= entities "RHNET_ab_moduleWP_F";
 		RHNET_AB_L_WAYPOINTS_DENIED	= [];
-		RHNET_AB_G_PORTAL_OBJECTS 	= [];
-		RHNET_AB_G_PORTAL_GROUPS 	= [];
 		RHNET_AB_G_AP_SIZE			= [];
 		RHNET_AB_L_DEBUG			= false;
 		RHNET_AB_L_BUFFER 			= 0.02;
 		RHNET_AB_L_PERFORMANCE 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_performance.fsm";
-		RHNET_AB_L_INITPORTALS		= [] call Actionbuilder_fnc_initPortals;
-		/*
+		
 		if (isMultiplayer) then {
 			RHNET_AB_G_WORKLOAD 	= [];
 			RHNET_AB_L_CLIENTS 		= ["HeadlessClient_F", true, 1] call Actionbuilder_fnc_getEqualTypes;
@@ -64,14 +86,14 @@ if (isServer) then {
 				publicVariable "RHNET_AB_G_WORKLOAD";
 			};
 		};
-		*/
+		
 	};
 };
 
 RHNET_AB_G_AP_SIZE pushBack _ap;
 RHNET_AB_G_AP_SIZE pushBack ([_portals] call Actionbuilder_fnc_getApSize);
 
-/*
+
 // Decide workload between headless clients -------------------------------------------------------
 if (isServer && isMultiplayer) then {
 	if (count RHNET_AB_L_CLIENTS > 0) then {
@@ -83,12 +105,10 @@ if (isServer && isMultiplayer) then {
 		RHNET_AB_L_ID = RHNET_AB_L_ID + 1;
 	};
 };
-*/
 
 _actionfsm = [_ap, _portals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
 //waitUntil {completedFSM _actionfsm};
 
-/*
 // Register actionpoint and execute the main loop -------------------------------------------------
 if (isMultiplayer) then {
 	if (isServer && (count RHNET_AB_L_CLIENTS < 1)) then {
