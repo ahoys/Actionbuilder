@@ -24,7 +24,7 @@ if (isNull _master) then {
 	_entities = entities _type;
 } else {
 	{
-		if (_x isEqualType _type) then {
+		if (_x isKindOf _type) then {
 			_entities pushBack _x;
 		};
 	} forEach synchronizedObjects _master;
