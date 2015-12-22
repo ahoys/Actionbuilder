@@ -22,7 +22,7 @@ _entities	= [];
 if (_type isEqualType objNull) then {_type = typeOf _type};
 
 if (isNull _master) then {
-	_entities pushBack entities _type;
+	_entities = entities _type;
 } else {
 	{
 		if (_x isEqualType _type) then {

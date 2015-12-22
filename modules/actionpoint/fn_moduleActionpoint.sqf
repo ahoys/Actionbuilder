@@ -45,8 +45,8 @@ if (isNil "RHNET_AB_L_FUNCTIONVALIDITY") then {
 // Initialize Actionbuilder -----------------------------------------------------------------------
 if (isServer) then {
 	if (isNil "RHNET_AB_G_PORTALS") then {
-		RHNET_AB_G_PORTALS			= ["RHNET_ab_modulePORTAL_F"] call Actionbuilder_fnc_getTypes;
-		RHNET_AB_G_WAYPOINTS		= ["RHNET_ab_moduleWP_F"] call Actionbuilder_fnc_getTypes;
+		RHNET_AB_G_PORTALS			= entities "RHNET_ab_modulePORTAL_F";
+		RHNET_AB_G_WAYPOINTS		= entities "RHNET_ab_moduleWP_F";
 		RHNET_AB_L_WAYPOINTS_DENIED	= [];
 		RHNET_AB_G_PORTAL_OBJECTS 	= [];
 		RHNET_AB_G_PORTAL_GROUPS 	= [];
