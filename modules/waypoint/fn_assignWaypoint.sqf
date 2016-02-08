@@ -191,7 +191,7 @@ if (
 		((_wpBehaviour == "UNCHANGED") || (_wpFormation == "UNCHANGED") || (_wpMode == "UNCHANGED"))
 	) then {
 	_skip = true;
-	sleep (RHNET_AB_L_BUFFER + 0.5);
+	sleep (0.5);
 };
 
 // Special property: send vehicles away

@@ -51,7 +51,7 @@ while {count _candidates < 1} do {
 		_wp = _x;
 		{
 			if (triggerActivated _x) exitWith {_candidates pushBack _wp};
-			sleep RHNET_AB_L_BUFFER;
+			sleep 0.5;
 		} forEach (_wp call BIS_fnc_moduleTriggers);
 	} forEach _candidatesLocked;
 };
