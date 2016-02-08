@@ -2,211 +2,202 @@
 /*%FSM<HEAD>*/
 /*
 item0[] = {"ACTIONPOINT_CORE",0,250,-250.000000,175.000000,-150.000000,225.000000,0.000000,"ACTIONPOINT" \n "CORE START"};
-item1[] = {"_",3,250,-550.000000,-50.000000,-450.000000,0.000000,0.000000,""};
-item2[] = {"true_2",8,218,-425.000000,-50.000000,-325.000000,0.000000,0.000000,"true"};
-item3[] = {"missing_variable",4,218,-100.000000,375.000000,0.000000,425.000000,2.000000,"missing" \n "variables"};
-item4[] = {"fail",1,250,50.000000,375.000000,150.000000,425.000000,0.000000,"fail"};
-item5[] = {"validate",3,250,-250.000000,375.000000,-150.000000,425.000000,0.000000,"validate"};
-item6[] = {"no_portals",4,218,-400.000000,375.000000,-300.000000,425.000000,1.000000,"no portals"};
-item7[] = {"false",4,218,-300.000000,-50.000000,-200.000000,0.000000,1.000000,"false"};
-item8[] = {"fail_1",1,250,-550.000000,375.000000,-450.000000,425.000000,0.000000,"fail"};
-item9[] = {"begin",8,218,-250.000000,275.000000,-150.000000,325.000000,0.000000,"begin"};
-item10[] = {"done",8,218,-250.000000,475.000000,-150.000000,525.000000,0.000000,"done"};
-item11[] = {"condition",3,250,-250.000000,575.000000,-150.000000,625.000000,0.000000,"condition"};
-item12[] = {"true",8,218,-250.000000,675.000000,-150.000000,725.000000,0.000000,"true"};
-item13[] = {"triggers",4,218,-100.000000,575.000000,0.000000,625.000000,1.000000,"triggers"};
-item14[] = {"trigger__t_condi",3,250,50.000000,575.000000,150.000000,625.000000,0.000000,"trigger _t" \n "condition"};
-item15[] = {"false",4,218,50.000000,675.000000,150.000000,725.000000,2.000000,"false"};
-item16[] = {"true",8,218,200.000000,575.000000,300.000000,625.000000,0.000000,"true"};
-item17[] = {"all_triggers_che",3,250,350.000000,575.000000,450.000000,625.000000,0.000000,"all triggers" \n "checked"};
-item18[] = {"true",8,218,350.000000,675.000000,450.000000,725.000000,0.000000,"true"};
-item19[] = {"false",4,218,500.000000,575.000000,600.000000,625.000000,1.000000,"false"};
-item20[] = {"",7,210,546.000000,521.000061,554.000061,529.000000,0.000000,""};
-item21[] = {"",7,210,95.999969,521.000061,104.000031,529.000000,0.000000,""};
-item22[] = {"waitUntil",3,250,50.000000,775.000000,150.000000,825.000000,0.000000,"waitUntil"};
-item23[] = {"idle",4,218,50.000000,875.000000,150.000000,925.000000,1.000000,"idle"};
-item24[] = {"",7,210,245.999969,696.000000,254.000031,703.999939,0.000000,""};
-item25[] = {"done",8,218,200.000000,775.000000,300.000000,825.000000,0.000000,"done"};
-item26[] = {"",7,210,395.999969,971.000000,404.000031,978.999939,0.000000,""};
-item27[] = {"PartyType",3,250,-250.000000,950.000000,-150.000000,1000.000000,0.000000,"PartyType"};
-item28[] = {"set",8,218,-400.000000,950.000000,-300.000000,1000.000000,0.000000,"set"};
-item29[] = {"how_many_to_exec",3,250,-550.000000,1350.000000,-450.000000,1400.000000,0.000000,"how many" \n "to execute"};
-item30[] = {"set",8,218,-400.000000,1350.000000,-300.000000,1400.000000,0.000000,"set"};
-item31[] = {"portals_availabl",3,250,-850.000000,1350.000000,-750.000000,1400.000000,0.000000,"portals available"};
-item32[] = {"__1",1,250,-675.000000,-50.000000,-575.000000,0.000000,0.000000,""};
-item33[] = {"defined",8,218,-700.000000,1375.000000,-600.000000,1425.000000,0.000000,"defined"};
-item34[] = {"some",4,218,-700.000000,1325.000000,-600.000000,1375.000000,1.000000,"some"};
-item35[] = {"set",8,218,-400.000000,1150.000000,-300.000000,1200.000000,0.000000,"set"};
-item36[] = {"not_set",4,218,-250.000000,1250.000000,-150.000000,1300.000000,1.000000,"not" \n "set"};
-item37[] = {"any",4,218,-250.000000,1050.000000,-150.000000,1100.000000,1.000000,"any"};
-item38[] = {"PlayersAlive",3,250,-250.000000,1150.000000,-150.000000,1200.000000,0.000000,"PlayersAlive"};
-item39[] = {"correct_type_fou",3,250,-550.000000,950.000000,-450.000000,1000.000000,0.000000,"correct type" \n "found"};
-item40[] = {"false",4,218,-700.000000,950.000000,-600.000000,1000.000000,1.000000,"false"};
-item41[] = {"true",8,218,-550.000000,1050.000000,-450.000000,1100.000000,0.000000,"true"};
-item42[] = {"more_triggers_to",3,250,-850.000000,950.000000,-750.000000,1000.000000,0.000000,"more" \n "triggers to" \n "check"};
-item43[] = {"true",8,218,-850.000000,1050.000000,-750.000000,1100.000000,0.000000,"true"};
-item44[] = {"PASS_DENIED",4,218,-1000.000000,950.000000,-900.000000,1000.000000,1.000000,"PASS" \n "DENIED"};
-item45[] = {"",7,210,-654.000061,1071.000000,-645.999939,1078.999878,0.000000,""};
-item46[] = {"",7,210,-354.000061,1071.000122,-345.999939,1079.000000,0.000000,""};
-item47[] = {"enough_units_ali",3,250,-550.000000,1150.000000,-450.000000,1200.000000,0.000000,"enough units" \n "alive"};
-item48[] = {"false",4,218,-700.000000,1150.000000,-600.000000,1200.000000,1.000000,"false"};
-item49[] = {"true",8,218,-550.000000,1250.000000,-450.000000,1300.000000,0.000000,"true"};
-item50[] = {"ExecutePortals",3,250,-250.000000,1350.000000,-150.000000,1400.000000,0.000000,"ExecutePortals"};
-item51[] = {"",7,210,-354.000061,1271.000000,-345.999939,1278.999878,0.000000,""};
-item52[] = {"all",4,218,-250.000000,1450.000000,-150.000000,1500.000000,1.000000,"all"};
-item53[] = {"false",4,218,-1000.000000,1350.000000,-900.000000,1400.000000,1.000000,"false"};
-item54[] = {"true",8,218,-850.000000,1450.000000,-750.000000,1500.000000,0.000000,"true"};
-item55[] = {"",7,210,-354.000031,1471.000122,-345.999939,1479.000000,0.000000,""};
-item56[] = {"SafeLock",3,250,-250.000000,1550.000000,-150.000000,1600.000000,0.000000,"SafeLock"};
-item57[] = {"",7,210,-179.000061,-28.999941,-170.999939,-21.000059,0.000000,""};
-item58[] = {"no_need_to_conti",1,250,-1150.000000,1350.000000,-1050.000000,1400.000000,0.000000,"no need to" \n "continue"};
-item59[] = {"no_need_to_conti_1",1,250,-2000.000000,1725.000000,-1900.000000,1775.000000,0.000000,"no need to" \n "continue"};
-item60[] = {"",7,210,-1054.000000,971.000061,-1045.999878,978.999939,0.000000,""};
-item61[] = {"not_set",4,218,-250.000000,1650.000000,-150.000000,1700.000000,1.000000,"not" \n "set"};
-item62[] = {"set",8,218,-400.000000,1550.000000,-300.000000,1600.000000,0.000000,"set"};
-item63[] = {"every_pool_count",3,250,-1550.000000,1625.000000,-1450.000000,1675.000000,0.000000,"every pool" \n "counted"};
-item64[] = {"false",4,218,-1700.000000,1625.000000,-1600.000000,1675.000000,1.000000,"false"};
-item65[] = {"true",8,218,-1550.000000,1725.000000,-1450.000000,1775.000000,0.000000,"true"};
-item66[] = {"select_a_portal",3,250,-250.000000,1750.000000,-150.000000,1800.000000,0.000000,"select a" \n "portal"};
-item67[] = {"more_portals",3,250,-250.000000,1950.000000,-150.000000,2000.000000,0.000000,"more portals"};
-item68[] = {"spawn",8,218,-250.000000,1850.000000,-150.000000,1900.000000,0.000000,"spawn"};
-item69[] = {"false",4,218,-250.000000,2050.000000,-150.000000,2100.000000,1.000000,"false"};
-item70[] = {"done",1,250,-250.000000,2150.000000,-150.000000,2200.000000,0.000000,"done"};
-item71[] = {"true",8,218,-400.000000,1950.000000,-300.000000,2000.000000,0.000000,"true"};
-item72[] = {"waitUntil_1",3,250,-1100.000000,675.000000,-1000.000000,725.000000,0.000000,"waitUntil"};
-item73[] = {"idle",4,218,-950.000000,675.000000,-850.000000,725.000000,1.000000,"idle"};
-item74[] = {"ready",8,218,-1100.000000,575.000000,-1000.000000,625.000000,0.000000,"ready"};
-item75[] = {"waitUntil_2",3,250,-400.000000,1850.000000,-300.000000,1900.000000,0.000000,"waitUntil"};
-item76[] = {"idle",4,218,-550.000000,1850.000000,-450.000000,1900.000000,1.000000,"idle"};
-item77[] = {"ready",8,218,-400.000000,1750.000000,-300.000000,1800.000000,0.000000,"ready"};
-item78[] = {"All_trigger_conditions",3,250,25.000000,975.000000,225.000000,1000.000000,0.000000,"All trigger conditions are TRUE"};
-item79[] = {"Spawn_was_denied",3,250,-725.000000,575.000000,-525.000000,600.000000,0.000000,"Spawn was denied"};
-item80[] = {"no_need_to_conti_2",1,250,-850.000000,1150.000000,-750.000000,1200.000000,0.000000,"no need to" \n "continue"};
-item81[] = {"true_1",8,218,-1525.000000,3275.000000,-1425.000000,3325.000000,0.000000,"true"};
-item82[] = {"__2",3,250,-1050.000000,2125.000000,-950.000000,2175.000000,0.000000,""};
-item83[] = {"true",8,218,-925.000000,2125.000000,-825.000000,2175.000000,0.000000,"true"};
-item84[] = {"false_1",4,218,-800.000000,2125.000000,-700.000000,2175.000000,1.000000,"false"};
-item85[] = {"__3",1,250,-1175.000000,2125.000000,-1075.000000,2175.000000,0.000000,""};
-item86[] = {"",7,210,-679.000061,2146.000244,-670.999939,2154.000000,0.000000,""};
-item87[] = {"safe_limit_excee",3,250,-1700.000000,1725.000000,-1600.000000,1775.000000,0.000000,"safe limit" \n "exceeded"};
-item88[] = {"true",8,218,-1850.000000,1725.000000,-1750.000000,1775.000000,0.000000,"true"};
-item89[] = {"false",4,218,-1700.000000,1825.000000,-1600.000000,1875.000000,1.000000,"false"};
-item90[] = {"",7,210,-1354.000000,1846.000122,-1346.000000,1854.000000,0.000000,""};
-item91[] = {"there_are_room_for",3,250,-550.000000,1550.000000,-450.000000,1600.000000,0.000000,"there are room for" \n "spawning"};
-item92[] = {"false",4,218,-700.000000,1550.000000,-600.000000,1600.000000,1.000000,"false"};
-item93[] = {"true",8,218,-550.000000,1650.000000,-450.000000,1700.000000,0.000000,"true"};
-item94[] = {"no_need_to_conti_3",1,250,-850.000000,1550.000000,-750.000000,1600.000000,0.000000,"no need to" \n "continue"};
-item95[] = {"",7,210,-354.000061,1671.000122,-345.999939,1678.999878,0.000000,""};
-item96[] = {"____FAKE____",9,3840,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
-link0[] = {0,9};
-link1[] = {3,4};
-link2[] = {5,3};
-link3[] = {5,6};
-link4[] = {5,10};
-link5[] = {6,8};
-link6[] = {9,5};
-link7[] = {10,11};
-link8[] = {11,12};
-link9[] = {11,13};
-link10[] = {12,27};
-link11[] = {13,14};
-link12[] = {14,15};
-link13[] = {14,16};
-link14[] = {15,22};
-link15[] = {16,17};
-link16[] = {17,18};
-link17[] = {17,19};
-link18[] = {18,26};
-link19[] = {19,20};
-link20[] = {20,21};
-link21[] = {21,14};
-link22[] = {22,23};
-link23[] = {22,25};
-link24[] = {23,22};
-link25[] = {24,14};
-link26[] = {25,24};
-link27[] = {26,27};
-link28[] = {27,28};
-link29[] = {27,37};
-link30[] = {28,39};
-link31[] = {29,33};
-link32[] = {29,34};
-link33[] = {30,29};
-link34[] = {31,53};
-link35[] = {31,54};
-link36[] = {33,31};
-link37[] = {34,31};
-link38[] = {35,47};
-link39[] = {36,50};
-link40[] = {37,38};
-link41[] = {38,35};
-link42[] = {38,36};
-link43[] = {39,40};
-link44[] = {39,41};
-link45[] = {40,42};
-link46[] = {41,46};
-link47[] = {42,43};
-link48[] = {42,44};
-link49[] = {43,45};
-link50[] = {44,60};
-link51[] = {45,39};
-link52[] = {46,38};
-link53[] = {47,48};
-link54[] = {47,49};
-link55[] = {48,80};
-link56[] = {49,51};
-link57[] = {50,30};
-link58[] = {50,52};
-link59[] = {51,50};
-link60[] = {52,56};
-link61[] = {53,58};
-link62[] = {54,55};
-link63[] = {55,56};
-link64[] = {56,61};
-link65[] = {56,62};
-link66[] = {60,72};
-link67[] = {61,66};
-link68[] = {62,91};
-link69[] = {63,64};
-link70[] = {63,65};
-link71[] = {64,63};
-link72[] = {65,87};
-link73[] = {66,68};
-link74[] = {67,69};
-link75[] = {67,71};
-link76[] = {68,67};
-link77[] = {69,70};
-link78[] = {71,75};
-link79[] = {72,73};
-link80[] = {72,74};
-link81[] = {73,72};
-link82[] = {74,11};
-link83[] = {75,76};
-link84[] = {75,77};
-link85[] = {76,75};
-link86[] = {77,66};
-link87[] = {87,88};
-link88[] = {87,89};
-link89[] = {88,59};
-link90[] = {89,90};
-link91[] = {91,92};
-link92[] = {91,93};
-link93[] = {92,94};
-link94[] = {93,95};
-link95[] = {95,66};
-link96[] = {2,96};
-link97[] = {96,2};
-link98[] = {7,96};
-link99[] = {96,7};
-link100[] = {81,96};
-link101[] = {96,81};
-link102[] = {83,96};
-link103[] = {96,83};
-link104[] = {84,96};
-link105[] = {96,84};
-link106[] = {89,96};
-globals[] = {25.000000,1,0,0,0,640,480,1,139,0,1,-1742.871704,921.149658,2458.187012,981.330750,1572,1040,1};
-window[] = {2,-1,-1,-1,-1,1115,78,1998,78,3,1590};
+item1[] = {"missing_variable",4,218,-100.000000,375.000000,0.000000,425.000000,2.000000,"missing" \n "variables"};
+item2[] = {"fail",1,250,50.000000,375.000000,150.000000,425.000000,0.000000,"fail"};
+item3[] = {"validate",3,250,-250.000000,375.000000,-150.000000,425.000000,0.000000,"validate"};
+item4[] = {"no_portals",4,218,-400.000000,375.000000,-300.000000,425.000000,1.000000,"no portals"};
+item5[] = {"fail_1",1,250,-550.000000,375.000000,-450.000000,425.000000,0.000000,"fail"};
+item6[] = {"begin",8,218,-250.000000,275.000000,-150.000000,325.000000,0.000000,"begin"};
+item7[] = {"done",8,218,-250.000000,475.000000,-150.000000,525.000000,0.000000,"done"};
+item8[] = {"condition",3,250,-250.000000,575.000000,-150.000000,625.000000,0.000000,"condition"};
+item9[] = {"true",8,218,-250.000000,675.000000,-150.000000,725.000000,0.000000,"true"};
+item10[] = {"triggers",4,218,-100.000000,575.000000,0.000000,625.000000,1.000000,"triggers"};
+item11[] = {"trigger__t_condi",3,250,50.000000,575.000000,150.000000,625.000000,0.000000,"trigger _t" \n "condition"};
+item12[] = {"false",4,218,50.000000,675.000000,150.000000,725.000000,2.000000,"false"};
+item13[] = {"true",8,218,200.000000,575.000000,300.000000,625.000000,0.000000,"true"};
+item14[] = {"all_triggers_che",3,250,350.000000,575.000000,450.000000,625.000000,0.000000,"all triggers" \n "checked"};
+item15[] = {"true",8,218,350.000000,675.000000,450.000000,725.000000,0.000000,"true"};
+item16[] = {"false",4,218,500.000000,575.000000,600.000000,625.000000,1.000000,"false"};
+item17[] = {"",7,210,546.000000,521.000061,554.000061,529.000000,0.000000,""};
+item18[] = {"",7,210,95.999969,521.000061,104.000031,529.000000,0.000000,""};
+item19[] = {"waitUntil",3,250,50.000000,775.000000,150.000000,825.000000,0.000000,"waitUntil"};
+item20[] = {"idle",4,218,50.000000,875.000000,150.000000,925.000000,1.000000,"idle"};
+item21[] = {"",7,210,245.999969,696.000000,254.000031,703.999939,0.000000,""};
+item22[] = {"done",8,218,200.000000,775.000000,300.000000,825.000000,0.000000,"done"};
+item23[] = {"",7,210,395.999969,971.000000,404.000031,978.999939,0.000000,""};
+item24[] = {"PartyType",3,250,-250.000000,950.000000,-150.000000,1000.000000,0.000000,"PartyType"};
+item25[] = {"set",8,218,-400.000000,950.000000,-300.000000,1000.000000,0.000000,"set"};
+item26[] = {"how_many_to_exec",3,250,-550.000000,1350.000000,-450.000000,1400.000000,0.000000,"how many" \n "to execute"};
+item27[] = {"set",8,218,-400.000000,1350.000000,-300.000000,1400.000000,0.000000,"set"};
+item28[] = {"portals_availabl",3,250,-850.000000,1350.000000,-750.000000,1400.000000,0.000000,"portals available"};
+item29[] = {"defined",8,218,-700.000000,1375.000000,-600.000000,1425.000000,0.000000,"defined"};
+item30[] = {"some",4,218,-700.000000,1325.000000,-600.000000,1375.000000,1.000000,"some"};
+item31[] = {"set",8,218,-400.000000,1150.000000,-300.000000,1200.000000,0.000000,"set"};
+item32[] = {"not_set",4,218,-250.000000,1250.000000,-150.000000,1300.000000,1.000000,"not" \n "set"};
+item33[] = {"any",4,218,-250.000000,1050.000000,-150.000000,1100.000000,1.000000,"any"};
+item34[] = {"PlayersAlive",3,250,-250.000000,1150.000000,-150.000000,1200.000000,0.000000,"PlayersAlive"};
+item35[] = {"correct_type_fou",3,250,-550.000000,950.000000,-450.000000,1000.000000,0.000000,"correct type" \n "found"};
+item36[] = {"false",4,218,-700.000000,950.000000,-600.000000,1000.000000,1.000000,"false"};
+item37[] = {"true",8,218,-550.000000,1050.000000,-450.000000,1100.000000,0.000000,"true"};
+item38[] = {"more_triggers_to",3,250,-850.000000,950.000000,-750.000000,1000.000000,0.000000,"more" \n "triggers to" \n "check"};
+item39[] = {"true",8,218,-850.000000,1050.000000,-750.000000,1100.000000,0.000000,"true"};
+item40[] = {"PASS_DENIED",4,218,-1000.000000,950.000000,-900.000000,1000.000000,1.000000,"PASS" \n "DENIED"};
+item41[] = {"",7,210,-654.000061,1071.000000,-645.999939,1078.999878,0.000000,""};
+item42[] = {"",7,210,-354.000061,1071.000122,-345.999939,1079.000000,0.000000,""};
+item43[] = {"enough_units_ali",3,250,-550.000000,1150.000000,-450.000000,1200.000000,0.000000,"enough units" \n "alive"};
+item44[] = {"false",4,218,-700.000000,1150.000000,-600.000000,1200.000000,1.000000,"false"};
+item45[] = {"true",8,218,-550.000000,1250.000000,-450.000000,1300.000000,0.000000,"true"};
+item46[] = {"ExecutePortals",3,250,-250.000000,1350.000000,-150.000000,1400.000000,0.000000,"ExecutePortals"};
+item47[] = {"",7,210,-354.000061,1271.000000,-345.999939,1278.999878,0.000000,""};
+item48[] = {"all",4,218,-250.000000,1450.000000,-150.000000,1500.000000,1.000000,"all"};
+item49[] = {"false",4,218,-1000.000000,1350.000000,-900.000000,1400.000000,1.000000,"false"};
+item50[] = {"true",8,218,-850.000000,1450.000000,-750.000000,1500.000000,0.000000,"true"};
+item51[] = {"",7,210,-354.000031,1471.000122,-345.999939,1479.000000,0.000000,""};
+item52[] = {"SafeLock",3,250,-250.000000,1550.000000,-150.000000,1600.000000,0.000000,"SafeLock"};
+item53[] = {"no_need_to_conti",1,250,-1150.000000,1350.000000,-1050.000000,1400.000000,0.000000,"no need to" \n "continue"};
+item54[] = {"",7,210,-1054.000000,971.000061,-1045.999878,978.999939,0.000000,""};
+item55[] = {"not_set",4,218,-250.000000,1650.000000,-150.000000,1700.000000,1.000000,"not" \n "set"};
+item56[] = {"set",8,218,-400.000000,1550.000000,-300.000000,1600.000000,0.000000,"set"};
+item57[] = {"select_a_portal",3,250,-250.000000,1950.000000,-150.000000,2000.000000,0.000000,"select a" \n "portal"};
+item58[] = {"more_portals",3,250,-250.000000,2150.000000,-150.000000,2200.000000,0.000000,"more portals"};
+item59[] = {"false",4,218,-250.000000,2250.000000,-150.000000,2300.000000,1.000000,"false"};
+item60[] = {"done",1,250,-250.000000,2350.000000,-150.000000,2400.000000,0.000000,"done"};
+item61[] = {"true",8,218,-400.000000,2150.000000,-300.000000,2200.000000,0.000000,"true"};
+item62[] = {"waitUntil_1",3,250,-1100.000000,675.000000,-1000.000000,725.000000,0.000000,"waitUntil"};
+item63[] = {"idle",4,218,-950.000000,675.000000,-850.000000,725.000000,1.000000,"idle"};
+item64[] = {"ready",8,218,-1100.000000,575.000000,-1000.000000,625.000000,0.000000,"ready"};
+item65[] = {"waitUntil_2",3,250,-400.000000,2050.000000,-300.000000,2100.000000,0.000000,"waitUntil"};
+item66[] = {"idle",4,218,-550.000000,2050.000000,-450.000000,2100.000000,1.000000,"idle"};
+item67[] = {"ready",8,218,-400.000000,1950.000000,-300.000000,2000.000000,0.000000,"ready"};
+item68[] = {"All_trigger_conditions",3,250,25.000000,975.000000,225.000000,1000.000000,0.000000,"All trigger conditions are TRUE"};
+item69[] = {"Spawn_was_denied",3,250,-725.000000,575.000000,-525.000000,600.000000,0.000000,"Spawn was denied"};
+item70[] = {"no_need_to_conti_1",1,250,-850.000000,1150.000000,-750.000000,1200.000000,0.000000,"no need to" \n "continue"};
+item71[] = {"_",3,250,-1050.000000,2125.000000,-950.000000,2175.000000,0.000000,""};
+item72[] = {"true",8,218,-925.000000,2125.000000,-825.000000,2175.000000,0.000000,"true"};
+item73[] = {"false",4,218,-800.000000,2125.000000,-700.000000,2175.000000,1.000000,"false"};
+item74[] = {"__1",1,250,-1175.000000,2125.000000,-1075.000000,2175.000000,0.000000,""};
+item75[] = {"",7,210,-679.000061,2146.000244,-670.999939,2154.000000,0.000000,""};
+item76[] = {"there_are_room_for",3,250,-550.000000,1550.000000,-450.000000,1600.000000,0.000000,"there are room for" \n "spawning"};
+item77[] = {"false",4,218,-700.000000,1550.000000,-600.000000,1600.000000,1.000000,"false"};
+item78[] = {"true",8,218,-550.000000,1650.000000,-450.000000,1700.000000,0.000000,"true"};
+item79[] = {"no_need_to_conti_2",1,250,-850.000000,1550.000000,-750.000000,1600.000000,0.000000,"no need to" \n "continue"};
+item80[] = {"",7,210,-354.000061,1671.000122,-345.999939,1678.999878,0.000000,""};
+item81[] = {"get_headless_cli",3,250,-250.000000,1750.000000,-150.000000,1800.000000,0.000000,"get" \n "headless clients"};
+item82[] = {"spawning_phase",4,218,-250.000000,1850.000000,-150.000000,1900.000000,1.000000,"spawning" \n "phase"};
+item83[] = {"headless_clients",8,218,-100.000000,1950.000000,0.000000,2000.000000,0.000000,"headless" \n "clients"};
+item84[] = {"all_clients_loop",3,250,50.000000,1950.000000,150.000000,2000.000000,0.000000,"all clients" \n "looped"};
+item85[] = {"true",8,218,200.000000,1950.000000,300.000000,2000.000000,0.000000,"true"};
+item86[] = {"false",4,218,50.000000,2050.000000,150.000000,2100.000000,1.000000,"false"};
+item87[] = {"server_spawn",4,218,-250.000000,2050.000000,-150.000000,2100.000000,1.000000,"server" \n "spawn"};
+item88[] = {"select_the_spawn",3,250,50.000000,2150.000000,150.000000,2200.000000,0.000000,"select the" \n "spawner"};
+item89[] = {"",7,210,245.999939,2171.000000,254.000061,2178.999756,0.000000,""};
+item90[] = {"headless_spawn",8,218,-100.000000,2150.000000,0.000000,2200.000000,0.000000,"headless" \n "spawn"};
+item91[] = {"____FAKE____",9,3640,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,6};
+link1[] = {1,2};
+link2[] = {3,1};
+link3[] = {3,4};
+link4[] = {3,7};
+link5[] = {4,5};
+link6[] = {6,3};
+link7[] = {7,8};
+link8[] = {8,9};
+link9[] = {8,10};
+link10[] = {9,24};
+link11[] = {10,11};
+link12[] = {11,12};
+link13[] = {11,13};
+link14[] = {12,19};
+link15[] = {13,14};
+link16[] = {14,15};
+link17[] = {14,16};
+link18[] = {15,23};
+link19[] = {16,17};
+link20[] = {17,18};
+link21[] = {18,11};
+link22[] = {19,20};
+link23[] = {19,22};
+link24[] = {20,19};
+link25[] = {21,11};
+link26[] = {22,21};
+link27[] = {23,24};
+link28[] = {24,25};
+link29[] = {24,33};
+link30[] = {25,35};
+link31[] = {26,29};
+link32[] = {26,30};
+link33[] = {27,26};
+link34[] = {28,49};
+link35[] = {28,50};
+link36[] = {29,28};
+link37[] = {30,28};
+link38[] = {31,43};
+link39[] = {32,46};
+link40[] = {33,34};
+link41[] = {34,31};
+link42[] = {34,32};
+link43[] = {35,36};
+link44[] = {35,37};
+link45[] = {36,38};
+link46[] = {37,42};
+link47[] = {38,39};
+link48[] = {38,40};
+link49[] = {39,41};
+link50[] = {40,54};
+link51[] = {41,35};
+link52[] = {42,34};
+link53[] = {43,44};
+link54[] = {43,45};
+link55[] = {44,70};
+link56[] = {45,47};
+link57[] = {46,27};
+link58[] = {46,48};
+link59[] = {47,46};
+link60[] = {48,52};
+link61[] = {49,53};
+link62[] = {50,51};
+link63[] = {51,52};
+link64[] = {52,55};
+link65[] = {52,56};
+link66[] = {54,62};
+link67[] = {55,81};
+link68[] = {56,76};
+link69[] = {57,83};
+link70[] = {57,87};
+link71[] = {58,59};
+link72[] = {58,61};
+link73[] = {59,60};
+link74[] = {61,65};
+link75[] = {62,63};
+link76[] = {62,64};
+link77[] = {63,62};
+link78[] = {64,8};
+link79[] = {65,66};
+link80[] = {65,67};
+link81[] = {66,65};
+link82[] = {67,57};
+link83[] = {76,77};
+link84[] = {76,78};
+link85[] = {77,79};
+link86[] = {78,80};
+link87[] = {80,81};
+link88[] = {81,82};
+link89[] = {82,57};
+link90[] = {83,84};
+link91[] = {84,85};
+link92[] = {84,86};
+link93[] = {85,89};
+link94[] = {86,88};
+link95[] = {87,58};
+link96[] = {88,90};
+link97[] = {89,88};
+link98[] = {90,58};
+link99[] = {72,91};
+link100[] = {91,72};
+link101[] = {73,91};
+link102[] = {91,73};
+globals[] = {25.000000,1,0,0,0,640,480,1,154,0,1,-964.242798,482.422974,2446.552490,1617.295166,2233,1280,1};
+window[] = {2,-1,-1,-1,-1,1245,208,2128,208,3,2251};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -228,7 +219,11 @@ class FSM
        "	""_p""," \n
        "	""_portal""," \n
        "	""_trg""," \n
-       "	""_debugMsg""" \n
+       "	""_debugMsg""," \n
+       "	""_clients""," \n
+       "	""_clientsC""," \n
+       "	""_master""," \n
+       "	""_i""" \n
        "];" \n
        "" \n
        "_ap = _this select 0;" \n
@@ -236,6 +231,8 @@ class FSM
        "_tCount = 0;" \n
        "_selectedPortals = [];" \n
        "_p = 0;" \n
+       "_i = 0;" \n
+       "_master = objNull;" \n
        "_size = RHNET_AB_G_AP_SIZE select ((RHNET_AB_G_AP_SIZE find _ap) + 1);" \n
        "" \n
        "_PartyType = _ap getVariable [""PartyType"",""Any""];" \n
@@ -262,17 +259,6 @@ class FSM
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "_">*/
-    class _
-    {
-      name = "_";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
       };
     };
     /*%FSM</STATE>*/
@@ -560,17 +546,6 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "__1">*/
-    class __1
-    {
-      name = "__1";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
     /*%FSM<STATE "PlayersAlive">*/
     class PlayersAlive
     {
@@ -676,7 +651,7 @@ class FSM
         class false
         {
           priority = 1.000000;
-          to="no_need_to_conti_2";
+          to="no_need_to_conti_1";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"_PlayersAlive > ({alive _x} count (switchableUnits + playableUnits))"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"_time = time + RHNET_AB_L_BUFFER;"/*%FSM</ACTION""">*/;
@@ -738,7 +713,7 @@ class FSM
         class not_set
         {
           priority = 1.000000;
-          to="select_a_portal";
+          to="get_headless_cli";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"_SafeLock < 1"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -769,51 +744,6 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "no_need_to_conti_1">*/
-    class no_need_to_conti_1
-    {
-      name = "no_need_to_conti_1";
-      init = /*%FSM<STATEINIT""">*/"[""SafeLock prevented spawning.""] call _debugMsg;" \n
-       "true"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "every_pool_count">*/
-    class every_pool_count
-    {
-      name = "every_pool_count";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "false">*/
-        class false
-        {
-          priority = 1.000000;
-          to="every_pool_count";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_p < _pCount"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_portal = _portals select _p;" \n
-           "_p = _p + 1;" \n
-           "_size = _size + (RHNET_AB_G_PORTAL_SIZE select ((RHNET_AB_G_PORTAL_SIZE find (_portals select _p)) + 1));"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="safe_limit_excee";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
     /*%FSM<STATE "select_a_portal">*/
     class select_a_portal
     {
@@ -822,14 +752,24 @@ class FSM
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "spawn">*/
-        class spawn
+        /*%FSM<LINK "server_spawn">*/
+        class server_spawn
         {
-          priority = 0.000000;
+          priority = 1.000000;
           to="more_portals";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_clientsC < 1"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"[_portal] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "headless_clients">*/
+        class headless_clients
+        {
+          priority = 0.000000;
+          to="all_clients_loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -961,10 +901,10 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "no_need_to_conti_2">*/
-    class no_need_to_conti_2
+    /*%FSM<STATE "no_need_to_conti_1">*/
+    class no_need_to_conti_1
     {
-      name = "no_need_to_conti_2";
+      name = "no_need_to_conti_1";
       init = /*%FSM<STATEINIT""">*/"[""Not enough players alive.""] call _debugMsg;" \n
        "true"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -973,10 +913,10 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "__2">*/
-    class __2
+    /*%FSM<STATE "_">*/
+    class _
     {
-      name = "__2";
+      name = "_";
       init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -984,45 +924,14 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "__3">*/
-    class __3
+    /*%FSM<STATE "__1">*/
+    class __1
     {
-      name = "__3";
+      name = "__1";
       init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "safe_limit_excee">*/
-    class safe_limit_excee
-    {
-      name = "safe_limit_excee";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "false">*/
-        class false
-        {
-          priority = 1.000000;
-          to="____FAKE____";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(count allUnits + _size) < _safeLock"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="no_need_to_conti_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
       };
     };
     /*%FSM</STATE>*/
@@ -1038,7 +947,7 @@ class FSM
         class false
         {
           priority = 1.000000;
-          to="no_need_to_conti_3";
+          to="no_need_to_conti_2";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(count allUnits + _size) > _safeLock"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -1048,6 +957,40 @@ class FSM
         class true
         {
           priority = 0.000000;
+          to="get_headless_cli";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "no_need_to_conti_2">*/
+    class no_need_to_conti_2
+    {
+      name = "no_need_to_conti_2";
+      init = /*%FSM<STATEINIT""">*/"[""SafeLock prevented spawning.""] call _debugMsg;" \n
+       "true"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "get_headless_cli">*/
+    class get_headless_cli
+    {
+      name = "get_headless_cli";
+      init = /*%FSM<STATEINIT""">*/"_clients = [""HeadlessClient_F""] call Actionbuilder_fnc_getEqualTypes;" \n
+       "_clientsC = count _clients;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "spawning_phase">*/
+        class spawning_phase
+        {
+          priority = 1.000000;
           to="select_a_portal";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
@@ -1057,15 +1000,57 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "no_need_to_conti_3">*/
-    class no_need_to_conti_3
+    /*%FSM<STATE "all_clients_loop">*/
+    class all_clients_loop
     {
-      name = "no_need_to_conti_3";
-      init = /*%FSM<STATEINIT""">*/"[""SafeLock prevented spawning.""] call _debugMsg;" \n
-       "true"/*%FSM</STATEINIT""">*/;
+      name = "all_clients_loop";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
+        /*%FSM<LINK "false">*/
+        class false
+        {
+          priority = 1.000000;
+          to="select_the_spawn";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_clientsCount > _i"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="select_the_spawn";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_i = 0;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "select_the_spawn">*/
+    class select_the_spawn
+    {
+      name = "select_the_spawn";
+      init = /*%FSM<STATEINIT""">*/"_master = _clients select _i;" \n
+       "_i = _i + 1;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "headless_spawn">*/
+        class headless_spawn
+        {
+          priority = 0.000000;
+          to="more_portals";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log format [""AB - master: %1"",_master];" \n
+           "[_portal] remoteExec [""Actionbuilder_fnc_spawnUnits"", _master];"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
       };
     };
     /*%FSM</STATE>*/
@@ -1087,38 +1072,8 @@ class FSM
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "false_1">*/
-        class false_1
-        {
-          priority = 1.000000;
-          to="____FAKE____";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
         /*%FSM<LINK "true">*/
         class true
-        {
-          priority = 0.000000;
-          to="____FAKE____";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true_1">*/
-        class true_1
-        {
-          priority = 0.000000;
-          to="____FAKE____";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true_2">*/
-        class true_2
         {
           priority = 0.000000;
           to="____FAKE____";
@@ -1136,13 +1091,11 @@ class FSM
   {
     "fail",
     "fail_1",
-    "__1",
     "no_need_to_conti",
-    "no_need_to_conti_1",
     "done",
+    "no_need_to_conti_1",
+    "__1",
     "no_need_to_conti_2",
-    "__3",
-    "no_need_to_conti_3",
   };
 };
 /*%FSM</COMPILE>*/
