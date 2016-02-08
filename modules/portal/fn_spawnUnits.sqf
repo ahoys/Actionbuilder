@@ -46,6 +46,12 @@ if (isNil "_portal") exitWith {
 // Never kill cpus
 waitUntil {diag_fps > 4};
 
+// Request global variables if not available
+if (!isNil "RHNET_AB_G_PORTAL_OBJECTS" || !isNil "RHNET_AB_G_PORTAL_GROUPS") {
+	RHNET_AB_G_REQUEST = owner player;
+	publicVariableServer "RHNET_AB_G_REQUEST";
+};
+
 // Portal settings
 _varInit	= _portal getVariable ["p_UnitInit",""];
 _varPos		= _portal getVariable ["p_Positioning","PORTAL"];
