@@ -196,8 +196,8 @@ link99[] = {72,91};
 link100[] = {91,72};
 link101[] = {73,91};
 link102[] = {91,73};
-globals[] = {25.000000,1,0,0,0,640,480,1,154,0,1,-964.242798,482.422974,2446.552490,1617.295166,2233,1280,1};
-window[] = {2,-1,-1,-1,-1,1245,208,2128,208,3,2251};
+globals[] = {25.000000,1,0,0,0,640,480,1,154,0,1,-754.615112,684.556274,2263.491699,1438.533813,2233,1280,1};
+window[] = {2,-1,-1,-1,-1,1271,234,2154,234,3,2251};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -1014,7 +1014,7 @@ class FSM
           priority = 1.000000;
           to="select_the_spawn";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_clientsCount > _i"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_clientsC > _i"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

@@ -47,7 +47,7 @@ if (isNil "_portal") exitWith {
 waitUntil {diag_fps > 4};
 
 // Request global variables if not available
-if (!isNil "RHNET_AB_G_PORTAL_OBJECTS" || !isNil "RHNET_AB_G_PORTAL_GROUPS") {
+if (!isNil "RHNET_AB_G_PORTAL_OBJECTS" || !isNil "RHNET_AB_G_PORTAL_GROUPS") then {
 	RHNET_AB_G_REQUEST = owner player;
 	publicVariableServer "RHNET_AB_G_REQUEST";
 };
