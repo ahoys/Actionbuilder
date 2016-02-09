@@ -139,7 +139,7 @@ if ((_wpType == "KILL") || (_wpType == "NEUTRALIZE") || (_wpType == "REMOVE") ||
 	_skip = true;
 };
 
-// Special property: placement							// Not tested
+// Special property: placement
 // 0: original positioning, 1: look for players
 if (_wpPlacement == 1) then {
 	_bestDistance = -1;
@@ -169,7 +169,7 @@ if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
 	};
 };
 
-// Special property: reusability						// Not tested
+// Special property: reusability
 // 1: Waypoint can be used only once / group
 if (_wpSpecial == 1) then {
 	((RHNET_AB_L_GROUPPROGRESS select _key) select 4) pushBack _nextLocation;
@@ -195,7 +195,7 @@ if (
 };
 
 // Special property: send vehicles away
-if (_wpType == "SVA") then {							// Not tested
+if (_wpType == "SVA") then {
 	[_group, _portal] call Actionbuilder_fnc_sendVehiclesAway;
 };
 
