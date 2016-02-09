@@ -196,8 +196,8 @@ link99[] = {72,91};
 link100[] = {91,72};
 link101[] = {73,91};
 link102[] = {91,73};
-globals[] = {25.000000,1,0,0,0,640,480,1,154,0,1,-754.615112,684.556274,2263.491699,1438.533813,2233,1280,1};
-window[] = {2,-1,-1,-1,-1,1271,234,2154,234,3,2251};
+globals[] = {25.000000,1,0,0,0,640,480,1,154,0,1,-614.874756,544.815002,2388.400146,1723.345215,2232,1280,1};
+window[] = {2,-1,-1,-1,-1,1271,234,2154,234,3,2250};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -1048,7 +1048,7 @@ class FSM
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"diag_log format [""AB - master: %1"",_master];" \n
-           "[_portal] remoteExec [""Actionbuilder_fnc_spawnUnits"", _master];"/*%FSM</ACTION""">*/;
+           "[_portal, owner _master] remoteExec [""Actionbuilder_fnc_spawnUnits"", _master];"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };

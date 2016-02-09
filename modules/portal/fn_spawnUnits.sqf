@@ -17,6 +17,7 @@
 
 private[
 	"_portal",
+	"_owner",
 	"_varInit",
 	"_varPos",
 	"_varSafe",
@@ -35,7 +36,8 @@ private[
 	"_veh"
 ];
 
-_portal = _this select 0;
+_portal = param [0, objNull, [objNull]];
+_owner 	= param [1, 0, [0]];
 
 // Portal must exist
 if (isNil "_portal") exitWith {
@@ -43,14 +45,15 @@ if (isNil "_portal") exitWith {
 	false
 };
 
-// Never kill cpus
-waitUntil {diag_fps > 4};
-
 // Request global variables if not available
-if (!isNil "RHNET_AB_G_PORTAL_OBJECTS" || !isNil "RHNET_AB_G_PORTAL_GROUPS") then {
-	RHNET_AB_G_REQUEST = owner player;
+if ((isNil "RHNET_AB_G_PORTAL_OBJECTS" || isNil "RHNET_AB_G_PORTAL_GROUPS") && (_owner > 0)) then {
+	RHNET_AB_G_REQUEST = _owner;
+	diag_log format ["AB - owner: %1", owner player];
 	publicVariableServer "RHNET_AB_G_REQUEST";
 };
+diag_log format ["AB - OBJ %1, GROUPS: %2", RHNET_AB_G_PORTAL_OBJECTS, RHNET_AB_G_PORTAL_GROUPS];
+// Do not continue until all the required variables are available
+waitUntil {!isNil "RHNET_AB_G_PORTAL_OBJECTS" && !isNil "RHNET_AB_G_PORTAL_GROUPS"};
 
 // Portal settings
 _varInit	= _portal getVariable ["p_UnitInit",""];
