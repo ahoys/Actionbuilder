@@ -13,9 +13,9 @@
 	Possible seats are: Driver, Gunner, Commander, Cargo
 */
 
-private["_target","_prioritized","_vehicles","_vehicle","_noGunner"];
-_target = _this select 0;
-_prioritized = [];
+private["_vehicles","_seats","_vehicle","_noGunner"];
+_vehicles	= _this select 0;
+_seats 		= [];
 
 {
 	_vehicle = _x;
@@ -40,4 +40,4 @@ _prioritized = [];
 	} forEach ([_x] call BIS_fnc_vehicleRoles);
 } forEach _vehicles;
 
-_prioritized
+_seats

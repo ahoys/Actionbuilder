@@ -26,7 +26,9 @@ _i			= 0;
 	if (_c <= _i) exitWith {};
 	call {
 		if (_x select 1 == "Driver") exitWith {
-			if (_force) then {(_units select _i) moveInDriver (_x select 0)} else {(_units select _i) assignAsDriver (_x select 0)};
+			if (isNull driver (_x select 0)) then {
+				if (_force) then {(_units select _i) moveInDriver (_x select 0)} else {(_units select _i) assignAsDriver (_x select 0)};
+			};
 		};
 		if (_x select 1 == "Gunner") exitWith {
 			if (_force) then {(_units select _i) moveInGunner (_x select 0)} else {(_units select _i) assignAsGunner (_x select 0)};

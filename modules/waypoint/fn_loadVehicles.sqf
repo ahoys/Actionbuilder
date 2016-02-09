@@ -1,5 +1,5 @@
 /*
-	File: fn_loadVehicle.sqf
+	File: fn_loadVehicles.sqf
 	Author: Ari Höysniemi
 	
 	Note:
@@ -12,52 +12,44 @@
 	Performs GET IN and FORCE GET IN special actions
 
 	Parameter(s):
-	0: ARRAY - target crew
+	0: ARRAY - target units
 	1: BOOL - true to forced populating
-	2: NUMBER - range of valid vehicles to be populated
+	2: NUMBER - search range for empty vehicles
 
 	Returns:
-	OBJECT - the selected portal if any
+	NOTHING
 */
 
-private["_units","_force","_range","_primaryVehicles","_seats"];
-
+private["_units","_force","_range","_primaryVehicles","_outside"];
 _units 				= _this select 0;
 _force				= _this select 1;
 _range				= _this select 2;
 _primaryVehicles	= [];
-_seats				= [];
+_outside			= [];
 
-// Look for primary vehicles and already seated units
+// Look for the group owned vehicles and units that require a seat
 {
 	if !(isNull objectParent _x) then {
 		if !(objectParent _x in _primaryVehicles) then {
 			_primaryVehicles pushBack (objectParent _x);
 		};
+	} else {
+		_outside pushBack _x;
 	};
 } forEach _units;
 
-// Prioritise seats
-_seats = [_primaryVehicles] call Actionbuilder_fnc_prioritizeSeats;
-
-// Populate primary vehicles
-_outside = [_units, _seats, _force] call Actionbuilder_fnc_populateSeats;
+// Seat as many units as possible
+_seated = [_outside, _primaryVehicles, _force, 0] call Actionbuilder_fnc_seatEmptyPositions;
 
 // If units outside, search for secondary vehicles
-if (count _outside > 0) then {
+if (_seated < count _outside) then {
 	// Look for secondary vehicles
 	_secondaryVehicles = nearestObjects [_units select 0, ["Car","Tank","Ship","Air"], _range];
 	
 	if (count _secondaryVehicles > 0) then {
-		// Prioritise seats
-		_seats = [_secondaryVehicles] call Actionbuilder_fnc_prioritizeSeats;
-		
 		// Populate secondary vehicles
-		_outside = [_outside, _seats, _force] call Actionbuilder_fnc_populateSeats;
+		_seated = [_outside, _secondaryVehicles, _force, _seated] call Actionbuilder_fnc_seatEmptyPositions;
 	};
 };
-
-// If still units outside, return false
-if (count _outside > 0) exitWith {false};
 
 true

@@ -53,9 +53,7 @@ class CfgFunctions {
 			
 			class unloadVehicles {};
 			
-			class prioritizeSeats {};
-			
-			class populateSeats {};
+			class seatEmptyPositions {};
 			
 			class sendVehiclesAway {};
 

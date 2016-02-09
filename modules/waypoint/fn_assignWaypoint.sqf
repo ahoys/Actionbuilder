@@ -42,7 +42,8 @@ private[
 	"_skip",
 	"_otherUnits",
 	"_bestDistance",
-	"_target"
+	"_target",
+	"_wp"
 ];
 
 // ----------------------------------------------------------------------------
@@ -219,19 +220,19 @@ if (
 };
 
 // Assign the new waypoint
-_group = _group addWaypoint [_wpLocation, _wpRadius];
-_group setWaypointType _wpType;
-_group setWaypointBehaviour _wpBehaviour;
-_group setWaypointSpeed _wpSpeed;
-_group setWaypointFormation _wpFormation;
-_group setWaypointCombatMode _wpMode;
-_group setWaypointStatements _wpStatement;
+_wp = _group addWaypoint [_wpLocation, _wpRadius];
+_wp setWaypointType _wpType;
+_wp setWaypointBehaviour _wpBehaviour;
+_wp setWaypointSpeed _wpSpeed;
+_wp setWaypointFormation _wpFormation;
+_wp setWaypointCombatMode _wpMode;
+_wp setWaypointStatements _wpStatement;
 
 call {
-	if (_wpType == "GETIN") exitWith {[units _group, false, 100] call Actionbuilder_fnc_loadVehicle};
-	if (_wpType == "FORCE") exitWith {[units _group, true, 100] call Actionbuilder_fnc_loadVehicle};
-	if (_wpType == "UNLOAD") exitWith {[_group, true] call Actionbuilder_fnc_unloadVehicle};
-	if (_wpType == "GETOUT") exitWith {[_group, false] call Actionbuilder_fnc_unloadVehicle};
+	if (_wpType == "GETIN") exitWith {[units _group, false, 50] call Actionbuilder_fnc_loadVehicles};
+	if (_wpType == "FORCE") exitWith {[units _group, true, 50] call Actionbuilder_fnc_loadVehicles};
+	if (_wpType == "UNLOAD") exitWith {[_group, true] call Actionbuilder_fnc_unloadVehicles};
+	if (_wpType == "GETOUT") exitWith {[_group, false] call Actionbuilder_fnc_unloadVehicles};
 };
 
 true
