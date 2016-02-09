@@ -1047,8 +1047,7 @@ class FSM
           to="more_portals";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"diag_log format [""AB - master: %1"",_master];" \n
-           "[_portal, owner _master] remoteExec [""Actionbuilder_fnc_spawnUnits"", _master];"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"[_portal, owner _master] remoteExec [""Actionbuilder_fnc_spawnUnits"", _master];"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
