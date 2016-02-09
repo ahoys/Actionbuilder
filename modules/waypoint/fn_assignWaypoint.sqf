@@ -88,7 +88,7 @@ _wpBehaviour	= _nextLocation getVariable ["WpBehaviour","UNCHANGED"];
 _wpSpeed		= _nextLocation getVariable ["WpSpeed","UNCHANGED"];
 _wpFormation	= _nextLocation getVariable ["WpFormation","NO CHANGE"];
 _wpMode			= _nextLocation getVariable ["WpMode","NO CHANGE"];
-_wpWait			= _nextLocation getVariable ["WpWait",0];
+_wpWait			= parseNumber (_nextLocation getVariable ["WpWait",0]);
 _wpPlacement	= _nextLocation getVariable ["WpPlacement",0];
 _wpSpecial		= _nextLocation getVariable ["WpSpecial",0];
 _wpStatement	= ["true", "[group this] spawn Actionbuilder_fnc_assignWaypoint"];
@@ -105,7 +105,7 @@ if (isNull _wpLocation) then {
 
 _wpDistance = _leader distance _wpLocation;
 
-// Special property: wait								// Does not work	
+// Special property: wait
 if (_wpWait isEqualType 0) then {
 	sleep _wpWait;
 };
