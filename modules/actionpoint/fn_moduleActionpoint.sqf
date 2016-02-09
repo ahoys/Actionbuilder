@@ -30,7 +30,7 @@ if (isNil "RHNET_AB_G_AP_SIZE") then {
 	RHNET_AB_L_PERFORMANCE 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_performance.fsm";
 	[RHNET_AB_G_PORTALS, ["RHNET_ab_moduleAP_F","RHNET_ab_moduleWP_F"]] call Actionbuilder_fnc_deleteSynchronized;
 	"RHNET_AB_G_REQUEST" addPublicVariableEventHandler {
-		diag_log format ["ABP: %1", _this select 1];
+		(_this select 1) publicVariableClient "RHNET_AB_G_PORTALS";
 		(_this select 1) publicVariableClient "RHNET_AB_G_PORTAL_OBJECTS";
 		(_this select 1) publicVariableClient "RHNET_AB_G_PORTAL_GROUPS";
 	};

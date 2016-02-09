@@ -46,12 +46,11 @@ if (isNil "_portal") exitWith {
 };
 
 // Request global variables if not available
-if ((isNil "RHNET_AB_G_PORTAL_OBJECTS" || isNil "RHNET_AB_G_PORTAL_GROUPS") && (_owner > 0)) then {
+if ((isNil "RHNET_AB_G_PORTALS" || isNil "RHNET_AB_G_PORTAL_OBJECTS" || isNil "RHNET_AB_G_PORTAL_GROUPS") && (_owner > 0)) then {
 	RHNET_AB_G_REQUEST = _owner;
-	diag_log format ["AB - owner: %1", owner player];
 	publicVariableServer "RHNET_AB_G_REQUEST";
 };
-diag_log format ["AB - OBJ %1, GROUPS: %2", RHNET_AB_G_PORTAL_OBJECTS, RHNET_AB_G_PORTAL_GROUPS];
+
 // Do not continue until all the required variables are available
 waitUntil {!isNil "RHNET_AB_G_PORTAL_OBJECTS" && !isNil "RHNET_AB_G_PORTAL_GROUPS"};
 
