@@ -75,5 +75,7 @@ _grpSize	= count _units;
 	};
 	
 } forEach _vehicles;
+diag_log format ["AB - assigned: %1 (%2)", _units, _i];
+_units orderGetIn true;
 
 _i

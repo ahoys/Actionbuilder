@@ -227,11 +227,11 @@ _wp setWaypointSpeed _wpSpeed;
 _wp setWaypointFormation _wpFormation;
 _wp setWaypointCombatMode _wpMode;
 _wp setWaypointStatements _wpStatement;
-
+diag_log format ["AB - grp: %1", _group];
 call {
-	if (_wpType == "GETIN") exitWith {[units _group, false, 50] call Actionbuilder_fnc_loadVehicles};
-	if (_wpType == "FORCE") exitWith {[units _group, true, 50] call Actionbuilder_fnc_loadVehicles};
-	if (_wpType == "UNLOAD") exitWith {[_group, true] call Actionbuilder_fnc_unloadVehicles};
+	if (_wpType == "GETIN") exitWith {[_group, false, 150] call Actionbuilder_fnc_loadVehicles};
+	if (_wpType == "UNLOAD") exitWith {[_group, false] call Actionbuilder_fnc_unloadVehicles};
+	if (_wpType == "FORCE") exitWith {[_group, true, 150] call Actionbuilder_fnc_loadVehicles};
 	if (_wpType == "GETOUT") exitWith {[_group, false] call Actionbuilder_fnc_unloadVehicles};
 };
 

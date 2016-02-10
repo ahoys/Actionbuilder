@@ -47,6 +47,10 @@ class RHNET_ab_moduleWP_F : Module_F
 					name = "UNLOAD TRANSPORT";
 					value = "UNLOAD";
 				};
+				class WP_LEAVEVEHICLES {
+					name = "LEAVE VEHICLES";
+					value = "GETOUT";
+				};
 				class WP_FORCETRANSPORT {
 					name = "FORCE TRANSPORT";
 					value = "FORCE";

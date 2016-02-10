@@ -1,5 +1,5 @@
 /*
-	File: fn_unloadVehicle.sqf
+	File: fn_unloadVehicles.sqf
 	Author: Ari Höysniemi
 	
 	Note:
@@ -9,36 +9,38 @@
 	fn_assignWaypoint.sqf
 	
 	Description:
-	Performs GET OUT special action
+	Performs GET OUT special actions
 
 	Parameter(s):
-	0: ARRAY - target units
+	0: GROUP - target group of units
 	1: BOOL - true to NOT unload the crew too
 
 	Returns:
 	NOTHING
 */
 
-private["_group","_all","_notCrew","_vehicle","_out"];
+private["_group","_ejectCrew","_vehicle"];
+_group		= _this select 0;
+_ejectCrew	= _this select 1;
+_unassigned	= [];
 
-_group = _this select 0;
-_notCrew = _this select 1;
-_crew = [];
+diag_log "AB - fn_unloadVehicles";
 
 {
 	_vehicle = objectParent _x;
 	if !(isNull _vehicle) then {
-		call {
-			if (_notCrew) then {
-				if (assignedDriver _vehicle == _x) exitWith {_crew pushBack _x};
-				if (assignedGunner _vehicle == _x) exitWith {_crew pushBack _x};
-				if (assignedCommander _vehicle == _x) exitWith {_crew pushBack _x};
-			};
+		if (_ejectCrew) then {
 			unassignVehicle _x;
+			_unassigned pushBack _x;
+		} else {
+			if ((assignedDriver _vehicle != _x) && (assignedGunner _vehicle != _x) && (assignedCommander _vehicle != _x)) then {
+				unassignVehicle _x;
+				_unassigned pushBack _x;
+			};
 		};
 	};
 } forEach units _group;
-
-(units _group - _crew) allowGetIn false;
+diag_log format ["AB - unassigned: %1", _unassigned];
+_unassigned orderGetIn false;
 
 true
