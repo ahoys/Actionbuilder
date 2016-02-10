@@ -20,34 +20,38 @@
 	NOTHING
 */
 
-private["_group","_force","_range","_primaryVehicles","_outside"];
-_group 				= _this select 0;
-_force				= _this select 1;
-_range				= _this select 2;
-_primaryVehicles	= [];
-_outside			= [];
+private["_group","_force","_range","_primaryVeh","_seated","_toBeSeated","_secondaryVeh"];
+_group		= _this select 0;
+_force		= _this select 1;
+_range		= _this select 2;
+_primaryVeh	= [];
+_seated		= [];
+_toBeSeated	= [];
 
-diag_log "AB - fn_loadVehicles";
-
-// Look for the group owned vehicles and units that require a seat
+// Search for the group owned vehicles and units that are outside of those vehicles
 {
-	if !(isNull objectParent _x) then {
-		if !(objectParent _x in _primaryVehicles) then {
-			_primaryVehicles pushBack (objectParent _x);
-		};
+	if (isNull objectParent _x) then {
+		_toBeSeated pushBack _x;
 	} else {
-		_outside pushBack _x;
+		if !(objectParent _x in _primaryVeh) then {
+			_primaryVeh pushBack (objectParent _x);
+			_seated pushBack _x;
+		};
 	};
 } forEach units _group;
 
-// Seat as many units as possible
-_seated = [_outside, _primaryVehicles, _force, 0] call Actionbuilder_fnc_seatEmptyPositions;
+_seated = [_primaryVeh, _seated, _toBeSeated, _force] call Actionbuilder_fnc_seatEmptyPositions;
 
-// If units outside, search for secondary vehicles
-if (_seated < count _outside) then {
-	_secondaryVehicles = nearestObjects [leader _group, ["Car","Tank","Ship","Air"], _range];	
-	if (count _secondaryVehicles > 0) then {
-		_seated = [_outside, _secondaryVehicles, _force, _seated] call Actionbuilder_fnc_seatEmptyPositions;
+if (count _seated < count units _group) then {
+	_secondaryVeh = [];
+	{
+		if !(_x in _primaryVeh) then {
+			_secondaryVeh pushBack _x;
+		};
+	} forEach nearestObjects [leader _group, ["Car","Tank","Ship","Air"], _range];
+	if (count _secondaryVeh > 0) then {
+		_toBeSeated = _toBeSeated - _seated;
+		[_secondaryVeh, _seated, _toBeSeated, _force] call Actionbuilder_fnc_seatEmptyPositions;
 	};
 };
 

@@ -122,8 +122,8 @@ if (_wpType == "UTURN") exitWith {
 		false
 	};
 };
-// Update register
 
+// Update register
 (RHNET_AB_L_GROUPPROGRESS select _key) set [0, _id + 1];
 (RHNET_AB_L_GROUPPROGRESS select _key) set [2, _nextLocation];
 (RHNET_AB_L_GROUPPROGRESS select _key) set [3, _location];
@@ -209,6 +209,13 @@ if (_skip) exitWith {
 // ----------------------------------------------------------------------------
 // NEXT OBJECTIVE: ASSIGN THE WAYPOINT TO THE GROUP
 
+call {
+	if (_wpType == "GETIN") exitWith {[_group, false, 50] call Actionbuilder_fnc_loadVehicles; _wpLocation = getPosATL _leader};
+	if (_wpType == "UNLOAD") exitWith {[_group, false] call Actionbuilder_fnc_unloadVehicles; _wpLocation = getPosATL _leader};
+	if (_wpType == "FORCE") exitWith {[_group, true, 50] call Actionbuilder_fnc_loadVehicles; _wpLocation = getPosATL _leader};
+	if (_wpType == "GETOUT") exitWith {[_group, true] call Actionbuilder_fnc_unloadVehicles; _wpLocation = getPosATL _leader};
+};
+
 // Translate special cases
 if (
 	(_wpType != "MOVE") &&
@@ -216,7 +223,7 @@ if (
 	(_wpType != "GUARD") &&
 	(_wpType != "DISMISSED")
 ) then {
-	_wpType == "MOVE";
+	_wpType = "MOVE";
 };
 
 // Assign the new waypoint
@@ -227,12 +234,5 @@ _wp setWaypointSpeed _wpSpeed;
 _wp setWaypointFormation _wpFormation;
 _wp setWaypointCombatMode _wpMode;
 _wp setWaypointStatements _wpStatement;
-diag_log format ["AB - grp: %1", _group];
-call {
-	if (_wpType == "GETIN") exitWith {[_group, false, 150] call Actionbuilder_fnc_loadVehicles};
-	if (_wpType == "UNLOAD") exitWith {[_group, false] call Actionbuilder_fnc_unloadVehicles};
-	if (_wpType == "FORCE") exitWith {[_group, true, 150] call Actionbuilder_fnc_loadVehicles};
-	if (_wpType == "GETOUT") exitWith {[_group, false] call Actionbuilder_fnc_unloadVehicles};
-};
 
 true

@@ -33,7 +33,7 @@ diag_log "AB - fn_unloadVehicles";
 			unassignVehicle _x;
 			_unassigned pushBack _x;
 		} else {
-			if ((assignedDriver _vehicle != _x) && (assignedGunner _vehicle != _x) && (assignedCommander _vehicle != _x)) then {
+			if ((assignedDriver _vehicle != _x) && (assignedGunner _vehicle != _x) && (assignedCommander _vehicle != _x) && ((assignedVehicleRole _x) select 0 != "Turret")) then {
 				unassignVehicle _x;
 				_unassigned pushBack _x;
 			};

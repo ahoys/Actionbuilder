@@ -12,70 +12,76 @@
 	Assigns seats for the given units
 
 	Parameter(s):
-	0: ARRAY - to-be-seated units
-	1: ARRAY - target vehicles
-	2: BOOLEAN - true to seat without animations
-	3: NUMBER - index number from where to start with the _units array
+	0: ARRAY - target vehicles
+	1: ARRAY - already seated units
+	2: ARRAY - to-be-seated units
+	3: BOOLEAN - true to seat without animations
 
 	Returns:
-	NUMBER - current index
+	ARRAY - total seated units
 */
 
-private["_units","_vehicles","_force","_grpSize","_i","_veh","_gunners","_cargo"];
-_units		= _this select 0;
-_vehicles	= _this select 1;
-_force		= _this select 2;
-_i			= _this select 3;
-_grpSize	= count _units;
+private["_vehicles","_toBeSeated","_force","_seated","_unit","_veh","_hasDriver","_hasCommander","_hasGunner","_cargo"];
+_vehicles	= _this select 0;
+_seated		= _this select 1;
+_toBeSeated	= _this select 2;
+_force		= _this select 3;
 
 {
-	if (_i >= _grpSize) exitWith {};
-	
 	_veh = _x;
-	
-	// If the vehicle does not have a driver
-	if (_veh emptyPositions "Driver" > 0) then {
-		if (_grpSize > 1 && _i == 0) then {
-			(_units select 1) assignAsDriver _veh;
-			if (_force) then {(_units select 1) moveInDriver _veh};
-			_i = _i + 1;
-		} else {
-			(_units select _i) assignAsDriver _veh;
-			if (_force) then {(_units select _i) moveInDriver _veh};
-			_i = _i + 1;
-		};	
-	};
-	
-	// If the vehicle does not have a commander
-	if (_veh emptyPositions "Commander" > 0 && _i < _grpSize) then {
-		if (_grpSize > 1 && _i == 1) then {
-			(_units select 0) assignAsCommander _veh;
-			if (_force) then {(_units select 0) moveInCommander _veh};
-			_i = _i + 1;
-		} else {
-			(_units select _i) assignAsCommander _veh;
-			if (_force) then {(_units select _i) moveInCommander _veh};
-			_i = _i + 1;
-		};
-	};
-	
-	_gunners = _veh emptyPositions "Gunner";
+	// Search for free positions
+	if (_veh emptyPositions "Driver" > 0) then {_hasDriver = false} else {_hasDriver = true};
+	if (_veh emptyPositions "Commander" > 0) then {_hasCommander = false} else {_hasCommander = true};
+	if (_veh emptyPositions "Gunner" > 0) then {_hasGunner = false} else {_hasGunner = true};
 	_cargo = _veh emptyPositions "Cargo";
-	
-	while {_gunners > 0 && _i < _grpSize} do {
-		if (_force) then {(_units select _i) moveInGunner _veh} else {(_units select _i) assignAsGunner _veh};
-		_gunners = _gunners - 1;
-		_i = _i + 1;
+	if !(_hasDriver && _hasCommander && _hasGunner && _cargo < 1) then {
+		{
+			call {
+				_unit = _x;
+				// Driver
+				if !(_hasDriver) exitWith {
+					_unit assignAsDriver _veh;
+					if (_force) then {
+						_unit moveInDriver _veh;
+					};
+					_seated pushBack _unit;
+					_hasDriver = true;
+				};
+				
+				// Gunner
+				if !(_hasGunner) exitWith {
+					_unit assignAsGunner _veh;
+					if (_force) then {
+						_unit moveInGunner _veh;
+					};
+					_seated pushBack _unit;
+					_hasGunner = true;
+				};
+				
+				// Commander
+				if !(_hasCommander) exitWith {
+					_unit assignAsCommander _veh;
+					if (_force) then {
+						_unit moveInCommander _veh;
+					};
+					_seated pushBack _unit;
+					_hasCommander = true;
+				};
+				
+				// Cargo
+				if (_cargo > 0) exitWith {
+					_unit assignAsCargo _veh;
+					if (_force) then {
+						_unit moveInCargo _veh;
+					};
+					_seated pushBack _unit;
+					_cargo = _cargo - 1;
+				};
+			};
+		} forEach _toBeSeated;
 	};
-	
-	while {_cargo > 0 && _i < _grpSize} do {
-		if (_force) then {(_units select _i) moveInCargo _veh} else {(_units select _i) assignAsCargo _veh};
-		_cargo = _cargo - 1;
-		_i = _i + 1;
-	};
-	
 } forEach _vehicles;
-diag_log format ["AB - assigned: %1 (%2)", _units, _i];
-_units orderGetIn true;
 
-_i
+_seated orderGetIn true;
+
+_seated
