@@ -24,8 +24,6 @@ _group		= _this select 0;
 _ejectCrew	= _this select 1;
 _unassigned	= [];
 
-diag_log "AB - fn_unloadVehicles";
-
 {
 	_vehicle = objectParent _x;
 	if !(isNull _vehicle) then {
@@ -40,7 +38,7 @@ diag_log "AB - fn_unloadVehicles";
 		};
 	};
 } forEach units _group;
-diag_log format ["AB - unassigned: %1", _unassigned];
+
 _unassigned orderGetIn false;
 
 true
