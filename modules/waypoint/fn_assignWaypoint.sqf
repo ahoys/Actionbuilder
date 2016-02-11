@@ -60,11 +60,6 @@ if (isNil "_group") exitWith {
 	false
 };
 
-//if (isNil "RHNET_AB_L_GROUPPROGRESS") then {diag_log "AB - GROUPPROGRESS NOT FOUND!"};
-//waitUntil {!isNil "RHNET_AB_L_GROUPPROGRESS"};
-
-diag_log format ["AB - GROUPPROGRESS: %1", RHNET_AB_L_GROUPPROGRESS];
-
 // Group query
 _key					= (RHNET_AB_L_GROUPPROGRESS find _group) + 1;
 if (_key < 0) 			exitWith {["Group %1 could not be found from the register.", _group] call BIS_fnc_error; false};

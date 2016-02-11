@@ -17,6 +17,17 @@ class CfgFactionClasses {
 	};
 };
 
+class CfgRemoteExec
+{
+	class Functions {
+		mode = 2;
+		jip = 0;
+		Actionbuilder_fnc_moduleActionpoint {allowedTargets = 2};
+		Actionbuilder_fnc_modulePortal {allowedTargets = 2};
+		Actionbuilder_fnc_moduleWaypoint {allowedTargets = 2};
+	};
+};
+
 class CfgFunctions {
 	class Actionbuilder {
 		class Actionpoint {
