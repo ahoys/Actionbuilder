@@ -15,7 +15,8 @@
 	BOOL - true, if success
 */
 
-if (!isServer && hasInterface) exitWith {diag_log "AB - Unauthorized access fn_assignWaypoint"};
+if (!isServer && hasInterface) exitWith {};
+diag_log format ["AB - wp assignment at time: %1", time];
 
 private[
 	"_group",
