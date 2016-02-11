@@ -20,6 +20,8 @@
 	NOTHING
 */
 
+if (!isServer && hasInterface) exitWith {};
+
 private["_group","_force","_range","_primaryVeh","_seated","_toBeSeated","_secondaryVeh"];
 _group		= _this select 0;
 _force		= _this select 1;

@@ -27,6 +27,8 @@ _seated		= _this select 1;
 _toBeSeated	= _this select 2;
 _force		= _this select 3;
 
+_toBeSeated allowGetIn true;
+
 {
 	_veh = _x;
 	// Search for free positions
@@ -81,7 +83,5 @@ _force		= _this select 3;
 		} forEach _toBeSeated;
 	};
 } forEach _vehicles;
-
-_seated orderGetIn true;
 
 _seated
