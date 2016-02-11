@@ -218,7 +218,7 @@ call {
 	if (_wpType == "FORCE") exitWith {[_group, true, 50] call Actionbuilder_fnc_loadVehicles; _leader doMove _wpLocation};
 	if (_wpType == "GETOUT") exitWith {[_group, true] call Actionbuilder_fnc_unloadVehicles; _leader doMove _wpLocation};
 };
-/*
+
 // Translate special cases
 if (
 	(_wpType != "MOVE") &&
@@ -237,5 +237,5 @@ _wp setWaypointSpeed _wpSpeed;
 _wp setWaypointFormation _wpFormation;
 _wp setWaypointCombatMode _wpMode;
 _wp setWaypointStatements _wpStatement;
-*/
+
 true
