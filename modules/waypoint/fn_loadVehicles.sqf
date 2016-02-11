@@ -42,7 +42,9 @@ _toBeSeated	= [];
 	};
 } forEach units _group;
 
-_seated = [_primaryVeh, _seated, _toBeSeated, _force] call Actionbuilder_fnc_seatEmptyPositions;
+if (count _toBeSeated > 0) then {
+	_seated = [_primaryVeh, _seated, _toBeSeated, _force] call Actionbuilder_fnc_seatEmptyPositions;
+};
 
 if (count _seated < count units _group) then {
 	_secondaryVeh = [];
