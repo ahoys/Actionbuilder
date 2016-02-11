@@ -46,8 +46,6 @@ class CfgFunctions {
 			class modulePortal {};
 
 			class spawnUnits {};
-			
-			class remote {};
 
 		};
 		class Waypoint {
