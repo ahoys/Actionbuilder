@@ -32,8 +32,8 @@ _force		= _this select 3;
 	_veh engineOn true;
 	// Search for free positions
 	if (_veh emptyPositions "Driver" > 0) then {_hasDriver = false} else {_hasDriver = true};
-	if (_veh emptyPositions "Commander" > 0) then {_hasCommander = false} else {_hasCommander = true};
 	if (_veh emptyPositions "Gunner" > 0) then {_hasGunner = false} else {_hasGunner = true};
+	if (_veh emptyPositions "Commander" > 0) then {_hasCommander = false} else {_hasCommander = true};
 	_cargo = _veh emptyPositions "Cargo";
 	if !(_hasDriver && _hasCommander && _hasGunner && _cargo < 1) then {
 		{
@@ -41,6 +41,7 @@ _force		= _this select 3;
 				_unit = _x;
 				// Driver
 				if !(_hasDriver) exitWith {
+					diag_log format ["AB - driver: %1", _unit];
 					_unit assignAsDriver _veh;
 					if (_force) then {
 						_unit moveInDriver _veh;
@@ -51,6 +52,7 @@ _force		= _this select 3;
 				
 				// Gunner
 				if !(_hasGunner) exitWith {
+					diag_log format ["AB - gunner: %1", _unit];
 					_unit assignAsGunner _veh;
 					if (_force) then {
 						_unit moveInGunner _veh;
@@ -61,6 +63,7 @@ _force		= _this select 3;
 				
 				// Commander
 				if !(_hasCommander) exitWith {
+					diag_log format ["AB - commander: %1", _unit];
 					_unit assignAsCommander _veh;
 					if (_force) then {
 						_unit moveInCommander _veh;
@@ -71,6 +74,7 @@ _force		= _this select 3;
 				
 				// Cargo
 				if (_cargo > 0) exitWith {
+					diag_log format ["AB - cargo: %1", _unit];
 					_unit assignAsCargo _veh;
 					if (_force) then {
 						_unit moveInCargo _veh;

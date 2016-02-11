@@ -213,10 +213,10 @@ if (_skip) exitWith {
 // NEXT OBJECTIVE: ASSIGN THE WAYPOINT TO THE GROUP
 
 call {
-	if (_wpType == "GETIN") exitWith {[_group, false, 50] call Actionbuilder_fnc_loadVehicles; _leader doMove _wpLocation};
-	if (_wpType == "UNLOAD") exitWith {[_group, false] call Actionbuilder_fnc_unloadVehicles; _leader doMove _wpLocation};
-	if (_wpType == "FORCE") exitWith {[_group, true, 50] call Actionbuilder_fnc_loadVehicles; _leader doMove _wpLocation};
-	if (_wpType == "GETOUT") exitWith {[_group, true] call Actionbuilder_fnc_unloadVehicles; _leader doMove _wpLocation};
+	if (_wpType == "GETIN") exitWith {[_group, false, 50] call Actionbuilder_fnc_loadVehicles; _wpLocation = position _leader};
+	if (_wpType == "UNLOAD") exitWith {[_group, false] call Actionbuilder_fnc_unloadVehicles; _wpLocation = position _leader};
+	if (_wpType == "FORCE") exitWith {[_group, true, 50] call Actionbuilder_fnc_loadVehicles; _wpLocation = position _leader};
+	if (_wpType == "GETOUT") exitWith {[_group, true] call Actionbuilder_fnc_unloadVehicles; _wpLocation = position _leader};
 };
 
 // Translate special cases
