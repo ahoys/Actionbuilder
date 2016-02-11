@@ -97,9 +97,7 @@ if !(_keyGrp < 0) then {_poolGrp = RHNET_AB_G_PORTAL_GROUPS select (_keyGrp + 1)
 
 if (count _poolGrp > 0) then {
 	_id = RHNET_AB_G_PORTALS find _portal;
-	if (isNil "RHNET_AB_L_GROUPPROGRESS") then {
-			RHNET_AB_L_GROUPPROGRESS = [];
-	};
+	if (isNil "RHNET_AB_L_GROUPPROGRESS") then {RHNET_AB_L_GROUPPROGRESS = []};
 };
 
 // Groups [side, [[typeOf, getPosATL, getDir]],[[typeOf, getPosATL, getDir]]]
