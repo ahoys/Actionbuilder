@@ -16,7 +16,6 @@
 */
 
 if (!isServer && hasInterface) exitWith {};
-diag_log format ["AB - wp assignment at time: %1", time];
 
 private[
 	"_group",

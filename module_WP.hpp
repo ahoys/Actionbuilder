@@ -38,7 +38,7 @@ class RHNET_ab_moduleWP_F : Module_F
 				class WP_DISMISSED {
 					name = "DISMISSED";
 					value = "DISMISS";
-				};
+				};/*
 				class WP_LOADTRANSPORT {
 					name = "LOAD TRANSPORT";
 					value = "GETIN";
@@ -54,7 +54,7 @@ class RHNET_ab_moduleWP_F : Module_F
 				class WP_FORCETRANSPORT {
 					name = "FORCE TRANSPORT";
 					value = "FORCE";
-				};
+				};*/
 				class WP_SVTBR {
 					name = "SEND VEHICLES TO BE REMOVED";
 					value = "SVA";

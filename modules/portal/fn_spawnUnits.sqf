@@ -16,8 +16,6 @@
 */
 
 if (!isServer && hasInterface) exitWith {};
-diag_log format ["AB - spawn at time: %1", time];
-diag_log format ["AB - owner: %1", _this select 1];
 
 private[
 	"_portal",
