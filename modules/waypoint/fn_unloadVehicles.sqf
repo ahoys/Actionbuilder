@@ -39,6 +39,6 @@ _unassigned	= [];
 	};
 } forEach units _group;
 
-_unassigned allowGetIn false;
+_unassigned orderGetIn false;
 
 true
