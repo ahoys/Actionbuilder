@@ -196,8 +196,8 @@ link99[] = {72,91};
 link100[] = {91,72};
 link101[] = {73,91};
 link102[] = {91,73};
-globals[] = {25.000000,1,0,0,0,640,480,1,154,0,1,-1560.232544,588.916016,2216.665527,984.182983,2232,1280,1};
-window[] = {2,-1,-1,-1,-1,1271,234,2154,234,3,2250};
+globals[] = {25.000000,1,0,0,0,640,480,1,154,0,1,-1340.860596,712.909119,2500.125244,1322.336060,2232,1280,1};
+window[] = {2,-1,-1,-32000,-32000,1193,156,2076,156,3,2250};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -759,7 +759,7 @@ class FSM
           to="more_portals";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"_clientsC < 1"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"[_portal] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"[_portal, 0] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
         /*%FSM<LINK "headless_clients">*/

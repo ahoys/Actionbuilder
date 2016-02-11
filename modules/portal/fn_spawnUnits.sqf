@@ -15,6 +15,8 @@
 	NOTHING
 */
 
+if (!isServer && hasInterface) exitWith {diag_log "AB - Unauthorized access fn_spawnUnits"};
+
 private[
 	"_portal",
 	"_owner",
@@ -36,8 +38,8 @@ private[
 	"_veh"
 ];
 
-_portal = param [0, objNull, [objNull]];
-_owner 	= param [1, 0, [0]];
+_portal = _this select 0;
+_owner 	= _this select 1;
 
 // Portal must exist
 if (isNil "_portal") exitWith {

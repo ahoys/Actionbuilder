@@ -15,6 +15,8 @@
 	BOOL - true, if success
 */
 
+if (!isServer && hasInterface) exitWith {diag_log "AB - Unauthorized access fn_assignWaypoint"};
+
 private[
 	"_group",
 	"_nextLocation",
@@ -58,8 +60,10 @@ if (isNil "_group") exitWith {
 	false
 };
 
-if (isNil "RHNET_AB_L_GROUPPROGRESS") then {diag_log "AB - GROUPPROGRESS NOT FOUND!"};
-waitUntil {!isNil "RHNET_AB_L_GROUPPROGRESS"};
+//if (isNil "RHNET_AB_L_GROUPPROGRESS") then {diag_log "AB - GROUPPROGRESS NOT FOUND!"};
+//waitUntil {!isNil "RHNET_AB_L_GROUPPROGRESS"};
+
+diag_log format ["AB - GROUPPROGRESS: %1", RHNET_AB_L_GROUPPROGRESS];
 
 // Group query
 _key					= (RHNET_AB_L_GROUPPROGRESS find _group) + 1;

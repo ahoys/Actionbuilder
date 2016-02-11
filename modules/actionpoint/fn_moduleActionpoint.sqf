@@ -12,7 +12,7 @@
 	Nothing
 */
 
-private["_ap","_portals"];
+private["_ap","_portals","_actionfsm"];
 _ap 		= _this select 0;
 _portals	= [_ap, true] call Actionbuilder_fnc_modulePortals;
 

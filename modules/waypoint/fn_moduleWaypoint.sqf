@@ -12,9 +12,6 @@
 	BOOL - true if valid check
 */
 
-// No clients allowed -----------------------------------------------------------------------------
-if (!isServer) exitWith {false};
-
 private["_waypoint","_valid","_type"];
 _waypoint	= _this select 0;
 _valid		= false;
