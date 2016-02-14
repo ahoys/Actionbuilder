@@ -20,73 +20,28 @@
 	Returns:
 	ARRAY - total seated units
 */
+private["_toBeSeated","_vehicle","_force","_hasDriver","_hasCargo"];
+_toBeSeated	= _this select 0;
+_vehicle	= _this select 1;
+_force		= _this select 2;
+_hasDriver	= false;
+_hasCargo	= _vehicle emptyPositions "Cargo";
 
-private["_vehicles","_toBeSeated","_force","_seated","_unit","_veh","_hasDriver","_hasCommander","_hasGunner","_cargo"];
-_vehicles	= _this select 0;
-_seated		= _this select 1;
-_toBeSeated	= _this select 2;
-_force		= _this select 3;
+if (_vehicle emptyPositions "Driver" isEqualTo 0) then {_hasDriver = true};
 
 {
-	_veh = _x;
-	_veh engineOn true;
-	// Search for free positions
-	if (_veh emptyPositions "Driver" > 0) then {_hasDriver = false} else {_hasDriver = true};
-	if (_veh emptyPositions "Gunner" > 0) then {_hasGunner = false} else {_hasGunner = true};
-	if (_veh emptyPositions "Commander" > 0) then {_hasCommander = false} else {_hasCommander = true};
-	_cargo = _veh emptyPositions "Cargo";
-	if !(_hasDriver && _hasCommander && _hasGunner && _cargo < 1) then {
-		{
-			call {
-				_unit = _x;
-				// Driver
-				if !(_hasDriver) exitWith {
-					diag_log format ["AB - driver: %1", _unit];
-					_unit assignAsDriver _veh;
-					if (_force) then {
-						_unit moveInDriver _veh;
-					};
-					_seated pushBack _unit;
-					_hasDriver = true;
-				};
-				
-				// Gunner
-				if !(_hasGunner) exitWith {
-					diag_log format ["AB - gunner: %1", _unit];
-					_unit assignAsGunner _veh;
-					if (_force) then {
-						_unit moveInGunner _veh;
-					};
-					_seated pushBack _unit;
-					_hasGunner = true;
-				};
-				
-				// Commander
-				if !(_hasCommander) exitWith {
-					diag_log format ["AB - commander: %1", _unit];
-					_unit assignAsCommander _veh;
-					if (_force) then {
-						_unit moveInCommander _veh;
-					};
-					_seated pushBack _unit;
-					_hasCommander = true;
-				};
-				
-				// Cargo
-				if (_cargo > 0) exitWith {
-					diag_log format ["AB - cargo: %1", _unit];
-					_unit assignAsCargo _veh;
-					if (_force) then {
-						_unit moveInCargo _veh;
-					};
-					_seated pushBack _unit;
-					_cargo = _cargo - 1;
-				};
-			};
-		} forEach _toBeSeated;
+	call {
+		if !(_hasDriver) exitWith {
+			_x assignAsDriver _vehicle;
+			if (_force || (_vehicle isKindOf "Air") || (_vehicle isKindOf "Ship")) then {_x moveInDriver _vehicle};
+			_hasDriver = true;
+		};
+		if !(_hasCargo isEqualTo 0) exitWith {
+			_x assignAsCargo _vehicle;
+			if (_force || (_vehicle isKindOf "Air") || (_vehicle isKindOf "Ship")) then {_x moveInCargo _vehicle};
+			_hasCargo = _hasCargo - 1;
+		};
 	};
-} forEach _vehicles;
+} forEach _toBeSeated;
 
-_seated orderGetIn true;
-
-_seated
+true

@@ -65,6 +65,8 @@ class CfgFunctions {
 			class seatEmptyPositions {};
 			
 			class sendVehiclesAway {};
+			
+			class waitForSeating {};
 
 		};
 		class Utility {
