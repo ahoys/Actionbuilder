@@ -1,6 +1,6 @@
 /*
 	File: fn_modulePortal.sqf
-	Author: Ari 'Raunhofer' Höysniemi, raunhofer@gmail.com
+	Author: Ari Höysniemi
 
 	Description:
 	Makes sure everything is set up correctly and registers synchronized units
