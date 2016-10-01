@@ -5,7 +5,7 @@
 class CfgPatches {
 	class RHNET_Actionbuilder {
 		units[] = {"RHNET_ab_moduleAP_F","RHNET_ab_modulePORTAL_F","RHNET_ab_moduleWP_F"};
-		requiredVersion = 1.50;
+		requiredVersion = 1.64;
 		requiredAddons[] = {"A3_Modules_F"};
 	};
 };
