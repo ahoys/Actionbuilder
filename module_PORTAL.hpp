@@ -15,16 +15,16 @@ class RHNET_ab_modulePORTAL_F : Module_F
 	class Arguments {
 		class p_Positioning {
 			displayName = "Unit Positioning";
-			description = "Where units are located, when they are spawned";
+			description = "To what location will the units spawn to.";
 			typeName = "STRING";
 			class Values {
 				class PORTAL_ORIGINALPOSITION {
-					name = "Original position";
+					name = "Editor placed position";
 					value = "NONE";
 					default = 1;
 				};
 				class PORTAL_PORTALPOSITION {
-					name = "Portal position";
+					name = "Portal module position";
 					value = "PORTAL";
 				};
 			};
@@ -32,7 +32,7 @@ class RHNET_ab_modulePORTAL_F : Module_F
 		
 		class p_MinDist {
 			displayName = "Safe Zone";
-			description = "Stop spawning, if there are playable units too close the portal";
+			description = "Spawning will not be allowed if there are playable units too close to the portal.";
 			typeName = "NUMBER";
 			class Values {
 				class PORTAL_SAFE0 {
@@ -117,7 +117,7 @@ class RHNET_ab_modulePORTAL_F : Module_F
 		
 		class p_Special {
 			displayName = "Special";
-			description = "What special properties does the unit have";
+			description = "What special attributes do the spawned units follow.";
 			typeName = "STRING";
 			class Values {
 				class NONE {
@@ -134,14 +134,14 @@ class RHNET_ab_modulePORTAL_F : Module_F
 
 		class p_UnitInit {
 			displayName = "Initialize Units";
-			description = "Special commands and scripts for unit initialization (optional)";
+			description = "Special commands and scripts for unit initialization.";
 			typeName = "STRING";
 			defaultValue = "";
 		};
 	};
 
 	class ModuleDescription : ModuleDescription {
-		description = "Action Portal acts as a spawning point.";
+		description = "A portal controls the unit spawning.";
 		sync[] = {"RHNET_ab_moduleAP_F","RHNET_ab_moduleWP_F"};
 
 		position = 1;
@@ -149,7 +149,7 @@ class RHNET_ab_modulePORTAL_F : Module_F
 		duplicate = 1;
 
 		class RHNET_ab_moduleWP_F {
-			description = "If synced to multiple Action Waypoints, one will be randomly selected.";
+			description = "If there are multiple waypoints available only one will be randomly selected.";
 			position = 1;
 			duplicate = 1;
 		};

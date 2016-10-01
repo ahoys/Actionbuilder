@@ -15,7 +15,7 @@ class RHNET_ab_moduleAP_F : Module_F
 	class Arguments {
 		class PartyType {
 			displayName = "Present";
-			description = "What must be present to get the actionpoint triggered";
+			description = "Type of unit that must be present for this actionpoint to activate.";
 			typeName = "STRING";
 			class Values {
 				class AP_ANY {
@@ -51,8 +51,8 @@ class RHNET_ab_moduleAP_F : Module_F
 		};
 		
 		class PlayersAlive {
-			displayName = "Players Alive";
-			description = "How many playable units there must be alive, to get the actionpoint triggered";
+			displayName = "Players alive";
+			description = "How many playable units there must be alive for this actionpoint to work.";
 			typeName = "NUMBER";
 			class Values {
 				class AP_PLAYERS0 {
@@ -100,61 +100,61 @@ class RHNET_ab_moduleAP_F : Module_F
 		};
 		
 		class Safelock {
-			displayName = "Safelock";
-			description = "If there are more units overall than allowed, the actionpoint will not activate";
+			displayName = "Maximum unit count";
+			description = "The actionpoint will not activate if there are more units alive than allowed.";
 			typeName = "NUMBER";
 			class Values {
 				class AP_SAFELOCK8 {
-					name = "8 units allowed";
+					name = "8";
 					value = 8;
 				};
 				class AP_SAFELOCK16 {
-					name = "16 units allowed";
+					name = "16";
 					value = 16;
 				};
 				class AP_SAFELOCK32 {
-					name = "32 units allowed";
+					name = "32";
 					value = 32;
 				};
 				class AP_SAFELOCK48 {
-					name = "48 units allowed";
+					name = "48";
 					value = 48;
 				};
 				class AP_SAFELOCK64 {
-					name = "64 units allowed";
+					name = "64";
 					value = 64;
 				};
 				class AP_SAFELOCK96 {
-					name = "96 units allowed";
+					name = "96";
 					value = 96;
 				};
 				class AP_SAFELOCK128 {
-					name = "128 units allowed";
+					name = "128";
 					value = 128;
 					default = 1;
 				};
 				class AP_SAFELOCK160 {
-					name = "160 units allowed";
+					name = "160";
 					value = 160;
 				};
 				class AP_SAFELOCK192 {
-					name = "192 units allowed";
+					name = "192";
 					value = 192;
 				};
 				class AP_SAFELOCK256HC {
-					name = "256 units allowed (HC-required)";
+					name = "256 (HC-required)";
 					value = 256;
 				};
 				class AP_SAFELOCK384HC {
-					name = "384 units allowed (HC-required)";
+					name = "384 (HC-required)";
 					value = 384;
 				};
 				class AP_SAFELOCK512HC {
-					name = "512 units allowed (HC-required)";
+					name = "512 (HC-required)";
 					value = 512;
 				};
 				class AP_SAFELOCK768HC {
-					name = "768 units allowed (HC-required)";
+					name = "768 (HC-required)";
 					value = 768;
 				};
 				class AP_SAFELOCK1024HC {
@@ -166,7 +166,7 @@ class RHNET_ab_moduleAP_F : Module_F
 		
 		class ExecutePortals {
 			displayName = "Executed portals";
-			description = "How many randomly selected portals to execute after an actionpoint event";
+			description = "How many of the synchronized portals will be activated.";
 			typeName = "NUMBER";
 			class Values {
 				class AP_EXECUTEALL {
@@ -223,7 +223,7 @@ class RHNET_ab_moduleAP_F : Module_F
 		sync[] = {"EmptyDetector","RHNET_ab_modulePORTAL_F"};
 
 		class RHNET_ab_modulePORTAL_F {
-			description = "All connected portals will be activated.";
+			description = "There can be multiple portals synchronized.";
 			position = 1;
 			direction = 1;
 			duplicate = 1;

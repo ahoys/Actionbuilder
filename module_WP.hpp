@@ -15,7 +15,7 @@ class RHNET_ab_moduleWP_F : Module_F
 	class Arguments {
 		class WpType {
 			displayName = "Type";
-			description = "What kind of waypoint is this";
+			description = "How the units react to this waypoint.";
 			typeName = "STRING";
 			class Values {
 				class WP_MOVE {
@@ -84,7 +84,7 @@ class RHNET_ab_moduleWP_F : Module_F
 
 		class WpBehaviour {
 			displayName = "Behaviour";
-			description = "Behaviour of AI units on this waypoint";
+			description = "How the units behave during this waypoint.";
 			typeName = "STRING";
 			class Values {
 				class WP_UNCHANGED {
@@ -117,7 +117,7 @@ class RHNET_ab_moduleWP_F : Module_F
 
 		class WpSpeed {
 			displayName = "Speed";
-			description = "Speed of AI units on this waypoint";
+			description = "How fast the units move during this waypoint.";
 			typeName = "STRING";
 			class Values {
 				class WP_UNCHANGED {
@@ -142,7 +142,7 @@ class RHNET_ab_moduleWP_F : Module_F
 
 		class WpFormation {
 			displayName = "Formation";
-			description = "Formation of AI units on this waypoint";
+			description = "What formation is used in groups during this waypoint.";
 			typeName = "STRING";
 			class Values {
 				class WP_NOCHANGE {
@@ -167,7 +167,7 @@ class RHNET_ab_moduleWP_F : Module_F
 
 		class WpMode {
 			displayName = "Combat Mode";
-			description = "Combat behaviour of AI units on this waypoint";
+			description = "Combat behaviour of the units during this waypoint";
 			class Values {
 				class WP_NOCHANGE {
 					name = "NO CHANGE";
@@ -199,14 +199,14 @@ class RHNET_ab_moduleWP_F : Module_F
 
 		class WpWait {
 			displayName = "Wait";
-			description = "For how many seconds do the units wait before this waypoint activates";
+			description = "For how many seconds does it take for this waypoint to activate.";
 			typeName = "SCALAR";
 			defaultValue = 0;
 		};
 
 		class WpPlacement {
 			displayName = "Placement";
-			description = "Location placement of this waypoint";
+			description = "Location of the actual waypoint.";
 			typeName = "NUMBER";
 			class Values {
 				class WP_EDITORPLACEMENT {
@@ -223,7 +223,7 @@ class RHNET_ab_moduleWP_F : Module_F
 		
 		class WpSpecial {
 			displayName = "Special";
-			description = "Special attributes";
+			description = "Special attributes available.";
 			typeName = "NUMBER";
 			class Values {
 				class WP_NONE {
@@ -244,14 +244,14 @@ class RHNET_ab_moduleWP_F : Module_F
 	};
 
 	class ModuleDescription : ModuleDescription {
-		description = "Use Action Waypoints to get spawned units moving.";
+		description = "Waypoints order the spawned units to execute actions.";
 		sync[] = {"RHNET_ab_modulePORTAL_F"};
 
 		position = 1;
 		duplicate = 1;
 
 		class RHNET_ab_modulePORTAL_F {
-			description = "Action Portal acts as a spawning point for infantry.";
+			description = "A portal controls the unit spawning.";
 			position = 1;
 			direction = 1;
 			duplicate = 1;
