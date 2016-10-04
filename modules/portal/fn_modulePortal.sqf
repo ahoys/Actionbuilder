@@ -28,12 +28,6 @@ if (isNil "RHNET_AB_G_PORTALS") then {
 	RHNET_AB_G_PORTAL_GROUPS	= [];
 };
 
-// The portal should not be grouped to other units ------------------------------------------------
-if (((formationLeader _portal) != _portal) && ((_portal getVariable ["p_Positioning","PORTAL"]) == "PORTAL")) then {
-	_portal setVariable ["p_Positioning","NONE"];
-	["Portal %1 is grouped to %2. Portals should NEVER be grouped to anything as their positions may change!", _portal, formationLeader _portal] call BIS_fnc_error;
-};
-
 // Register objects and groups synchronized to the portal -----------------------------------------
 _objects	= [];
 _groups		= [];

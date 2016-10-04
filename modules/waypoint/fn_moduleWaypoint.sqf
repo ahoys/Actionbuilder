@@ -16,11 +16,6 @@ private["_waypoint","_valid","_type"];
 _waypoint	= _this select 0;
 _valid		= false;
 
-// Waypoint should not be grouped to other units --------------------------------------------------
-if ((formationLeader _waypoint) != _waypoint) then {
-	["Waypoint %1 is grouped to %2. Waypoints should NEVER be grouped to anything as their positions may change!", _waypoint, formationLeader _waypoint] call BIS_fnc_error;
-};
-
 // Make sure there are portals or waypoints available ---------------------------------------------
 {
 	_type = typeOf _x;
