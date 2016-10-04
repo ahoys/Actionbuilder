@@ -47,10 +47,16 @@ if (isNil "_portal") exitWith {
 	false
 };
 
+if (isNil "RHNET_AB_G_PORTALS" || isNil "RHNET_AB_G_PORTAL_OBJECTS" || isNil "RHNET_AB_G_PORTAL_GROUPS") then {
+	diag_log format ["AB selects: %1, %2", _this select 0, _this select 1];
+};
+
 // Request global variables if not available
-if ((isNil "RHNET_AB_G_PORTALS" || isNil "RHNET_AB_G_PORTAL_OBJECTS" || isNil "RHNET_AB_G_PORTAL_GROUPS") && (_owner > 0)) then {
-	RHNET_AB_G_REQUEST = _owner;
-	publicVariableServer "RHNET_AB_G_REQUEST";
+if ((isNil "RHNET_AB_G_PORTALS" || isNil "RHNET_AB_G_PORTAL_OBJECTS" || isNil "RHNET_AB_G_PORTAL_GROUPS") && !isNil "_owner") then {
+	if (_owner > 0) then {
+		RHNET_AB_G_REQUEST = _owner;
+		publicVariableServer "RHNET_AB_G_REQUEST";
+	};
 };
 
 // Do not continue until all the required variables are available
