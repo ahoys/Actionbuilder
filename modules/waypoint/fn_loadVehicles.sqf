@@ -33,13 +33,18 @@ _vehicles		= [];
 _groupVehicles	= [];
 _pos			= position leader _group;
 
+// Set the maximum range of seated units.
+if (typename _range != typename 0) then {
+	_range = 0;
+};
+
 // Units requiring seating
 {
 	_vehicle = objectParent _x;
 	if (isNull _vehicle) then {
 		_toBeSeated pushBack _x;
 	} else {
-		if (_vehicle distance _x < (_range + 100)) then {
+		if (_vehicle distance _x < _range) then {
 			if !(_vehicle in _vehicles) then {
 				_vehicles pushBack _vehicle;
 			};
