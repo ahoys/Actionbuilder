@@ -3,7 +3,7 @@
 	Author: Ari Höysniemi
 
 	Description:
-	Initializes a new actionpoint
+	Initializes a new Actionpoint
 
 	Parameter(s):
 	0: OBJECT - actionpoint module
