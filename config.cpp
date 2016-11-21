@@ -13,7 +13,7 @@ class CfgPatches {
 class CfgFactionClasses {
 	class NO_CATEGORY;
 	class RHNET_Actionbuilder : NO_CATEGORY {
-		displayName = "Actionbuilder 0.30";
+		displayName = "Actionbuilder 0.29";
 	};
 };
 
