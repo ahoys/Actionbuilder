@@ -5,7 +5,7 @@
 class CfgPatches {
 	class RHNET_Actionbuilder {
 		units[] = {"RHNET_ab_moduleAP_F","RHNET_ab_modulePORTAL_F","RHNET_ab_moduleWP_F"};
-		requiredVersion = 1.64;
+		requiredVersion = 1.72;
 		requiredAddons[] = {"A3_Modules_F"};
 	};
 };
@@ -13,7 +13,7 @@ class CfgPatches {
 class CfgFactionClasses {
 	class NO_CATEGORY;
 	class RHNET_Actionbuilder : NO_CATEGORY {
-		displayName = "Actionbuilder 0.29";
+		displayName = "Actionbuilder 1.0.0";
 	};
 };
 
