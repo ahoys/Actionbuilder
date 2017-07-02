@@ -1,1 +1,1 @@
-![Actionbuilder](https://github.com/ahoys/Actionbuilder/actionbuilder.png)
+![Actionbuilder](https://github.com/ahoys/Actionbuilder/blob/master/actionbuilder.png)
