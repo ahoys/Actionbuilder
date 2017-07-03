@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\Projects\ArmATools\FSM Editor Personal Edition\scriptedFSM.cfg, rhfsm_actionpoint">*/
+/*%FSM<COMPILE "scriptedFSM.cfg, rhfsm_actionpoint">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"ACTIONPOINT_CORE",0,250,-250.000000,175.000000,-150.000000,225.000000,0.000000,"ACTIONPOINT" \n "CORE START"};
@@ -92,7 +92,7 @@ item87[] = {"server_spawn",4,218,-250.000000,2050.000000,-150.000000,2100.000000
 item88[] = {"select_the_spawn",3,250,50.000000,2150.000000,150.000000,2200.000000,0.000000,"select the" \n "spawner"};
 item89[] = {"",7,210,245.999939,2171.000000,254.000061,2178.999756,0.000000,""};
 item90[] = {"headless_spawn",8,218,-100.000000,2150.000000,0.000000,2200.000000,0.000000,"headless" \n "spawn"};
-item91[] = {"____FAKE____",9,3640,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+item91[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
 link0[] = {0,6};
 link1[] = {1,2};
 link2[] = {3,1};
@@ -196,905 +196,985 @@ link99[] = {72,91};
 link100[] = {91,72};
 link101[] = {73,91};
 link102[] = {91,73};
-globals[] = {25.000000,1,0,0,0,640,480,1,154,0,1,-1407.904907,908.333923,2578.028564,1249.721313,2232,1280,1};
-window[] = {2,-1,-1,-32000,-32000,1297,260,2180,260,3,2250};
+globals[] = {0.000000,0,0,0,0,640,480,1,154,0,1,-989.200806,304.744629,2008.252686,1146.995850,1884,1254,1};
+window[] = {2,-1,-1,-1,-31,1235,773,2693,198,3,1902};
 *//*%FSM</HEAD>*/
 class FSM
 {
-  fsmName = "rhfsm_actionpoint";
-  class States
-  {
-    /*%FSM<STATE "ACTIONPOINT_CORE">*/
-    class ACTIONPOINT_CORE
-    {
-      name = "ACTIONPOINT_CORE";
-      init = /*%FSM<STATEINIT""">*/"private[" \n
-       "	""_ap""," \n
-       "	""_portals""," \n
-       "	""_triggers""," \n
-       "	""_t""," \n
-       "	""_time""," \n
-       "	""_selectedPortals""," \n
-       "	""_size""," \n
-       "	""_p""," \n
-       "	""_portal""," \n
-       "	""_trg""," \n
-       "	""_debugMsg""," \n
-       "	""_clients""," \n
-       "	""_clientsC""," \n
-       "	""_master""," \n
-       "	""_i""" \n
-       "];" \n
-       "" \n
-       "_ap = _this select 0;" \n
-       "_portals = _this select 1;" \n
-       "_tCount = 0;" \n
-       "_selectedPortals = [];" \n
-       "_p = 0;" \n
-       "_i = 0;" \n
-       "_master = objNull;" \n
-       "_size = RHNET_AB_G_AP_SIZE select ((RHNET_AB_G_AP_SIZE find _ap) + 1);" \n
-       "" \n
-       "_PartyType = _ap getVariable [""PartyType"",""Any""];" \n
-       "_PlayersAlive = _ap getVariable [""PlayersAlive"",0];" \n
-       "_SafeLock = _ap getVariable [""SafeLock"",128];" \n
-       "_ExecutePortals = _ap getVariable [""ExecutePortals"",-1];" \n
-       "" \n
-       "_debugMsg = {" \n
-       "	if (RHNET_AB_L_DEBUG) then {" \n
-       "		hintSilent format [""ACTIONBUILDER\nDEBUG\n\nActionpoint:\n%1\n\nMessage:\n%2"", _ap, (_this select 0)];" \n
-       "	};" \n
-       "	true" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "begin">*/
-        class begin
+        fsmName = "rhfsm_actionpoint";
+        class States
         {
-          priority = 0.000000;
-          to="validate";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                /*%FSM<STATE "ACTIONPOINT_CORE">*/
+                class ACTIONPOINT_CORE
+                {
+                        name = "ACTIONPOINT_CORE";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private[" \n
+                         "	""_ap""," \n
+                         "	""_portals""," \n
+                         "	""_triggers""," \n
+                         "	""_t""," \n
+                         "	""_time""," \n
+                         "	""_selectedPortals""," \n
+                         "	""_size""," \n
+                         "	""_p""," \n
+                         "	""_portal""," \n
+                         "	""_trg""," \n
+                         "	""_debugMsg""," \n
+                         "	""_clients""," \n
+                         "	""_clientsC""," \n
+                         "	""_master""," \n
+                         "	""_i""" \n
+                         "];" \n
+                         "" \n
+                         "_ap = _this select 0;" \n
+                         "_portals = _this select 1;" \n
+                         "_tCount = 0;" \n
+                         "_selectedPortals = [];" \n
+                         "_p = 0;" \n
+                         "_i = 0;" \n
+                         "_master = objNull;" \n
+                         "_size = RHNET_AB_G_AP_SIZE select ((RHNET_AB_G_AP_SIZE find _ap) + 1);" \n
+                         "" \n
+                         "_PartyType = _ap getVariable [""PartyType"",""Any""];" \n
+                         "_PlayersAlive = _ap getVariable [""PlayersAlive"",0];" \n
+                         "_SafeLock = _ap getVariable [""SafeLock"",128];" \n
+                         "_ExecutePortals = _ap getVariable [""ExecutePortals"",-1];" \n
+                         "" \n
+                         "_debugMsg = {" \n
+                         "	if (RHNET_AB_L_DEBUG) then {" \n
+                         "		hintSilent format [""ACTIONBUILDER\nDEBUG\n\nActionpoint:\n%1\n\nMessage:\n%2"", _ap, (_this select 0)];" \n
+                         "	};" \n
+                         "	true" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "begin">*/
+                                class begin
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="validate";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "fail">*/
+                class fail
+                {
+                        name = "fail";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"[""Actionpoint %1 validation failed. Variables missing."", _ap] call BIS_fnc_error;" \n
+                         "false"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "validate">*/
+                class validate
+                {
+                        name = "validate";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "missing_variable">*/
+                                class missing_variable
+                                {
+                                        itemno = 1;
+                                        priority = 2.000000;
+                                        to="fail";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_ap"" || isNil ""_portals"" || isNil ""RHNET_AB_L_DEBUG"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_portals">*/
+                                class no_portals
+                                {
+                                        itemno = 4;
+                                        priority = 1.000000;
+                                        to="fail_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_portals isEqualTo []"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "done">*/
+                                class done
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="condition";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "fail_1">*/
+                class fail_1
+                {
+                        name = "fail_1";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"[""Actionpoint %1 validation failed. No portals given."", _ap] call BIS_fnc_error;" \n
+                         "false"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "condition">*/
+                class condition
+                {
+                        name = "condition";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"_triggers = [_ap] call BIS_fnc_moduleTriggers;" \n
+                         "_tCount = count _triggers;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "triggers">*/
+                                class triggers
+                                {
+                                        itemno = 10;
+                                        priority = 1.000000;
+                                        to="trigger__t_condi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_tCount > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_t = 0;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="PartyType";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "trigger__t_condi">*/
+                class trigger__t_condi
+                {
+                        name = "trigger__t_condi";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 12;
+                                        priority = 2.000000;
+                                        to="waitUntil";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(triggerActivated (_triggers select _t))" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_time = time + RHNET_AB_L_BUFFER;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="all_triggers_che";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "all_triggers_che">*/
+                class all_triggers_che
+                {
+                        name = "all_triggers_che";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/"_t = _t + 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 16;
+                                        priority = 1.000000;
+                                        to="trigger__t_condi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_tCount > _t"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="PartyType";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "waitUntil">*/
+                class waitUntil
+                {
+                        name = "waitUntil";
+                        itemno = 19;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "idle">*/
+                                class idle
+                                {
+                                        itemno = 20;
+                                        priority = 1.000000;
+                                        to="waitUntil";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time < _time"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "done">*/
+                                class done
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="trigger__t_condi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "PartyType">*/
+                class PartyType
+                {
+                        name = "PartyType";
+                        itemno = 24;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "any">*/
+                                class any
+                                {
+                                        itemno = 33;
+                                        priority = 1.000000;
+                                        to="PlayersAlive";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(_PartyType == ""any"") || (_triggers isEqualTo [])"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set">*/
+                                class set
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="correct_type_fou";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_t = 0;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "how_many_to_exec">*/
+                class how_many_to_exec
+                {
+                        name = "how_many_to_exec";
+                        itemno = 26;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "some">*/
+                                class some
+                                {
+                                        itemno = 30;
+                                        priority = 1.000000;
+                                        to="portals_availabl";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ExecutePortals == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_selectedPortals = [_portals, (ceil random (count _portals)), true] call Actionbuilder_fnc_selectRandom;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "defined">*/
+                                class defined
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="portals_availabl";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_selectedPortals = [_portals, _ExecutePortals, true] call Actionbuilder_fnc_selectRandom;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "portals_availabl">*/
+                class portals_availabl
+                {
+                        name = "portals_availabl";
+                        itemno = 28;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 49;
+                                        priority = 1.000000;
+                                        to="no_need_to_conti";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_selectedPortals isEqualTo []"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_time = time + RHNET_AB_L_BUFFER;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 50;
+                                        priority = 0.000000;
+                                        to="SafeLock";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "PlayersAlive">*/
+                class PlayersAlive
+                {
+                        name = "PlayersAlive";
+                        itemno = 34;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "not_set">*/
+                                class not_set
+                                {
+                                        itemno = 32;
+                                        priority = 1.000000;
+                                        to="ExecutePortals";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_PlayersAlive < 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set">*/
+                                class set
+                                {
+                                        itemno = 31;
+                                        priority = 0.000000;
+                                        to="enough_units_ali";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "correct_type_fou">*/
+                class correct_type_fou
+                {
+                        name = "correct_type_fou";
+                        itemno = 35;
+                        init = /*%FSM<STATEINIT""">*/"_trg = _triggers select _t;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 36;
+                                        priority = 1.000000;
+                                        to="more_triggers_to";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(_PartyType countType list _trg) < 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="PlayersAlive";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "more_triggers_to">*/
+                class more_triggers_to
+                {
+                        name = "more_triggers_to";
+                        itemno = 38;
+                        init = /*%FSM<STATEINIT""">*/"_t = _t + 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "PASS_DENIED">*/
+                                class PASS_DENIED
+                                {
+                                        itemno = 40;
+                                        priority = 1.000000;
+                                        to="waitUntil_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_tCount <= _t"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_time = time + RHNET_AB_L_BUFFER;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 39;
+                                        priority = 0.000000;
+                                        to="correct_type_fou";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "enough_units_ali">*/
+                class enough_units_ali
+                {
+                        name = "enough_units_ali";
+                        itemno = 43;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 44;
+                                        priority = 1.000000;
+                                        to="no_need_to_conti_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_PlayersAlive > ({alive _x} count (switchableUnits + playableUnits))"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_time = time + RHNET_AB_L_BUFFER;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="ExecutePortals";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ExecutePortals">*/
+                class ExecutePortals
+                {
+                        name = "ExecutePortals";
+                        itemno = 46;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "all">*/
+                                class all
+                                {
+                                        itemno = 48;
+                                        priority = 1.000000;
+                                        to="SafeLock";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ExecutePortals < 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_selectedPortals = _portals;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set">*/
+                                class set
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="how_many_to_exec";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "SafeLock">*/
+                class SafeLock
+                {
+                        name = "SafeLock";
+                        itemno = 52;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "not_set">*/
+                                class not_set
+                                {
+                                        itemno = 55;
+                                        priority = 1.000000;
+                                        to="get_headless_cli";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_SafeLock < 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set">*/
+                                class set
+                                {
+                                        itemno = 56;
+                                        priority = 0.000000;
+                                        to="there_are_room_for";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "no_need_to_conti">*/
+                class no_need_to_conti
+                {
+                        name = "no_need_to_conti";
+                        itemno = 53;
+                        init = /*%FSM<STATEINIT""">*/"[""There were no suitable portals available.""] call _debugMsg;" \n
+                         "true"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "select_a_portal">*/
+                class select_a_portal
+                {
+                        name = "select_a_portal";
+                        itemno = 57;
+                        init = /*%FSM<STATEINIT""">*/"_portal = _selectedPortals select _p;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "server_spawn">*/
+                                class server_spawn
+                                {
+                                        itemno = 87;
+                                        priority = 1.000000;
+                                        to="more_portals";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_clientsC < 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[_portal, 0] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "headless_clients">*/
+                                class headless_clients
+                                {
+                                        itemno = 83;
+                                        priority = 0.000000;
+                                        to="all_clients_loop";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "more_portals">*/
+                class more_portals
+                {
+                        name = "more_portals";
+                        itemno = 58;
+                        init = /*%FSM<STATEINIT""">*/"_p = _p + 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 59;
+                                        priority = 1.000000;
+                                        to="done";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_p >= count _portals"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 61;
+                                        priority = 0.000000;
+                                        to="waitUntil_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_time = time;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "done">*/
+                class done
+                {
+                        name = "done";
+                        itemno = 60;
+                        init = /*%FSM<STATEINIT""">*/"true"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "waitUntil_1">*/
+                class waitUntil_1
+                {
+                        name = "waitUntil_1";
+                        itemno = 62;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "idle">*/
+                                class idle
+                                {
+                                        itemno = 63;
+                                        priority = 1.000000;
+                                        to="waitUntil_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time < _time"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "ready">*/
+                                class ready
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="condition";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "waitUntil_2">*/
+                class waitUntil_2
+                {
+                        name = "waitUntil_2";
+                        itemno = 65;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "idle">*/
+                                class idle
+                                {
+                                        itemno = 66;
+                                        priority = 1.000000;
+                                        to="waitUntil_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time < (_time + RHNET_AB_L_BUFFER)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "ready">*/
+                                class ready
+                                {
+                                        itemno = 67;
+                                        priority = 0.000000;
+                                        to="select_a_portal";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "All_trigger_conditions">*/
+                class All_trigger_conditions
+                {
+                        name = "All_trigger_conditions";
+                        itemno = 68;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Spawn_was_denied">*/
+                class Spawn_was_denied
+                {
+                        name = "Spawn_was_denied";
+                        itemno = 69;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "no_need_to_conti_1">*/
+                class no_need_to_conti_1
+                {
+                        name = "no_need_to_conti_1";
+                        itemno = 70;
+                        init = /*%FSM<STATEINIT""">*/"[""Not enough players alive.""] call _debugMsg;" \n
+                         "true"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 71;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__1">*/
+                class __1
+                {
+                        name = "__1";
+                        itemno = 74;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "there_are_room_for">*/
+                class there_are_room_for
+                {
+                        name = "there_are_room_for";
+                        itemno = 76;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 77;
+                                        priority = 1.000000;
+                                        to="no_need_to_conti_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(count allUnits + _size) > _safeLock"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 78;
+                                        priority = 0.000000;
+                                        to="get_headless_cli";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "no_need_to_conti_2">*/
+                class no_need_to_conti_2
+                {
+                        name = "no_need_to_conti_2";
+                        itemno = 79;
+                        init = /*%FSM<STATEINIT""">*/"[""SafeLock prevented spawning.""] call _debugMsg;" \n
+                         "true"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "get_headless_cli">*/
+                class get_headless_cli
+                {
+                        name = "get_headless_cli";
+                        itemno = 81;
+                        init = /*%FSM<STATEINIT""">*/"_clients = [""HeadlessClient_F""] call Actionbuilder_fnc_getEqualTypes;" \n
+                         "_clientsC = count _clients;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "spawning_phase">*/
+                                class spawning_phase
+                                {
+                                        itemno = 82;
+                                        priority = 1.000000;
+                                        to="select_a_portal";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "all_clients_loop">*/
+                class all_clients_loop
+                {
+                        name = "all_clients_loop";
+                        itemno = 84;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 86;
+                                        priority = 1.000000;
+                                        to="select_the_spawn";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_clientsC > _i"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 85;
+                                        priority = 0.000000;
+                                        to="select_the_spawn";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_i = 0;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "select_the_spawn">*/
+                class select_the_spawn
+                {
+                        name = "select_the_spawn";
+                        itemno = 88;
+                        init = /*%FSM<STATEINIT""">*/"_master = _clients select _i;" \n
+                         "_i = _i + 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "headless_spawn">*/
+                                class headless_spawn
+                                {
+                                        itemno = 90;
+                                        priority = 0.000000;
+                                        to="more_portals";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[_portal, owner _master] remoteExec [""Actionbuilder_fnc_spawnUnits"", _master];"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 91;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 73;
+                                        priority = 1.000000;
+                                        to="____FAKE____";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 72;
+                                        priority = 0.000000;
+                                        to="____FAKE____";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
         };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "fail">*/
-    class fail
-    {
-      name = "fail";
-      init = /*%FSM<STATEINIT""">*/"[""Actionpoint %1 validation failed. Variables missing."", _ap] call BIS_fnc_error;" \n
-       "false"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "validate">*/
-    class validate
-    {
-      name = "validate";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "missing_variable">*/
-        class missing_variable
+        initState="ACTIONPOINT_CORE";
+        finalStates[] =
         {
-          priority = 2.000000;
-          to="fail";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"isNil ""_ap"" || isNil ""_portals"" || isNil ""RHNET_AB_L_DEBUG"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                "fail",
+                "fail_1",
+                "no_need_to_conti",
+                "done",
+                "no_need_to_conti_1",
+                "__1",
+                "no_need_to_conti_2",
         };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "no_portals">*/
-        class no_portals
-        {
-          priority = 1.000000;
-          to="fail_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_portals isEqualTo []"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "done">*/
-        class done
-        {
-          priority = 0.000000;
-          to="condition";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "fail_1">*/
-    class fail_1
-    {
-      name = "fail_1";
-      init = /*%FSM<STATEINIT""">*/"[""Actionpoint %1 validation failed. No portals given."", _ap] call BIS_fnc_error;" \n
-       "false"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "condition">*/
-    class condition
-    {
-      name = "condition";
-      init = /*%FSM<STATEINIT""">*/"_triggers = [_ap] call BIS_fnc_moduleTriggers;" \n
-       "_tCount = count _triggers;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "triggers">*/
-        class triggers
-        {
-          priority = 1.000000;
-          to="trigger__t_condi";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_tCount > 0"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_t = 0;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="PartyType";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "trigger__t_condi">*/
-    class trigger__t_condi
-    {
-      name = "trigger__t_condi";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "false">*/
-        class false
-        {
-          priority = 2.000000;
-          to="waitUntil";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!(triggerActivated (_triggers select _t))" \n
-           ""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_time = time + RHNET_AB_L_BUFFER;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="all_triggers_che";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "all_triggers_che">*/
-    class all_triggers_che
-    {
-      name = "all_triggers_che";
-      init = /*%FSM<STATEINIT""">*/"_t = _t + 1;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "false">*/
-        class false
-        {
-          priority = 1.000000;
-          to="trigger__t_condi";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_tCount > _t"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="PartyType";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "waitUntil">*/
-    class waitUntil
-    {
-      name = "waitUntil";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "idle">*/
-        class idle
-        {
-          priority = 1.000000;
-          to="waitUntil";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time < _time"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "done">*/
-        class done
-        {
-          priority = 0.000000;
-          to="trigger__t_condi";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "PartyType">*/
-    class PartyType
-    {
-      name = "PartyType";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "any">*/
-        class any
-        {
-          priority = 1.000000;
-          to="PlayersAlive";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(_PartyType == ""any"") || (_triggers isEqualTo [])"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "set">*/
-        class set
-        {
-          priority = 0.000000;
-          to="correct_type_fou";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_t = 0;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "how_many_to_exec">*/
-    class how_many_to_exec
-    {
-      name = "how_many_to_exec";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "some">*/
-        class some
-        {
-          priority = 1.000000;
-          to="portals_availabl";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_ExecutePortals == 0"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_selectedPortals = [_portals, (ceil random (count _portals)), true] call Actionbuilder_fnc_selectRandom;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "defined">*/
-        class defined
-        {
-          priority = 0.000000;
-          to="portals_availabl";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_selectedPortals = [_portals, _ExecutePortals, true] call Actionbuilder_fnc_selectRandom;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "portals_availabl">*/
-    class portals_availabl
-    {
-      name = "portals_availabl";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "false">*/
-        class false
-        {
-          priority = 1.000000;
-          to="no_need_to_conti";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_selectedPortals isEqualTo []"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_time = time + RHNET_AB_L_BUFFER;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="SafeLock";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "PlayersAlive">*/
-    class PlayersAlive
-    {
-      name = "PlayersAlive";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "not_set">*/
-        class not_set
-        {
-          priority = 1.000000;
-          to="ExecutePortals";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_PlayersAlive < 1"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "set">*/
-        class set
-        {
-          priority = 0.000000;
-          to="enough_units_ali";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "correct_type_fou">*/
-    class correct_type_fou
-    {
-      name = "correct_type_fou";
-      init = /*%FSM<STATEINIT""">*/"_trg = _triggers select _t;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "false">*/
-        class false
-        {
-          priority = 1.000000;
-          to="more_triggers_to";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(_PartyType countType list _trg) < 1"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="PlayersAlive";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "more_triggers_to">*/
-    class more_triggers_to
-    {
-      name = "more_triggers_to";
-      init = /*%FSM<STATEINIT""">*/"_t = _t + 1;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "PASS_DENIED">*/
-        class PASS_DENIED
-        {
-          priority = 1.000000;
-          to="waitUntil_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_tCount <= _t"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_time = time + RHNET_AB_L_BUFFER;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="correct_type_fou";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "enough_units_ali">*/
-    class enough_units_ali
-    {
-      name = "enough_units_ali";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "false">*/
-        class false
-        {
-          priority = 1.000000;
-          to="no_need_to_conti_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_PlayersAlive > ({alive _x} count (switchableUnits + playableUnits))"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_time = time + RHNET_AB_L_BUFFER;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="ExecutePortals";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "ExecutePortals">*/
-    class ExecutePortals
-    {
-      name = "ExecutePortals";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "all">*/
-        class all
-        {
-          priority = 1.000000;
-          to="SafeLock";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_ExecutePortals < 0"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_selectedPortals = _portals;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "set">*/
-        class set
-        {
-          priority = 0.000000;
-          to="how_many_to_exec";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "SafeLock">*/
-    class SafeLock
-    {
-      name = "SafeLock";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "not_set">*/
-        class not_set
-        {
-          priority = 1.000000;
-          to="get_headless_cli";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_SafeLock < 1"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "set">*/
-        class set
-        {
-          priority = 0.000000;
-          to="there_are_room_for";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "no_need_to_conti">*/
-    class no_need_to_conti
-    {
-      name = "no_need_to_conti";
-      init = /*%FSM<STATEINIT""">*/"[""There were no suitable portals available.""] call _debugMsg;" \n
-       "true"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "select_a_portal">*/
-    class select_a_portal
-    {
-      name = "select_a_portal";
-      init = /*%FSM<STATEINIT""">*/"_portal = _selectedPortals select _p;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "server_spawn">*/
-        class server_spawn
-        {
-          priority = 1.000000;
-          to="more_portals";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_clientsC < 1"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"[_portal, 0] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "headless_clients">*/
-        class headless_clients
-        {
-          priority = 0.000000;
-          to="all_clients_loop";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "more_portals">*/
-    class more_portals
-    {
-      name = "more_portals";
-      init = /*%FSM<STATEINIT""">*/"_p = _p + 1;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "false">*/
-        class false
-        {
-          priority = 1.000000;
-          to="done";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_p >= count _portals"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="waitUntil_2";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_time = time;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "done">*/
-    class done
-    {
-      name = "done";
-      init = /*%FSM<STATEINIT""">*/"true"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "waitUntil_1">*/
-    class waitUntil_1
-    {
-      name = "waitUntil_1";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "idle">*/
-        class idle
-        {
-          priority = 1.000000;
-          to="waitUntil_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time < _time"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "ready">*/
-        class ready
-        {
-          priority = 0.000000;
-          to="condition";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "waitUntil_2">*/
-    class waitUntil_2
-    {
-      name = "waitUntil_2";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "idle">*/
-        class idle
-        {
-          priority = 1.000000;
-          to="waitUntil_2";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time < (_time + RHNET_AB_L_BUFFER)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "ready">*/
-        class ready
-        {
-          priority = 0.000000;
-          to="select_a_portal";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "All_trigger_conditions">*/
-    class All_trigger_conditions
-    {
-      name = "All_trigger_conditions";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Spawn_was_denied">*/
-    class Spawn_was_denied
-    {
-      name = "Spawn_was_denied";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "no_need_to_conti_1">*/
-    class no_need_to_conti_1
-    {
-      name = "no_need_to_conti_1";
-      init = /*%FSM<STATEINIT""">*/"[""Not enough players alive.""] call _debugMsg;" \n
-       "true"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "_">*/
-    class _
-    {
-      name = "_";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "__1">*/
-    class __1
-    {
-      name = "__1";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "there_are_room_for">*/
-    class there_are_room_for
-    {
-      name = "there_are_room_for";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "false">*/
-        class false
-        {
-          priority = 1.000000;
-          to="no_need_to_conti_2";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(count allUnits + _size) > _safeLock"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="get_headless_cli";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "no_need_to_conti_2">*/
-    class no_need_to_conti_2
-    {
-      name = "no_need_to_conti_2";
-      init = /*%FSM<STATEINIT""">*/"[""SafeLock prevented spawning.""] call _debugMsg;" \n
-       "true"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "get_headless_cli">*/
-    class get_headless_cli
-    {
-      name = "get_headless_cli";
-      init = /*%FSM<STATEINIT""">*/"_clients = [""HeadlessClient_F""] call Actionbuilder_fnc_getEqualTypes;" \n
-       "_clientsC = count _clients;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "spawning_phase">*/
-        class spawning_phase
-        {
-          priority = 1.000000;
-          to="select_a_portal";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "all_clients_loop">*/
-    class all_clients_loop
-    {
-      name = "all_clients_loop";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "false">*/
-        class false
-        {
-          priority = 1.000000;
-          to="select_the_spawn";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_clientsC > _i"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="select_the_spawn";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_i = 0;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "select_the_spawn">*/
-    class select_the_spawn
-    {
-      name = "select_the_spawn";
-      init = /*%FSM<STATEINIT""">*/"_master = _clients select _i;" \n
-       "_i = _i + 1;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "headless_spawn">*/
-        class headless_spawn
-        {
-          priority = 0.000000;
-          to="more_portals";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"[_portal, owner _master] remoteExec [""Actionbuilder_fnc_spawnUnits"", _master];"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "____FAKE____">*/
-    class ____FAKE____
-    {
-      name = "____FAKE____";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "false">*/
-        class false
-        {
-          priority = 1.000000;
-          to="____FAKE____";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="____FAKE____";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-  };
-  initState="ACTIONPOINT_CORE";
-  finalStates[] =
-  {
-    "fail",
-    "fail_1",
-    "no_need_to_conti",
-    "done",
-    "no_need_to_conti_1",
-    "__1",
-    "no_need_to_conti_2",
-  };
 };
 /*%FSM</COMPILE>*/
