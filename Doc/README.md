@@ -12,9 +12,9 @@ Actionpoints are in change of event triggering. One actionpoint can hold multipl
 Actionpoints are controlled by in-game triggers.
 
 ### Portal
-Portals are responsible of the unit spawning. The user can link units, groups and vehicles to Portals that will spawn after the portal activates.
+Portals are responsible of the unit spawning. The user can link units, groups and vehicles to portals that will spawn after the portal activates.
 
 ### Waypoint
-Waypoints hold the information what to do after a portal has activated and the units spawned. For example a waypoint may order the spawned units to move to some other location.
+Waypoints hold the information what to do after a portal has activated and the related units spawned. For example a waypoint may order the spawned units to move to some other location.
 
-There can be multiple waypoints synchronized to a one portal. Waypoints can also be synchronized to each-other, creating randomization.
+There can be multiple waypoints synchronized to a one portal. Waypoints can also be synchronized to eachother, creating randomization.
