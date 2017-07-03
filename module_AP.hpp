@@ -61,65 +61,7 @@ class RHNET_ab_moduleAP_F : Module_F
 			displayName = "Maximum unit count";
 			description = "The actionpoint will not activate if there are more units alive than allowed.";
 			typeName = "NUMBER";
-			class Values {
-				class AP_SAFELOCK8 {
-					name = "8";
-					value = 8;
-				};
-				class AP_SAFELOCK16 {
-					name = "16";
-					value = 16;
-				};
-				class AP_SAFELOCK32 {
-					name = "32";
-					value = 32;
-				};
-				class AP_SAFELOCK48 {
-					name = "48";
-					value = 48;
-				};
-				class AP_SAFELOCK64 {
-					name = "64";
-					value = 64;
-				};
-				class AP_SAFELOCK96 {
-					name = "96";
-					value = 96;
-				};
-				class AP_SAFELOCK128 {
-					name = "128";
-					value = 128;
-					default = 1;
-				};
-				class AP_SAFELOCK160 {
-					name = "160";
-					value = 160;
-				};
-				class AP_SAFELOCK192 {
-					name = "192";
-					value = 192;
-				};
-				class AP_SAFELOCK256HC {
-					name = "256 (HC-required)";
-					value = 256;
-				};
-				class AP_SAFELOCK384HC {
-					name = "384 (HC-required)";
-					value = 384;
-				};
-				class AP_SAFELOCK512HC {
-					name = "512 (HC-required)";
-					value = 512;
-				};
-				class AP_SAFELOCK768HC {
-					name = "768 (HC-required)";
-					value = 768;
-				};
-				class AP_SAFELOCK1024HC {
-					name = "1024 units allowed (HC-required)";
-					value = 1024;
-				};
-			};
+			defaultValue = 128;
 		};
 		
 		class ExecutePortals {
