@@ -54,49 +54,7 @@ class RHNET_ab_moduleAP_F : Module_F
 			displayName = "Players alive";
 			description = "How many playable units there must be alive for this actionpoint to work.";
 			typeName = "NUMBER";
-			class Values {
-				class AP_PLAYERS0 {
-					name = "Doesn't matter";
-					value = 0;
-					default = 1;
-				};
-				class AP_PLAYERS2 {
-					name = "2 must be alive";
-					value = 2;
-				};
-				class AP_PLAYERS4 {
-					name = "4 must be alive";
-					value = 4;
-				};
-				class AP_PLAYERS8 {
-					name = "8 must be alive";
-					value = 8;
-				};
-				class AP_PLAYERS12 {
-					name = "12 must be alive";
-					value = 12;
-				};
-				class AP_PLAYERS16 {
-					name = "16 must be alive";
-					value = 16;
-				};
-				class AP_PLAYERS24 {
-					name = "24 must be alive";
-					value = 24;
-				};
-				class AP_PLAYERS32 {
-					name = "32 must be alive";
-					value = 32;
-				};
-				class AP_PLAYERS48 {
-					name = "48 must be alive";
-					value = 48;
-				};
-				class AP_PLAYERS64 {
-					name = "64 must be alive";
-					value = 64;
-				};
-			};
+			defaultValue = 0;
 		};
 		
 		class Safelock {
