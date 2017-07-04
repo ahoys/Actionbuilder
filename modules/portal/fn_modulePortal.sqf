@@ -42,7 +42,9 @@ _i			= 0;
 				// Infantry
 				((_groups select _i) select 1) pushBack [typeOf _x, getPosATL _x, getDir _x];
 			} else {
-				// Crewmen
+				// Crewman in a vehicle.
+				// We'll register only the vehicle as it already contains the information of what kind of crew
+				// is required.
 				_vehicle = objectParent _x;
 				if !(_vehicle in _parents) then {
 					_parents pushBack _vehicle;
@@ -52,8 +54,22 @@ _i			= 0;
 		} forEach units group _x;
 		_i = _i + 1;
 	} else {
-		if (side _x == CIVILIAN) then {
-			_objects pushBack [typeOf _x, getPosATL _x, getDir _x];
+		if (count crew _x > 0) then {
+			// A vehicle with a crew, synchronization is made to the vehicle, not crew members.
+			_groups pushBack [side _x, [], []];
+			{
+				_vehicle = objectParent _x;
+				if !(_vehicle in _parents) then {
+					_parents pushBack _vehicle;
+					((_groups select _i) select 2) pushBack [typeOf _vehicle, getPosATL _vehicle, getDir _vehicle];
+				};
+			} forEach crew _x;
+			_i = _i + 1;
+		} else {
+			if (side _x == CIVILIAN) then {
+				// An empty object or vehicle.
+				_objects pushBack [typeOf _x, getPosATL _x, getDir _x];
+			};
 		};
 	};
 } forEach synchronizedObjects _portal;
