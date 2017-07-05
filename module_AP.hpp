@@ -15,20 +15,24 @@ class RHNET_ab_moduleAP_F : Module_F
 	class Arguments {
 		class PartyType {
 			displayName = "Present";
-			description = "Type of unit that must be present for this actionpoint to activate.";
+			description = "Type of unit that must be present on the trigger area for this actionpoint to activate.";
 			typeName = "STRING";
 			class Values {
 				class AP_ANY {
 					name = "Anything";
 					value = "Any";
 				};
-				class AP_LAND {
-					name = "Ground units";
-					value = "Land";
+				class AP_PLAYER {
+					name = "Player";
+					value = "Player";
 					default = 1;
+				}
+				class AP_LAND {
+					name = "Land";
+					value = "Land";
 				};
 				class AP_MAN {
-					name = "Infantry";
+					name = "Man";
 					value = "Man";
 				};
 				class AP_CAR {
@@ -36,11 +40,11 @@ class RHNET_ab_moduleAP_F : Module_F
 					value = "Car";
 				};
 				class AP_TANK {
-					name = "Armored";
+					name = "Tank";
 					value = "Tank";
 				};
 				class AP_AIR {
-					name = "Aircraft";
+					name = "Air";
 					value = "Air";
 				};
 				class AP_SHIP {

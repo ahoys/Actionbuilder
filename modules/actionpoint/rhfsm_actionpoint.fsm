@@ -196,8 +196,8 @@ link99[] = {72,91};
 link100[] = {91,72};
 link101[] = {73,91};
 link102[] = {91,73};
-globals[] = {0.000000,0,0,0,0,640,480,1,154,0,1,-989.200806,304.744629,2008.252686,1146.995850,1884,1254,1};
-window[] = {2,-1,-1,-1,-31,1235,773,2693,198,3,1902};
+globals[] = {0.000000,0,0,0,0,640,480,1,154,0,1,-1229.221680,458.746826,1517.740601,394.218872,1884,1254,1};
+window[] = {2,-1,-1,-32000,-32030,1245,208,2128,208,3,1902};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -236,7 +236,7 @@ class FSM
                          "_master = objNull;" \n
                          "_size = RHNET_AB_G_AP_SIZE select ((RHNET_AB_G_AP_SIZE find _ap) + 1);" \n
                          "" \n
-                         "_PartyType = _ap getVariable [""PartyType"",""Any""];" \n
+                         "_PartyType = _ap getVariable [""PartyType"",""Player""];" \n
                          "_PlayersAlive = _ap getVariable [""PlayersAlive"",0];" \n
                          "_SafeLock = _ap getVariable [""SafeLock"",128];" \n
                          "_ExecutePortals = _ap getVariable [""ExecutePortals"",-1];" \n
@@ -625,7 +625,8 @@ class FSM
                                         priority = 1.000000;
                                         to="more_triggers_to";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"(_PartyType countType list _trg) < 1"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(_PartyType != ""Player"" && _PartyType countType list _trg < 1) || " \n
+                                         "(_PartyType == ""Player"" && {isPlayer _x} count list _trg < 1)"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
