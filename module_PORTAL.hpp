@@ -129,6 +129,10 @@ class RHNET_ab_modulePORTAL_F : Module_F
 					name = "Flying";
 					value = "FLY";
 				};
+				class CAN_COLLIDE {
+					name = "Can collide";
+					value = "CAN_COLLIDE";
+				};
 			};
 		};
 	};
