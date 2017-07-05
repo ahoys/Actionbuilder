@@ -131,13 +131,6 @@ class RHNET_ab_modulePORTAL_F : Module_F
 				};
 			};
 		};
-
-		class p_UnitInit {
-			displayName = "Initialize Units";
-			description = "Special commands and scripts for unit initialization.";
-			typeName = "STRING";
-			defaultValue = "";
-		};
 	};
 
 	class ModuleDescription : ModuleDescription {

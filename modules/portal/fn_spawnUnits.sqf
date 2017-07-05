@@ -20,7 +20,6 @@ if (!isServer && hasInterface) exitWith {};
 private[
 	"_portal",
 	"_owner",
-	"_varInit",
 	"_varPos",
 	"_varSafe",
 	"_varSpecial",
@@ -63,7 +62,6 @@ if ((isNil "RHNET_AB_G_PORTALS" || isNil "RHNET_AB_G_PORTAL_OBJECTS" || isNil "R
 waitUntil {!isNil "RHNET_AB_G_PORTAL_OBJECTS" && !isNil "RHNET_AB_G_PORTAL_GROUPS"};
 
 // Portal settings
-_varInit	= _portal getVariable ["p_UnitInit",""];
 _varPos		= _portal getVariable ["p_Positioning","PORTAL"];
 _varSafe	= _portal getVariable ["p_MinDist",400];
 _varSpecial	= _portal getVariable ["p_Special","NONE"];
