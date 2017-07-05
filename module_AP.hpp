@@ -56,14 +56,14 @@ class RHNET_ab_moduleAP_F : Module_F
 		
 		class PlayersAlive {
 			displayName = "Players alive";
-			description = "How many playable units there must be alive for this actionpoint to work.";
+			description = "How many playable units there must be alive for this actionpoint to work (0 - no limit).";
 			typeName = "NUMBER";
 			defaultValue = 0;
 		};
 		
 		class Safelock {
 			displayName = "Maximum unit count";
-			description = "The actionpoint will not activate if there are more units alive than allowed.";
+			description = "The actionpoint will not activate if there are more units alive than allowed (-1 - 1024).";
 			typeName = "NUMBER";
 			defaultValue = 128;
 		};
