@@ -33,21 +33,18 @@ if (_units isEqualTo []) exitWith {[0, []]};
 	) then {
 		_registeredGroups pushBack _grp;
 		_registeredVehicles = [];
-		_newGrp = [_side, []]; // [side, [units]]
+		_newGrp = [_side, [], []]; // [side, [vehicles], [infantry]].
 		{
 			_veh = objectParent _x;
 			if (isNull _veh) then {
 				// On foot.
-				(_newGrp select 1) pushBack [
-					false,
-					[
-						typeOf _x,
-						getPosATL _x,
-						getDir _x,
-						damage _x,
-						skill _x,
-						rank _x
-					]
+				(_newGrp select 2) pushBack [
+					typeOf _x,
+					getPosATL _x,
+					getDir _x,
+					damage _x,
+					skill _x,
+					rank _x
 				];
 				// Count all the units.
 				_totalUnits = _totalUnits + 1;
@@ -56,15 +53,12 @@ if (_units isEqualTo []) exitWith {[0, []]};
 				if !(_veh in _registeredVehicles) then {
 					_registeredVehicles pushBack _veh;
 					(_newGrp select 1) pushBack [
-						true,
-						[
-							typeOf _veh,
-							getPosATL _veh,
-							getDir _veh,
-							damage _veh,
-							fuel _veh,
-							locked _veh
-						]
+						typeOf _veh,
+						getPosATL _veh,
+						getDir _veh,
+						damage _veh,
+						fuel _veh,
+						locked _veh
 					];
 					// Count all the units.
 					_totalUnits = _totalUnits + (count crew _veh);
