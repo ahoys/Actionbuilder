@@ -10,7 +10,7 @@
 	0: ARRAY - unit(s)
 
 	Returns:
-	ARRAY - a list of objects
+	ARRAY - [total count of objects, [list of objects]]
 */
 private["_units","_objects"];
 _units = _this select 0;
