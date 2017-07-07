@@ -133,6 +133,10 @@ class RHNET_ab_modulePORTAL_F : Module_F
 					name = "Can collide";
 					value = "CAN_COLLIDE";
 				};
+				class CARGO {
+					name = "Infantry in cargo";
+					value = "CARGO";
+				}
 			};
 		};
 	};
