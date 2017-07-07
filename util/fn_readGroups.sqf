@@ -10,14 +10,15 @@
 	0: ARRAY - units
 
 	Returns:
-	ARRAY - a list of groups
+	ARRAY - [total count of units, [list of groups]]
 */
-private["_units","_return","_registeredGroups","_grp","_side","_registeredVehicles","_newGrp","_veh"];
+private["_units","_groups","_totalUnits","_registeredGroups","_grp","_side","_registeredVehicles","_newGrp","_veh"];
 _units = _this select 0;
-_return = [0, []];
+_groups = [];
+_totalUnits = 0;
 _registeredGroups = [];
 
-if (_units isEqualTo []) exitWith {_return};
+if (_units isEqualTo []) exitWith {[0, []]};
 
 {
 	_grp = group _x;
@@ -49,7 +50,7 @@ if (_units isEqualTo []) exitWith {_return};
 					]
 				];
 				// Count all the units.
-				_return set [0, (_return select 0) + 1];
+				_totalUnits = _totalUnits + 1;
 			} else {
 				// Manned vehicle.
 				if !(_veh in _registeredVehicles) then {
@@ -66,12 +67,12 @@ if (_units isEqualTo []) exitWith {_return};
 						]
 					];
 					// Count all the units.
-					_return set [0, (_return select 0) + (count crew _veh)];
+					_totalUnits = _totalUnits + (count crew _veh);
 				};
 			};
 		} forEach units _grp;
-		(_return select 1) pushBack _newGrp;
+		_groups pushBack _newGrp;
 	};
 } forEach _units;
 
-_return;
+[_totalUnits, _groups];
