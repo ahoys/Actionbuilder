@@ -12,20 +12,19 @@
 	Returns:
 	ARRAY - a list of objects
 */
-private["_units","_return","_c"];
+private["_units","_objects"];
 _units = _this select 0;
-_return = [0, []];
-_c = 0;
+_objects = [];
 
-if (_units isEqualTo []) exitWith {_return};
+if (_units isEqualTo []) exitWith {[0, []]};
 
 {
-	// If there's not group, the object is not alive or
+	// If there are no group, the object is not alive or
 	// manned by an alive unit. Side makes sure we register
 	// only objects, not logics.
 	if (isNull group _x && side _x == CIVILIAN) then {
 		// List all the interesting data about the unit.
-		(_return select 1) pushBack [
+		_objects pushBack [
 			typeOf _x,
 			getPosATL _x,
 			getDir _x,
@@ -33,8 +32,7 @@ if (_units isEqualTo []) exitWith {_return};
 			fuel _x,
 			locked _x
 		];
-		_return set [0, (_return select 0) + 1];
 	};
 } forEach _units;
 
-_return;
+[count _objects, _objects];

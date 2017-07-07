@@ -11,7 +11,7 @@
 	Returns:
 	Nothing
 */
-private["_portal","_synced","_objects","_groups"];
+private["_portal","_synced"];
 _portal = _this select 0;
 _synced = synchronizedObjects _portal;
 
@@ -32,15 +32,11 @@ if (isNil "RHNET_AB_G_PORTALS") then {RHNET_AB_G_PORTALS = []};
 if (isNil "RHNET_AB_G_PORTAL_OBJECTS") then {RHNET_AB_G_PORTAL_OBJECTS = []};
 if (isNil "RHNET_AB_G_PORTAL_GROUPS") then {RHNET_AB_G_PORTAL_GROUPS = []};
 
-// Analyse the synchronized objects and units -----------------------------------------------------
-_objects = [_synced] call Actionbuilder_fnc_readObjects;
-_groups = [_synced] call Actionbuilder_fnc_readGroups;
-
 // Save the portal to global variables ------------------------------------------------------------
 RHNET_AB_G_PORTALS pushBack _portal;
 RHNET_AB_G_PORTAL_OBJECTS pushBack _portal;
-RHNET_AB_G_PORTAL_OBJECTS pushBack _objects;
+RHNET_AB_G_PORTAL_OBJECTS pushBack ([_synced] call Actionbuilder_fnc_readObjects);
 RHNET_AB_G_PORTAL_GROUPS pushBack _portal;
-RHNET_AB_G_PORTAL_GROUPS pushBack _groups;
+RHNET_AB_G_PORTAL_GROUPS pushBack ([_synced] call Actionbuilder_fnc_readGroups);
 
 true
