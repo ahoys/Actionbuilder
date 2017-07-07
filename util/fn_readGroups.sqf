@@ -12,9 +12,12 @@
 	Returns:
 	ARRAY - a list of groups
 */
-private["_return","_registeredGroups","_grp","_side","_registeredVehicles","_newGrp","_veh"];
-_return = [];
+private["_units","_return","_registeredGroups","_grp","_side","_registeredVehicles","_newGrp","_veh"];
+_units = _this select 0;
+_return = [0, []];
 _registeredGroups = [];
+
+if (_units isEqualTo []) exitWith {_return};
 
 {
 	_grp = group _x;
@@ -25,7 +28,7 @@ _registeredGroups = [];
 	if (
 		!(isNull _grp) &&
 		!(_grp in _registeredGroups) &&
-		_side in [WEST, EAST, GUER, CIVILIAN]
+		_side in [WEST, EAST, INDEPENDENT, CIVILIAN]
 	) then {
 		_registeredGroups pushBack _grp;
 		_registeredVehicles = [];
@@ -45,6 +48,8 @@ _registeredGroups = [];
 						rank _x
 					]
 				];
+				// Count all the units.
+				_return set [0, (_return select 0) + 1];
 			} else {
 				// Manned vehicle.
 				if !(_veh in _registeredVehicles) then {
@@ -60,12 +65,13 @@ _registeredGroups = [];
 							locked _veh
 						]
 					];
+					// Count all the units.
+					_return set [0, (_return select 0) + (count crew _veh)];
 				};
 			};
 		} forEach units _grp;
-		_return pushBack _newGrp;
+		(_return select 1) pushBack _newGrp;
 	};
-} forEach (_this select 0);
+} forEach _units;
 
-diag_log format ["AB fn_readGroups: %1", _return];
 _return;
