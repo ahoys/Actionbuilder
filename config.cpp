@@ -72,6 +72,10 @@ class CfgFunctions {
 		class Utility {
 			
 			file = "\RHNET\rhnet_actionbuilder\util";
+
+			class readObjects {};
+
+			class readGroups {};
 			
 			class getEqualTypes {};
 			
