@@ -59,39 +59,39 @@ if (count _groups > 0) then {
 
 // Spawn objects first.
 {
-	diag_log format ["ABO %1", _x];
-	private _spawn = true;
-	private _type = _x select 0;
-	private _pos = _x select 1;
-	private _dir = _x select 2;
-	private _damage = _x select 3;
-	private _fuel = _x select 4;
-	private _locked = _x select 5;
+	// 0: type,
+	// 1: pos,
+	// 2: dir,
+	// 3: damage,
+	// 4: fuel,
+	// 5: locked
 	// Set the position.
-	if (_varPos == "PORTAL") then {
-		_pos = _posPortal;
-		_dir = _dirPortal;
-	};
-	// Make sure that players are outside the safe zone.
-	if (_varSafeZone > 0) then {
-		{
-			if ((_x distance _pos) <= _varSafeZone) then {
-				_spawn = false;
-			};
-		} forEach _players;
-	};
-	// Spawn the object.
-	if (_spawn) then {
-		private _veh = createVehicle [_type, _pos, [], 0, _varSpecial];
-		_veh setDir _dir;
-		_veh setDamage _damage;
-		_veh setFuel _fuel;
-		_veh lock _locked;
+	scopeName "main";
+	call {
+		private _pos = _x select 1;
+		if (_varPos == "PORTAL") then {
+			_x set [1, _posPortal];
+			_x set [2, _dirPortal];
+		};
+		// Make sure that players are outside the safe zone.
+		if (_varSafeZone > 0) then {
+			private _p = _x select 1;
+			{
+				if ((_x distance _p) <= _varSafeZone) then {
+					breakTo "main";
+				};
+			} forEach _players;
+		};
+		// Spawn the object.
+		private _veh = createVehicle [_x select 0, _x select 1, [], 0, _varSpecial];
+		_veh setDir (_x select 2);
+		_veh setDamage (_x select 3);
+		_veh setFuel (_x select 4);
+		_veh lock (_x select 5);
 	};
 } forEach _objects;
 
 // Spawn groups second.
-diag_log format ["AB GROUPS: %1", _groups];
 {
 	private _side = _x select 0;
 	private _vehicles = _x select 1;
