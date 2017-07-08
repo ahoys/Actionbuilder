@@ -56,15 +56,11 @@ class CfgFunctions {
 
 			class selectWaypoint {};
 			
-			class loadVehicles {};
+			class sendVehiclesAway {};
+
+			class loadTransport {};
 			
 			class unloadVehicles {};
-			
-			class seatEmptyPositions {};
-			
-			class sendVehiclesAway {};
-			
-			class waitForSeating {};
 
 		};
 		class Utility {
