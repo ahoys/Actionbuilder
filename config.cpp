@@ -35,8 +35,6 @@ class CfgFunctions {
 			file = "\RHNET\rhnet_actionbuilder\modules\actionpoint";
 
 			class moduleActionpoint {};
-			
-			class getApSize {};
 
 		};
 		class Portal {

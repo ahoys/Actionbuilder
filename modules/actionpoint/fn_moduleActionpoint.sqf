@@ -36,8 +36,18 @@ if (isNil "RHNET_AB_G_AP_SIZE") then {
 	};
 };
 
+// Count actionpoint's payload size (how many units).
+// This will be used to decide whether the AP can activate.
+private _s = 0;
+{
+ _s = ((RHNET_AB_G_PORTAL_OBJECTS select ((RHNET_AB_G_PORTAL_OBJECTS find _x) + 1)) select 0) 
+ + ((RHNET_AB_G_PORTAL_GROUPS select ((RHNET_AB_G_PORTAL_GROUPS find _x) + 1)) select 0);
+} forEach _portals;
+
+diag_log format ["AB PAYLOAD: %1", _s];
+
 RHNET_AB_G_AP_SIZE pushBack _ap;
-RHNET_AB_G_AP_SIZE pushBack ([_portals] call Actionbuilder_fnc_getApSize);
+RHNET_AB_G_AP_SIZE pushBack _s;
 
 // Execute ----------------------------------------------------------------------------------------
 _actionfsm = [_ap, _portals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
