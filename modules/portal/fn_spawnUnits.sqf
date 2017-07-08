@@ -65,10 +65,8 @@ if (count _groups > 0) then {
 	// 3: damage,
 	// 4: fuel,
 	// 5: locked
-	// Set the position.
 	scopeName "main";
 	call {
-		private _pos = _x select 1;
 		if (_varPos == "PORTAL") then {
 			_x set [1, _posPortal];
 			_x set [2, _dirPortal];
@@ -83,108 +81,98 @@ if (count _groups > 0) then {
 			} forEach _players;
 		};
 		// Spawn the object.
-		private _veh = createVehicle [_x select 0, _x select 1, [], 0, _varSpecial];
-		_veh setDir (_x select 2);
-		_veh setDamage (_x select 3);
-		_veh setFuel (_x select 4);
-		_veh lock (_x select 5);
+		private _v = createVehicle [_x select 0, _x select 1, [], 0, _varSpecial];
+		_v setDir (_x select 2);
+		_v setDamage (_x select 3);
+		_v setFuel (_x select 4);
+		_v lock (_x select 5);
 	};
 } forEach _objects;
 
 // Spawn groups second.
 {
-	private _side = _x select 0;
-	private _vehicles = _x select 1;
-	private _infantry = _x select 2;
-	private _safeZoneClear = true;
-	// Make sure that the entire group is outside
-	// the safezone.
-	if (_varSafeZone > 0) then {
-		if (_varPos == "PORTAL") then {
-			// Everybody spawns at the portal.
-			{
-				if ((_x distance _posPortal) <= _varSafeZone) then {
-					_safeZoneClear = false;
-				};
-			} forEach _players;
-		} else {
-			// Vehicles.
-			{
-				private _vehPos = _x select 1;
+	// 0: side,
+	// 1: vehicles,
+	// 2: infantry
+	scopeName "main";
+	call {
+		if (_varSafeZone > 0) then {
+			// Safezone is enabled.
+			// Make sure none of the group members is
+			// too close to the players.
+			if (_varPos == "PORTAL") then {
+				// Portal position.
 				{
-					if ((_x distance _vehPos) <= _varSafeZone) then {
-						_safeZoneClear = false;
+					if ((_x distance _posPortal) <= _varSafeZone) then {
+						breakTo "main";
 					};
 				} forEach _players;
-			} forEach _vehicles;
-			// Infantry.
-			{
-				private _unitPos = _x select 1;
+			} else {
+				// Various positions.
 				{
-					if ((_x distance _unitPos) <= _varSafeZone) then {
-						_safeZoneClear = false;
-					};
-				} forEach _players;
-			} forEach _infantry;
+					private _p = _x select 1;
+					{
+						if ((_x distance _p) <= _varSafeZone) then {
+							// Players too close to the vehicle.
+							breakTo "main";
+						};
+					} forEach _players;
+				} forEach (_x select 1);
+				{
+					private _p = _x select 1;
+					{
+						if ((_x distance _p) <= _varSafeZone) then {
+							// Players too close to the unit.
+							breakTo "main";
+						};
+					} forEach _players;
+				} forEach (_x select 2);
+			};
 		};
-	};
-	if (_safeZoneClear) then {
-		// Safezone is clear. The spawning will happen.
-		// Spawn the group vehicles first.
-		private _grp = createGroup _side;
+		private _g = createGroup (_x select 0);
+		// Spawn vehicles first.
 		{
-			diag_log format ["ABV %1", _x];
-			private _spawn = true;
-			private _type = _x select 0;
-			private _pos = _x select 1;
-			private _dir = _x select 2;
-			private _damage = _x select 3;
-			private _fuel = _x select 4;
-			private _locked = _x select 5;
-			// Set the position.
+			// 0: type,
+			// 1: pos,
+			// 2: dir,
+			// 3: damage,
+			// 4: fuel,
+			// 5: locked
 			if (_varPos == "PORTAL") then {
-				_pos = _posPortal;
-				_dir = _dirPortal;
+				_x set [1, _posPortal];
+				_x set [2, _dirPortal];
 			};
-			// Spawn the vehicle.
-			private _veh = createVehicle [_type, _pos, [], 0, _varSpecial];
-			// Spawn the crew.
-			createVehicleCrew _veh;
-			(crew _veh) joinSilent _grp;
-			// Set attributes.
-			_veh setDir _dir;
-			_veh setDamage _damage;
-			_veh setFuel _fuel;
-			_veh lock _locked;
-		} forEach _vehicles;
-		// Spawn the group infantry second.
+			private _v = createVehicle [_x select 0, _x select 1, [], 0, _varSpecial];
+			createVehicleCrew _v;
+			(crew _v) joinSilent _g;
+			_v setDir (_x select 2);
+			_v setDamage (_x select 3);
+			_v setFuel (_x select 4);
+			_v lock (_x select 5);
+		} forEach (_x select 1);
+		// Spawn infantry last.
 		{
-			diag_log format ["ABU %1", _x];
-			private _spawn = true;
-			private _type = _x select 0;
-			private _pos = _x select 1;
-			private _dir = _x select 2;
-			private _damage = _x select 3;
-			private _skill = _x select 4;
-			private _rank = _x select 5;
-			// Set the position.
+			// 0: type,
+			// 1: pos,
+			// 2: dir,
+			// 3: damage,
+			// 4: skill,
+			// 5: rank
 			if (_varPos == "PORTAL") then {
-				_pos = _posPortal;
-				_dir = _dirPortal;
+				_x set [1, _posPortal];
+				_x set [2, _dirPortal];
 			};
-			// Spawn the unit.
-			private _unit = _grp createUnit [_type, _pos, [], 0, _varSpecial];
-			// Set attributes.
-			_unit setDir _dir;
-			_unit setDamage _damage;
-			_unit setSkill _skill;
-			_unit setRank _rank;
-		} forEach _infantry;
+			private _u = _g createUnit [_x select 0, _x select 1, [], 0, _varSpecial];
+			_u setDir (_x select 2);
+			_u setDamage (_x select 3);
+			_u setSkill (_x select 4);
+			_u setRank (_x select 5);
+		} forEach (_x select 2);
 		// Register [id, portal, current location, next location, banned location].
-		RHNET_AB_L_GROUPPROGRESS pushBack _grp;
+		RHNET_AB_L_GROUPPROGRESS pushBack _g;
 		RHNET_AB_L_GROUPPROGRESS pushBack [0, _portal, objNull, objNull, []];
 		// Assign waypoint.
-		[_grp] spawn Actionbuilder_fnc_assignWaypoint;
+		[_g] spawn Actionbuilder_fnc_assignWaypoint;
 	};
 } forEach _groups;
 
