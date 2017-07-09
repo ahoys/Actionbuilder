@@ -14,50 +14,6 @@ class RHNET_ab_moduleAP_F : Module_F
 
 	class Attributes: AttributesBase
 	{
-		class PartyType: Combo
-		{
-			property = "RHNET_ab_moduleAP_PartyType";
-			displayName = "Present";
-			tooltip = "A type of an unit to be present on the trigger area for this actionpoint to launch.";
-			typeName = "STRING";
-			defaultValue = "Land";
-			class Values
-			{
-				class AP_ANY {
-					name = "Anything";
-					value = "Any";
-				};
-				class AP_PLAYER {
-					name = "Player";
-					value = "Player";
-				}
-				class AP_LAND {
-					name = "Land";
-					value = "Land";
-				};
-				class AP_MAN {
-					name = "Man";
-					value = "Man";
-				};
-				class AP_CAR {
-					name = "Car";
-					value = "Car";
-				};
-				class AP_TANK {
-					name = "Tank";
-					value = "Tank";
-				};
-				class AP_AIR {
-					name = "Air";
-					value = "Air";
-				};
-				class AP_SHIP {
-					name = "Ship";
-					value = "Ship";
-				};
-			};
-		};
-
 		class PlayersAlive: Edit
 		{
 			property = "RHNET_ab_moduleAP_PlayersAlive";
