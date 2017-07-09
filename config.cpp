@@ -79,15 +79,9 @@ class CfgFunctions {
 			
 			class getSynchronizedClosest {};
 			
-			class getSynchronizedObjects {};
-			
-			class getSynchronizedGroups {};
-			
 			class punish {};
 			
 			class command {};
-			
-			class isValidkey {};
 			
 			class moduleActionpoints {};
 			
