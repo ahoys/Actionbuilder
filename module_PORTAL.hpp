@@ -19,12 +19,12 @@ class RHNET_ab_modulePORTAL_F : Module_F
 			typeName = "STRING";
 			class Values {
 				class PORTAL_ORIGINALPOSITION {
-					name = "Editor placed position";
+					name = "Original";
 					value = "NONE";
 					default = 1;
 				};
 				class PORTAL_PORTALPOSITION {
-					name = "Portal module position";
+					name = "Portal";
 					value = "PORTAL";
 				};
 			};
@@ -126,15 +126,15 @@ class RHNET_ab_modulePORTAL_F : Module_F
 					default = 1;
 				};
 				class FLY {
-					name = "Flying";
+					name = "Spawn flying";
 					value = "FLY";
 				};
 				class CAN_COLLIDE {
-					name = "Can collide";
+					name = "Spawn to exact positions";
 					value = "CAN_COLLIDE";
 				};
 				class CARGO {
-					name = "Infantry in cargo";
+					name = "Spawn to vehicle cargo";
 					value = "CARGO";
 				}
 			};
