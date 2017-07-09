@@ -87,9 +87,9 @@ class CfgFunctions {
 			
 			class modulePortals {};
 			
-			class moduleWaypoints {};
-			
 			class selectRandom {};
+
+			class getSynchronizedOfType {};
 			
 		};
 	};
