@@ -12,12 +12,17 @@ class RHNET_ab_moduleAP_F : Module_F
 	functionPriority = 2;
 	isDisposable = 0;
 
-	class Arguments {
-		class PartyType {
+	class Attributes: AttributesBase
+	{
+		class PartyType: Combo
+		{
+			property = "RHNET_ab_moduleAP_PartyType";
 			displayName = "Present";
-			description = "Type of unit that must be present on the trigger area for this actionpoint to activate.";
+			tooltip = "A type of an unit to be present on the trigger area for this actionpoint to launch.";
 			typeName = "STRING";
-			class Values {
+			defaultValue = "Land";
+			class Values
+			{
 				class AP_ANY {
 					name = "Anything";
 					value = "Any";
@@ -25,7 +30,6 @@ class RHNET_ab_moduleAP_F : Module_F
 				class AP_PLAYER {
 					name = "Player";
 					value = "Player";
-					default = 1;
 				}
 				class AP_LAND {
 					name = "Land";
@@ -53,30 +57,36 @@ class RHNET_ab_moduleAP_F : Module_F
 				};
 			};
 		};
-		
-		class PlayersAlive {
-			displayName = "Players alive";
-			description = "How many playable units there must be alive for this actionpoint to work (0 - no limit).";
+
+		class PlayersAlive: Edit
+		{
+			property = "RHNET_ab_moduleAP_PlayersAlive";
+			displayName = "Player's alive";
+			tooltip = "How many playable units there must be alive for this actionpoint to work (0 - no limit).";
 			typeName = "NUMBER";
 			defaultValue = 0;
 		};
-		
-		class Safelock {
-			displayName = "Maximum unit count";
-			description = "The actionpoint will not activate if there are more units alive than allowed (-1 - 1024).";
+
+		class Safelock: Edit
+		{
+			property = "RHNET_ab_moduleAP_Safelock";
+			displayName = "Total unit limit";
+			tooltip = "The actionpoint will not activate if there are more units alive than allowed (-1 - 1024).";
 			typeName = "NUMBER";
 			defaultValue = 128;
 		};
-		
-		class ExecutePortals {
-			displayName = "Executed portals";
-			description = "How many of the synchronized portals will be activated.";
+
+		class ExecutePortals: Combo
+		{
+			property = "RHNET_ab_moduleAP_ExecutePortals";
+			displayName = "Execute Portals";
+			tooltip = "How many of the synchronized portals will be activated.";
 			typeName = "NUMBER";
+			defaultValue = 1;
 			class Values {
 				class AP_EXECUTEALL {
 					name = "All";
 					value = -1;
-					default = 1;
 				};
 				class AP_EXECUTESOME {
 					name = "Some";
@@ -120,6 +130,8 @@ class RHNET_ab_moduleAP_F : Module_F
 				};
 			};
 		};
+
+		class ModuleDescription: ModuleDescription{};
 	};
 
 	class ModuleDescription : ModuleDescription {
