@@ -17,7 +17,7 @@ class RHNET_ab_moduleAP_F : Module_F
 		class PlayersAlive: Edit
 		{
 			property = "RHNET_ab_moduleAP_PlayersAlive";
-			displayName = "Player's alive";
+			displayName = "Players alive";
 			tooltip = "How many playable units there must be alive for this actionpoint to work (0 - no limit).";
 			typeName = "NUMBER";
 			defaultValue = 0;
@@ -35,7 +35,7 @@ class RHNET_ab_moduleAP_F : Module_F
 		class ExecutePortals: Combo
 		{
 			property = "RHNET_ab_moduleAP_ExecutePortals";
-			displayName = "Execute Portals";
+			displayName = "Executed Portals";
 			tooltip = "How many of the synchronized portals will be activated.";
 			typeName = "NUMBER";
 			defaultValue = 1;
