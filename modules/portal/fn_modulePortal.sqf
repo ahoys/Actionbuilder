@@ -11,9 +11,8 @@
 	Returns:
 	Nothing
 */
-private["_portal","_synced"];
-_portal = _this select 0;
-_synced = synchronizedObjects _portal;
+private _portal = _this select 0;
+private _synced = synchronizedObjects _portal;
 
 // The portal should have an actionpoint as a master ----------------------------------------------
 if ([_portal, false] call Actionbuilder_fnc_moduleActionpoints isEqualTo []) exitWith {

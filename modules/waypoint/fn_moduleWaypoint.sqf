@@ -11,14 +11,12 @@
 	Returns:
 	BOOL - true if valid check
 */
-
-private["_waypoint","_valid","_type"];
-_waypoint	= _this select 0;
-_valid		= false;
+private _waypoint = _this select 0;
+private _valid = false;
 
 // Make sure there are portals or waypoints available ---------------------------------------------
 {
-	_type = typeOf _x;
+	private _type = typeOf _x;
 	if ((_type == "RHNET_ab_moduleWP_F") || (_type == "RHNET_ab_modulePORTAL_F")) then {
 		_valid = true;
 	};

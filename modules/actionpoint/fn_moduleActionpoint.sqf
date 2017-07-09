@@ -11,10 +11,8 @@
 	Returns:
 	Nothing
 */
-
-private["_ap","_portals","_actionfsm"];
-_ap 		= _this select 0;
-_portals	= [_ap, true] call Actionbuilder_fnc_modulePortals;
+private _ap = _this select 0;
+private_portals = [_ap, true] call Actionbuilder_fnc_modulePortals;
 
 // The actionpoint should have portals as slaves --------------------------------------------------
 if (_portals isEqualTo []) exitWith {
@@ -44,12 +42,10 @@ private _s = 0;
  + ((RHNET_AB_G_PORTAL_GROUPS select ((RHNET_AB_G_PORTAL_GROUPS find _x) + 1)) select 0);
 } forEach _portals;
 
-diag_log format ["AB PAYLOAD: %1", _s];
-
 RHNET_AB_G_AP_SIZE pushBack _ap;
 RHNET_AB_G_AP_SIZE pushBack _s;
 
 // Execute ----------------------------------------------------------------------------------------
-_actionfsm = [_ap, _portals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
+[_ap, _portals] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm";
 
 true
