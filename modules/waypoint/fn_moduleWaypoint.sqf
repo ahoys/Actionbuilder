@@ -11,22 +11,13 @@
 	Returns:
 	BOOL - true if valid check
 */
-private _waypoint = _this select 0;
-private _valid = false;
-
 // Make sure there are portals or waypoints available ---------------------------------------------
+private _valid = true;
 {
-	private _type = typeOf _x;
-	if ((_type == "RHNET_ab_moduleWP_F") || (_type == "RHNET_ab_modulePORTAL_F")) then {
-		_valid = true;
+	if (((typeOf _x) != "RHNET_ab_moduleWP_F") && ((typeOf _x) != "RHNET_ab_modulePORTAL_F")) exitWith {
+		["Not supported module %1 synchronized to waypoint %2.", typeOf _x, _this select 0] call BIS_fnc_error;
+		_valid = false;
 	};
-	if ((_type != "RHNET_ab_moduleWP_F") && (_type != "RHNET_ab_modulePORTAL_F")) then {
-		["Not supported module %1 synchronized to waypoint %2.", _type, _waypoint] call BIS_fnc_error;
-	};
-} forEach (_waypoint call BIS_fnc_moduleModules);
+} forEach ((_this select 0) call BIS_fnc_moduleModules);
 
-if !(_valid) then {
-	["Waypoint %1 has no valid synchronizations. Synchronize the waypoint to portals or other waypoints.", _waypoint] call BIS_fnc_error;
-};
-
-true
+_valid;

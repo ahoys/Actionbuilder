@@ -12,7 +12,7 @@
 	Nothing
 */
 private _ap = _this select 0;
-private_portals = [_ap, true] call Actionbuilder_fnc_modulePortals;
+private _portals = [_ap, true] call Actionbuilder_fnc_modulePortals;
 
 // The actionpoint should have portals as slaves --------------------------------------------------
 if (_portals isEqualTo []) exitWith {
