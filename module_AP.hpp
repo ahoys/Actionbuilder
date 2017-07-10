@@ -16,7 +16,7 @@ class RHNET_ab_moduleAP_F: Module_F {
 			property = "RHNET_ab_moduleAP_F_PlayersAlive";
 			displayName = "Players alive";
 			tooltip = "How many playable units there must be alive for this actionpoint to work (0 - no limit).";
-			validate = NUMBER;
+			typeName = "NUMBER";
 			defaultValue = 1;
 			control = "EditShort";
 		};
@@ -25,7 +25,7 @@ class RHNET_ab_moduleAP_F: Module_F {
 			property = "RHNET_ab_moduleAP_F_SafeLock";
 			displayName = "Total unit limit";
 			tooltip = "The actionpoint will not activate if there are more units alive than allowed (-1 - 1024).";
-			validate = NUMBER;
+			typeName = "NUMBER";
 			defaultValue = 128;
 			control = "EditShort";
 		};

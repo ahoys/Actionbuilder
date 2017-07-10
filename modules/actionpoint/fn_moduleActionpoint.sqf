@@ -12,7 +12,10 @@
 	Nothing
 */
 private _ap = _this select 0;
+private _activated = _this select 1;
 private _portals = [_ap, true] call Actionbuilder_fnc_modulePortals;
+
+diag_log format ["AB ACTIVATED: %1", _activated];
 
 // The actionpoint should have portals as slaves --------------------------------------------------
 if (_portals isEqualTo []) exitWith {

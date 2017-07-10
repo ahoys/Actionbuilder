@@ -12,7 +12,10 @@
 	Nothing
 */
 private _portal = _this select 0;
+private _units = _this select 1;
 private _synced = synchronizedObjects _portal;
+
+diag_log format ["AB UNITS: %1", _units];
 
 // The portal should have an actionpoint as a master ----------------------------------------------
 if ([_portal, false] call Actionbuilder_fnc_moduleActionpoints isEqualTo []) exitWith {
