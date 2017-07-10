@@ -12,6 +12,7 @@
 	Nothing
 */
 private _ap = _this param [0,objnull,[objnull]];
+private _clients = _this param [1,[],[[]]];
 private _activated = _this param [2,true,[true]];
 private _portals = [_ap, true] call Actionbuilder_fnc_modulePortals;
 
@@ -35,9 +36,9 @@ if (_activated) then {
 		RHNET_AB_L_PERFORMANCE 		= [] execFSM "RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_performance.fsm";
 		[RHNET_AB_G_PORTALS, ["RHNET_ab_moduleAP_F","RHNET_ab_moduleWP_F"]] call Actionbuilder_fnc_deleteSynchronized;
 		"RHNET_AB_G_REQUEST" addPublicVariableEventHandler {
-			(_this select 1) publicVariableClient "RHNET_AB_G_PORTALS";
-			(_this select 1) publicVariableClient "RHNET_AB_G_PORTAL_OBJECTS";
-			(_this select 1) publicVariableClient "RHNET_AB_G_PORTAL_GROUPS";
+			_clients publicVariableClient "RHNET_AB_G_PORTALS";
+			_clients publicVariableClient "RHNET_AB_G_PORTAL_OBJECTS";
+			_clients publicVariableClient "RHNET_AB_G_PORTAL_GROUPS";
 		};
 	};
 
