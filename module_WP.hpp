@@ -1,5 +1,4 @@
-class RHNET_ab_moduleWP_F : Module_F
-{
+class RHNET_ab_moduleWP_F: Module_F {
 	author = "Raunhofer";
 	_generalMacro = "RHNET_ab_moduleWP_F";
 	scope = public;
@@ -243,7 +242,7 @@ class RHNET_ab_moduleWP_F : Module_F
 		};
 	};
 
-	class ModuleDescription : ModuleDescription {
+	class ModuleDescription: ModuleDescription {
 		description = "Waypoints order the spawned units to execute actions.";
 		sync[] = {"RHNET_ab_modulePORTAL_F"};
 

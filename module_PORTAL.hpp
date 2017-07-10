@@ -1,5 +1,4 @@
-class RHNET_ab_modulePORTAL_F : Module_F
-{
+class RHNET_ab_modulePORTAL_F: Module_F {
 	author = "Raunhofer";
 	_generalMacro = "RHNET_ab_modulePORTAL_F";
 	scope = public;
