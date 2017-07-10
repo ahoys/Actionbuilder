@@ -38,4 +38,10 @@ RHNET_AB_G_PORTAL_OBJECTS pushBack ([_synced] call Actionbuilder_fnc_readObjects
 RHNET_AB_G_PORTAL_GROUPS pushBack _portal;
 RHNET_AB_G_PORTAL_GROUPS pushBack ([_synced] call Actionbuilder_fnc_readGroups);
 
+// Clean up ---------------------------------------------------------------------------------------
+[
+	[_portal],
+	["RHNET_ab_moduleAP_F", "RHNET_ab_modulePORTAL_F", "RHNET_ab_moduleWP_F"]
+] call Actionbuilder_fnc_deleteSynchronized;
+
 true

@@ -7,7 +7,7 @@ class RHNET_ab_moduleAP_F: Module_F {
 	icon = "\RHNET\rhnet_actionbuilder\data\iconAP_ca.paa";
 	function = "Actionbuilder_fnc_moduleActionpoint";
 	isGlobal = 0;
-	isTriggerActivated = 0;
+	isTriggerActivated = 1;
 	functionPriority = 2;
 	isDisposable = 0;
 
