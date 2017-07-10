@@ -11,10 +11,11 @@ class RHNET_ab_moduleWP_F: Module_F {
 	functionPriority = 3;
 	isDisposable = 0;
 
-	class Arguments {
-		class WpType {
+	class Attributes: AttributesBase {
+		class WpType: Combo {
+			property = "RHNET_ab_moduleWP_F_WpType";
 			displayName = "Type";
-			description = "How the units react to this waypoint.";
+			tooltip = "How the units react to this waypoint.";
 			typeName = "STRING";
 			class Values {
 				class WP_MOVE {
@@ -81,9 +82,10 @@ class RHNET_ab_moduleWP_F: Module_F {
 			};
 		};
 
-		class WpBehaviour {
+		class WpBehaviour: Combo {
+			property = "RHNET_ab_moduleWP_F_WpBehaviour";
 			displayName = "Behaviour";
-			description = "How the units behave during this waypoint.";
+			tooltip = "How the units behave during this waypoint.";
 			typeName = "STRING";
 			class Values {
 				class WP_UNCHANGED {
@@ -114,9 +116,10 @@ class RHNET_ab_moduleWP_F: Module_F {
 			};
 		};
 
-		class WpSpeed {
+		class WpSpeed: Combo {
+			property = "RHNET_ab_moduleWP_F_WpSpeed";
 			displayName = "Speed";
-			description = "How fast the units move during this waypoint.";
+			tooltip = "How fast the units move during this waypoint.";
 			typeName = "STRING";
 			class Values {
 				class WP_UNCHANGED {
@@ -139,9 +142,10 @@ class RHNET_ab_moduleWP_F: Module_F {
 			};
 		};
 
-		class WpFormation {
+		class WpFormation: Combo {
+			property = "RHNET_ab_moduleWP_F_WpFormation";
 			displayName = "Formation";
-			description = "What formation is used in groups during this waypoint.";
+			tooltip = "What formation is used in groups during this waypoint.";
 			typeName = "STRING";
 			class Values {
 				class WP_NOCHANGE {
@@ -164,9 +168,11 @@ class RHNET_ab_moduleWP_F: Module_F {
 			};
 		};
 
-		class WpMode {
+		class WpMode: Combo {
+			property = "RHNET_ab_moduleWP_F_WpMode";
 			displayName = "Combat Mode";
-			description = "Combat behaviour of the units during this waypoint";
+			tooltip = "Combat behaviour of the units during this waypoint.";
+			typeName = "STRING";
 			class Values {
 				class WP_NOCHANGE {
 					name = "NO CHANGE";
@@ -196,16 +202,18 @@ class RHNET_ab_moduleWP_F: Module_F {
 			};
 		};
 
-		class WpWait {
+		class WpWait: Edit {
+			property = "RHNET_ab_moduleWP_F_WpWait";
 			displayName = "Wait";
-			description = "For how many seconds does it take for this waypoint to activate.";
-			typeName = "SCALAR";
+			tooltip = "For how many seconds does it take for this waypoint to activate.";
+			typeName = "NUMBER";
 			defaultValue = 0;
 		};
 
-		class WpPlacement {
+		class WpPlacement: Combo {
+			property = "RHNET_ab_moduleWP_F_WpPlacement";
 			displayName = "Placement";
-			description = "Location of the actual waypoint.";
+			tooltip = "Location of the actual waypoint.";
 			typeName = "NUMBER";
 			class Values {
 				class WP_EDITORPLACEMENT {
@@ -219,10 +227,11 @@ class RHNET_ab_moduleWP_F: Module_F {
 				};
 			};
 		};
-		
-		class WpSpecial {
+
+		class WpSpecial: Combo {
+			property = "RHNET_ab_moduleWP_F_WpSpecial";
 			displayName = "Special";
-			description = "Special attributes available.";
+			tooltip = "Special attributes available.";
 			typeName = "NUMBER";
 			class Values {
 				class WP_NONE {
@@ -240,6 +249,8 @@ class RHNET_ab_moduleWP_F: Module_F {
 				};
 			};
 		};
+
+		class ModuleDescription: ModuleDescription{};
 	};
 
 	class ModuleDescription: ModuleDescription {
