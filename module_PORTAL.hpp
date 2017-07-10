@@ -113,7 +113,6 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 
 		position = 1;
 		direction = 1;
-		duplicate = 1;
 
 		class RHNET_ab_moduleWP_F {
 			description = "If there are multiple waypoints available only one will be randomly selected.";
