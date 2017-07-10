@@ -31,66 +31,37 @@ class CfgRemoteExec
 class CfgFunctions {
 	class Actionbuilder {
 		class Actionpoint {
-
 			file = "\RHNET\rhnet_actionbuilder\modules\actionpoint";
-
 			class moduleActionpoint {};
-
 		};
 		class Portal {
-
 			file = "\RHNET\rhnet_actionbuilder\modules\portal";
-			
 			class modulePortal {};
-
 			class spawnUnits {};
-
 		};
 		class Waypoint {
-
 			file = "\RHNET\rhnet_actionbuilder\modules\waypoint";
-			
 			class moduleWaypoint {};
-
 			class assignWaypoint {};
-
 			class selectWaypoint {};
-			
 			class sendVehiclesAway {};
-
 			class loadTransport {};
-			
 			class unloadVehicles {};
-
 		};
 		class Utility {
-			
 			file = "\RHNET\rhnet_actionbuilder\util";
-
 			class readObjects {};
-
 			class readGroups {};
-			
 			class getEqualTypes {};
-			
 			class objectsAhead {};
-			
 			class deleteSynchronized {};
-			
 			class getSynchronizedClosest {};
-			
 			class punish {};
-			
 			class command {};
-			
 			class moduleActionpoints {};
-			
 			class modulePortals {};
-			
 			class selectRandom {};
-
 			class getSynchronizedOfType {};
-			
 		};
 	};
 };
@@ -113,9 +84,6 @@ class CfgVehicles {
 	};
 
 	#include "module_AP.hpp"
-
 	#include "module_PORTAL.hpp"
-
 	#include "module_WP.hpp"
-
 };
