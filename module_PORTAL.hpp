@@ -12,6 +12,10 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 	isDisposable = 0;
 
 	class Attributes: AttributesBase {
+		class Units: Units {
+			property = "RHNET_ab_modulePORTAL_F_Units";
+		};
+
 		class p_Positioning: Combo {
 			property = "RHNET_ab_modulePORTAL_F_p_Positioning";
 			displayName = "Positioning";
@@ -36,6 +40,42 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			tooltip = "Area radius in meters where there can be no players present for this portal to work (0 - infinite).";
 			typeName = "NUMBER";
 			defaultValue = 400;
+		};
+
+		class p_Damage: Default {
+			property = "RHNET_ab_modulePORTAL_F_p_Damage";
+			displayName = "Damage";
+			tooltip = "How damaged the spawned units are.";
+			validate = NUMBER;
+			defaultValue = 0;
+			control = "Slider";
+		};
+
+		class p_Skill: Default {
+			property = "RHNET_ab_modulePORTAL_F_p_Skill";
+			displayName = "Skill";
+			tooltip = "How skilled the spawned units are.";
+			validate = NUMBER;
+			defaultValue = 0.5;
+			control = "Slider";
+		};
+
+		class p_Ammo: Default {
+			property = "RHNET_ab_modulePORTAL_F_p_Ammo";
+			displayName = "Ammunition";
+			tooltip = "How much ammunition do the spawned units have.";
+			validate = NUMBER;
+			defaultValue = 1;
+			control = "Slider";
+		};
+
+		class p_Fuel: Default {
+			property = "RHNET_ab_modulePORTAL_F_p_Fuel";
+			displayName = "Fuel";
+			tooltip = "How much fuel do the spawned vehicles have.";
+			validate = NUMBER;
+			defaultValue = 1;
+			control = "Slider";
 		};
 
 		class p_Special: Combo {

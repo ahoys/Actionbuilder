@@ -41,10 +41,7 @@ if (_units isEqualTo []) exitWith {[0, []]};
 				(_newGrp select 2) pushBack [
 					typeOf _x,
 					getPosATL _x,
-					getDir _x,
-					damage _x,
-					skill _x,
-					rank _x
+					getDir _x
 				];
 				// Count all the units.
 				_totalUnits = _totalUnits + 1;
@@ -55,10 +52,7 @@ if (_units isEqualTo []) exitWith {[0, []]};
 					(_newGrp select 1) pushBack [
 						typeOf _veh,
 						getPosATL _veh,
-						getDir _veh,
-						damage _veh,
-						fuel _veh,
-						locked _veh
+						getDir _veh
 					];
 					// Count all the units.
 					_totalUnits = _totalUnits + (count crew _veh);

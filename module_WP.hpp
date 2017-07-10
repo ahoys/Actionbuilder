@@ -206,8 +206,9 @@ class RHNET_ab_moduleWP_F: Module_F {
 			property = "RHNET_ab_moduleWP_F_WpWait";
 			displayName = "Wait";
 			tooltip = "For how many seconds does it take for this waypoint to activate.";
-			typeName = "NUMBER";
-			defaultValue = 0;
+			validate = NUMBER;
+			defaultValue = "0";
+			control = "EditShort";
 		};
 
 		class WpPlacement: Combo {

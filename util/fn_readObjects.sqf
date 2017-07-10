@@ -27,10 +27,7 @@ if (_units isEqualTo []) exitWith {[0, []]};
 		_objects pushBack [
 			typeOf _x,
 			getPosATL _x,
-			getDir _x,
-			damage _x,
-			fuel _x,
-			locked _x
+			getDir _x
 		];
 	};
 } forEach _units;

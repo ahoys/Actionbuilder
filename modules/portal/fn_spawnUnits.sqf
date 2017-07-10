@@ -40,6 +40,10 @@ waitUntil {!isNil "RHNET_AB_G_PORTAL_OBJECTS" && !isNil "RHNET_AB_G_PORTAL_GROUP
 private _varPos = _portal getVariable ["p_Positioning","PORTAL"];
 private _varSafeZone = _portal getVariable ["p_MinDist",400];
 private _varSpecial = _portal getVariable ["p_Special","NONE"];
+private _varDamage = _portal getVariable ["p_Damage",0];
+private _varSkill = _portal getVariable ["p_Skill",0.5];
+private _varAmmo = _portal getVariable ["p_Ammo",1];
+private _varFuel = _portal getVariable ["p_Fuel",1];
 
 // Unit pools.
 private _objects = (RHNET_AB_G_PORTAL_OBJECTS select ((RHNET_AB_G_PORTAL_OBJECTS find _portal) + 1)) select 1;
@@ -61,10 +65,7 @@ if (count _groups > 0) then {
 {
 	// 0: type,
 	// 1: pos,
-	// 2: dir,
-	// 3: damage,
-	// 4: fuel,
-	// 5: locked
+	// 2: dir
 	scopeName "main";
 	call {
 		if (_varPos == "PORTAL") then {
@@ -83,9 +84,9 @@ if (count _groups > 0) then {
 		// Spawn the object.
 		private _v = createVehicle [_x select 0, _x select 1, [], 0, _varSpecial];
 		_v setDir (_x select 2);
-		_v setDamage (_x select 3);
-		_v setFuel (_x select 4);
-		_v lock (_x select 5);
+		_v setDamage _varDamage;
+		_v setVehicleAmmo _varAmmo;
+		_v setFuel _varFuel;
 	};
 } forEach _objects;
 
@@ -134,10 +135,7 @@ if (count _groups > 0) then {
 		{
 			// 0: type,
 			// 1: pos,
-			// 2: dir,
-			// 3: damage,
-			// 4: fuel,
-			// 5: locked
+			// 2: dir
 			if (_varPos == "PORTAL") then {
 				_x set [1, _posPortal];
 				_x set [2, _dirPortal];
@@ -146,27 +144,28 @@ if (count _groups > 0) then {
 			createVehicleCrew _v;
 			(crew _v) joinSilent _g;
 			_v setDir (_x select 2);
-			_v setDamage (_x select 3);
-			_v setFuel (_x select 4);
-			_v lock (_x select 5);
+			_v setDamage _varDamage;
+			_v setVehicleAmmo _varAmmo;
+			_v setFuel _varFuel;
+			{
+				_x setSkill _varSkill;
+				_x setVehicleAmmo _varAmmo;
+			} forEach crew _v;
 		} forEach (_x select 1);
 		// Spawn infantry last.
 		{
 			// 0: type,
 			// 1: pos,
-			// 2: dir,
-			// 3: damage,
-			// 4: skill,
-			// 5: rank
+			// 2: dir
 			if (_varPos == "PORTAL") then {
 				_x set [1, _posPortal];
 				_x set [2, _dirPortal];
 			};
 			private _u = _g createUnit [_x select 0, _x select 1, [], 0, _varSpecial];
 			_u setDir (_x select 2);
-			_u setDamage (_x select 3);
-			_u setSkill (_x select 4);
-			_u setRank (_x select 5);
+			_u setDamage _varDamage;
+			_u setSkill _varSkill;
+			_u setVehicleAmmo _varAmmo;
 		} forEach (_x select 2);
 		// Register [id, portal, current location, next location, banned location].
 		RHNET_AB_L_GROUPPROGRESS pushBack _g;
