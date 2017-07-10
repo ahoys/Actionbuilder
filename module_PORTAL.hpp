@@ -12,10 +12,6 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 	isDisposable = 0;
 
 	class Attributes: AttributesBase {
-		class Units: Units {
-			property = "RHNET_ab_modulePORTAL_F_Units";
-		};
-
 		class p_Positioning: Combo {
 			property = "RHNET_ab_modulePORTAL_F_p_Positioning";
 			displayName = "Positioning";
