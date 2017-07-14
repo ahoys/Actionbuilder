@@ -72,16 +72,16 @@ call {
 	if (isNil "_personalTarget") exitWith {false};
 	
 	// Select command to be performed
-	switch (_method) do {
-		case "TARGET": {
+	call {
+		if (_method == "TARGET") exitWith {
 			_unit commandTarget _personalTarget;
 			_result = true;
 		};
-		case "FIRE": {
+		if (_method == "FIRE") exitWith {
 			_unit commandFire _personalTarget;
 			_result = true;
 		};
-		case "WATCH": {
+		if (_method == "WATCH") exitWith {
 			_unit commandWatch _personalTarget;
 			_result = true;
 		};
