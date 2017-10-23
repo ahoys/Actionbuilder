@@ -17,42 +17,11 @@
 
 if (!isServer && hasInterface) exitWith {};
 
-private[
-	"_group",
-	"_nextLocation",
-	"_key",
-	"_query",
-	"_id",
-	"_portal",
-	"_location",
-	"_previousLocation",
-	"_bannedLocations",
-	"_wpType",
-	"_wpBehaviour",
-	"_wpSpeed",
-	"_wpFormation",
-	"_wpMode",
-	"_wpWait",
-	"_wpPlacement",
-	"_wpSpecial",
-	"_wpStatement",
-	"_wpLocation",
-	"_wpRadius",
-	"_leader",
-	"_wpDistance",
-	"_vehicle",
-	"_skip",
-	"_otherUnits",
-	"_bestDistance",
-	"_target",
-	"_wp"
-];
-
 // ----------------------------------------------------------------------------
 // FIRST OBJECTIVE: COLLECT REQUIRED DATA ABOUT THE REQUEST
 
-_group					= _this select 0;
-_nextLocation			= objNull;
+private _group = _this select 0;
+private _nextLocation = objNull;
 
 // Group can't be empty
 if (isNil "_group") exitWith {
@@ -61,19 +30,22 @@ if (isNil "_group") exitWith {
 };
 
 // Group query
-_key					= (RHNET_AB_L_GROUPPROGRESS find _group) + 1;
-if (_key < 0) 			exitWith {["Group %1 could not be found from the register.", _group] call BIS_fnc_error; false};
-_query					= RHNET_AB_L_GROUPPROGRESS select _key;
-_id						= _query select 0;
-_portal					= _query select 1;
+private _key = (RHNET_AB_L_GROUPPROGRESS find _group) + 1;
+if (_key < 0) exitWith {["Group %1 could not be found from the register.", _group] call BIS_fnc_error; false};
+private _query = RHNET_AB_L_GROUPPROGRESS select _key;
+private _id = _query select 0;
+private _portal = _query select 1;
+private _location = objNull;
+private _previousLocation = objNull;
+private _bannedLocations = objNull;
 if (_id == 0) then {
-	_location			= _portal;
-	_previousLocation 	= objNull;
-	_bannedLocations	= [];
+	_location = _portal;
+	_previousLocation = objNull;
+	_bannedLocations = [];
 } else {
-	_location			= _query select 2;
-	_previousLocation 	= _query select 3;
-	_bannedLocations	= _query select 4;
+	_location = _query select 2;
+	_previousLocation = _query select 3;
+	_bannedLocations = _query select 4;
 };
 
 // ----------------------------------------------------------------------------
@@ -86,27 +58,25 @@ if (isNull _nextLocation) exitWith {false};
 // NEXT OBJECTIVE: DEFINE THE SELECTED WAYPOINT
 
 // Collect the required variables
-_wpType			= _nextLocation getVariable ["WpType","MOVE"];
-_wpBehaviour	= _nextLocation getVariable ["WpBehaviour","UNCHANGED"];
-_wpSpeed		= _nextLocation getVariable ["WpSpeed","UNCHANGED"];
-_wpFormation	= _nextLocation getVariable ["WpFormation","NO CHANGE"];
-_wpMode			= _nextLocation getVariable ["WpMode","NO CHANGE"];
-_wpWait			= parseNumber (_nextLocation getVariable ["WpWait",0]);
-_wpPlacement	= _nextLocation getVariable ["WpPlacement",0];
-_wpSpecial		= _nextLocation getVariable ["WpSpecial",0];
-_wpStatement	= ["true", "[group this] spawn Actionbuilder_fnc_assignWaypoint"];
-_wpLocation		= _nextLocation call Actionbuilder_fnc_getSynchronizedClosest;
-_wpRadius		= 8;
-_leader			= leader _group;
-_vehicle		= objectParent _leader;
-_skip			= false;
+private _wpType = _nextLocation getVariable ["WpType","MOVE"];
+private _wpBehaviour = _nextLocation getVariable ["WpBehaviour","UNCHANGED"];
+private _wpSpeed = _nextLocation getVariable ["WpSpeed","UNCHANGED"];
+private _wpFormation = _nextLocation getVariable ["WpFormation","NO CHANGE"];
+private _wpMode = _nextLocation getVariable ["WpMode","NO CHANGE"];
+private _wpWait = parseNumber (_nextLocation getVariable ["WpWait",0]);
+private _wpPlacement = _nextLocation getVariable ["WpPlacement",0];
+private _wpSpecial = _nextLocation getVariable ["WpSpecial",0];
+private _wpStatement = ["true", "[group this] spawn Actionbuilder_fnc_assignWaypoint"];
+private _wpLocation = _nextLocation call Actionbuilder_fnc_getSynchronizedClosest;
+private _wpRadius = 8;
+private _leader = leader _group;
+private _vehicle = objectParent _leader;
+private _skip = false;
 
 // Use the waypoint's location if there are no valid units synchronized to the waypoint
 if (isNull _wpLocation) then {
 	_wpLocation = getPosATL _nextLocation;
 };
-
-_wpDistance = _leader distance _wpLocation;
 
 // Special property: wait
 if (_wpWait isEqualType 0) then {
@@ -134,10 +104,9 @@ if (_wpType == "UTURN") exitWith {
 // Affects entire group and objects linked to the waypoint
 if ((_wpType == "KILL") || (_wpType == "NEUTRALIZE") || (_wpType == "REMOVE") || (_wpType == "HURT") || (_wpType == "HEAL")) then {
 	[_group, _wpType] call Actionbuilder_fnc_punish;
-	_otherUnits = _nextLocation call BIS_fnc_moduleUnits;
 	{
 		[_x, _wpType] spawn Actionbuilder_fnc_punish;
-	} forEach _otherUnits;
+	} forEach _nextLocation call BIS_fnc_moduleUnits;
 	if (!alive _leader) exitWith {false};
 	_skip = true;
 };
@@ -145,7 +114,7 @@ if ((_wpType == "KILL") || (_wpType == "NEUTRALIZE") || (_wpType == "REMOVE") ||
 // Special property: placement
 // 0: original positioning, 1: look for players
 if (_wpPlacement == 1) then {
-	_bestDistance = -1;
+	private _bestDistance = -1;
 	_target = objNull;
 	{
 		if !((objectParent _x isKindOf "Air") || (objectParent _x isKindOf "Ship")) then {
@@ -160,7 +129,7 @@ if (_wpPlacement == 1) then {
 // Special property: command
 // Affects the entire group and objects linked to the waypoint
 if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
-	_otherUnits = _nextLocation call BIS_fnc_moduleUnits;
+	private _otherUnits = _nextLocation call BIS_fnc_moduleUnits;
 	if (count _otherUnits > 0) then {
 		_result = [_group, _otherUnits, _wpType] spawn Actionbuilder_fnc_command;
 	} else {
@@ -188,6 +157,7 @@ call {
 };
 
 // Already next to the waypoint
+private _wpDistance = _leader distance _wpLocation;
 if (
 		(_wpDistance < (_wpRadius + 4)) && 
 		(_wpType == "MOVE") && 
@@ -229,7 +199,7 @@ if (
 };
 
 // Assign the new waypoint
-_wp = _group addWaypoint [_wpLocation, _wpRadius];
+private _wp = _group addWaypoint [_wpLocation, _wpRadius];
 _wp setWaypointType _wpType;
 _wp setWaypointBehaviour _wpBehaviour;
 _wp setWaypointSpeed _wpSpeed;
