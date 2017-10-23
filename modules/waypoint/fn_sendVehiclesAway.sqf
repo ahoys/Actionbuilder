@@ -46,6 +46,6 @@ _vehWp = _vehicleGroup addWaypoint [_vehicleDestination, 0];
 _vehWp setWaypointType "MOVE";
 _vehWp setWaypointSpeed "NORMAL";
 _vehWP setWaypointCompletionRadius 0;
-_vehWp setWaypointStatements ["true","{deleteVehicle objectParent _x; deleteVehicle _x} forEach thisList"];
+_vehWp setWaypointStatements ["true","{(!isNull objectParent _x) then {deleteVehicle objectParent _x}} forEach thisList"];
 
 true
