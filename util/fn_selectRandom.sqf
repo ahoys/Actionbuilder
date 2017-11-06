@@ -14,13 +14,11 @@
 	ARRAY - a list of selections
 */
 
-private["_array","_count","_unique","_return","_countArray","_i"];
-
-_array 		= param [0, [], [[]]];
-_count 		= param [1, 1, [1]];
-_unique		= param [2, false, [false]];
-_return		= [];
-_countArray	= count _array;
+private _array = param [0, [], [[]]];
+private _count = param [1, 1, [1]];
+private _unique = param [2, false, [false]];
+private _return	= [];
+private _countArray	= count _array;
 
 if (_countArray < 1) exitWith {[]};
 if (_count < 1) exitWith {[]};
@@ -29,7 +27,7 @@ if ((_count > _countArray) && _unique) exitWith {_array};
 while {_count > 0} do {
 	_count = _count - 1;
 	if (_unique) then {
-		_i = floor random count _array;
+		private _i = floor random count _array;
 		_return pushBack (_array select _i);
 		_array deleteAt _i;
 	} else {
