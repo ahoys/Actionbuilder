@@ -104,9 +104,10 @@ if (_wpType == "UTURN") exitWith {
 // Affects entire group and objects linked to the waypoint
 if ((_wpType == "KILL") || (_wpType == "NEUTRALIZE") || (_wpType == "REMOVE") || (_wpType == "HURT") || (_wpType == "HEAL")) then {
 	[_group, _wpType] call Actionbuilder_fnc_punish;
+	private _syncedPunishments = _nextLocation call BIS_fnc_moduleUnits;
 	{
 		[_x, _wpType] spawn Actionbuilder_fnc_punish;
-	} forEach _nextLocation call BIS_fnc_moduleUnits;
+	} forEach _syncedPunishments;
 	if (!alive _leader) exitWith {false};
 	_skip = true;
 };
