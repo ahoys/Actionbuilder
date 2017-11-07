@@ -16,4 +16,4 @@ Portals are responsible of unit spawning. You can link editor placed units to po
 ### Waypoint
 Waypoints control the spawned units. For example a waypoint may order the spawned units to find the closest player.
 
-There can be multiple waypoints synchronized to a one portal. Waypoints can also be synchronized to eachother, creating randomization.
+There can be multiple waypoints synchronized to a one portal. Waypoints can also be synchronized to each other, creating randomization.
