@@ -40,43 +40,43 @@ class RHNET_ab_moduleWP_F: Module_F {
 					value = "DISMISS";
 				};
 				class WP_LOADTRANSPORT {
-					name = "LOAD TRANSPORT";
+					name = "LOAD TRANSPORT (instant)";
 					value = "GETIN";
 				};
 				class WP_UNLOADTRANSPORT {
-					name = "UNLOAD TRANSPORT";
+					name = "UNLOAD TRANSPORT (instant)";
 					value = "UNLOAD";
 				};
 				class WP_LEAVEVEHICLES {
-					name = "ABANDON VEHICLES";
+					name = "ABANDON VEHICLES (instant)";
 					value = "GETOUT";
 				};
 				class WP_FORCETRANSPORT {
-					name = "FORCE TRANSPORT";
+					name = "FORCE TRANSPORT (instant)";
 					value = "FORCE";
 				};
 				class WP_SVTBR {
-					name = "SEND VEHICLES TO BE REMOVED";
+					name = "SEND VEHICLES TO BE REMOVED (instant)";
 					value = "SVA";
 				};
 				class WP_COMMANDTARGET {
-					name = "COMMAND TARGET";
+					name = "COMMAND TARGET (instant)";
 					value = "TARGET";
 				};
 				class WP_COMMANDFIRE {
-					name = "COMMAND FIRE";
+					name = "COMMAND FIRE (instant)";
 					value = "FIRE";
 				};
 				class WP_NEUTRALIZEGROUP {
-					name = "NEUTRALIZE GROUP";
+					name = "NEUTRALIZE GROUP (instant)";
 					value = "NEUTRALIZE";
 				};
 				class WP_KILLGROUP {
-					name = "KILL GROUP";
+					name = "KILL GROUP (instant)";
 					value = "KILL";
 				};
 				class WP_REMOVEGROUP {
-					name = "REMOVE GROUP";
+					name = "REMOVE GROUP (instant)";
 					value = "REMOVE";
 				};
 			};
