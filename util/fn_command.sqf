@@ -14,11 +14,10 @@
 	BOOL - true, if success
 */
 
-private["_executer","_target","_method","_result","_targets","_executers","_unit","_closest","_personalTarget","_distance"];
-_executer	= param [0, grpNull, [grpNull, objNull, []]];
-_target		= param [1, grpNull, [grpNull, objNull, []]];
-_method		= param [2, "TARGET", [""]];
-_result		= false;
+private _executer = param [0, grpNull, [grpNull, objNull, []]];
+private _target = param [1, grpNull, [grpNull, objNull, []]];
+private _method = param [2, "TARGET", [""]];
+private _result = false;
 
 // Executer or subject can't be empty
 if (isNil "_executer" || isNil "_target") exitWith {
@@ -27,6 +26,7 @@ if (isNil "_executer" || isNil "_target") exitWith {
 };
 
 // Convert executers into an array
+private _executers = [];
 call {
 	if (typeName _executer == "OBJECT") exitWith {_executers = [_executer]};
 	if (typeName _executer == "GROUP") exitWith {_executers = units _executer};
@@ -34,6 +34,7 @@ call {
 };
 
 // Convert targets into an array
+private _targets = [];
 call {
 	if (typeName _target == "OBJECT") exitWith {_targets = [_target]};
 	if (typeName _target == "GROUP") exitWith {_targets = units _target};
@@ -43,8 +44,9 @@ call {
 // All executers can have their own targets
 {
 
-	_unit = _x;
-	_distance = -1;
+	private _unit = _x;
+	private _distance = -1;
+	private _personalTarget = objNull;
 	
 	// Select the closest target
 	{
@@ -57,7 +59,7 @@ call {
 	} forEach _targets;
 	
 	// If no men, target vehicles
-	if (isNil "_personalTarget") then {
+	if (isNull _personalTarget) then {
 		{
 			if (!isNil "_x") then {
 				if ((((_unit distance objectParent _x) < _distance) || (_distance < 0)) && (alive objectParent _x) && (_unit != _x) && !(isNull objectParent _x)) then {
@@ -69,7 +71,7 @@ call {
 	};
 	
 	// Make sure the target exists
-	if (isNil "_personalTarget") exitWith {false};
+	if (isNull _personalTarget) exitWith {false};
 	
 	// Select command to be performed
 	call {

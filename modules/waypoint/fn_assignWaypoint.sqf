@@ -130,12 +130,12 @@ if (_wpPlacement == 1) then {
 // Affects the entire group and objects linked to the waypoint
 if ((_wpType == "TARGET") || (_wpType == "FIRE")) then {
 	private _otherUnits = _nextLocation call BIS_fnc_moduleUnits;
+	private _result = false;
+	private _targets = _nextLocation;
 	if (count _otherUnits > 0) then {
-		_result = [_group, _otherUnits, _wpType] spawn Actionbuilder_fnc_command;
-	} else {
-		_result = [_group, _nextLocation, _wpType] spawn Actionbuilder_fnc_command;
+		_targets = _otherUnits;
 	};
-	if (_result) then {
+	if ([_group, _targets, _wpType] call Actionbuilder_fnc_command) then {
 		_skip = true;
 		sleep 5;
 	};
