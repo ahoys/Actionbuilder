@@ -1,20 +1,19 @@
 ![Actionbuilder](https://github.com/ahoys/Actionbuilder/blob/master/actionbuilder.png)
 
 ## Overview
-Actionbuilder is a powerful mission creation extension for Arma 3. Actionbuilder enables higher AI unit count, complex randomized waypoint routes, live unit spawning and more. The core idea is to allow creation of highly randomized Arma scenarios with as little work as possible.
+Actionbuilder is a powerful mission creation extension for Arma 3. Actionbuilder enables a fully randomizable unit spawning, new kind of waypoints, generally higher AI count and other benefits with as little work as possible.
 
-
-## Modules
+## Introduced Modules
 
 ### Actionpoint
-Actionpoints are in change of event triggering. One actionpoint can hold multiple portals and can decide which portals to activate.
+Actionpoints are in charge of event handling. Actionpoints decide when and what portals to activate.
 
-Actionpoints are controlled by in-game triggers.
+Actionpoints are controlled by in-game triggers and can hold multiple portals.
 
 ### Portal
-Portals are responsible of the unit spawning. The user can link units, groups and vehicles to portals that will spawn after the portal activates.
+Portals are responsible of unit spawning. You can link editor placed units to portals which are then loaded into the portals. The moment when Actionpoint triggers, all the linked portals will spawn their loaded units.
 
 ### Waypoint
-Waypoints hold the information what to do after a portal has activated and the related units spawned. For example a waypoint may order the spawned units to move to some other location.
+Waypoints control the spawned units. For example a waypoint may order the spawned units to find the closest player.
 
 There can be multiple waypoints synchronized to a one portal. Waypoints can also be synchronized to eachother, creating randomization.
