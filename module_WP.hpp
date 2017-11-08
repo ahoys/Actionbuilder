@@ -39,6 +39,10 @@ class RHNET_ab_moduleWP_F: Module_F {
 					name = "DISMISSED";
 					value = "DISMISS";
 				};
+				class WP_SVTBR {
+					name = "SEND VEHICLES TO BE REMOVED";
+					value = "SVA";
+				};
 				class WP_LOADTRANSPORT {
 					name = "LOAD TRANSPORT (instant)";
 					value = "GETIN";
@@ -54,10 +58,6 @@ class RHNET_ab_moduleWP_F: Module_F {
 				class WP_FORCETRANSPORT {
 					name = "FORCE TRANSPORT (instant)";
 					value = "FORCE";
-				};
-				class WP_SVTBR {
-					name = "SEND VEHICLES TO BE REMOVED (instant)";
-					value = "SVA";
 				};
 				class WP_COMMANDTARGET {
 					name = "COMMAND TARGET (instant)";
