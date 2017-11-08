@@ -13,14 +13,14 @@
 
 	Parameter(s):
 	0: GROUP - the target group
-	1: PORTAL - the origin portal
+	1: LOCATION ATL - a location where the vehicle returns to
 
 	Returns:
 	BOOL - true if success
 */
 
 private _units = units (_this select 0);
-private _portal = _this select 1;
+private _wpLocation = _this select 1;
 private _inVehicles = [];
 private _crew = [];
 
@@ -37,10 +37,9 @@ private _crew = [];
 private _time = time;
 waitUntil {(count _inVehicles < 1) || ((_time + 16) < time)};
 
-private _vehicleDestination = getPosATL _portal;
 private _vehicleGroup = createGroup (side (_units select 0));
 _crew joinSilent _vehicleGroup;
-private _vehWp = _vehicleGroup addWaypoint [_vehicleDestination, 0];
+private _vehWp = _vehicleGroup addWaypoint [_wpLocation, 0];
 _vehWp setWaypointType "MOVE";
 _vehWp setWaypointSpeed "NORMAL";
 _vehWP setWaypointCompletionRadius 0;

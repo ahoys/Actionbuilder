@@ -170,7 +170,8 @@ if (
 
 // Special property: send vehicles away
 if (_wpType == "SVA") then {
-	[_group, _portal] call Actionbuilder_fnc_sendVehiclesAway;
+	[_group, _wpLocation] call Actionbuilder_fnc_sendVehiclesAway;
+	_skip = true;
 };
 
 // Skip to the next waypoint if required
