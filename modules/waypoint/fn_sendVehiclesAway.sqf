@@ -44,6 +44,7 @@ private _vehWp = _vehicleGroup addWaypoint [_vehicleDestination, 0];
 _vehWp setWaypointType "MOVE";
 _vehWp setWaypointSpeed "NORMAL";
 _vehWP setWaypointCompletionRadius 0;
-_vehWp setWaypointStatements ["true","{if (!isNull objectParent _x) then {deleteVehicle objectParent _x}} forEach thisList"];
+private _script = "{private _veh = objectParent _x; if (!isNull _veh) then {{deleteVehicle _x} forEach crew _veh; deleteVehicle _veh}} forEach thisList";
+_vehWp setWaypointStatements ["true", _script];
 
 true
