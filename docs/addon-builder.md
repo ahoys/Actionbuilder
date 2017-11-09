@@ -18,7 +18,7 @@
 ### Options
 
 #### List of files to copy directly
-*.p3d;*.paa;*.fsm;*.sqs;*.sqf
+\*.p3d;\*.paa;\*.fsm;\*.sqs;\*.sqf
 
 #### Addon prefix
 RHNET\rhnet_actionbuilder
