@@ -1,6 +1,6 @@
 name = "Actionbuilder 1.0.0";
 picture = "logo_ab_ca.paa";
-actionName = "Website";
+actionName = "GitHub";
 action = "https://github.com/ahoys/Actionbuilder";
 description = "A highly versatile unit spawning system for advanced mission creation.";
 logo = "logo_absm_ca.paa";
@@ -8,6 +8,6 @@ logoSmall = "logo_abtn_ca.paa";
 logoOver = "logo_absm_o_ca.paa";
 tooltip = "Actionbuilder";
 tooltipOwned = "Actionbuilder Owned";
-overview = "Actionbuilder is a powerful mission creation extension for Arma 3. Actionbuilder enables a fully randomizable unit spawning, new kind of waypoints, generally higher AI count and other benefits with as little work as possible.";
+overview = "Actionbuilder is a powerful mission creation extension for Arma 3. Actionbuilder enables a fully randomizable unit spawning, new kind of waypoints, generally higher AI count and other benefits with as little effort as possible.";
 author = "Raunhofer";
 overviewPicture = "logo_ab_ca.paa";
