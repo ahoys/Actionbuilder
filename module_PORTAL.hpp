@@ -17,6 +17,7 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			displayName = "Positioning";
 			tooltip = "The units can spawn to their editor placed positions or the position of the portal module.";
 			typeName = "STRING";
+			defaultValue = """NONE""";
 			class Values {
 				class PORTAL_ORIGINALPOSITION {
 					name = "Original unit position";
@@ -35,7 +36,7 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			displayName = "No players radius";
 			tooltip = "Area radius in meters where there can be no players present for this portal to work (0 - infinite).";
 			typeName = "NUMBER";
-			defaultValue = 400;
+			defaultValue = "400";
 		};
 
 		class p_Damage: Default {
@@ -43,7 +44,7 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			displayName = "Damage";
 			tooltip = "How damaged the spawned units are.";
 			validate = NUMBER;
-			defaultValue = 0;
+			defaultValue = "0";
 			control = "Slider";
 		};
 
@@ -52,7 +53,7 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			displayName = "Skill";
 			tooltip = "How skilled the spawned units are.";
 			validate = NUMBER;
-			defaultValue = 0.5;
+			defaultValue = "0.5";
 			control = "Slider";
 		};
 
@@ -61,7 +62,7 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			displayName = "Ammunition";
 			tooltip = "How much ammunition do the spawned units have.";
 			validate = NUMBER;
-			defaultValue = 1;
+			defaultValue = "1";
 			control = "Slider";
 		};
 
@@ -70,7 +71,7 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			displayName = "Fuel";
 			tooltip = "How much fuel do the spawned vehicles have.";
 			validate = NUMBER;
-			defaultValue = 1;
+			defaultValue = "1";
 			control = "Slider";
 		};
 
@@ -79,6 +80,7 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			displayName = "Special";
 			tooltip = "A special attribute of the spawned units.";
 			typeName = "STRING";
+			defaultValue = """NONE""";
 			class Values {
 				class NONE {
 					name = "None";

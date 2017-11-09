@@ -17,6 +17,7 @@ class RHNET_ab_moduleWP_F: Module_F {
 			displayName = "Type";
 			tooltip = "How the units react to this waypoint.";
 			typeName = "STRING";
+			defaultValue = """MOVE""";
 			class Values {
 				class WP_MOVE {
 					name = "MOVE";
@@ -87,6 +88,7 @@ class RHNET_ab_moduleWP_F: Module_F {
 			displayName = "Behaviour";
 			tooltip = "How the units behave during this waypoint.";
 			typeName = "STRING";
+			defaultValue = """UNCHANGED""";
 			class Values {
 				class WP_UNCHANGED {
 					name = "UNCHANGED";
@@ -121,6 +123,7 @@ class RHNET_ab_moduleWP_F: Module_F {
 			displayName = "Speed";
 			tooltip = "How fast the units move during this waypoint.";
 			typeName = "STRING";
+			defaultValue = """UNCHANGED""";
 			class Values {
 				class WP_UNCHANGED {
 					name = "UNCHANGED";
@@ -147,6 +150,7 @@ class RHNET_ab_moduleWP_F: Module_F {
 			displayName = "Formation";
 			tooltip = "What formation is used in groups during this waypoint.";
 			typeName = "STRING";
+			defaultValue = """NO CHANGE""";
 			class Values {
 				class WP_NOCHANGE {
 					name = "NO CHANGE";
@@ -173,6 +177,7 @@ class RHNET_ab_moduleWP_F: Module_F {
 			displayName = "Combat Mode";
 			tooltip = "Combat behaviour of the units during this waypoint.";
 			typeName = "STRING";
+			defaultValue = """NO CHANGE""";
 			class Values {
 				class WP_NOCHANGE {
 					name = "NO CHANGE";
@@ -207,7 +212,7 @@ class RHNET_ab_moduleWP_F: Module_F {
 			displayName = "Wait";
 			tooltip = "For how many seconds does it take for this waypoint to activate.";
 			typeName = "NUMBER";
-			defaultValue = 0;
+			defaultValue = "0";
 			control = "EditShort";
 		};
 
@@ -216,6 +221,7 @@ class RHNET_ab_moduleWP_F: Module_F {
 			displayName = "Placement";
 			tooltip = "Location of the actual waypoint.";
 			typeName = "NUMBER";
+			defaultValue = "0";
 			class Values {
 				class WP_EDITORPLACEMENT {
 					name = "Editor placement";
@@ -234,6 +240,7 @@ class RHNET_ab_moduleWP_F: Module_F {
 			displayName = "Special";
 			tooltip = "Special attributes available.";
 			typeName = "NUMBER";
+			defaultValue = "0";
 			class Values {
 				class WP_NONE {
 					name = "None";
