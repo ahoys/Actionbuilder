@@ -224,12 +224,12 @@ class RHNET_ab_moduleWP_F: Module_F {
 			defaultValue = "0";
 			class Values {
 				class WP_EDITORPLACEMENT {
-					name = "Editor placement";
+					name = "Module position";
 					value = 0;
 					default = 1;
 				};
 				class WP_CLOSESTPLAYER {
-					name = "Closest player";
+					name = "Closest player position";
 					value = 1;
 				};
 			};
