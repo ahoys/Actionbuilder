@@ -51,7 +51,7 @@ item46[] = {"done",1,250,-50.000000,1250.000000,50.000000,1300.000000,0.000000,"
 item47[] = {"",7,210,-154.000061,871.000122,-145.999939,878.999878,0.000000,""};
 item48[] = {"init_headless_cl",3,250,-50.000000,650.000000,50.000000,700.000000,0.000000,"init" \n "headless clients"};
 item49[] = {"spawning_starts",8,218,-50.000000,750.000000,50.000000,800.000000,0.000000,"spawning" \n "starts"};
-item50[] = {"____FAKE____",9,14945968,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+item50[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
 link0[] = {0,10};
 link1[] = {6,11};
 link2[] = {6,12};
@@ -108,7 +108,7 @@ link52[] = {50,2};
 link53[] = {3,50};
 link54[] = {50,3};
 globals[] = {0.000000,0,0,0,0,640,480,1,59,6316128,1,-574.684814,991.457764,643.945557,-363.275360,1345,865,1};
-window[] = {0,-1,-1,-1,-1,1063,26,1946,26,1,1363};
+window[] = {0,-1,-1,-32000,-32030,1063,26,1946,26,1,1363};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -121,14 +121,7 @@ class FSM
                         name = "ACTIONPOINT";
                         itemno = 0;
                         init = /*%FSM<STATEINIT""">*/"private _ap = _this select 0;" \n
-                         "private _portals = _this select 1;" \n
-                         "private _debugMsg = {" \n
-                         "	if (RHNET_AB_L_DEBUG) then {" \n
-                         "		diag_log format [""Actionbuilder - %1: %2"", _ap, _this select 0];" \n
-                         "		hintSilent format [""ACTIONBUILDER\nDEBUG\n\nActionpoint:\n%1\n\nMessage:\n%2"", _ap, _this select 0];" \n
-                         "	};" \n
-                         "	true" \n
-                         "};"/*%FSM</STATEINIT""">*/;
+                         "private _portals = _this select 1;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -447,7 +440,7 @@ class FSM
                 {
                         name = "no_need_to_conti";
                         itemno = 31;
-                        init = /*%FSM<STATEINIT""">*/"[""Not enough players alive.""] call _debugMsg;" \n
+                        init = /*%FSM<STATEINIT""">*/"[""ACTIONPOINT"", _ap, ""Not enough players alive.""] call Actionbuilder_fnc_debug;" \n
                          "true"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -460,7 +453,7 @@ class FSM
                 {
                         name = "no_need_to_conti_1";
                         itemno = 32;
-                        init = /*%FSM<STATEINIT""">*/"[""Too many units already exists.""] call _debugMsg;" \n
+                        init = /*%FSM<STATEINIT""">*/"[""ACTIONPOINT"", _ap, ""Too many units already exists.""] call Actionbuilder_fnc_debug;" \n
                          "true"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -473,7 +466,7 @@ class FSM
                 {
                         name = "no_need_to_conti_2";
                         itemno = 34;
-                        init = /*%FSM<STATEINIT""">*/"[""There were no suitable portals available.""] call _debugMsg;" \n
+                        init = /*%FSM<STATEINIT""">*/"[""ACTIONPOINT"", _ap, ""There were no suitable portals available.""] call Actionbuilder_fnc_debug;" \n
                          "true"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links

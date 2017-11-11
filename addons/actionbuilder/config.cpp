@@ -62,6 +62,7 @@ class CfgFunctions {
 			class modulePortals {};
 			class selectRandom {};
 			class getSynchronizedOfType {};
+			class debug {};
 		};
 	};
 };

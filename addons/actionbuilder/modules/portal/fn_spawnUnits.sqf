@@ -54,15 +54,6 @@ private _players = playableUnits + switchableUnits;
 private _posPortal = getPosATL _portal;
 private _dirPortal = getDir _portal;
 
-// Debugger
-private _debugMsg = {
-	if (RHNET_AB_L_DEBUG) then {
-		diag_log format ["Actionbuilder - %1: %2", _portal, _this select 0];
-		hintSilent format ["ACTIONBUILDER\nDEBUG\n\nPortal:\n%1\n\nMessage:\n%2", _portal, _this select 0];
-	};
-	true
-};
-
 // RHNET_AB_L_GROUPPROGRESS is reserved for waypoints.
 if (count _groups > 0) then {
 	if (isNil "RHNET_AB_L_GROUPPROGRESS") then {
@@ -86,7 +77,7 @@ if (count _groups > 0) then {
 			private _p = _x select 1;
 			{
 				if ((_x distance _p) <= _varSafeZone) then {
-					["Player(s) too close for spawning.", _x] call _debugMsg;
+					["PORTAL", _portal, "Player(s) too close for spawning."] call Actionbuilder_fnc_debug;
 					breakTo "main";
 				};
 			} forEach _players;
@@ -115,7 +106,7 @@ if (count _groups > 0) then {
 				// Portal position.
 				{
 					if ((_x distance _posPortal) <= _varSafeZone) then {
-						["Player(s) too close for spawning.", _x] call _debugMsg;
+						["PORTAL", _portal, "Player(s) too close for spawning."] call Actionbuilder_fnc_debug;
 						breakTo "main";
 					};
 				} forEach _players;
@@ -126,7 +117,7 @@ if (count _groups > 0) then {
 					{
 						if ((_x distance _p) <= _varSafeZone) then {
 							// Players too close to the vehicle.
-							["Player(s) too close for spawning.", _x] call _debugMsg;
+							["PORTAL", _portal, "Player(s) too close for spawning."] call Actionbuilder_fnc_debug;
 							breakTo "main";
 						};
 					} forEach _players;
@@ -136,7 +127,7 @@ if (count _groups > 0) then {
 					{
 						if ((_x distance _p) <= _varSafeZone) then {
 							// Players too close to the unit.
-							["Player(s) too close for spawning.", _x] call _debugMsg;
+							["PORTAL", _portal, "Player(s) too close for spawning."] call Actionbuilder_fnc_debug;
 							breakTo "main";
 						};
 					} forEach _players;
