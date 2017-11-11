@@ -12,9 +12,9 @@
 	Returns:
 	ARRAY - [total count of objects, [list of objects]]
 */
-private["_units","_objects"];
-_units = _this select 0;
-_objects = [];
+
+private _units = _this select 0;
+private _objects = [];
 
 if (_units isEqualTo []) exitWith {[0, []]};
 
