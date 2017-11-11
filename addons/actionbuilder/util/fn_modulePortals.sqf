@@ -13,10 +13,9 @@
 	ARRAY - a list of portals
 */
 
-private ["_master","_validate","_return"];
-_master		= param [0, objNull, [objNull]];
-_validate	= param [1, false, [false]];
-_return		= [];
+private _master	= param [0, objNull, [objNull]];
+private _validate = param [1, false, [false]];
+private _return = [];
 
 {
 	if (_x isKindOf "RHNET_ab_modulePORTAL_F") then {
