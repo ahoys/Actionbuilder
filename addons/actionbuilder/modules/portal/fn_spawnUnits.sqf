@@ -174,7 +174,7 @@ if (count _groups > 0) then {
 		RHNET_AB_L_GROUPPROGRESS pushBack _g;
 		RHNET_AB_L_GROUPPROGRESS pushBack [0, _portal, objNull, objNull, []];
 		// Assign waypoint.
-		[_g] spawn Actionbuilder_fnc_assignWaypoint;
+		[_g] spawn Actionbuilder_fnc_addWaypoint;
 	};
 } forEach _groups;
 

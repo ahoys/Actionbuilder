@@ -6,7 +6,7 @@
 	This is an actionbuilder component, outside calls are not supported
 	
 	Extension for:
-	fn_assignWaypoint.sqf
+	fn_addWaypoint.sqf
 	
 	Description:
 	Select a randomized waypoint

@@ -71,7 +71,7 @@ if (_punish == "HEAL") exitWith {
 if (_punish == "NEUTRALIZE") exitWith {
 	private _pos = [];
 	{
-		if (isNil "_pos") then {
+		if (_pos isEqualTo []) then {
 			_pos = getPosWorld _x;
 			_x spawn BIS_fnc_neutralizeUnit;
 		} else {

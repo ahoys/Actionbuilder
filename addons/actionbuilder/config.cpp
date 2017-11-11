@@ -42,7 +42,7 @@ class CfgFunctions {
 		class Waypoint {
 			file = "\RHNET\rhnet_actionbuilder\modules\waypoint";
 			class moduleWaypoint {};
-			class assignWaypoint {};
+			class addWaypoint {};
 			class selectWaypoint {};
 			class sendVehiclesAway {};
 			class loadTransport {};
