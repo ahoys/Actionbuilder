@@ -13,6 +13,9 @@
 	Nothing
 */
 
+private _masters = param [0, [], [[]]];
+private _excludes = param [1, [], [[]]];
+
 {
 	{
 		if !(typeOf _x in _excludes) then {
