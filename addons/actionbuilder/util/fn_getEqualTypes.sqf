@@ -13,10 +13,9 @@
 	ARRAY of OBJECTs - A list of units of the desired type
 */
 
-private["_type","_master","_entities"];
-_type 		= param [0, "HeadlessClient_F", ["", objNull]];
-_master		= param [1, objNull, [objNull]];
-_entities	= [];
+private _type = param [0, "HeadlessClient_F", ["", objNull]];
+private _master = param [1, objNull, [objNull]];
+private _entities = [];
 
 if (_type isEqualType objNull) then {_type = typeOf _type};
 
