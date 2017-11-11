@@ -17,21 +17,22 @@
 	ARRAY - List of found objects ahead
 */
 
-private["_group","_possibilities","_reference","_investigateAll","_refUnit","_c","_subjects","_currentDirection","_currentLocation","_objectsAhead","_target"];
-_group				= param [0, grpNull, [grpNull]];
-_possibilities		= param [1, [], [[objNull]]];
-_reference			= param [2, [objNull, true], [[objNull, true]]];
-_investigateAll		= param [3, false, [false]];
-_refUnit			= _reference select 0;
-_c					= true;
-_subjects			= [];
-_objectsAhead		= [];
+private _group				= param [0, grpNull, [grpNull]];
+private _possibilities		= param [1, [], [[objNull]]];
+private _reference			= param [2, [objNull, true], [[objNull, true]]];
+private _investigateAll		= param [3, false, [false]];
+private _refUnit			= _reference select 0;
+private _c					= true;
+private _subjects			= [];
+private _objectsAhead		= [];
 
 if (isNull _group || (count _possibilities < 1)) exitWith {_objectsAhead};
 if (_investigateAll) then {_subjects = units _group} else {_subjects = [leader _group]};
 
 // use reference object
 if !(isNil "_refUnit") then {
+	private _currentDirection = 0;
+	private _currentLocation = [];
 	if (_reference select 1) then {
 		if (getDir _refUnit != 0) then {
 			_currentDirection = getDir _refUnit;
@@ -46,7 +47,7 @@ if !(isNil "_refUnit") then {
 };
 
 {
-	_target = _x;
+	private _target = _x;
 	{
 		if (_c) then {
 			_currentDirection = getDir _x;
