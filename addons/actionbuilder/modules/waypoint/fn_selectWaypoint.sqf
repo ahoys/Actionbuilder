@@ -20,22 +20,20 @@
 	OBJECT - the selected portal if any
 */
 
-private["_location","_previousLocation","_bannedLocations","_candidates","_candidatesLocked","_candidatesPriority","_candidatesAhead","_selected","_wp","_valid"];
-
-_location			= _this select 0;
-_previousLocation	= _this select 1;
-_bannedLocations	= _this select 2;
-_candidates			= [];
-_candidatesLocked	= [];
-_candidatesPriority	= [];
-_candidatesAhead	= [];
-_selected			= objNull;
+private _location = _this select 0;
+private _previousLocation = _this select 1;
+private _bannedLocations = _this select 2;
+private _candidates = [];
+private _candidatesLocked = [];
+private _candidatesPriority = [];
+private _candidatesAhead = [];
+private _selected = objNull;
 
 // 1a. Find all possibilities
 {
 	if ((typeOf _x == "RHNET_ab_moduleWP_F") && (_x != _previousLocation) && !(_x in _bannedLocations)) then {
-		_wp = _x;
-		_valid = true;
+		private _wp = _x;
+		private _valid = true;
 		{
 			if !(triggerActivated _x) exitWith {_candidatesLocked pushBack _wp; _valid = false};
 		} forEach (_wp call BIS_fnc_moduleTriggers);
@@ -48,7 +46,7 @@ if (count (_candidates + _candidatesLocked) < 1) exitWith {objNull};
 // 1b. Wait if only conditional waypoints available
 while {count _candidates < 1} do {
 	{
-		_wp = _x;
+		private _wp = _x;
 		{
 			if (triggerActivated _x) exitWith {_candidates pushBack _wp};
 			sleep 0.5;

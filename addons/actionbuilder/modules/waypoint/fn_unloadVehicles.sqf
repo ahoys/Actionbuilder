@@ -19,15 +19,14 @@
 	NOTHING
 */
 
-private["_group","_ejectCrew","_vehicle","_waiting","_currentTime"];
-_group			= _this select 0;
-_ejectCrew		= _this select 1;
-_unassigned		= [];
-_waiting		= false;
-_currentTime	= time;
+private _group = _this select 0;
+private _ejectCrew = _this select 1;
+private _unassigned = [];
+private _waiting = false;
+private _currentTime = time;
 
 {
-	_vehicle = objectParent _x;
+	private _vehicle = objectParent _x;
 	if !(isNull _vehicle) then {
 		if (_ejectCrew) then {
 			_unassigned pushBack _x;
