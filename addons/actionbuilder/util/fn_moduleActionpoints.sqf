@@ -12,7 +12,6 @@
 	Returns:
 	ARRAY - a list of portals
 */
-
 private _master = param [0, objNull, [objNull]];
 private _validate = param [1, false, [false]];
 private _return = [];

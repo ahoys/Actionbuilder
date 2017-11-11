@@ -13,7 +13,6 @@
 	Returns:
 	BOOL - true, if success
 */
-
 private _executer = param [0, grpNull, [grpNull, objNull, []]];
 private _target = param [1, grpNull, [grpNull, objNull, []]];
 private _method = param [2, "TARGET", [""]];

@@ -12,7 +12,6 @@
 	Returns:
 	OBJECT
 */
-
 private _master = param [0, objNull, [objNull]];
 private _mirror = param [1, false, [false]];
 private _selected = objNull;

@@ -12,7 +12,6 @@
 	Returns:
 	ARRAY - [total count of objects, [list of objects]]
 */
-
 private _units = _this select 0;
 private _objects = [];
 

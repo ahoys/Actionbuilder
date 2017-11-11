@@ -19,7 +19,6 @@
 	Returns:
 	OBJECT - the selected portal if any
 */
-
 private _location = param [0, objNull, [objNull]];
 private _previousLocation = param [1, objNull, [objNull]];
 private _bannedLocations = param [2, [], [[]]];

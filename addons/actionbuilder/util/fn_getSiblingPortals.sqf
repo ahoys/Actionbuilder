@@ -15,7 +15,6 @@
 	Returns:
 	BOOL - true, if success
 */
-
 private _portal = param [0, objNull, [objNull]];
 private _synced = param [1, synchronizedObjects _portal, [[]]];
 private _siblings = [];

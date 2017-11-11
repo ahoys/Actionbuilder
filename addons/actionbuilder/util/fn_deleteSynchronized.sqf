@@ -12,7 +12,6 @@
 	Returns:
 	Nothing
 */
-
 private _masters = param [0, [], [[]]];
 private _excludes = param [1, [], [[]]];
 

@@ -12,7 +12,6 @@
 	Returns:
 	ARRAY of OBJECTs - A list of units of the desired type
 */
-
 private _type = param [0, "HeadlessClient_F", ["", objNull]];
 private _master = param [1, objNull, [objNull]];
 private _entities = [];

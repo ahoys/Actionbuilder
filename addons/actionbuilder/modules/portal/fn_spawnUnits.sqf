@@ -14,7 +14,6 @@
 	Returns:
 	NOTHING
 */
-
 if (!isServer && hasInterface) exitWith {};
 
 private _portal = param [0, objNull, [objNull]]; // This portal.

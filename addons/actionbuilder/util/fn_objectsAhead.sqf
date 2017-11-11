@@ -16,7 +16,6 @@
 	Returns:
 	ARRAY - List of found objects ahead
 */
-
 private _group				= param [0, grpNull, [grpNull]];
 private _possibilities		= param [1, [], [[objNull]]];
 private _reference			= param [2, [objNull, true], [[objNull, true]]];

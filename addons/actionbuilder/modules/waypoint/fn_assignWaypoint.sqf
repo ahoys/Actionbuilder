@@ -14,7 +14,6 @@
 	Returns:
 	BOOL - true, if success
 */
-
 if (!isServer && hasInterface) exitWith {};
 
 // ----------------------------------------------------------------------------

@@ -14,6 +14,7 @@
 */
 private _type = _this select 1;
 private _result = [];
+
 {
 	if (_x isKindOf _type) then {
 		_result pushBack _x;

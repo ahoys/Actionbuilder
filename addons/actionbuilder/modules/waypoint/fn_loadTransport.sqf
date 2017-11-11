@@ -12,7 +12,6 @@
 	Returns:
 	ARRAY - [total count of units, [list of groups]]
 */
-
 private _grp = param [0, grpNull, [grpNull]];
 private _afoot = [];
 private _vehicles = [];

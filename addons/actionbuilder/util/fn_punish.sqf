@@ -13,7 +13,6 @@
 	Returns:
 	BOOL - true, if success
 */
-
 private _target = param [0, grpNull, [[], grpNull, objNull]];
 private _punish = param [1, "KILL", [""]];
 private _limit = param [2, 8, [0]];

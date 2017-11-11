@@ -13,7 +13,6 @@
 	Returns:
 	BOOL - true, if success
 */
-
 private _type = param [0, "", [""]];
 private _parent = param [1, objNull, [objNull]];
 private _msg = param [2, "", [""]];

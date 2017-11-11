@@ -18,7 +18,6 @@
 	Returns:
 	NOTHING
 */
-
 private _group = param [0, grpNull, [grpNull]];
 private _ejectCrew = param [1, false, [false]];
 private _unassigned = [];

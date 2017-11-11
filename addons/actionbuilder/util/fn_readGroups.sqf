@@ -12,7 +12,6 @@
 	Returns:
 	ARRAY - [total count of units, [list of groups]]
 */
-
 private _units = _this select 0;
 private _groups = [];
 private _totalUnits = 0;

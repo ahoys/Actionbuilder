@@ -13,7 +13,6 @@
 	Returns:
 	ARRAY - a list of selections
 */
-
 private _array = param [0, [], [[]]];
 private _count = param [1, 1, [1]];
 private _unique = param [2, false, [false]];
