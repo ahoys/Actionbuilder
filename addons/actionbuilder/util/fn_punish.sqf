@@ -14,10 +14,9 @@
 	BOOL - true, if success
 */
 
-private["_target","_punish","_limit","_pos"];
-_target 	= param [0, grpNull, [[], grpNull, objNull]];
-_punish 	= param [1, "KILL", [""]];
-_limit 		= param [2, 8, [0]];
+private _target = param [0, grpNull, [[], grpNull, objNull]];
+private _punish = param [1, "KILL", [""]];
+private _limit = param [2, 8, [0]];
 
 if (isNil "_target") exitWith {
 	["Required group or object missing!"] call BIS_fnc_error;
@@ -71,6 +70,7 @@ if (_punish == "HEAL") exitWith {
 
 // Neutralize all (with explosions), including vehicles.
 if (_punish == "NEUTRALIZE") exitWith {
+	private _pos = [];
 	{
 		if (isNil "_pos") then {
 			_pos = getPosWorld _x;
