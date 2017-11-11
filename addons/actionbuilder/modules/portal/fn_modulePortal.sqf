@@ -11,7 +11,7 @@
 	Returns:
 	Nothing
 */
-private _portal = _this select 0;
+private _portal = param [0, objNull, [objNull]];
 private _synced = synchronizedObjects _portal;
 
 // The portal should have an actionpoint as a master ----------------------------------------------

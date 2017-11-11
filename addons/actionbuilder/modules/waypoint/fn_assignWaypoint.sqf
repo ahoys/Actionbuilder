@@ -20,7 +20,7 @@ if (!isServer && hasInterface) exitWith {};
 // ----------------------------------------------------------------------------
 // FIRST OBJECTIVE: COLLECT REQUIRED DATA ABOUT THE REQUEST
 
-private _group = _this select 0;
+private _group = param [0, grpNull, [grpNull]];
 private _nextLocation = objNull;
 
 // Group can't be empty

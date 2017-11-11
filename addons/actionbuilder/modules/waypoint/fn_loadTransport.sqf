@@ -7,13 +7,16 @@
 	cargo vehicles.
 
 	Parameter(s):
-	0: ARRAY - units
+	0: GROUP - target group
 
 	Returns:
 	ARRAY - [total count of units, [list of groups]]
 */
+
+private _grp = param [0, grpNull, [grpNull]];
 private _afoot = [];
 private _vehicles = [];
+
 // First find out who needs a seat and
 // what vehicles are there to be used.
 {
@@ -31,7 +34,7 @@ private _vehicles = [];
 			};
 		};
 	};
-} forEach units (_this select 0);
+} forEach units _grp;
 
 diag_log format ["AB fn_loadTransport 0: %1, %2", _afoot, _vehicles];
 
@@ -80,7 +83,7 @@ diag_log format ["AB fn_loadTransport 1: %1", _priorizedVehicles];
 			// A cargo vehicle found, assign the unit and reduce
 			// the available seats.
 			_u assignAsCargo (_x select 1);
-			if (_this select 1) then {
+			if (_grp) then {
 				// Force get in.
 				_u moveInCargo (_x select 1);
 			};
@@ -93,7 +96,7 @@ diag_log format ["AB fn_loadTransport 1: %1", _priorizedVehicles];
 
 // Make the final get in order.
 // Not required if the group has already been force moved in.
-if !(_this select 1) then {
+if !(_grp) then {
 	_afoot orderGetIn true;
 };
 

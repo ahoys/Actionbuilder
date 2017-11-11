@@ -19,8 +19,8 @@
 	NOTHING
 */
 
-private _group = _this select 0;
-private _ejectCrew = _this select 1;
+private _group = param [0, grpNull, [grpNull]];
+private _ejectCrew = param [1, false, [false]];
 private _unassigned = [];
 private _waiting = false;
 private _currentTime = time;

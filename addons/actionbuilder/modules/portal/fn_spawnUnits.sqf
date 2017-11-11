@@ -17,8 +17,8 @@
 
 if (!isServer && hasInterface) exitWith {};
 
-private _portal = _this select 0; // This portal.
-private _owner = _this select 1; // Processing owner of the portal (eg. server or headless client).
+private _portal = param [0, objNull, [objNull]]; // This portal.
+private _owner = param [1, 0, [0]]; // Processing owner of the portal (eg. server or headless client).
 
 // Conditions -------------------------------------------------------------------------------------
 

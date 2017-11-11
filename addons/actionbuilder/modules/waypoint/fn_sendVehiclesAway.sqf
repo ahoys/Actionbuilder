@@ -19,8 +19,8 @@
 	BOOL - true if success
 */
 
-private _units = units (_this select 0);
-private _wpLocation = _this select 1;
+private _units = units param [0, grpNull, [grpNull]];
+private _wpLocation = [1, [], [[]]];
 private _inVehicles = [];
 private _crew = [];
 

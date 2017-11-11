@@ -20,9 +20,9 @@
 	OBJECT - the selected portal if any
 */
 
-private _location = _this select 0;
-private _previousLocation = _this select 1;
-private _bannedLocations = _this select 2;
+private _location = param [0, objNull, [objNull]];
+private _previousLocation = param [1, objNull, [objNull]];
+private _bannedLocations = param [2, [], [[]]];
 private _candidates = [];
 private _candidatesLocked = [];
 private _candidatesPriority = [];

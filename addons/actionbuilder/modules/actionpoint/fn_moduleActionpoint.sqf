@@ -11,8 +11,8 @@
 	Returns:
 	Nothing
 */
-private _ap = _this param [0,objnull,[objnull]];
-private _clients = _this param [1,[],[[]]];
+private _ap = param [0, objnull, [objnull]];
+private _clients = param [1, [], [[]]];
 private _portals = [_ap, true] call Actionbuilder_fnc_modulePortals;
 
 // The actionpoint should have portals as slaves --------------------------------------------------

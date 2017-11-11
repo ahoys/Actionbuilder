@@ -11,7 +11,7 @@
 	Returns:
 	BOOL - true if valid check
 */
-private _wp = _this select 0;
+private _wp = param [0, objNull, [objNull]];
 
 // Make sure there are portals or waypoints available ---------------------------------------------
 if (
