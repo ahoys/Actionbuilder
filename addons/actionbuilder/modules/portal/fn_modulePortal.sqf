@@ -32,11 +32,22 @@ if (isNil "RHNET_AB_G_PORTAL_OBJECTS") then {RHNET_AB_G_PORTAL_OBJECTS = []};
 if (isNil "RHNET_AB_G_PORTAL_GROUPS") then {RHNET_AB_G_PORTAL_GROUPS = []};
 
 // Save the portal to global variables ------------------------------------------------------------
-RHNET_AB_G_PORTALS pushBack _portal;
 RHNET_AB_G_PORTAL_OBJECTS pushBack _portal;
 RHNET_AB_G_PORTAL_OBJECTS pushBack ([_synced] call Actionbuilder_fnc_readObjects);
 RHNET_AB_G_PORTAL_GROUPS pushBack _portal;
 RHNET_AB_G_PORTAL_GROUPS pushBack ([_synced] call Actionbuilder_fnc_readGroups);
+RHNET_AB_G_PORTALS pushBack _portal;
+
+// Create a synchronized registration -------------------------------------------------------------
+// This will enable registering same units to multiple portals.
+private _siblings = [_portal, _synced] call Actionbuilder_fnc_getSiblingPortals;
+waitUntil {
+	private _result = true;
+	{
+		if !(_x in RHNET_AB_G_PORTALS) exitWith {_result = false};
+	} forEach _siblings;
+	_result;
+};
 
 // Clean up ---------------------------------------------------------------------------------------
 [

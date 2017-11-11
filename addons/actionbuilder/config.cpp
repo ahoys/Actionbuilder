@@ -63,6 +63,7 @@ class CfgFunctions {
 			class selectRandom {};
 			class getSynchronizedOfType {};
 			class debug {};
+			class getSiblingPortals {};
 		};
 	};
 };
