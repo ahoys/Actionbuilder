@@ -13,10 +13,6 @@
 	Nothing
 */
 
-private["_masters","_excludes","_vehicle"];
-_masters	= param [0, [], [[objNull]]];
-_excludes	= param [1, [], [[""]]];
-
 {
 	{
 		if !(typeOf _x in _excludes) then {
@@ -27,7 +23,7 @@ _excludes	= param [1, [], [[""]]];
 					if (isNull objectParent _x) then {
 						deleteVehicle _x;
 					} else {
-						_vehicle = objectParent _x;
+						private _vehicle = objectParent _x;
 						{
 							deleteVehicle _x;
 						} forEach crew _vehicle;
