@@ -12,17 +12,17 @@
 	Returns:
 	ARRAY - [total count of units, [list of groups]]
 */
-private["_units","_groups","_totalUnits","_registeredGroups","_grp","_side","_registeredVehicles","_newGrp","_veh"];
-_units = _this select 0;
-_groups = [];
-_totalUnits = 0;
-_registeredGroups = [];
+
+private _units = _this select 0;
+private _groups = [];
+private _totalUnits = 0;
+private _registeredGroups = [];
 
 if (_units isEqualTo []) exitWith {[0, []]};
 
 {
-	_grp = group _x;
-	_side = side _x;
+	private _grp = group _x;
+	private _side = side _x;
 	// 1) Make sure the group exists,
 	// 2) is not already registered,
 	// 3) from a valid side (not LOGIC).
@@ -32,10 +32,10 @@ if (_units isEqualTo []) exitWith {[0, []]};
 		_side in [WEST, EAST, INDEPENDENT, CIVILIAN]
 	) then {
 		_registeredGroups pushBack _grp;
-		_registeredVehicles = [];
-		_newGrp = [_side, [], []]; // [side, [vehicles], [infantry]].
+		private _registeredVehicles = [];
+		private _newGrp = [_side, [], []]; // [side, [vehicles], [infantry]].
 		{
-			_veh = objectParent _x;
+			private _veh = objectParent _x;
 			if (isNull _veh) then {
 				// On foot.
 				(_newGrp select 2) pushBack [
