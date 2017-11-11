@@ -25,6 +25,9 @@ if (_portals isEqualTo []) exitWith {
 if (isNil "RHNET_AB_G_PORTALS" || isNil "RHNET_AB_G_PORTAL_OBJECTS" || isNil "RHNET_AB_G_PORTAL_GROUPS") exitWith {false};
 
 // Initialize master variables if required --------------------------------------------------------
+if (isNil "RHNET_AB_L_DEBUG") then {
+	RHNET_AB_L_DEBUG = false;
+};
 if (isNil "RHNET_AB_G_AP_SIZE") then {
 	RHNET_AB_G_AP_SIZE			= [];
 	RHNET_AB_L_BUFFER 			= 0.02;
