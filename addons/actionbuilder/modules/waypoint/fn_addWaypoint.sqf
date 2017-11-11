@@ -162,10 +162,10 @@ if (_wpPlacement == 1 && !isNull _previousWp) then {
 	call {
 		if (_vehicle isKindOf "Car") exitWith {_distanceBuffer = 10};
 		if (_vehicle isKindOf "Tank") exitWith {_distanceBuffer = 20};
-		if (_vehicle isKindOf "Ship") exitWith {_distanceBuffer = 30};
-		if (_vehicle isKindOf "Air") exitWith {_distanceBuffer = 50};
+		if (_vehicle isKindOf "Ship") exitWith {_distanceBuffer = 20};
+		if (_vehicle isKindOf "Air") exitWith {_distanceBuffer = 30};
 	};
-	_radius = _distanceBuffer;
+	_radius = _distanceBuffer - (_distanceBuffer / 4);
 	if (
 		_wpType == _previousWp getVariable ["wpType", "MOVE"] &&
 		(leader _group) distance _wpPos < _distanceBuffer
@@ -206,7 +206,12 @@ if (
 };
 
 // If a helicopter or a plane, set height higher.
-if (objectParent (leader _group) isKindOf "Air") then {_wpPos set [2, (_wpPos select 2) + 100]};
+if (
+	objectParent (leader _group) isKindOf "Air" &&
+	_wpPos select 2 < 10
+) then {
+	_wpPos set [2, (_wpPos select 2) + 100]
+};
 
 // Execute the new waypoint.
 private _wp = _group addWaypoint [_wpPos, _radius];
