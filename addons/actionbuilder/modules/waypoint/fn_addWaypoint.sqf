@@ -66,6 +66,7 @@ private _wpStatement = ["true", "[group this] spawn Actionbuilder_fnc_addWaypoin
 private _wpSynchronized = _nextWp call Actionbuilder_fnc_getSynchronizedClosest;
 private _wpPos = [];
 private _skip = false;
+private _radius = 0;
 
 // Sleep before anything as the environment may still change.
 if (_wpWait isEqualType 0) then {
@@ -149,26 +150,25 @@ if (_wpType == "TARGET" || _wpType == "FIRE") then {
 // Special property: reusability.
 // 1: Waypoint can be used only once / group.
 if (_wpSpecial == 1) then {
+	// Ban the waypoint.
 	((RHNET_AB_L_GROUPPROGRESS select _i) select 4) pushBack _nextWp;
-};
-
-// Set completion distance.
-private _vehicle = objectParent (leader _group);
-private _wpRadius = 0;
-call {
-	if (isNull _vehicle) exitWith {_wpRadius = 2};
-	if (_vehicle isKindOf "AIR") exitWith {_wpRadius = 40; _wpPos set [2, (_wpPos select 2) + 100]};
-	if (_vehicle isKindOf "CAR") exitWith {_wpRadius = 10};
-	if (_vehicle isKindOf "TANK") exitWith {_wpRadius = 20};
-	if (_vehicle isKindOf "SHIP") exitWith {_wpRadius = 30};
 };
 
 // No need to do anything if following the player and
 // already next to the player.
 if (_wpPlacement == 1 && !isNull _previousWp) then {
+	private _vehicle = objectParent (leader _group);
+	private _distanceBuffer = 5;
+	call {
+		if (_vehicle isKindOf "Car") exitWith {_distanceBuffer = 10};
+		if (_vehicle isKindOf "Tank") exitWith {_distanceBuffer = 20};
+		if (_vehicle isKindOf "Ship") exitWith {_distanceBuffer = 30};
+		if (_vehicle isKindOf "Air") exitWith {_distanceBuffer = 50};
+	};
+	_radius = _distanceBuffer;
 	if (
 		_wpType == _previousWp getVariable ["wpType", "MOVE"] &&
-		(leader _group) distance _wpPos < _wpRadius + 4
+		(leader _group) distance _wpPos < _distanceBuffer
 	) then {
 		_skip = true;
 		sleep 1;
@@ -205,8 +205,11 @@ if (
 	_wpType = "MOVE";
 };
 
+// If a helicopter or a plane, set height higher.
+if (objectParent (leader _group) isKindOf "Air") then {_wpPos set [2, (_wpPos select 2) + 100]};
+
 // Execute the new waypoint.
-private _wp = _group addWaypoint [_wpPos, _wpRadius];
+private _wp = _group addWaypoint [_wpPos, _radius];
 _wp setWaypointType _wpType;
 _wp setWaypointBehaviour _wpBehaviour;
 _wp setWaypointSpeed _wpSpeed;
