@@ -33,7 +33,7 @@ _selected			= objNull;
 
 // 1a. Find all possibilities
 {
-	if ((typeOf _x == "RHNET_ab_moduleWP_f") && (_x != _previousLocation) && !(_x in _bannedLocations)) then {
+	if ((typeOf _x == "RHNET_ab_moduleWP_F") && (_x != _previousLocation) && !(_x in _bannedLocations)) then {
 		_wp = _x;
 		_valid = true;
 		{

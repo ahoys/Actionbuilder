@@ -86,7 +86,7 @@ if (_wpWait isEqualType 0) then {
 // Special property: u-turn
 // Go back to the previous waypoint
 if (_wpType == "UTURN") exitWith {
-	if (typeOf _location != "RHNET_ab_modulePORTAL_f") exitWith {
+	if (typeOf _location != "RHNET_ab_modulePORTAL_F") exitWith {
 		(RHNET_AB_L_GROUPPROGRESS select _key) set [0, _id + 1];
 		(RHNET_AB_L_GROUPPROGRESS select _key) set [2, _location];
 		(RHNET_AB_L_GROUPPROGRESS select _key) set [3, _nextLocation];
