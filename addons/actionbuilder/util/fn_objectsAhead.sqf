@@ -29,9 +29,9 @@ if (isNull _group || (count _possibilities < 1)) exitWith {_objectsAhead};
 if (_investigateAll) then {_subjects = units _group} else {_subjects = [leader _group]};
 
 // use reference object
+private _currentDirection = 0;
+private _currentLocation = [];
 if !(isNil "_refUnit") then {
-	private _currentDirection = 0;
-	private _currentLocation = [];
 	if (_reference select 1) then {
 		if (getDir _refUnit != 0) then {
 			_currentDirection = getDir _refUnit;
