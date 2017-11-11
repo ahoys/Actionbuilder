@@ -27,7 +27,6 @@ if (isNil "RHNET_AB_G_PORTALS" || isNil "RHNET_AB_G_PORTAL_OBJECTS" || isNil "RH
 // Initialize master variables if required --------------------------------------------------------
 if (isNil "RHNET_AB_G_AP_SIZE") then {
 	RHNET_AB_G_AP_SIZE			= [];
-	RHNET_AB_L_DEBUG			= false;
 	RHNET_AB_L_BUFFER 			= 0.02;
 	"RHNET_AB_G_REQUEST" addPublicVariableEventHandler {
 		_clients publicVariableClient "RHNET_AB_G_PORTALS";

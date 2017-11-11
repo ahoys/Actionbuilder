@@ -108,7 +108,7 @@ link52[] = {50,2};
 link53[] = {3,50};
 link54[] = {50,3};
 globals[] = {0.000000,0,0,0,0,640,480,1,59,6316128,1,-574.684814,991.457764,643.945557,-363.275360,1345,865,1};
-window[] = {0,-1,-1,-1,-1,1245,208,2128,208,1,1363};
+window[] = {0,-1,-1,-1,-1,1297,260,2180,260,1,1363};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -123,6 +123,9 @@ class FSM
                         init = /*%FSM<STATEINIT""">*/"private _ap = _this select 0;" \n
                          "private _portals = _this select 1;" \n
                          "private _debugMsg = {" \n
+                         "	if (isNil ""RHNET_AB_L_DEBUG"") then {" \n
+                         "		RHNET_AB_L_DEBUG = false;" \n
+                         "	};" \n
                          "	if (RHNET_AB_L_DEBUG) then {" \n
                          "		diag_log format [""Actionbuilder - %1: %2"", _ap, _this select 0];" \n
                          "		hintSilent format [""ACTIONBUILDER\nDEBUG\n\nActionpoint:\n%1\n\nMessage:\n%2"", _ap, _this select 0];" \n
