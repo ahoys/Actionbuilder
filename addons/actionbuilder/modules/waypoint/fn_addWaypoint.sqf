@@ -157,13 +157,45 @@ private _vehicle = objectParent (leader _group);
 private _wpRadius = 0;
 call {
 	if (isNull _vehicle) exitWith {_wpRadius = 2};
-	if (_vehicle isKindOf "AIR") exitWith {_wpRadius = 30; _wpPos set [2, (_wpPos select 2) + 100]};
-	if (_vehicle isKindOf "CAR") exitWith {_wpRadius = 5};
-	if (_vehicle isKindOf "TANK") exitWith {_wpRadius = 8};
-	if (_vehicle isKindOf "SHIP") exitWith {_wpRadius = 20};
+	if (_vehicle isKindOf "AIR") exitWith {_wpRadius = 40; _wpPos set [2, (_wpPos select 2) + 100]};
+	if (_vehicle isKindOf "CAR") exitWith {_wpRadius = 10};
+	if (_vehicle isKindOf "TANK") exitWith {_wpRadius = 20};
+	if (_vehicle isKindOf "SHIP") exitWith {_wpRadius = 30};
 };
 
-// Translate special types.
+// No need to do anything if following the player and
+// already next to the player.
+if (_wpPlacement == 1 && !isNull _previousWp) then {
+	if (
+		_wpType == _previousWp getVariable ["wpType", "MOVE"] &&
+		(leader _group) distance _wpPos < _wpRadius + 4
+	) then {
+		_skip = true;
+		sleep 1;
+	};
+};
+
+// Special property: send vehicles away.
+if (_wpType == "SVA" && !_skip) then {
+	[_group, _wpPos] call Actionbuilder_fnc_sendVehiclesAway;
+	_skip = true;
+};
+
+// Skip to the next waypoint if further processing is not required.
+if (_skip) exitWith {
+	[_group] spawn Actionbuilder_fnc_addWaypoint;
+	true
+};
+
+// Actionbuilder specific special types.
+call {
+	if (_wpType == "GETIN") exitWith {[_group, false] call Actionbuilder_fnc_loadTransport; _wpPos = position leader _group};
+	if (_wpType == "UNLOAD") exitWith {[_group, false] call Actionbuilder_fnc_unloadVehicles; _wpPos = position leader _group};
+	if (_wpType == "FORCE") exitWith {[_group, true] call Actionbuilder_fnc_loadTransport; _wpPos = position leader _group};
+	if (_wpType == "GETOUT") exitWith {[_group, true] call Actionbuilder_fnc_unloadVehicles; _wpPos = position leader _group};
+};
+
+// Translate the special types.
 if (
 	_wpType != "MOVE" &&
 	_wpType != "SAD" &&
