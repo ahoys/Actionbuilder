@@ -24,10 +24,11 @@ private _inVehicles = [];
 private _crew = [];
 
 {
-	if (_x in assignedCargo objectParent _x) then {
+	private _vehicle = objectParent _x;
+	if (_x in assignedCargo _vehicle) then {
 		_inVehicles pushBack _x;
 	} else {
-		if !(isNull objectParent _x) then {
+		if (!isNull _vehicle && _vehicle getCargoIndex _x == -1) then {
 			_crew pushBack _x;
 		};
 	};
