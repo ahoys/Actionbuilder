@@ -8,11 +8,13 @@
 
 	Parameter(s):
 	0: GROUP - target group
+	1: BOOL - whether to instantly move the group
 
 	Returns:
 	ARRAY - [total count of units, [list of groups]]
 */
-private _grp = param [0, grpNull, [grpNull]];
+private _group = param [0, grpNull, [grpNull]];
+private _force = param [1, false, [false]];
 private _afoot = [];
 private _vehicles = [];
 
@@ -33,7 +35,7 @@ private _vehicles = [];
 			};
 		};
 	};
-} forEach units _grp;
+} forEach units _group;
 
 diag_log format ["AB fn_loadTransport 0: %1, %2", _afoot, _vehicles];
 
@@ -82,7 +84,7 @@ diag_log format ["AB fn_loadTransport 1: %1", _priorizedVehicles];
 			// A cargo vehicle found, assign the unit and reduce
 			// the available seats.
 			_u assignAsCargo (_x select 1);
-			if (_grp) then {
+			if (_force) then {
 				// Force get in.
 				_u moveInCargo (_x select 1);
 			};
@@ -95,7 +97,7 @@ diag_log format ["AB fn_loadTransport 1: %1", _priorizedVehicles];
 
 // Make the final get in order.
 // Not required if the group has already been force moved in.
-if !(_grp) then {
+if !(_force) then {
 	_afoot orderGetIn true;
 };
 
