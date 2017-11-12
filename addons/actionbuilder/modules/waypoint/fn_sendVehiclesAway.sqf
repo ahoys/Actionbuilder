@@ -19,7 +19,7 @@
 	BOOL - true if success
 */
 private _units = units param [0, grpNull, [grpNull]];
-private _wpLocation = [1, [], [[]]];
+private _wpLocation = param [1, [], [[]]];
 private _inVehicles = [];
 private _crew = [];
 
