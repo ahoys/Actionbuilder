@@ -19,6 +19,9 @@ if (!isServer && hasInterface) exitWith {};
 private _portal = param [0, objNull, [objNull]]; // This portal.
 private _owner = param [1, 0, [0]]; // Processing owner of the portal (eg. server or headless client).
 
+// Portal must exist!
+if (isNull _portal) exitWith {false};
+
 // Conditions -------------------------------------------------------------------------------------
 
 // Request global variables if not available.
@@ -43,6 +46,8 @@ private _varDamage = _portal getVariable ["p_Damage",0];
 private _varSkill = _portal getVariable ["p_Skill",0.5];
 private _varAmmo = _portal getVariable ["p_Ammo",1];
 private _varFuel = _portal getVariable ["p_Fuel",1];
+
+diag_log format ["AB _portal: %1", _portal];
 
 // Unit pools.
 private _objects = (RHNET_AB_G_PORTAL_OBJECTS select ((RHNET_AB_G_PORTAL_OBJECTS find _portal) + 1)) select 1;
