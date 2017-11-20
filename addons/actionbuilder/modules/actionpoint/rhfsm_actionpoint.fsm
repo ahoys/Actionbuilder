@@ -270,8 +270,7 @@ class FSM
                 {
                         name = "Select_a_portal";
                         itemno = 9;
-                        init = /*%FSM<STATEINIT""">*/"diag_log format [""AB SELECT: %1"", _p];" \n
-                         "private _portal = _selectedPortals select _p;"/*%FSM</STATEINIT""">*/;
+                        init = /*%FSM<STATEINIT""">*/"private _portal = _selectedPortals select _p;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -396,8 +395,7 @@ class FSM
                                         to="portals_availabl";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"private _selectedPortals = [_portals, _ExecutePortals, true] call Actionbuilder_fnc_selectRandom;" \n
-                                         "diag_log format [""AB _selectedPortals: %1"", _selectedPortals];"/*%FSM</ACTION""">*/;
+                                        action=/*%FSM<ACTION""">*/"private _selectedPortals = [_portals, _ExecutePortals, true] call Actionbuilder_fnc_selectRandom;"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
                         };
@@ -590,8 +588,7 @@ class FSM
                          "private _master = objNull;" \n
                          "private _i = 0;" \n
                          "private _p = 0;" \n
-                         "private _portalsC = count _selectedPortals;" \n
-                         "diag_log format [""AB PORTALS: %1, %2"", _portals, _selectedPortals];"/*%FSM</STATEINIT""">*/;
+                         "private _portalsC = count _selectedPortals;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {

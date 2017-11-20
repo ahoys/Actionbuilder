@@ -37,8 +37,6 @@ private _vehicles = [];
 	};
 } forEach units _group;
 
-diag_log format ["AB fn_loadTransport 0: %1, %2", _afoot, _vehicles];
-
 if (_afoot isEqualTo []) exitWith {true}; // Everyone already in.
 if (_vehicles isEqualTo []) exitWith {false}; // No vehicles to use.
 
@@ -71,8 +69,6 @@ private _priorizedVehicles = [];
 		_priorizedVehicles = _t;
 	};
 } forEach _vehicles;
-
-diag_log format ["AB fn_loadTransport 1: %1", _priorizedVehicles];
 
 // Assign seats to afoot units.
 {

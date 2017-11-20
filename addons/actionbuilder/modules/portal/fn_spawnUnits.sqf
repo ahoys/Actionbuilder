@@ -47,8 +47,6 @@ private _varSkill = _portal getVariable ["p_Skill",0.5];
 private _varAmmo = _portal getVariable ["p_Ammo",1];
 private _varFuel = _portal getVariable ["p_Fuel",1];
 
-diag_log format ["AB _portal: %1", _portal];
-
 // Unit pools.
 private _objects = (RHNET_AB_G_PORTAL_OBJECTS select ((RHNET_AB_G_PORTAL_OBJECTS find _portal) + 1)) select 1;
 private _groups = (RHNET_AB_G_PORTAL_GROUPS select ((RHNET_AB_G_PORTAL_GROUPS find _portal) + 1)) select 1;
