@@ -6,7 +6,7 @@
 - e.g. C:\git\\@actionbuilder\addons\actionbuilder
 
 #### Destination directory or filename
-- e.g. C:\Program Files (x86)\Steam\steamapps\common\Arma 3\@actionbuilder\addons
+- e.g. C:\Program Files (x86)\Steam\steamapps\common\Arma 3\\@actionbuilder\addons
 
 #### Flags
 [x] Clear temp folder
