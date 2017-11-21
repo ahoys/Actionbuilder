@@ -27,7 +27,7 @@ RHNET\rhnet_actionbuilder
 - e.g. C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\DSSignFile\actionbuilder-1.x.x.biprivatekey
 
 #### Path to temp folder
-- e.g. C:\Users\(user)\Documents\Arma 3 - Temp
+- e.g. C:\Users\\(user)\Documents\Arma 3 - Temp
 
 #### Path to project folder
 - (empty)
