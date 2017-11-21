@@ -3,7 +3,7 @@
 ### General
 
 #### Addon source directory
-- e.g. C:\git\@actionbuilder\addons\actionbuilder
+- e.g. C:\git\\@actionbuilder\addons\actionbuilder
 
 #### Destination directory or filename
 - e.g. C:\Program Files (x86)\Steam\steamapps\common\Arma 3\@actionbuilder\addons
