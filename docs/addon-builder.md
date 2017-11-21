@@ -1,4 +1,4 @@
-## Setting up Arma 3 Addon Builder
+## Setting up Arma 3 Addon Builder v.1.5.x
 
 ### General
 
