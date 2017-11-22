@@ -28,10 +28,6 @@ class RHNET_ab_moduleWP_F: Module_F {
 					name = "SEEK AND DESTROY";
 					value = "SAD";
 				};
-				class WP_UTURN {
-					name = "U-TURN";
-					value = "UTURN";
-				};
 				class WP_GUARD {
 					name = "GUARD";
 					value = "GUARD";
@@ -40,44 +36,48 @@ class RHNET_ab_moduleWP_F: Module_F {
 					name = "DISMISSED";
 					value = "DISMISS";
 				};
+				class WP_UTURN {
+					name = "ACTION: U-TURN";
+					value = "UTURN";
+				};
 				class WP_SVTBR {
-					name = "SEND VEHICLES TO BE REMOVED";
+					name = "ACTION: SEND VEHICLES TO BE REMOVED";
 					value = "SVA";
 				};
 				class WP_LOADTRANSPORT {
-					name = "LOAD TRANSPORT (instant)";
+					name = "ACTION: LOAD TRANSPORT";
 					value = "GETIN";
 				};
 				class WP_UNLOADTRANSPORT {
-					name = "UNLOAD TRANSPORT (instant)";
+					name = "ACTION: UNLOAD TRANSPORT";
 					value = "UNLOAD";
 				};
 				class WP_LEAVEVEHICLES {
-					name = "ABANDON VEHICLES (instant)";
+					name = "ACTION: ABANDON VEHICLES";
 					value = "GETOUT";
 				};
 				class WP_FORCETRANSPORT {
-					name = "FORCE TRANSPORT (instant)";
+					name = "ACTION: FORCE TRANSPORT";
 					value = "FORCE";
 				};
 				class WP_COMMANDTARGET {
-					name = "COMMAND TARGET (instant)";
+					name = "ACTION: COMMAND TARGET";
 					value = "TARGET";
 				};
 				class WP_COMMANDFIRE {
-					name = "COMMAND FIRE (instant)";
+					name = "ACTION: COMMAND FIRE";
 					value = "FIRE";
 				};
 				class WP_NEUTRALIZEGROUP {
-					name = "NEUTRALIZE GROUP (instant)";
+					name = "ACTION: NEUTRALIZE GROUP";
 					value = "NEUTRALIZE";
 				};
 				class WP_KILLGROUP {
-					name = "KILL GROUP (instant)";
+					name = "ACTION: KILL GROUP";
 					value = "KILL";
 				};
 				class WP_REMOVEGROUP {
-					name = "REMOVE GROUP (instant)";
+					name = "ACTION: REMOVE GROUP";
 					value = "REMOVE";
 				};
 			};
