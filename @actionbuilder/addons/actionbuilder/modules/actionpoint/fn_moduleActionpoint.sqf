@@ -45,8 +45,8 @@ if (isNil "RHNET_AB_G_AP_SIZE") then {
 // This will be used to decide whether the AP can activate.
 private _s = 0;
 {
-_s = ((RHNET_AB_G_PORTAL_OBJECTS select ((RHNET_AB_G_PORTAL_OBJECTS find _x) + 1)) select 0) 
-+ ((RHNET_AB_G_PORTAL_GROUPS select ((RHNET_AB_G_PORTAL_GROUPS find _x) + 1)) select 0);
+	_s = ((RHNET_AB_G_PORTAL_OBJECTS select ((RHNET_AB_G_PORTAL_OBJECTS find _x) + 1)) select 0) 
+	+ ((RHNET_AB_G_PORTAL_GROUPS select ((RHNET_AB_G_PORTAL_GROUPS find _x) + 1)) select 0);
 } forEach _portals;
 RHNET_AB_G_AP_SIZE pushBack _ap;
 RHNET_AB_G_AP_SIZE pushBack _s;
