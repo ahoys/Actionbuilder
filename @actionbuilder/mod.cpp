@@ -1,4 +1,4 @@
-name = "Actionbuilder 1.0.0";
+name = "Actionbuilder";
 picture = "logo_ab_ca.paa";
 actionName = "GitHub";
 action = "https://github.com/ahoys/Actionbuilder";
