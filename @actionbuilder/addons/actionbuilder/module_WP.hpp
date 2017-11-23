@@ -15,7 +15,7 @@ class RHNET_ab_moduleWP_F: Module_F {
 		class WpType: Combo {
 			property = "RHNET_ab_moduleWP_F_WpType";
 			displayName = "Type";
-			tooltip = "How the units react to this waypoint.";
+			tooltip = "How the units react to this waypoint. Actions are instantaneous.";
 			typeName = "STRING";
 			defaultValue = """MOVE""";
 			class Values {
