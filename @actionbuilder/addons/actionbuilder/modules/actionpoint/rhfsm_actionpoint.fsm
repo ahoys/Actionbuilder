@@ -107,8 +107,8 @@ link51[] = {2,50};
 link52[] = {50,2};
 link53[] = {3,50};
 link54[] = {50,3};
-globals[] = {0.000000,0,0,0,0,640,480,1,59,6316128,1,-528.730164,785.040833,1188.975830,344.058899,1345,865,1};
-window[] = {0,-1,-1,-1,-31,1167,130,2050,130,1,1363};
+globals[] = {0.000000,0,0,0,0,640,480,1,59,6316128,1,-1051.568848,949.473755,1814.092529,435.352173,1820,1254,1};
+window[] = {2,-1,-1,-32000,-32030,1323,286,2206,286,3,1838};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -121,7 +121,14 @@ class FSM
                         name = "ACTIONPOINT";
                         itemno = 0;
                         init = /*%FSM<STATEINIT""">*/"private _ap = _this select 0;" \n
-                         "private _portals = _this select 1;"/*%FSM</STATEINIT""">*/;
+                         "private _portals = _this select 1;" \n
+                         "private _isHcDisabled = false;" \n
+                         "// Disable Headless Client if requested." \n
+                         "if (!isNil ""RHNET_AB_L_DISABLE_HC_SUPPORT"") then {" \n
+                         "	if (typeName RHNET_AB_L_DISABLE_HC_SUPPORT == ""BOOL"") then {" \n
+                         "		_isHcDisabled = RHNET_AB_L_DISABLE_HC_SUPPORT;" \n
+                         "	};" \n
+                         "};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -281,7 +288,7 @@ class FSM
                                         priority = 1.000000;
                                         to="more_portals";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_clients isEqualTo []"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_clients isEqualTo [] || _isHcDisabled"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"[_portal, 0] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
