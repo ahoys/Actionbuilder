@@ -20,8 +20,8 @@ No scripting required!
 - Safe zones for player-free spawning.
 
 ### How to use it?
-- Actionbuilder Quickstart[github.com]
-- Example mission[github.com]
+- [Actionbuilder Quickstart](https://github.com/ahoys/Actionbuilder/blob/master/docs/Actionbuilder%20Quickstart%201.0.x.pdf)
+- [Template mission](https://github.com/ahoys/Actionbuilder/blob/master/missions/ab_examples.zip)
 
 ### Notes
 - Creates a dependency. Both the server and the clients (players on your server) need to have Actionbuilder installed.
