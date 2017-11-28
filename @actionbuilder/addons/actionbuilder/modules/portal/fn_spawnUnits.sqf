@@ -157,6 +157,14 @@ if (count _groups > 0) then {
 				_x setSkill _varSkill;
 				_x setVehicleAmmo _varAmmo;
 			} forEach crew _v;
+			// Planes can't hover.
+			if (_v isKindOf "Plane") then {
+				_v setVelocity [
+					sin (_x select 2) * 50,
+					cos (_x select 2) * 50,
+					_x select 2
+				];
+			};
 		} forEach (_x select 1);
 		// Spawn infantry last.
 		{
