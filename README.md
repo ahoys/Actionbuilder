@@ -1,19 +1,31 @@
 ![Actionbuilder](https://github.com/ahoys/Actionbuilder/blob/master/images/logos/actionbuilder.png)
 
-## Overview
-Actionbuilder is a powerful mission creation extension for Arma 3. Actionbuilder enables a fully randomizable unit spawning, new kind of waypoints, generally higher AI count and other benefits with as little effort as possible.
+## Actionbuilder
 
-## Introduced Modules
+Actionbuilder is a powerful mission creation extension for Arma 3. Actionbuilder enables dynamic 
+unit spawning, new kinds of waypoints, practically higher AI count and other benefits with as little effort as possible.
 
-### Actionpoint
-Actionpoints are in charge of event handling. Actionpoints decide when and what portals to activate.
+No scripting required!
 
-Actionpoints are controlled by in-game triggers and can hold multiple portals.
+### Enables
+- Dynamic unit spawning.
+- Generally faster mission creation.
+- Easy way to create extremely randomized missions.
+- Practically higher maximum AI count.
+- Ways to drastically improve performance.
 
-### Portal
-Portals are responsible of unit spawning. You can link editor placed units to portals which are then loaded into the portals. The moment when Actionpoint triggers, all the linked portals will spawn their loaded units.
+### Additional Features
+- Headless Client support.
+- Full 3D editor support.
+- Safe zones for player-free spawning.
 
-### Waypoint
-Waypoints control the spawned units. For example a waypoint may order the spawned units to find the closest player.
+### How to use it?
+- Actionbuilder Quickstart[github.com]
+- Example mission[github.com]
 
-There can be multiple waypoints synchronized to a one portal. Waypoints can also be synchronized to each other, creating randomization.
+### Notes
+- Creates a dependency. Both the server and the clients (players on your server) need to have Actionbuilder installed.
+
+### Special Thanks
+- LDD Kyllikki for years of playtesting and feedback.
+- Mkz for the original logo graphic.
