@@ -61,6 +61,7 @@ class CfgFunctions {
 			class moduleActionpoints {};
 			class modulePortals {};
 			class selectRandom {};
+			class selectRandomPortal {};
 			class getSynchronizedOfType {};
 			class debug {};
 			class getSiblingPortals {};
