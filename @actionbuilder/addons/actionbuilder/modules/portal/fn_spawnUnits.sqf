@@ -182,6 +182,7 @@ if (count _groups > 0) then {
 			_u setDamage _varDamage;
 			_u setSkill _varSkill;
 			_u setVehicleAmmo _varAmmo;
+			_u setUnitPos (_x select 3);
 		} forEach (_x select 2);
 		// Register [id, portal, current location, next location, banned location].
 		RHNET_AB_L_GROUPPROGRESS pushBack _g;

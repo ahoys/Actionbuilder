@@ -40,7 +40,8 @@ if (_units isEqualTo []) exitWith {[0, []]};
 				(_newGrp select 2) pushBack [
 					typeOf _x,
 					getPosATL _x,
-					getDir _x
+					getDir _x,
+					unitPos _x
 				];
 				// Count all the units.
 				_totalUnits = _totalUnits + 1;
