@@ -255,6 +255,10 @@ class RHNET_ab_moduleWP_F: Module_F {
 					name = "High priority";
 					value = 2;
 				};
+				class WP_LOWPRIORITY {
+					name = "Low priority";
+					value = 3;
+				};
 			};
 		};
 

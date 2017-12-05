@@ -12,20 +12,20 @@
 	Select a randomized waypoint
 
 	Parameter(s):
-	0: OBJECT - current location
-	1: OBJECT - previous location
-	2: ARRAY - banned locations
+	0: GROUP - target group
+	1: OBJECT - current location
+	2: OBJECT - previous location
+	3: ARRAY - banned locations
 
 	Returns:
 	OBJECT - the selected portal if any
 */
-private _location = param [0, objNull, [objNull]];
-private _previousLocation = param [1, objNull, [objNull]];
-private _bannedLocations = param [2, [], [[]]];
+private _group = param [0, grpNull, [grpNull]];
+private _location = param [1, objNull, [objNull]];
+private _previousLocation = param [2, objNull, [objNull]];
+private _bannedLocations = param [3, [], [[]]];
 private _candidates = [];
 private _candidatesLocked = [];
-private _candidatesPriority = [];
-private _candidatesAhead = [];
 private _selected = objNull;
 
 // 1a. Find all possibilities
@@ -54,26 +54,52 @@ while {count _candidates < 1} do {
 };
 
 // 2a. Find all high priorities
+private _highPriorityCandidates = [];
 {
 	if (_x getVariable ["WpSpecial", 0] == 2) then {
-		_candidatesPriority pushBack _x;
+		_highPriorityCandidates pushBack _x;
 	};
 } forEach _candidates;
 
+// 3a. Find all normal & low priorities
+private _normalPriorityCandidates = [];
+private _lowPriorityCandidates = [];
+private _i = 0;
+{
+	if (_x getVariable ["WpSpecial", 0] == 3) then {
+		_lowPriorityCandidates pushBack _x;
+	} else {
+		_normalPriorityCandidates pushBack _x;
+	};
+	_i = _i + 1;
+} forEach _candidates;
+
 // 3a. Select a new waypoint and return it
-if (count _candidatesPriority > 0) then {
-	_candidatesAhead = [_group, _candidatesPriority, [_location, true]] call Actionbuilder_fnc_objectsAhead;
-	if (count _candidatesAhead > 0) then {
+if !(_highPriorityCandidates isEqualTo []) then {
+	// High priority targets.
+	private _candidatesAhead = [_group, _highPriorityCandidates, [_location, true]] call Actionbuilder_fnc_objectsAhead;
+	if !(_candidatesAhead isEqualTo []) then {
 		_selected = _candidatesAhead select floor random count _candidatesAhead;
 	} else {
-		_selected = _candidatesPriority select floor random count _candidatesPriority;
+		_selected = _highPriorityCandidates select floor random count _highPriorityCandidates;
 	};
 } else {
-	_candidatesAhead = [_group, _candidates, [_location, true]] call Actionbuilder_fnc_objectsAhead;
-	if (count _candidatesAhead > 0) then {
-		_selected = _candidatesAhead select floor random count _candidatesAhead;
+	if !(_normalPriorityCandidates isEqualTo []) then {
+		// Normal priority targets.
+		private _candidatesAhead = [_group, _normalPriorityCandidates, [_location, true]] call Actionbuilder_fnc_objectsAhead;
+		if !(_candidatesAhead isEqualTo []) then {
+			_selected = _candidatesAhead select floor random count _candidatesAhead;
+		} else {
+			_selected = _normalPriorityCandidates select floor random count _normalPriorityCandidates;
+		};
 	} else {
-		_selected = _candidates select floor random count _candidates;
+		// Low priority targets.
+		private _candidatesAhead = [_group, _lowPriorityCandidates, [_location, true]] call Actionbuilder_fnc_objectsAhead;
+		if !(_candidatesAhead isEqualTo []) then {
+			_selected = _candidatesAhead select floor random count _candidatesAhead;
+		} else {
+			_selected = _lowPriorityCandidates select floor random count _lowPriorityCandidates;
+		};
 	};
 };
 

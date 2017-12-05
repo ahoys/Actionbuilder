@@ -47,6 +47,7 @@ if (_id == 0) then {
 
 // Select the next waypoint.
 private _nextWp = [
+	_group,
 	_currentWp,
 	_previousWp,
 	_bannedWps
