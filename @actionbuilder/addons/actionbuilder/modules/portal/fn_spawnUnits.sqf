@@ -150,6 +150,7 @@ if (count _groups > 0) then {
 			createVehicleCrew _v;
 			(crew _v) joinSilent _g;
 			_v setDir (_x select 2);
+			_v setFormDir (_x select 2);
 			_v setDamage _varDamage;
 			_v setVehicleAmmo _varAmmo;
 			_v setFuel _varFuel;
@@ -177,6 +178,7 @@ if (count _groups > 0) then {
 			};
 			private _u = _g createUnit [_x select 0, _x select 1, [], 0, _varSpecial];
 			_u setDir (_x select 2);
+			_u setFormDir (_x select 2);
 			_u setDamage _varDamage;
 			_u setSkill _varSkill;
 			_u setVehicleAmmo _varAmmo;
