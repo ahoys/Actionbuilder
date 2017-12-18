@@ -41,7 +41,8 @@ if (_units isEqualTo []) exitWith {[0, []]};
 					typeOf _x,
 					getPosATL _x,
 					getDir _x,
-					unitPos _x
+					unitPos _x,
+					getUnitLoadout _x
 				];
 				// Count all the units.
 				_totalUnits = _totalUnits + 1;
