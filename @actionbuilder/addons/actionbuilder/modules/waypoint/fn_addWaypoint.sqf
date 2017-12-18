@@ -176,6 +176,38 @@ if (_wpPlacement == 1 && !isNull _previousWp) then {
 	};
 };
 
+// Special type: populate buildings.
+// Breaks the group into individual units.
+if (_wpType == "POPULATEBUILDINGS" || _wpType == "FORCEPOPULATEBUILDINGS") exitWith {
+	private _unitCount = count units _group;
+	private _houses = [];
+	{
+		_houses pushBack ([_x] call BIS_fnc_buildingPositions);
+	} forEach nearestObjects [
+		_wpPos,
+		["house"],
+		_unitCount * 25
+	];
+	{
+		if (isNull objectParent _x) then {
+			private _oneManGroup = createGroup side _x;
+			[_x] joinSilent _oneManGroup;
+			// Select random house and random position.
+			if (_wpType == "FORCEPOPULATEBUILDINGS") then {
+				_x setPos selectRandom (selectRandom _houses);
+			} else {
+				_wpPos = selectRandom (selectRandom _houses);
+				private _wp = _oneManGroup addWaypoint [_wpPos, 0];
+				_wp setWaypointType "MOVE";
+				_wp setWaypointBehaviour _wpBehaviour;
+				_wp setWaypointSpeed _wpSpeed;
+				_wp setWaypointCombatMode _wpMode;
+			};
+		};
+	} forEach units _group;
+	true
+};
+
 // Special property: send vehicles away.
 if (_wpType == "SVA" && !_skip) then {
 	[_group, _wpPos] call Actionbuilder_fnc_sendVehiclesAway;

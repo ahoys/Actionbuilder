@@ -68,6 +68,14 @@ class RHNET_ab_moduleWP_F: Module_F {
 					name = "ACTION: COMMAND FIRE";
 					value = "FIRE";
 				};
+				class WP_POPULATE_BUILDINGS {
+					name = "ACTION: POPULATE BUILDINGS";
+					value = "POPULATEBUILDINGS";
+				};
+				class WP_FORCE_POPULATE_BUILDINGS {
+					name = "ACTION: FORCE POPULATE BUILDINGS";
+					value = "FORCEPOPULATEBUILDINGS";
+				};
 				class WP_NEUTRALIZEGROUP {
 					name = "ACTION: NEUTRALIZE GROUP";
 					value = "NEUTRALIZE";
