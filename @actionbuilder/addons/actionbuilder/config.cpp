@@ -65,6 +65,7 @@ class CfgFunctions {
 			class getSynchronizedOfType {};
 			class debug {};
 			class getSiblingPortals {};
+			class addGlobalCargo {};
 		};
 	};
 };

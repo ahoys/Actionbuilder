@@ -26,7 +26,8 @@ if (_units isEqualTo []) exitWith {[0, []]};
 		_objects pushBack [
 			typeOf _x,
 			getPosATL _x,
-			getDir _x
+			getDir _x,
+			[getItemCargo _x, getWeaponCargo _x, getMagazineCargo _x, getBackpackCargo _x]
 		];
 	};
 } forEach _units;

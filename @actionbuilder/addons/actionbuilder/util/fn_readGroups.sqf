@@ -53,7 +53,13 @@ if (_units isEqualTo []) exitWith {[0, []]};
 					(_newGrp select 1) pushBack [
 						typeOf _veh,
 						getPosATL _veh,
-						getDir _veh
+						getDir _veh,
+						[
+							getItemCargo _veh,
+							getWeaponCargo _veh,
+							getMagazineCargo _veh,
+							getBackpackCargo _veh
+						]
 					];
 					// Count all the units.
 					_totalUnits = _totalUnits + (count crew _veh);

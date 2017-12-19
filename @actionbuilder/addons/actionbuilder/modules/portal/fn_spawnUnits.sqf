@@ -90,6 +90,14 @@ if (count _groups > 0) then {
 		_v setDamage _varDamage;
 		_v setVehicleAmmo _varAmmo;
 		_v setFuel _varFuel;
+		// Custom layouts.
+		if (isNil "RHNET_AB_L_DISABLE_CUSTOM_LAYOUTS") then {
+			clearItemCargoGlobal _v;
+			clearweaponcargoglobal _v;
+			clearMagazineCargoGlobal _v;
+			clearBackpackCargoGlobal _v;
+			[_v, _x select 3] call Actionbuilder_fnc_addGlobalCargo;
+		};
 	};
 } forEach _objects;
 
@@ -165,6 +173,14 @@ if (count _groups > 0) then {
 					cos (_x select 2) * 50,
 					_x select 2
 				];
+			};
+			// Custom layouts.
+			if (isNil "RHNET_AB_L_DISABLE_CUSTOM_LAYOUTS") then {
+				clearItemCargoGlobal _v;
+				clearweaponcargoglobal _v;
+				clearMagazineCargoGlobal _v;
+				clearBackpackCargoGlobal _v;
+				[_v, _x select 3] call Actionbuilder_fnc_addGlobalCargo;
 			};
 		} forEach (_x select 1);
 		// Spawn infantry last.
