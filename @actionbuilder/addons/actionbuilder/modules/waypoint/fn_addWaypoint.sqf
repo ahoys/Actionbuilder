@@ -182,36 +182,46 @@ if (_wpType == "POPULATEBUILDINGS" || _wpType == "FORCEPOPULATEBUILDINGS") exitW
 	private _unitCount = count units _group;
 	private _houses = [];
 	{
-		_houses pushBack ([_x] call BIS_fnc_buildingPositions);
+		private _positions = [_x] call BIS_fnc_buildingPositions;
+		if !(_positions isEqualTo []) then {
+			_houses pushBack _positions;
+		};
 	} forEach nearestObjects [
 		_wpPos,
 		["house"],
 		_unitCount * 25
 	];
 	if !(_houses isEqualTo []) then {
+		// Separate units declaration so that the forEach actually works.
+		private _units = units _group;
 		{
-			if (isNull objectParent _x && !(_houses isEqualTo [])) then {
+			if (isNull objectParent _x) then {
+				// Create a new group and join it.
 				private _oneManGroup = createGroup side _x;
 				[_x] joinSilent _oneManGroup;
-				// Select random house and random position.
+				// Select a random house and position.
+				private _newWpPos = selectRandom (selectRandom _houses);
+				// Give the new waypoint to the position.
+				private _wp = _oneManGroup addWaypoint [_newWpPos, 0];
+				_wp setWaypointType "MOVE";
+				_wp setWaypointBehaviour _wpBehaviour;
+				_wp setWaypointSpeed _wpSpeed;
+				_wp setWaypointCombatMode _wpMode;
 				if (_wpType == "FORCEPOPULATEBUILDINGS") then {
-					_x setPos selectRandom (selectRandom _houses);
-				} else {
-					_wpPos = selectRandom (selectRandom _houses);
-					private _wp = _oneManGroup addWaypoint [_wpPos, 0];
-					_wp setWaypointType "MOVE";
-					_wp setWaypointBehaviour _wpBehaviour;
-					_wp setWaypointSpeed _wpSpeed;
-					_wp setWaypointCombatMode _wpMode;
-					if (_wpSpecial == 4) then {
-						_wp setWaypointStatements [
-							"true",
-							format ["[group this, %1] spawn Actionbuilder_fnc_postSwitching", _wpPos]
-						];
-					};
+					// If force, move immediately to the position.
+					// However, it is still important to give the wp
+					// parameters so that the future post switchings work
+					// properly.
+					_x setPos _newWpPos;
+				};
+				if (_wpSpecial == 4) then {
+					_wp setWaypointStatements [
+						"true",
+						format ["[group this, %1] spawn Actionbuilder_fnc_postSwitching", _newWpPos]
+					];
 				};
 			};
-		} forEach units _group;
+		} forEach _units;
 	};
 	true
 };

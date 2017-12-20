@@ -23,12 +23,16 @@ private _pos = param [1, [], [[]]];
 if (isNull _group || _pos isEqualTo []) exitWith {false};
 
 // Random delay before switching post.
-sleep (random [10, 30, 60]);
+sleep (random [5, 60, 180]);
 
 // Look for valid houses nearby.
 private _houses = [];
 {
-	_houses pushBack ([_x] call BIS_fnc_buildingPositions);
+	private _positions = [_x] call BIS_fnc_buildingPositions;
+	if !(_positions isEqualTo []) then {
+		// Add only houses that have positions set.
+		_houses pushBack _positions;
+	};
 } forEach nearestObjects [
 	_pos,
 	["house"],
