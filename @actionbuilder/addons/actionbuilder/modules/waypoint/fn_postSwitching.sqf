@@ -35,6 +35,9 @@ private _houses = [];
 	25
 ];
 
+// No locations available.
+if (_houses isEqualTo []) exitWith {false};
+
 // Select a random house & position.
 private _wpPos = selectRandom (selectRandom _houses);
 

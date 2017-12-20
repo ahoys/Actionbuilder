@@ -188,26 +188,31 @@ if (_wpType == "POPULATEBUILDINGS" || _wpType == "FORCEPOPULATEBUILDINGS") exitW
 		["house"],
 		_unitCount * 25
 	];
-	{
-		if (isNull objectParent _x) then {
-			private _oneManGroup = createGroup side _x;
-			[_x] joinSilent _oneManGroup;
-			// Select random house and random position.
-			if (_wpType == "FORCEPOPULATEBUILDINGS") then {
-				_x setPos selectRandom (selectRandom _houses);
-			} else {
-				_wpPos = selectRandom (selectRandom _houses);
-				private _wp = _oneManGroup addWaypoint [_wpPos, 0];
-				_wp setWaypointType "MOVE";
-				_wp setWaypointBehaviour _wpBehaviour;
-				_wp setWaypointSpeed _wpSpeed;
-				_wp setWaypointCombatMode _wpMode;
-				if (_wpSpecial == 4) then {
-					_wp setWaypointStatements ["true", format ["[group this, %1] spawn Actionbuilder_fnc_postSwitching", _wpPos]];
+	if !(_houses isEqualTo []) then {
+		{
+			if (isNull objectParent _x && !(_houses isEqualTo [])) then {
+				private _oneManGroup = createGroup side _x;
+				[_x] joinSilent _oneManGroup;
+				// Select random house and random position.
+				if (_wpType == "FORCEPOPULATEBUILDINGS") then {
+					_x setPos selectRandom (selectRandom _houses);
+				} else {
+					_wpPos = selectRandom (selectRandom _houses);
+					private _wp = _oneManGroup addWaypoint [_wpPos, 0];
+					_wp setWaypointType "MOVE";
+					_wp setWaypointBehaviour _wpBehaviour;
+					_wp setWaypointSpeed _wpSpeed;
+					_wp setWaypointCombatMode _wpMode;
+					if (_wpSpecial == 4) then {
+						_wp setWaypointStatements [
+							"true",
+							format ["[group this, %1] spawn Actionbuilder_fnc_postSwitching", _wpPos]
+						];
+					};
 				};
 			};
-		};
-	} forEach units _group;
+		} forEach units _group;
+	};
 	true
 };
 
