@@ -260,12 +260,16 @@ class RHNET_ab_moduleWP_F: Module_F {
 					value = 1;
 				};
 				class WP_HIGHPRIORITY {
-					name = "High priority";
+					name = "High priority (primary choice)";
 					value = 2;
 				};
 				class WP_LOWPRIORITY {
-					name = "Low priority";
+					name = "Low priority (avoided)";
 					value = 3;
+				};
+				class WP_ALLOWPOSTSWITCHING {
+					name = "Allow post switching";
+					value = 4;
 				};
 			};
 		};

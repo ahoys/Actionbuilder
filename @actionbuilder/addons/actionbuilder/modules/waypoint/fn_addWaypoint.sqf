@@ -9,7 +9,7 @@
 	Assigns a new waypoint to a group.
 
 	Parameter(s):
-	0: OBJECT - The target group.
+	0: GROUP - The target group.
 
 	Returns:
 	BOOL - true, if a new waypoint found and set.
@@ -202,6 +202,9 @@ if (_wpType == "POPULATEBUILDINGS" || _wpType == "FORCEPOPULATEBUILDINGS") exitW
 				_wp setWaypointBehaviour _wpBehaviour;
 				_wp setWaypointSpeed _wpSpeed;
 				_wp setWaypointCombatMode _wpMode;
+				if (_wpSpecial == 4) then {
+					_wp setWaypointStatements ["true", format ["[group this, %1] spawn Actionbuilder_fnc_postSwitching", _wpPos]];
+				};
 			};
 		};
 	} forEach units _group;

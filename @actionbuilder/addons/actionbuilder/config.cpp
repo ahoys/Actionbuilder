@@ -47,6 +47,7 @@ class CfgFunctions {
 			class sendVehiclesAway {};
 			class loadTransport {};
 			class unloadVehicles {};
+			class postSwitching {};
 		};
 		class Utility {
 			file = "\RHNET\rhnet_actionbuilder\util";
