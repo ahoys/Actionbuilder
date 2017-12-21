@@ -268,7 +268,7 @@ class RHNET_ab_moduleWP_F: Module_F {
 					value = 3;
 				};
 				class WP_ALLOWPOSTSWITCHING {
-					name = "Allow post switching";
+					name = "Disable post switching";
 					value = 4;
 				};
 			};

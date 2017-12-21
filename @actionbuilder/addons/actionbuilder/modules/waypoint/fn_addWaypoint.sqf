@@ -214,7 +214,7 @@ if (_wpType == "POPULATEBUILDINGS" || _wpType == "FORCEPOPULATEBUILDINGS") exitW
 					// properly.
 					_x setPos _newWpPos;
 				};
-				if (_wpSpecial == 4) then {
+				if (_wpSpecial != 4) then {
 					_wp setWaypointStatements [
 						"true",
 						format ["[group this, %1] spawn Actionbuilder_fnc_postSwitching", _newWpPos]
