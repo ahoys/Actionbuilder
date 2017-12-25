@@ -10,7 +10,7 @@
 
 	Parameter(s):
 	0: GROUP - The target group.
-	1: ARRAY - The current position.
+	1: ARRAY - The origin position.
 
 	Returns:
 	NOTHING
@@ -18,9 +18,9 @@
 if (!isServer && hasInterface) exitWith {};
 
 private _group = param [0, grpNull, [grpNull]];
-private _pos = param [1, [], [[]]];
+private _origin = param [1, [], [[]]];
 
-if (isNull _group || _pos isEqualTo []) exitWith {false};
+if (isNull _group || _origin isEqualTo []) exitWith {false};
 
 // Random delay before switching post.
 sleep (random [5, 60, 180]);
@@ -34,7 +34,7 @@ private _houses = [];
 		_houses pushBack _positions;
 	};
 } forEach nearestObjects [
-	_pos,
+	_origin,
 	["house"],
 	25
 ];
@@ -48,6 +48,6 @@ private _wpPos = selectRandom (selectRandom _houses);
 // Create a new house position waypoint.
 private _wp = _group addWaypoint [_wpPos, 0];
 _wp setWaypointType "MOVE";
-_wp setWaypointStatements ["true", format ["[group this, %1] spawn Actionbuilder_fnc_postSwitching", _wpPos]];
+_wp setWaypointStatements ["true", format ["[group this, %1] spawn Actionbuilder_fnc_postSwitching", _origin]];
 
 true
