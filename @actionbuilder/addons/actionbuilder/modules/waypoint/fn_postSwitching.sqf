@@ -26,7 +26,13 @@ if (isNull _group || _origin isEqualTo []) exitWith {false};
 waitUntil {diag_fps > 20};
 
 // Random delay before switching post.
-sleep (random [5, 60, 180]);
+if (daytime > 8 && daytime < 20) then {
+	// Day.
+	sleep (random [30, 60, 90]);
+} else {
+	// Night.
+	sleep (random [90, 180, 270]);
+};
 
 // Look for valid houses nearby.
 private _houses = [];
