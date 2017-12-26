@@ -22,6 +22,9 @@ private _origin = param [1, [], [[]]];
 
 if (isNull _group || _origin isEqualTo []) exitWith {false};
 
+// Wait until the FPS is high enough.
+waitUntil {diag_fps > 20};
+
 // Random delay before switching post.
 sleep (random [5, 60, 180]);
 
