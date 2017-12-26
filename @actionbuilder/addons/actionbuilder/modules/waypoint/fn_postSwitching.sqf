@@ -28,10 +28,10 @@ waitUntil {diag_fps > 20};
 // Random delay before switching post.
 if (daytime > 8 && daytime < 20) then {
 	// Day.
-	sleep (random 120);
+	sleep (random (120 + rain * 100));
 } else {
 	// Night.
-	sleep (random 480);
+	sleep (random (480 + rain * 100));
 };
 
 // Look for valid houses nearby.
