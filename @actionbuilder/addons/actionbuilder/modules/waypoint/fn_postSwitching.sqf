@@ -15,7 +15,7 @@
 	Returns:
 	NOTHING
 */
-if (!isServer && hasInterface) exitWith {};
+if (!isServer && hasInterface) exitWith {false};
 
 private _group = param [0, grpNull, [grpNull]];
 private _origin = param [1, [], [[]]];
