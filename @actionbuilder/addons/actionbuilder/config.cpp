@@ -4,7 +4,7 @@
 
 class CfgPatches {
 	class RHNET_Actionbuilder {
-		units[] = {"RHNET_ab_moduleAP_F","RHNET_ab_modulePORTAL_F","RHNET_ab_moduleWP_F"};
+		units[] = {"RHNET_ab_moduleAP_F","RHNET_ab_modulePORTAL_F","RHNET_ab_moduleWP_F","RHNET_ab_moduleREPEATER_F"};
 		requiredVersion = 1.76;
 		requiredAddons[] = {"A3_Modules_F"};
 	};
@@ -25,6 +25,7 @@ class CfgRemoteExec
 		class Actionbuilder_fnc_moduleActionpoint {allowedTargets = 2};
 		class Actionbuilder_fnc_modulePortal {allowedTargets = 2};
 		class Actionbuilder_fnc_moduleWaypoint {allowedTargets = 2};
+		class Actionbuilder_fnc_moduleRepeater {allowedTargets = 2};
 	};
 };
 
@@ -48,6 +49,10 @@ class CfgFunctions {
 			class loadTransport {};
 			class unloadVehicles {};
 			class postSwitching {};
+		};
+		class Repeater {
+			file = "\RHNET\rhnet_actionbuilder\modules\repeater";
+			class moduleRepeater {};
 		};
 		class Utility {
 			file = "\RHNET\rhnet_actionbuilder\util";
@@ -91,4 +96,5 @@ class CfgVehicles {
 	#include "module_AP.hpp"
 	#include "module_PORTAL.hpp"
 	#include "module_WP.hpp"
+	#include "module_REPEATER.hpp"
 };

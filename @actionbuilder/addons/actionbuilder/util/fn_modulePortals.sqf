@@ -21,7 +21,7 @@ private _return = [];
 		_return pushBack _x;
 	} else {
 		if (_validate) then {
-			if (_x isKindOf "Logic") then {
+			if (_x isKindOf "Logic" && !(_x isKindOf "RHNET_ab_moduleREPEATER_F")) then {
 				["Not supported module %1 synchronized to %2.", typeOf _x, _master] call BIS_fnc_error;
 			};
 		};
