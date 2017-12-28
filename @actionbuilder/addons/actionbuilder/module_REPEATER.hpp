@@ -4,7 +4,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 	scope = public;
 	displayName = "Actionpoint Repeater";
 	category = "RHNET_Actionbuilder";
-	icon = "\RHNET\rhnet_actionbuilder\data\iconAP_ca.paa";
+	icon = "\RHNET\rhnet_actionbuilder\data\iconREPEATER_ca.paa";
 	function = "Actionbuilder_fnc_moduleRepeater";
 	isGlobal = 0;
 	isTriggerActivated = 1;
