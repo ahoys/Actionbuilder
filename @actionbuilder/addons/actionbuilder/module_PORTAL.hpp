@@ -31,6 +31,15 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			};
 		};
 
+		class MinDistDescription: Edit {
+			property = "RHNET_ab_modulePORTAL_F_MinDistDescription";
+            description = "This portal will skip the spawning event if there are players closer to this portal than the ""No players radius"" setting indicates.";
+			displayName = "";
+			tooltip = "";
+			control = "SubCategoryNoHeader2";
+            data = "AttributeSystemSubcategory"
+		};
+
 		class p_MinDist: Edit {
 			property = "RHNET_ab_modulePORTAL_F_p_MinDist";
 			displayName = "No players radius";
@@ -75,6 +84,15 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			control = "Slider";
 		};
 
+		class SpecialDescription: Edit {
+			property = "RHNET_ab_modulePORTAL_F_SpecialDescription";
+            description = "With special attributes you can e.g. make planes fly and set items to ignore automatic collision prevention.";
+			displayName = "";
+			tooltip = "";
+			control = "SubCategoryNoHeader2";
+            data = "AttributeSystemSubcategory"
+		};
+
 		class p_Special: Combo {
 			property = "RHNET_ab_modulePORTAL_F_p_Special";
 			displayName = "Special";
@@ -101,8 +119,6 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 				}
 			};
 		};
-
-		class ModuleDescription: ModuleDescription{};
 	};
 
 	class ModuleDescription : ModuleDescription {

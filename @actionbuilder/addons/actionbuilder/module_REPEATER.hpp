@@ -61,7 +61,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
             description = "Value activator activates the repeater when the given condition is TRUE.";
 			displayName = "";
 			tooltip = "";
-			control = "SubCategoryNoHeader2";
+			control = "SubCategoryNoHeader1";
             data = "AttributeSystemSubcategory"
 		};
 
