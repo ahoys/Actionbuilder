@@ -33,7 +33,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 
         class BooleanDescription: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_BooleanDescription";
-            description = "Boolean variable activator activates the repeater every time the given boolean switches to TRUE. If the variable is toggled, the variable will switch back to FALSE after a successful repeat.";
+            description = "Boolean variable activator activates the repeater when the variable's value is TRUE. If the variable is toggled, the variable will switch to FALSE after a successful repeat.";
 			displayName = "";
 			tooltip = "";
 			control = "SubCategoryNoHeader2";
@@ -58,7 +58,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 
         class ValueDescription: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_ValueDescription";
-            description = "Value activator activates the repeater every time the given value condition is true.";
+            description = "Value activator activates the repeater when the given condition is TRUE.";
 			displayName = "";
 			tooltip = "";
 			control = "SubCategoryNoHeader2";
@@ -111,7 +111,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 
         class OptionsDescription: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_OptionsDescription";
-            description = "With options below you can further adjust this repeater, no matter which activator you selected.";
+            description = "With options below you can further adjust this repeater, no matter which activator you have selected.";
 			displayName = "";
 			tooltip = "";
 			control = "SubCategoryNoHeader2";
