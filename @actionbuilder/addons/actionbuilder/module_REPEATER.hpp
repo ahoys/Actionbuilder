@@ -2,7 +2,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 	author = "Raunhofer";
 	_generalMacro = "RHNET_ab_moduleREPEATER_F";
 	scope = public;
-	displayName = "Repeater";
+	displayName = "Actionpoint Repeater";
 	category = "RHNET_Actionbuilder";
 	icon = "\RHNET\rhnet_actionbuilder\data\iconAP_ca.paa";
 	function = "Actionbuilder_fnc_moduleRepeater";
@@ -43,7 +43,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
         class BooleanVariable: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_BooleanVariable";
 			displayName = "Boolean variable";
-			tooltip = "Boolean variable to be monitored.";
+			tooltip = "Custom boolean variable to be monitored.";
 			typeName = "STRING";
 			control = "EditShort";
 		};
@@ -51,7 +51,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
         class ToggleVariable: Checkbox {
 			property = "RHNET_ab_moduleREPEATER_F_ToggleVariable";
 			displayName = "Toggle variable";
-			tooltip = "Whether to switch Varible to FALSE after execution.";
+			tooltip = "If enabled, the boolean variable will be switched to FALSE after a successful execution.";
 			typeName = "BOOL";
             defaultValue = "true";
 		};
@@ -68,33 +68,33 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
         class ValueCondition: Combo {
 			property = "RHNET_ab_moduleREPEATER_F_ValueCondition";
 			displayName = "Value condition";
-			tooltip = "What is the value limiter for the repeater to activate.";
+			tooltip = "Defines meaning for the value setting.";
 			typeName = "STRING";
 			defaultValue = """VARIABLE""";
 			class Values {
                 class RP_VT_MOREPLAYERS {
-					name = "More players alive than Value";
+					name = "Total player count is higher than Value";
 					value = "PLAYERS"
 				};
 				class RP_VT_LESSUNITS {
-					name = "Fewer units alive than Value";
+					name = "Total unit count is less than Value";
 					value = "UNITS"
 				};
                 class RP_VT_LESSTHANWEST {
-                    name = "Fewer BLUFOR units alive than Value";
+                    name = "BLUFOR unit count is less than Value";
 					value = "WEST"
                 };
                 class RP_VT_LESSTHANEAST {
-                    name = "Fewer OPFOR units alive than Value";
+                    name = "OPFOR unit count is less than Value";
 					value = "EAST"
 					default = 1;
                 };
                 class RP_VT_LESSTHANINDEPENDENT {
-                    name = "Fewer INDEPENDENT units alive than Value";
+                    name = "INDEPENDENT unit count is less than Value";
 					value = "INDEPENDENT"
                 };
                 class RP_VT_LESSTHANCIVILIAN {
-                    name = "Fewer CIVILIAN units alive than Value";
+                    name = "CIVILIAN unit count is less than Value";
 					value = "CIVILIAN"
                 };
 			};
@@ -103,7 +103,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
         class Value: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_Value";
 			displayName = "Value";
-			tooltip = "Value to be monitored.";
+			tooltip = "Custom value to be monitored.";
 			typeName = "NUMBER";
             defaultValue = "0";
 			control = "EditShort";
