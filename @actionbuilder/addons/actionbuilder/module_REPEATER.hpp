@@ -132,7 +132,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 			displayName = "Maximum repeats";
 			tooltip = "How many times can this repeater trigger (-1: no limit).";
 			typeName = "NUMBER";
-            defaultValue = "0";
+            defaultValue = "-1";
 			control = "EditShort";
 		};
 
