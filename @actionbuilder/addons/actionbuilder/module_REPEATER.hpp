@@ -2,7 +2,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 	author = "Raunhofer";
 	_generalMacro = "RHNET_ab_moduleREPEATER_F";
 	scope = public;
-	displayName = "Actionpoint Repeater";
+	displayName = "Repeater";
 	category = "RHNET_Actionbuilder";
 	icon = "\RHNET\rhnet_actionbuilder\data\iconREPEATER_ca.paa";
 	function = "Actionbuilder_fnc_moduleRepeater";
