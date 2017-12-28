@@ -1,0 +1,1148 @@
+/*%FSM<COMPILE "D:\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, rhfsm_repeater">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"FPS____20",3,250,-200.000000,1275.000000,-100.000000,1325.000000,0.000000,"FPS >= 20"};
+item1[] = {"REPEATER",0,250,-50.000000,-25.000000,50.000000,25.000000,0.000000,"REPEATER"};
+item2[] = {"_",3,250,-100.000000,-325.000000,0.000000,-275.000000,0.000000,""};
+item3[] = {"true",8,218,25.000000,-325.000000,125.000000,-275.000000,0.000000,"true"};
+item4[] = {"false",4,218,150.000000,-325.000000,250.000000,-275.000000,1.000000,"false"};
+item5[] = {"__1",1,250,-225.000000,-325.000000,-125.000000,-275.000000,0.000000,""};
+item6[] = {"",7,210,270.999939,-303.999908,279.000061,-296.000122,0.000000,""};
+item7[] = {"done",8,218,-50.000000,1725.000000,50.000000,1775.000000,0.000000,"done"};
+item8[] = {"Execute",3,250,100.000000,1725.000000,200.000000,1775.000000,0.000000,"Execute"};
+item9[] = {"true",8,218,-50.000000,75.000000,50.000000,125.000000,0.000000,"true"};
+item10[] = {"",7,210,620.999939,1796.000122,629.000061,1803.999878,0.000000,""};
+item11[] = {"Valid_activation",3,250,-50.000000,175.000000,50.000000,225.000000,0.000000,"Valid activation" \n "method"};
+item12[] = {"false",4,218,100.000000,175.000000,200.000000,225.000000,1.000000,"false"};
+item13[] = {"No_need_to_conti",1,250,250.000000,175.000000,350.000000,225.000000,0.000000,"No need to" \n "continue"};
+item14[] = {"true",8,218,-50.000000,275.000000,50.000000,325.000000,0.000000,"true"};
+item15[] = {"Variable_exists",3,250,-50.000000,375.000000,50.000000,425.000000,0.000000,"Variable exists"};
+item16[] = {"true",8,218,-50.000000,475.000000,50.000000,525.000000,0.000000,"true"};
+item17[] = {"false",4,218,100.000000,375.000000,200.000000,425.000000,1.000000,"false"};
+item18[] = {"Initialize_a_default",3,250,100.000000,475.000000,200.000000,525.000000,0.000000,"Initialize a" \n "default variable"};
+item19[] = {"",7,210,770.999939,1796.000122,779.000061,1803.999878,0.000000,""};
+item20[] = {"Valid_repeating",3,250,-50.000000,575.000000,50.000000,625.000000,0.000000,"Valid repeating" \n "interval"};
+item21[] = {"true",8,218,-50.000000,675.000000,50.000000,725.000000,0.000000,"true"};
+item22[] = {"false",4,218,100.000000,575.000000,200.000000,625.000000,1.000000,"false"};
+item23[] = {"No_need_to_conti_1",1,250,250.000000,575.000000,350.000000,625.000000,0.000000,"No need to" \n "continue"};
+item24[] = {"Valid_loop_setti",3,250,-50.000000,775.000000,50.000000,825.000000,0.000000,"Valid loop" \n "settings"};
+item25[] = {"true",8,218,-50.000000,875.000000,50.000000,925.000000,0.000000,"true"};
+item26[] = {"false",4,218,100.000000,775.000000,200.000000,825.000000,1.000000,"false"};
+item27[] = {"false",4,218,-350.000000,1275.000000,-250.000000,1325.000000,1.000000,"false"};
+item28[] = {"No_need_to_conti_2",1,250,-50.000000,1175.000000,50.000000,1225.000000,0.000000,"No need to" \n "continue"};
+item29[] = {"Maximum_repeats",3,250,-50.000000,975.000000,50.000000,1025.000000,0.000000,"Maximum repeats" \n "reached"};
+item30[] = {"true",8,218,-50.000000,1075.000000,50.000000,1125.000000,0.000000,"true"};
+item31[] = {"false",4,218,100.000000,975.000000,200.000000,1025.000000,1.000000,"false"};
+item32[] = {"Activation_metho",3,250,250.000000,975.000000,350.000000,1025.000000,0.000000,"Activation method"};
+item33[] = {"NONE",8,218,400.000000,975.000000,500.000000,1025.000000,0.000000,"NONE"};
+item34[] = {"VARIABLE",4,218,250.000000,1125.000000,350.000000,1175.000000,1.000000,"VARIABLE"};
+item35[] = {"VALUE",4,218,400.000000,1125.000000,500.000000,1175.000000,1.000000,"VALUE"};
+item36[] = {"",7,210,295.999939,1071.000122,304.000061,1078.999878,0.000000,""};
+item37[] = {"Boolean_is_TRUE",3,250,250.000000,1425.000000,350.000000,1475.000000,0.000000,"Boolean is" \n "TRUE"};
+item38[] = {"",7,210,445.999939,1071.000122,454.000061,1078.999878,0.000000,""};
+item39[] = {"true",8,218,250.000000,1525.000000,350.000000,1575.000000,0.000000,"true"};
+item40[] = {"No_need_to_conti_3",1,250,250.000000,775.000000,350.000000,825.000000,0.000000,"No need to" \n "continue"};
+item41[] = {"No_need_to_conti_4",1,250,550.000000,975.000000,650.000000,1025.000000,0.000000,"No need to" \n "continue"};
+item42[] = {"true",8,218,-200.000000,1175.000000,-100.000000,1225.000000,0.000000,"true"};
+item43[] = {"",7,210,-304.000061,1396.000122,-295.999939,1403.999878,0.000000,""};
+item44[] = {"",7,210,920.999939,1796.000122,929.000061,1803.999878,0.000000,""};
+item45[] = {"",7,210,1070.999878,1796.000122,1079.000122,1803.999878,0.000000,""};
+item46[] = {"",7,210,1220.999878,1796.000122,1229.000122,1803.999878,0.000000,""};
+item47[] = {"",7,210,1370.999878,1796.000122,1379.000122,1803.999878,0.000000,""};
+item48[] = {"",7,210,-154.000076,1796.000122,-145.999924,1803.999878,0.000000,""};
+item49[] = {"Toggle_variable",3,250,100.000000,1525.000000,200.000000,1575.000000,0.000000,"Toggle variable"};
+item50[] = {"true",8,218,100.000000,1625.000000,200.000000,1675.000000,0.000000,"true"};
+item51[] = {"false",4,218,-50.000000,1525.000000,50.000000,1575.000000,1.000000,"false"};
+item52[] = {"Has_proper__type",3,250,250.000000,1225.000000,350.000000,1275.000000,0.000000,"Has proper " \n "typeName"};
+item53[] = {"true",8,218,250.000000,1325.000000,350.000000,1375.000000,0.000000,"true"};
+item54[] = {"false",4,218,100.000000,1225.000000,200.000000,1275.000000,1.000000,"false"};
+item55[] = {"false",4,218,100.000000,1425.000000,200.000000,1475.000000,1.000000,"false"};
+item56[] = {"",7,210,145.999939,1346.000122,154.000061,1353.999878,0.000000,""};
+item57[] = {"true",8,218,-200.000000,975.000000,-100.000000,1025.000000,0.000000,"true"};
+item58[] = {"false",4,218,-350.000000,1075.000000,-250.000000,1125.000000,1.000000,"false"};
+item59[] = {"Value_condition",3,250,400.000000,1225.000000,500.000000,1275.000000,0.000000,"Value condition"};
+item60[] = {"NONE",8,218,400.000000,1325.000000,500.000000,1375.000000,0.000000,"NONE"};
+item61[] = {"PLAYERS",4,218,550.000000,1325.000000,650.000000,1375.000000,1.000000,"PLAYERS"};
+item62[] = {"UNITS",4,218,700.000000,1325.000000,800.000000,1375.000000,1.000000,"UNITS"};
+item63[] = {"WEST",4,218,850.000000,1325.000000,950.000000,1375.000000,1.000000,"WEST"};
+item64[] = {"EAST",4,218,1000.000000,1325.000000,1100.000000,1375.000000,1.000000,"EAST"};
+item65[] = {"INDEPENDENT",4,218,1150.000000,1325.000000,1250.000000,1375.000000,1.000000,"INDEPENDENT"};
+item66[] = {"CIVILIAN",4,218,1300.000000,1325.000000,1400.000000,1375.000000,1.000000,"CIVILIAN"};
+item67[] = {"No_need_to_conti_5",1,250,400.000000,1425.000000,500.000000,1475.000000,0.000000,"No need to" \n "continue"};
+item68[] = {"",7,210,595.999939,1246.000122,604.000061,1253.999878,0.000000,""};
+item69[] = {"",7,210,745.999939,1246.000122,754.000061,1253.999878,0.000000,""};
+item70[] = {"",7,210,895.999939,1246.000122,904.000061,1253.999878,0.000000,""};
+item71[] = {"",7,210,1046.000000,1246.000122,1054.000122,1253.999878,0.000000,""};
+item72[] = {"",7,210,1196.000000,1246.000122,1204.000122,1253.999878,0.000000,""};
+item73[] = {"",7,210,1346.000000,1246.000122,1354.000122,1253.999878,0.000000,""};
+item74[] = {"Passes",3,250,550.000000,1425.000000,650.000000,1475.000000,0.000000,"Passes"};
+item75[] = {"true",8,218,525.000000,1525.000000,625.000000,1575.000000,0.000000,"true"};
+item76[] = {"false",4,218,575.000000,1550.000000,675.000000,1600.000000,1.000000,"false"};
+item77[] = {"Passes_1",3,250,700.000000,1425.000000,800.000000,1475.000000,0.000000,"Passes"};
+item78[] = {"true",8,218,675.000000,1525.000000,775.000000,1575.000000,0.000000,"true"};
+item79[] = {"false",4,218,725.000000,1550.000000,825.000000,1600.000000,1.000000,"false"};
+item80[] = {"Passes_2",3,250,850.000000,1425.000000,950.000000,1475.000000,0.000000,"Passes"};
+item81[] = {"true",8,218,825.000000,1525.000000,925.000000,1575.000000,0.000000,"true"};
+item82[] = {"false",4,218,875.000000,1550.000000,975.000000,1600.000000,1.000000,"false"};
+item83[] = {"Passes_3",3,250,1000.000000,1425.000000,1100.000000,1475.000000,0.000000,"Passes"};
+item84[] = {"true",8,218,975.000000,1525.000000,1075.000000,1575.000000,0.000000,"true"};
+item85[] = {"false",4,218,1025.000000,1550.000000,1125.000000,1600.000000,1.000000,"false"};
+item86[] = {"Passes_4",3,250,1150.000000,1425.000000,1250.000000,1475.000000,0.000000,"Passes"};
+item87[] = {"true",8,218,1125.000000,1525.000000,1225.000000,1575.000000,0.000000,"true"};
+item88[] = {"false",4,218,1175.000000,1550.000000,1275.000000,1600.000000,1.000000,"false"};
+item89[] = {"Passes_5",3,250,1300.000000,1425.000000,1400.000000,1475.000000,0.000000,"Passes"};
+item90[] = {"true",8,218,1275.000000,1525.000000,1375.000000,1575.000000,0.000000,"true"};
+item91[] = {"false",4,218,1325.000000,1550.000000,1425.000000,1600.000000,1.000000,"false"};
+item92[] = {"",7,210,570.999939,1746.000122,579.000061,1753.999878,0.000000,""};
+item93[] = {"",7,210,720.999939,1746.000122,729.000061,1753.999878,0.000000,""};
+item94[] = {"",7,210,870.999939,1746.000122,879.000061,1753.999878,0.000000,""};
+item95[] = {"",7,210,1021.000122,1746.000122,1028.999878,1753.999878,0.000000,""};
+item96[] = {"",7,210,1170.999878,1746.000122,1179.000122,1753.999878,0.000000,""};
+item97[] = {"",7,210,1321.000000,1746.000122,1329.000000,1753.999878,0.000000,""};
+item98[] = {"Interval_has_pas",3,250,-200.000000,1075.000000,-100.000000,1125.000000,0.000000,"Interval has" \n "passed"};
+item99[] = {"",7,210,-154.000061,1746.000122,-145.999939,1753.999878,0.000000,""};
+item100[] = {"",7,210,-154.000061,1346.000122,-145.999939,1353.999878,0.000000,""};
+item101[] = {"",7,210,-304.000061,1196.000000,-295.999939,1203.999878,0.000000,""};
+item102[] = {"",7,210,-4.000061,1646.000122,4.000061,1653.999878,0.000000,""};
+item103[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,27};
+link1[] = {0,42};
+link2[] = {1,9};
+link3[] = {7,99};
+link4[] = {8,7};
+link5[] = {9,11};
+link6[] = {10,48};
+link7[] = {11,12};
+link8[] = {11,14};
+link9[] = {12,13};
+link10[] = {14,15};
+link11[] = {15,16};
+link12[] = {15,17};
+link13[] = {16,20};
+link14[] = {17,18};
+link15[] = {18,16};
+link16[] = {19,10};
+link17[] = {20,21};
+link18[] = {20,22};
+link19[] = {21,24};
+link20[] = {22,23};
+link21[] = {24,25};
+link22[] = {24,26};
+link23[] = {25,29};
+link24[] = {26,40};
+link25[] = {27,43};
+link26[] = {29,30};
+link27[] = {29,31};
+link28[] = {30,28};
+link29[] = {31,32};
+link30[] = {32,33};
+link31[] = {32,36};
+link32[] = {33,41};
+link33[] = {34,52};
+link34[] = {35,59};
+link35[] = {36,34};
+link36[] = {36,38};
+link37[] = {37,39};
+link38[] = {37,55};
+link39[] = {38,35};
+link40[] = {39,49};
+link41[] = {42,98};
+link42[] = {43,0};
+link43[] = {44,19};
+link44[] = {45,44};
+link45[] = {46,45};
+link46[] = {47,46};
+link47[] = {48,99};
+link48[] = {49,50};
+link49[] = {49,51};
+link50[] = {50,8};
+link51[] = {51,102};
+link52[] = {52,53};
+link53[] = {52,54};
+link54[] = {53,37};
+link55[] = {54,56};
+link56[] = {55,56};
+link57[] = {56,100};
+link58[] = {57,29};
+link59[] = {58,101};
+link60[] = {59,60};
+link61[] = {59,68};
+link62[] = {60,67};
+link63[] = {61,74};
+link64[] = {62,77};
+link65[] = {63,80};
+link66[] = {64,83};
+link67[] = {65,86};
+link68[] = {66,89};
+link69[] = {68,61};
+link70[] = {68,69};
+link71[] = {69,62};
+link72[] = {69,70};
+link73[] = {70,63};
+link74[] = {70,71};
+link75[] = {71,64};
+link76[] = {71,72};
+link77[] = {72,65};
+link78[] = {72,73};
+link79[] = {73,66};
+link80[] = {74,75};
+link81[] = {74,76};
+link82[] = {75,92};
+link83[] = {76,10};
+link84[] = {77,78};
+link85[] = {77,79};
+link86[] = {78,93};
+link87[] = {79,19};
+link88[] = {80,81};
+link89[] = {80,82};
+link90[] = {81,94};
+link91[] = {82,44};
+link92[] = {83,84};
+link93[] = {83,85};
+link94[] = {84,95};
+link95[] = {85,45};
+link96[] = {86,87};
+link97[] = {86,88};
+link98[] = {87,96};
+link99[] = {88,46};
+link100[] = {89,90};
+link101[] = {89,91};
+link102[] = {90,97};
+link103[] = {91,47};
+link104[] = {92,8};
+link105[] = {93,92};
+link106[] = {94,93};
+link107[] = {95,94};
+link108[] = {96,95};
+link109[] = {97,96};
+link110[] = {98,57};
+link111[] = {98,58};
+link112[] = {99,100};
+link113[] = {100,0};
+link114[] = {101,98};
+link115[] = {102,8};
+link116[] = {3,103};
+link117[] = {103,3};
+link118[] = {4,103};
+link119[] = {103,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,138,6316128,1,-710.537720,354.122314,1651.389893,418.690247,868,1005,1};
+window[] = {0,-1,-1,-1,-1,1013,156,1596,156,1,886};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "rhfsm_repeater";
+        class States
+        {
+                /*%FSM<STATE "FPS____20">*/
+                class FPS____20
+                {
+                        name = "FPS____20";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 27;
+                                        priority = 1.000000;
+                                        to="FPS____20";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(_HighFPS && diag_fps < 25) || (diag_fps < 15)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 42;
+                                        priority = 0.000000;
+                                        to="Interval_has_pas";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "REPEATER">*/
+                class REPEATER
+                {
+                        name = "REPEATER";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"private _repeater = param [0, objnull, [objnull]];" \n
+                         "private _actionpoints = param [1, [], [[]]];" \n
+                         "private _ActivationMethod = _repeater getVariable [""ActivationMethod"", ""VARIABLE""];" \n
+                         "private _BooleanVariable = _repeater getVariable [""BooleanVariable"", """"];" \n
+                         "private _ToggleVariable = _repeater getVariable [""ToggleVariable"", true];" \n
+                         "private _ValueCondition = _repeater getVariable [""ValueCondition"", ""EAST""];" \n
+                         "private _Value = _repeater getVariable [""Value"", 0];" \n
+                         "private _RepeatInterval = _repeater getVariable [""RepeatInterval"", 1];" \n
+                         "private _MaximumRepeats = _repeater getVariable [""MaximumRepeats"", 0];" \n
+                         "private _HighFPS = _repeater getVariable [""HighFPS"", true];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="Valid_activation";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__1">*/
+                class __1
+                {
+                        name = "__1";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Execute">*/
+                class Execute
+                {
+                        name = "Execute";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"{" \n
+                         "	[" \n
+                         "		_x," \n
+                         "		[_x, false] call Actionbuilder_fnc_modulePortals" \n
+                         "	] execFSM ""RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm"";" \n
+                         "} forEach _actionpoints;" \n
+                         "_c = _c + 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "done">*/
+                                class done
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="FPS____20";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Valid_activation">*/
+                class Valid_activation
+                {
+                        name = "Valid_activation";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 12;
+                                        priority = 1.000000;
+                                        to="No_need_to_conti";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ActivationMethod == ""VARIABLE"" && _BooleanVariable == """""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="Variable_exists";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "No_need_to_conti">*/
+                class No_need_to_conti
+                {
+                        name = "No_need_to_conti";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"[""Boolean variable cannot be empty! Check %1."", _repeater] call BIS_fnc_error;" \n
+                         "false"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Variable_exists">*/
+                class Variable_exists
+                {
+                        name = "Variable_exists";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 17;
+                                        priority = 1.000000;
+                                        to="Initialize_a_default";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ActivationMethod == ""VARIABLE"" && isNil _BooleanVariable"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="Valid_repeating";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Initialize_a_default">*/
+                class Initialize_a_default
+                {
+                        name = "Initialize_a_default";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"missionNamespace setVariable [_BooleanVariable, false];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="Valid_repeating";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Valid_repeating">*/
+                class Valid_repeating
+                {
+                        name = "Valid_repeating";
+                        itemno = 20;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 22;
+                                        priority = 1.000000;
+                                        to="No_need_to_conti_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_RepeatInterval < 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="Valid_loop_setti";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "No_need_to_conti_1">*/
+                class No_need_to_conti_1
+                {
+                        name = "No_need_to_conti_1";
+                        itemno = 23;
+                        init = /*%FSM<STATEINIT""">*/"[""Repeat interval cannot be shorter than a one second! Check %1."", _repeater] call BIS_fnc_error;" \n
+                         "false"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Valid_loop_setti">*/
+                class Valid_loop_setti
+                {
+                        name = "Valid_loop_setti";
+                        itemno = 24;
+                        init = /*%FSM<STATEINIT""">*/"private _c = 0;" \n
+                         "private _execTime = time + _RepeatInterval;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 26;
+                                        priority = 1.000000;
+                                        to="No_need_to_conti_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_MaximumRepeats == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="Maximum_repeats";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "No_need_to_conti_2">*/
+                class No_need_to_conti_2
+                {
+                        name = "No_need_to_conti_2";
+                        itemno = 28;
+                        init = /*%FSM<STATEINIT""">*/"true"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Maximum_repeats">*/
+                class Maximum_repeats
+                {
+                        name = "Maximum_repeats";
+                        itemno = 29;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 31;
+                                        priority = 1.000000;
+                                        to="Activation_metho";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_MaximumRepeats == -1 || _c < _MaximumRepeats"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 30;
+                                        priority = 0.000000;
+                                        to="No_need_to_conti_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Activation_metho">*/
+                class Activation_metho
+                {
+                        name = "Activation_metho";
+                        itemno = 32;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "VARIABLE">*/
+                                class VARIABLE
+                                {
+                                        itemno = 34;
+                                        priority = 1.000000;
+                                        to="Has_proper__type";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ActivationMethod == ""VARIABLE"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "VALUE">*/
+                                class VALUE
+                                {
+                                        itemno = 35;
+                                        priority = 1.000000;
+                                        to="Value_condition";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ActivationMethod == ""VALUE"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "NONE">*/
+                                class NONE
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="No_need_to_conti_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Boolean_is_TRUE">*/
+                class Boolean_is_TRUE
+                {
+                        name = "Boolean_is_TRUE";
+                        itemno = 37;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 55;
+                                        priority = 1.000000;
+                                        to="FPS____20";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!_value"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 39;
+                                        priority = 0.000000;
+                                        to="Toggle_variable";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "No_need_to_conti_3">*/
+                class No_need_to_conti_3
+                {
+                        name = "No_need_to_conti_3";
+                        itemno = 40;
+                        init = /*%FSM<STATEINIT""">*/"[""Maximum repeat of 0 makes the repeater useless! Check %1."", _repeater] call BIS_fnc_error;" \n
+                         "false"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "No_need_to_conti_4">*/
+                class No_need_to_conti_4
+                {
+                        name = "No_need_to_conti_4";
+                        itemno = 41;
+                        init = /*%FSM<STATEINIT""">*/"[""Invalid activation method! Check %1."", _repeater] call BIS_fnc_error;" \n
+                         "false"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Toggle_variable">*/
+                class Toggle_variable
+                {
+                        name = "Toggle_variable";
+                        itemno = 49;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 51;
+                                        priority = 1.000000;
+                                        to="Execute";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!_ToggleVariable"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 50;
+                                        priority = 0.000000;
+                                        to="Execute";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"missionNamespace setVariable [_BooleanVariable, false];"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Has_proper__type">*/
+                class Has_proper__type
+                {
+                        name = "Has_proper__type";
+                        itemno = 52;
+                        init = /*%FSM<STATEINIT""">*/"private _value = missionNamespace getVariable _BooleanVariable;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 54;
+                                        priority = 1.000000;
+                                        to="FPS____20";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"typeName _value != ""BOOL"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Boolean_is_TRUE";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Value_condition">*/
+                class Value_condition
+                {
+                        name = "Value_condition";
+                        itemno = 59;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "PLAYERS">*/
+                                class PLAYERS
+                                {
+                                        itemno = 61;
+                                        priority = 1.000000;
+                                        to="Passes";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""PLAYERS"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "UNITS">*/
+                                class UNITS
+                                {
+                                        itemno = 62;
+                                        priority = 1.000000;
+                                        to="Passes_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""UNITS"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "WEST">*/
+                                class WEST
+                                {
+                                        itemno = 63;
+                                        priority = 1.000000;
+                                        to="Passes_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""WEST"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "EAST">*/
+                                class EAST
+                                {
+                                        itemno = 64;
+                                        priority = 1.000000;
+                                        to="Passes_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""EAST"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "INDEPENDENT">*/
+                                class INDEPENDENT
+                                {
+                                        itemno = 65;
+                                        priority = 1.000000;
+                                        to="Passes_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""INDEPENDENT"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "CIVILIAN">*/
+                                class CIVILIAN
+                                {
+                                        itemno = 66;
+                                        priority = 1.000000;
+                                        to="Passes_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""CIVILIAN"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "NONE">*/
+                                class NONE
+                                {
+                                        itemno = 60;
+                                        priority = 0.000000;
+                                        to="No_need_to_conti_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "No_need_to_conti_5">*/
+                class No_need_to_conti_5
+                {
+                        name = "No_need_to_conti_5";
+                        itemno = 67;
+                        init = /*%FSM<STATEINIT""">*/"[""Invalid value condition! Check %1."", _repeater] call BIS_fnc_error;" \n
+                         "false"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Passes">*/
+                class Passes
+                {
+                        name = "Passes";
+                        itemno = 74;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 76;
+                                        priority = 1.000000;
+                                        to="FPS____20";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"count (playableUnits + switchableUnits) <= _Value"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 75;
+                                        priority = 0.000000;
+                                        to="Execute";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Passes_1">*/
+                class Passes_1
+                {
+                        name = "Passes_1";
+                        itemno = 77;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 79;
+                                        priority = 1.000000;
+                                        to="FPS____20";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"count allUnits >= _Value"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 78;
+                                        priority = 0.000000;
+                                        to="Execute";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Passes_2">*/
+                class Passes_2
+                {
+                        name = "Passes_2";
+                        itemno = 80;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 82;
+                                        priority = 1.000000;
+                                        to="FPS____20";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{(side _x) == west} count allUnits >= _Value"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 81;
+                                        priority = 0.000000;
+                                        to="Execute";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Passes_3">*/
+                class Passes_3
+                {
+                        name = "Passes_3";
+                        itemno = 83;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 85;
+                                        priority = 1.000000;
+                                        to="FPS____20";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{(side _x) == east} count allUnits >= _Value"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 84;
+                                        priority = 0.000000;
+                                        to="Execute";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Passes_4">*/
+                class Passes_4
+                {
+                        name = "Passes_4";
+                        itemno = 86;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 88;
+                                        priority = 1.000000;
+                                        to="FPS____20";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{(side _x) == independent} count allUnits >= _Value"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 87;
+                                        priority = 0.000000;
+                                        to="Execute";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Passes_5">*/
+                class Passes_5
+                {
+                        name = "Passes_5";
+                        itemno = 89;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 91;
+                                        priority = 1.000000;
+                                        to="FPS____20";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{(side _x) == civilian} count allUnits >= _Value"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 90;
+                                        priority = 0.000000;
+                                        to="Execute";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Interval_has_pas">*/
+                class Interval_has_pas
+                {
+                        name = "Interval_has_pas";
+                        itemno = 98;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 58;
+                                        priority = 1.000000;
+                                        to="Interval_has_pas";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time < _execTime"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Maximum_repeats";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_execTime = time + _RepeatInterval;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 103;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 4;
+                                        priority = 1.000000;
+                                        to="____FAKE____";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="____FAKE____";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="REPEATER";
+        finalStates[] =
+        {
+                "__1",
+                "No_need_to_conti",
+                "No_need_to_conti_1",
+                "No_need_to_conti_2",
+                "No_need_to_conti_3",
+                "No_need_to_conti_4",
+                "No_need_to_conti_5",
+        };
+};
+/*%FSM</COMPILE>*/

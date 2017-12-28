@@ -136,10 +136,10 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 			control = "EditShort";
 		};
 
-        class MonitorFPS: Checkbox {
-			property = "RHNET_ab_moduleREPEATER_F_MonitorFPS";
-			displayName = "Monitor FPS";
-			tooltip = "If enabled, the execution will halt until the server FPS is higher than 20.";
+        class HighFPS: Checkbox {
+			property = "RHNET_ab_moduleREPEATER_F_HighFPS";
+			displayName = "Sustain performance";
+			tooltip = "If enabled, the execution will halt until the server FPS is higher than 25, otherwise the limit is 15.";
 			typeName = "BOOL";
             defaultValue = "true";
 		};
