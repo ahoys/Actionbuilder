@@ -33,6 +33,7 @@ if (isNil "RHNET_AB_L_DEBUG") then {
 // Initialize master variables if required --------------------------------------------------------
 if (isNil "RHNET_AB_G_AP_SIZE") then {
 	RHNET_AB_G_AP_SIZE			= [];
+	RHNET_AB_G_AP_EXECUTED		= [];
 	RHNET_AB_L_BUFFER 			= 0.02;
 	"RHNET_AB_G_REQUEST" addPublicVariableEventHandler {
 		// 1 is the id of the owner.

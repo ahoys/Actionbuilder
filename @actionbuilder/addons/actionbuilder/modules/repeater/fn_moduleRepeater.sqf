@@ -16,10 +16,17 @@ private _actionpoints = [_repeater, true] call Actionbuilder_fnc_moduleActionpoi
 
 // The actionpoint should have portals as slaves --------------------------------------------------
 if (_actionpoints isEqualTo []) exitWith {
-	["Repeater %1 is useless. Synchronize actionpoints to repeaters.", _repeater] call BIS_fnc_error;
+	["Repeater %1 is useless. Synchronize repeaters to actionpoints.", _repeater] call BIS_fnc_error;
 	false
 };
 
-[_repeater, _actionpoints] execFSM "RHNET\rhnet_actionbuilder\modules\repeater\rhfsm_repeater.fsm";
+// Repeater can execute only after the Actionpoint has triggered.
+// RHNET_AB_G_AP_EXECUTED lists all the executed APs.
+waitUntil {!isNil "RHNET_AB_G_AP_EXECUTED"};
+
+// Start AP monitoring.
+{
+	[_repeater, _x] execFSM "RHNET\rhnet_actionbuilder\modules\repeater\rhfsm_repeater.fsm";
+} forEach _actionpoints;
 
 true

@@ -1,8 +1,8 @@
-/*%FSM<COMPILE "D:\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, rhfsm_repeater">*/
+/*%FSM<COMPILE "scriptedFSM.cfg, rhfsm_repeater">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"FPS____20",3,250,-200.000000,1275.000000,-100.000000,1325.000000,0.000000,"FPS >= 20"};
-item1[] = {"REPEATER",0,250,-50.000000,-25.000000,50.000000,25.000000,0.000000,"REPEATER"};
+item1[] = {"REPEATER",0,250,-50.000000,-225.000000,50.000000,-175.000000,0.000000,"REPEATER"};
 item2[] = {"_",3,250,-100.000000,-325.000000,0.000000,-275.000000,0.000000,""};
 item3[] = {"true",8,218,25.000000,-325.000000,125.000000,-275.000000,0.000000,"true"};
 item4[] = {"false",4,218,150.000000,-325.000000,250.000000,-275.000000,1.000000,"false"};
@@ -44,74 +44,75 @@ item39[] = {"true",8,218,250.000000,1525.000000,350.000000,1575.000000,0.000000,
 item40[] = {"No_need_to_conti_3",1,250,250.000000,775.000000,350.000000,825.000000,0.000000,"No need to" \n "continue"};
 item41[] = {"No_need_to_conti_4",1,250,550.000000,975.000000,650.000000,1025.000000,0.000000,"No need to" \n "continue"};
 item42[] = {"true",8,218,-200.000000,1175.000000,-100.000000,1225.000000,0.000000,"true"};
-item43[] = {"",7,210,-304.000061,1396.000122,-295.999939,1403.999878,0.000000,""};
-item44[] = {"",7,210,920.999939,1796.000122,929.000061,1803.999878,0.000000,""};
-item45[] = {"",7,210,1070.999878,1796.000122,1079.000122,1803.999878,0.000000,""};
-item46[] = {"",7,210,1220.999878,1796.000122,1229.000122,1803.999878,0.000000,""};
-item47[] = {"",7,210,1370.999878,1796.000122,1379.000122,1803.999878,0.000000,""};
-item48[] = {"",7,210,-154.000076,1796.000122,-145.999924,1803.999878,0.000000,""};
-item49[] = {"Toggle_variable",3,250,100.000000,1525.000000,200.000000,1575.000000,0.000000,"Toggle variable"};
-item50[] = {"true",8,218,100.000000,1625.000000,200.000000,1675.000000,0.000000,"true"};
-item51[] = {"false",4,218,-50.000000,1525.000000,50.000000,1575.000000,1.000000,"false"};
-item52[] = {"Has_proper__type",3,250,250.000000,1225.000000,350.000000,1275.000000,0.000000,"Has proper " \n "typeName"};
-item53[] = {"true",8,218,250.000000,1325.000000,350.000000,1375.000000,0.000000,"true"};
-item54[] = {"false",4,218,100.000000,1225.000000,200.000000,1275.000000,1.000000,"false"};
-item55[] = {"false",4,218,100.000000,1425.000000,200.000000,1475.000000,1.000000,"false"};
-item56[] = {"",7,210,145.999939,1346.000122,154.000061,1353.999878,0.000000,""};
-item57[] = {"true",8,218,-200.000000,975.000000,-100.000000,1025.000000,0.000000,"true"};
-item58[] = {"false",4,218,-350.000000,1075.000000,-250.000000,1125.000000,1.000000,"false"};
-item59[] = {"Value_condition",3,250,400.000000,1225.000000,500.000000,1275.000000,0.000000,"Value condition"};
-item60[] = {"NONE",8,218,400.000000,1325.000000,500.000000,1375.000000,0.000000,"NONE"};
-item61[] = {"PLAYERS",4,218,550.000000,1325.000000,650.000000,1375.000000,1.000000,"PLAYERS"};
-item62[] = {"UNITS",4,218,700.000000,1325.000000,800.000000,1375.000000,1.000000,"UNITS"};
-item63[] = {"WEST",4,218,850.000000,1325.000000,950.000000,1375.000000,1.000000,"WEST"};
-item64[] = {"EAST",4,218,1000.000000,1325.000000,1100.000000,1375.000000,1.000000,"EAST"};
-item65[] = {"INDEPENDENT",4,218,1150.000000,1325.000000,1250.000000,1375.000000,1.000000,"INDEPENDENT"};
-item66[] = {"CIVILIAN",4,218,1300.000000,1325.000000,1400.000000,1375.000000,1.000000,"CIVILIAN"};
-item67[] = {"No_need_to_conti_5",1,250,400.000000,1425.000000,500.000000,1475.000000,0.000000,"No need to" \n "continue"};
-item68[] = {"",7,210,595.999939,1246.000122,604.000061,1253.999878,0.000000,""};
-item69[] = {"",7,210,745.999939,1246.000122,754.000061,1253.999878,0.000000,""};
-item70[] = {"",7,210,895.999939,1246.000122,904.000061,1253.999878,0.000000,""};
-item71[] = {"",7,210,1046.000000,1246.000122,1054.000122,1253.999878,0.000000,""};
-item72[] = {"",7,210,1196.000000,1246.000122,1204.000122,1253.999878,0.000000,""};
-item73[] = {"",7,210,1346.000000,1246.000122,1354.000122,1253.999878,0.000000,""};
-item74[] = {"Passes",3,250,550.000000,1425.000000,650.000000,1475.000000,0.000000,"Passes"};
-item75[] = {"true",8,218,525.000000,1525.000000,625.000000,1575.000000,0.000000,"true"};
-item76[] = {"false",4,218,575.000000,1550.000000,675.000000,1600.000000,1.000000,"false"};
-item77[] = {"Passes_1",3,250,700.000000,1425.000000,800.000000,1475.000000,0.000000,"Passes"};
-item78[] = {"true",8,218,675.000000,1525.000000,775.000000,1575.000000,0.000000,"true"};
-item79[] = {"false",4,218,725.000000,1550.000000,825.000000,1600.000000,1.000000,"false"};
-item80[] = {"Passes_2",3,250,850.000000,1425.000000,950.000000,1475.000000,0.000000,"Passes"};
-item81[] = {"true",8,218,825.000000,1525.000000,925.000000,1575.000000,0.000000,"true"};
-item82[] = {"false",4,218,875.000000,1550.000000,975.000000,1600.000000,1.000000,"false"};
-item83[] = {"Passes_3",3,250,1000.000000,1425.000000,1100.000000,1475.000000,0.000000,"Passes"};
-item84[] = {"true",8,218,975.000000,1525.000000,1075.000000,1575.000000,0.000000,"true"};
-item85[] = {"false",4,218,1025.000000,1550.000000,1125.000000,1600.000000,1.000000,"false"};
-item86[] = {"Passes_4",3,250,1150.000000,1425.000000,1250.000000,1475.000000,0.000000,"Passes"};
-item87[] = {"true",8,218,1125.000000,1525.000000,1225.000000,1575.000000,0.000000,"true"};
-item88[] = {"false",4,218,1175.000000,1550.000000,1275.000000,1600.000000,1.000000,"false"};
-item89[] = {"Passes_5",3,250,1300.000000,1425.000000,1400.000000,1475.000000,0.000000,"Passes"};
-item90[] = {"true",8,218,1275.000000,1525.000000,1375.000000,1575.000000,0.000000,"true"};
-item91[] = {"false",4,218,1325.000000,1550.000000,1425.000000,1600.000000,1.000000,"false"};
-item92[] = {"",7,210,570.999939,1746.000122,579.000061,1753.999878,0.000000,""};
-item93[] = {"",7,210,720.999939,1746.000122,729.000061,1753.999878,0.000000,""};
-item94[] = {"",7,210,870.999939,1746.000122,879.000061,1753.999878,0.000000,""};
-item95[] = {"",7,210,1021.000122,1746.000122,1028.999878,1753.999878,0.000000,""};
-item96[] = {"",7,210,1170.999878,1746.000122,1179.000122,1753.999878,0.000000,""};
-item97[] = {"",7,210,1321.000000,1746.000122,1329.000000,1753.999878,0.000000,""};
-item98[] = {"Interval_has_pas",3,250,-200.000000,1075.000000,-100.000000,1125.000000,0.000000,"Interval has" \n "passed"};
-item99[] = {"",7,210,-154.000061,1746.000122,-145.999939,1753.999878,0.000000,""};
-item100[] = {"",7,210,-154.000061,1346.000122,-145.999939,1353.999878,0.000000,""};
-item101[] = {"",7,210,-304.000061,1196.000000,-295.999939,1203.999878,0.000000,""};
-item102[] = {"",7,210,-4.000061,1646.000122,4.000061,1653.999878,0.000000,""};
-item103[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+item43[] = {"",7,210,920.999939,1796.000122,929.000061,1803.999878,0.000000,""};
+item44[] = {"",7,210,1070.999878,1796.000122,1079.000122,1803.999878,0.000000,""};
+item45[] = {"",7,210,1220.999878,1796.000122,1229.000122,1803.999878,0.000000,""};
+item46[] = {"",7,210,1370.999878,1796.000122,1379.000122,1803.999878,0.000000,""};
+item47[] = {"",7,210,-154.000076,1796.000122,-145.999924,1803.999878,0.000000,""};
+item48[] = {"Toggle_variable",3,250,100.000000,1525.000000,200.000000,1575.000000,0.000000,"Toggle variable"};
+item49[] = {"true",8,218,100.000000,1625.000000,200.000000,1675.000000,0.000000,"true"};
+item50[] = {"false",4,218,-50.000000,1525.000000,50.000000,1575.000000,1.000000,"false"};
+item51[] = {"Has_proper__type",3,250,250.000000,1225.000000,350.000000,1275.000000,0.000000,"Has proper " \n "typeName"};
+item52[] = {"true",8,218,250.000000,1325.000000,350.000000,1375.000000,0.000000,"true"};
+item53[] = {"false",4,218,100.000000,1225.000000,200.000000,1275.000000,1.000000,"false"};
+item54[] = {"false",4,218,100.000000,1425.000000,200.000000,1475.000000,1.000000,"false"};
+item55[] = {"",7,210,145.999939,1346.000122,154.000061,1353.999878,0.000000,""};
+item56[] = {"true",8,218,-200.000000,975.000000,-100.000000,1025.000000,0.000000,"true"};
+item57[] = {"false",4,218,-350.000000,1075.000000,-250.000000,1125.000000,1.000000,"false"};
+item58[] = {"Value_condition",3,250,400.000000,1225.000000,500.000000,1275.000000,0.000000,"Value condition"};
+item59[] = {"NONE",8,218,400.000000,1325.000000,500.000000,1375.000000,0.000000,"NONE"};
+item60[] = {"PLAYERS",4,218,550.000000,1325.000000,650.000000,1375.000000,1.000000,"PLAYERS"};
+item61[] = {"UNITS",4,218,700.000000,1325.000000,800.000000,1375.000000,1.000000,"UNITS"};
+item62[] = {"WEST",4,218,850.000000,1325.000000,950.000000,1375.000000,1.000000,"WEST"};
+item63[] = {"EAST",4,218,1000.000000,1325.000000,1100.000000,1375.000000,1.000000,"EAST"};
+item64[] = {"INDEPENDENT",4,218,1150.000000,1325.000000,1250.000000,1375.000000,1.000000,"INDEPENDENT"};
+item65[] = {"CIVILIAN",4,218,1300.000000,1325.000000,1400.000000,1375.000000,1.000000,"CIVILIAN"};
+item66[] = {"No_need_to_conti_5",1,250,400.000000,1425.000000,500.000000,1475.000000,0.000000,"No need to" \n "continue"};
+item67[] = {"",7,210,595.999939,1246.000122,604.000061,1253.999878,0.000000,""};
+item68[] = {"",7,210,745.999939,1246.000122,754.000061,1253.999878,0.000000,""};
+item69[] = {"",7,210,895.999939,1246.000122,904.000061,1253.999878,0.000000,""};
+item70[] = {"",7,210,1046.000000,1246.000122,1054.000122,1253.999878,0.000000,""};
+item71[] = {"",7,210,1196.000000,1246.000122,1204.000122,1253.999878,0.000000,""};
+item72[] = {"",7,210,1346.000000,1246.000122,1354.000122,1253.999878,0.000000,""};
+item73[] = {"Passes",3,250,550.000000,1425.000000,650.000000,1475.000000,0.000000,"Passes"};
+item74[] = {"true",8,218,525.000000,1525.000000,625.000000,1575.000000,0.000000,"true"};
+item75[] = {"false",4,218,575.000000,1550.000000,675.000000,1600.000000,1.000000,"false"};
+item76[] = {"Passes_1",3,250,700.000000,1425.000000,800.000000,1475.000000,0.000000,"Passes"};
+item77[] = {"true",8,218,675.000000,1525.000000,775.000000,1575.000000,0.000000,"true"};
+item78[] = {"false",4,218,725.000000,1550.000000,825.000000,1600.000000,1.000000,"false"};
+item79[] = {"Passes_2",3,250,850.000000,1425.000000,950.000000,1475.000000,0.000000,"Passes"};
+item80[] = {"true",8,218,825.000000,1525.000000,925.000000,1575.000000,0.000000,"true"};
+item81[] = {"false",4,218,875.000000,1550.000000,975.000000,1600.000000,1.000000,"false"};
+item82[] = {"Passes_3",3,250,1000.000000,1425.000000,1100.000000,1475.000000,0.000000,"Passes"};
+item83[] = {"true",8,218,975.000000,1525.000000,1075.000000,1575.000000,0.000000,"true"};
+item84[] = {"false",4,218,1025.000000,1550.000000,1125.000000,1600.000000,1.000000,"false"};
+item85[] = {"Passes_4",3,250,1150.000000,1425.000000,1250.000000,1475.000000,0.000000,"Passes"};
+item86[] = {"true",8,218,1125.000000,1525.000000,1225.000000,1575.000000,0.000000,"true"};
+item87[] = {"false",4,218,1175.000000,1550.000000,1275.000000,1600.000000,1.000000,"false"};
+item88[] = {"Passes_5",3,250,1300.000000,1425.000000,1400.000000,1475.000000,0.000000,"Passes"};
+item89[] = {"true",8,218,1275.000000,1525.000000,1375.000000,1575.000000,0.000000,"true"};
+item90[] = {"false",4,218,1325.000000,1550.000000,1425.000000,1600.000000,1.000000,"false"};
+item91[] = {"",7,210,570.999939,1746.000122,579.000061,1753.999878,0.000000,""};
+item92[] = {"",7,210,720.999939,1746.000122,729.000061,1753.999878,0.000000,""};
+item93[] = {"",7,210,870.999939,1746.000122,879.000061,1753.999878,0.000000,""};
+item94[] = {"",7,210,1021.000122,1746.000122,1028.999878,1753.999878,0.000000,""};
+item95[] = {"",7,210,1170.999878,1746.000122,1179.000122,1753.999878,0.000000,""};
+item96[] = {"",7,210,1321.000000,1746.000122,1329.000000,1753.999878,0.000000,""};
+item97[] = {"Interval_has_pas",3,250,-200.000000,1075.000000,-100.000000,1125.000000,0.000000,"Interval has" \n "passed"};
+item98[] = {"",7,210,-154.000061,1746.000122,-145.999939,1753.999878,0.000000,""};
+item99[] = {"",7,210,-154.000061,1346.000122,-145.999939,1353.999878,0.000000,""};
+item100[] = {"",7,210,-4.000061,1646.000122,4.000061,1653.999878,0.000000,""};
+item101[] = {"Has_the_AP_executed",3,250,-50.000000,-25.000000,50.000000,25.000000,0.000000,"Has the AP" \n "executed?"};
+item102[] = {"false",4,218,100.000000,-25.000000,200.000000,25.000000,1.000000,"false"};
+item103[] = {"true",8,218,-50.000000,-125.000000,50.000000,-75.000000,0.000000,"true"};
+item104[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
 link0[] = {0,27};
 link1[] = {0,42};
-link2[] = {1,9};
-link3[] = {7,99};
+link2[] = {1,103};
+link3[] = {7,98};
 link4[] = {8,7};
 link5[] = {9,11};
-link6[] = {10,48};
+link6[] = {10,47};
 link7[] = {11,12};
 link8[] = {11,14};
 link9[] = {12,13};
@@ -130,7 +131,7 @@ link21[] = {24,25};
 link22[] = {24,26};
 link23[] = {25,29};
 link24[] = {26,40};
-link25[] = {27,43};
+link25[] = {27,0};
 link26[] = {29,30};
 link27[] = {29,31};
 link28[] = {30,28};
@@ -138,95 +139,97 @@ link29[] = {31,32};
 link30[] = {32,33};
 link31[] = {32,36};
 link32[] = {33,41};
-link33[] = {34,52};
-link34[] = {35,59};
+link33[] = {34,51};
+link34[] = {35,58};
 link35[] = {36,34};
 link36[] = {36,38};
 link37[] = {37,39};
-link38[] = {37,55};
+link38[] = {37,54};
 link39[] = {38,35};
-link40[] = {39,49};
-link41[] = {42,98};
-link42[] = {43,0};
-link43[] = {44,19};
+link40[] = {39,48};
+link41[] = {42,97};
+link42[] = {43,19};
+link43[] = {44,43};
 link44[] = {45,44};
 link45[] = {46,45};
-link46[] = {47,46};
-link47[] = {48,99};
-link48[] = {49,50};
-link49[] = {49,51};
-link50[] = {50,8};
-link51[] = {51,102};
-link52[] = {52,53};
-link53[] = {52,54};
-link54[] = {53,37};
-link55[] = {54,56};
-link56[] = {55,56};
-link57[] = {56,100};
-link58[] = {57,29};
-link59[] = {58,101};
-link60[] = {59,60};
-link61[] = {59,68};
-link62[] = {60,67};
-link63[] = {61,74};
-link64[] = {62,77};
-link65[] = {63,80};
-link66[] = {64,83};
-link67[] = {65,86};
-link68[] = {66,89};
-link69[] = {68,61};
-link70[] = {68,69};
-link71[] = {69,62};
-link72[] = {69,70};
-link73[] = {70,63};
-link74[] = {70,71};
-link75[] = {71,64};
-link76[] = {71,72};
-link77[] = {72,65};
-link78[] = {72,73};
-link79[] = {73,66};
-link80[] = {74,75};
-link81[] = {74,76};
-link82[] = {75,92};
-link83[] = {76,10};
-link84[] = {77,78};
-link85[] = {77,79};
-link86[] = {78,93};
-link87[] = {79,19};
-link88[] = {80,81};
-link89[] = {80,82};
-link90[] = {81,94};
-link91[] = {82,44};
-link92[] = {83,84};
-link93[] = {83,85};
-link94[] = {84,95};
-link95[] = {85,45};
-link96[] = {86,87};
-link97[] = {86,88};
-link98[] = {87,96};
-link99[] = {88,46};
-link100[] = {89,90};
-link101[] = {89,91};
-link102[] = {90,97};
-link103[] = {91,47};
-link104[] = {92,8};
+link46[] = {47,98};
+link47[] = {48,49};
+link48[] = {48,50};
+link49[] = {49,8};
+link50[] = {50,100};
+link51[] = {51,52};
+link52[] = {51,53};
+link53[] = {52,37};
+link54[] = {53,55};
+link55[] = {54,55};
+link56[] = {55,99};
+link57[] = {56,29};
+link58[] = {57,97};
+link59[] = {58,59};
+link60[] = {58,67};
+link61[] = {59,66};
+link62[] = {60,73};
+link63[] = {61,76};
+link64[] = {62,79};
+link65[] = {63,82};
+link66[] = {64,85};
+link67[] = {65,88};
+link68[] = {67,60};
+link69[] = {67,68};
+link70[] = {68,61};
+link71[] = {68,69};
+link72[] = {69,62};
+link73[] = {69,70};
+link74[] = {70,63};
+link75[] = {70,71};
+link76[] = {71,64};
+link77[] = {71,72};
+link78[] = {72,65};
+link79[] = {73,74};
+link80[] = {73,75};
+link81[] = {74,91};
+link82[] = {75,10};
+link83[] = {76,77};
+link84[] = {76,78};
+link85[] = {77,92};
+link86[] = {78,19};
+link87[] = {79,80};
+link88[] = {79,81};
+link89[] = {80,93};
+link90[] = {81,43};
+link91[] = {82,83};
+link92[] = {82,84};
+link93[] = {83,94};
+link94[] = {84,44};
+link95[] = {85,86};
+link96[] = {85,87};
+link97[] = {86,95};
+link98[] = {87,45};
+link99[] = {88,89};
+link100[] = {88,90};
+link101[] = {89,96};
+link102[] = {90,46};
+link103[] = {91,8};
+link104[] = {92,91};
 link105[] = {93,92};
 link106[] = {94,93};
 link107[] = {95,94};
 link108[] = {96,95};
-link109[] = {97,96};
-link110[] = {98,57};
-link111[] = {98,58};
-link112[] = {99,100};
-link113[] = {100,0};
-link114[] = {101,98};
-link115[] = {102,8};
-link116[] = {3,103};
-link117[] = {103,3};
-link118[] = {4,103};
-link119[] = {103,4};
-globals[] = {0.000000,0,0,0,0,640,480,1,138,6316128,1,-710.537720,354.122314,1651.389893,418.690247,868,1005,1};
-window[] = {0,-1,-1,-1,-1,1013,156,1596,156,1,886};
+link109[] = {97,56};
+link110[] = {97,57};
+link111[] = {98,99};
+link112[] = {99,0};
+link113[] = {100,8};
+link114[] = {101,9};
+link115[] = {101,102};
+link116[] = {102,101};
+link117[] = {103,101};
+link118[] = {3,104};
+link119[] = {104,3};
+link120[] = {4,104};
+link121[] = {104,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,141,6316128,1,-444.353699,1769.307251,2269.291504,954.307800,2111,1254,1};
+window[] = {2,-1,-1,-1,-1,961,104,1544,104,3,2129};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -273,7 +276,7 @@ class FSM
                         name = "REPEATER";
                         itemno = 1;
                         init = /*%FSM<STATEINIT""">*/"private _repeater = param [0, objnull, [objnull]];" \n
-                         "private _actionpoints = param [1, [], [[]]];" \n
+                         "private _ap = param [1, objnull, [objnull]];" \n
                          "private _ActivationMethod = _repeater getVariable [""ActivationMethod"", ""VARIABLE""];" \n
                          "private _BooleanVariable = _repeater getVariable [""BooleanVariable"", """"];" \n
                          "private _ToggleVariable = _repeater getVariable [""ToggleVariable"", true];" \n
@@ -282,16 +285,16 @@ class FSM
                          "private _RepeatInterval = _repeater getVariable [""RepeatInterval"", 1];" \n
                          "private _MaximumRepeats = _repeater getVariable [""MaximumRepeats"", 0];" \n
                          "private _HighFPS = _repeater getVariable [""HighFPS"", true];" \n
-                         ""/*%FSM</STATEINIT""">*/;
+                         "diag_log format [""Repeater alive: %1, %2"", _repeater, _ap];"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
                                 /*%FSM<LINK "true">*/
                                 class true
                                 {
-                                        itemno = 9;
+                                        itemno = 103;
                                         priority = 0.000000;
-                                        to="Valid_activation";
+                                        to="Has_the_AP_executed";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -329,12 +332,10 @@ class FSM
                 {
                         name = "Execute";
                         itemno = 8;
-                        init = /*%FSM<STATEINIT""">*/"{" \n
-                         "	[" \n
-                         "		_x," \n
-                         "		[_x, false] call Actionbuilder_fnc_modulePortals" \n
-                         "	] execFSM ""RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm"";" \n
-                         "} forEach _actionpoints;" \n
+                        init = /*%FSM<STATEINIT""">*/"[" \n
+                         "	_ap," \n
+                         "	[_ap, false] call Actionbuilder_fnc_modulePortals" \n
+                         "] execFSM ""RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm"";" \n
                          "_c = _c + 1;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -642,7 +643,7 @@ class FSM
                                 /*%FSM<LINK "false">*/
                                 class false
                                 {
-                                        itemno = 55;
+                                        itemno = 54;
                                         priority = 1.000000;
                                         to="FPS____20";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -694,7 +695,7 @@ class FSM
                 class Toggle_variable
                 {
                         name = "Toggle_variable";
-                        itemno = 49;
+                        itemno = 48;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -702,7 +703,7 @@ class FSM
                                 /*%FSM<LINK "false">*/
                                 class false
                                 {
-                                        itemno = 51;
+                                        itemno = 50;
                                         priority = 1.000000;
                                         to="Execute";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -713,7 +714,7 @@ class FSM
                                 /*%FSM<LINK "true">*/
                                 class true
                                 {
-                                        itemno = 50;
+                                        itemno = 49;
                                         priority = 0.000000;
                                         to="Execute";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -728,7 +729,7 @@ class FSM
                 class Has_proper__type
                 {
                         name = "Has_proper__type";
-                        itemno = 52;
+                        itemno = 51;
                         init = /*%FSM<STATEINIT""">*/"private _value = missionNamespace getVariable _BooleanVariable;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -736,7 +737,7 @@ class FSM
                                 /*%FSM<LINK "false">*/
                                 class false
                                 {
-                                        itemno = 54;
+                                        itemno = 53;
                                         priority = 1.000000;
                                         to="FPS____20";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -747,7 +748,7 @@ class FSM
                                 /*%FSM<LINK "true">*/
                                 class true
                                 {
-                                        itemno = 53;
+                                        itemno = 52;
                                         priority = 0.000000;
                                         to="Boolean_is_TRUE";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -762,7 +763,7 @@ class FSM
                 class Value_condition
                 {
                         name = "Value_condition";
-                        itemno = 59;
+                        itemno = 58;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -770,7 +771,7 @@ class FSM
                                 /*%FSM<LINK "PLAYERS">*/
                                 class PLAYERS
                                 {
-                                        itemno = 61;
+                                        itemno = 60;
                                         priority = 1.000000;
                                         to="Passes";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -781,7 +782,7 @@ class FSM
                                 /*%FSM<LINK "UNITS">*/
                                 class UNITS
                                 {
-                                        itemno = 62;
+                                        itemno = 61;
                                         priority = 1.000000;
                                         to="Passes_1";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -792,7 +793,7 @@ class FSM
                                 /*%FSM<LINK "WEST">*/
                                 class WEST
                                 {
-                                        itemno = 63;
+                                        itemno = 62;
                                         priority = 1.000000;
                                         to="Passes_2";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -803,7 +804,7 @@ class FSM
                                 /*%FSM<LINK "EAST">*/
                                 class EAST
                                 {
-                                        itemno = 64;
+                                        itemno = 63;
                                         priority = 1.000000;
                                         to="Passes_3";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -814,7 +815,7 @@ class FSM
                                 /*%FSM<LINK "INDEPENDENT">*/
                                 class INDEPENDENT
                                 {
-                                        itemno = 65;
+                                        itemno = 64;
                                         priority = 1.000000;
                                         to="Passes_4";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -825,7 +826,7 @@ class FSM
                                 /*%FSM<LINK "CIVILIAN">*/
                                 class CIVILIAN
                                 {
-                                        itemno = 66;
+                                        itemno = 65;
                                         priority = 1.000000;
                                         to="Passes_5";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -836,7 +837,7 @@ class FSM
                                 /*%FSM<LINK "NONE">*/
                                 class NONE
                                 {
-                                        itemno = 60;
+                                        itemno = 59;
                                         priority = 0.000000;
                                         to="No_need_to_conti_5";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -851,7 +852,7 @@ class FSM
                 class No_need_to_conti_5
                 {
                         name = "No_need_to_conti_5";
-                        itemno = 67;
+                        itemno = 66;
                         init = /*%FSM<STATEINIT""">*/"[""Invalid value condition! Check %1."", _repeater] call BIS_fnc_error;" \n
                          "false"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -864,7 +865,7 @@ class FSM
                 class Passes
                 {
                         name = "Passes";
-                        itemno = 74;
+                        itemno = 73;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -872,7 +873,7 @@ class FSM
                                 /*%FSM<LINK "false">*/
                                 class false
                                 {
-                                        itemno = 76;
+                                        itemno = 75;
                                         priority = 1.000000;
                                         to="FPS____20";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -883,7 +884,7 @@ class FSM
                                 /*%FSM<LINK "true">*/
                                 class true
                                 {
-                                        itemno = 75;
+                                        itemno = 74;
                                         priority = 0.000000;
                                         to="Execute";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -898,7 +899,7 @@ class FSM
                 class Passes_1
                 {
                         name = "Passes_1";
-                        itemno = 77;
+                        itemno = 76;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -906,7 +907,7 @@ class FSM
                                 /*%FSM<LINK "false">*/
                                 class false
                                 {
-                                        itemno = 79;
+                                        itemno = 78;
                                         priority = 1.000000;
                                         to="FPS____20";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -917,7 +918,7 @@ class FSM
                                 /*%FSM<LINK "true">*/
                                 class true
                                 {
-                                        itemno = 78;
+                                        itemno = 77;
                                         priority = 0.000000;
                                         to="Execute";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -932,7 +933,7 @@ class FSM
                 class Passes_2
                 {
                         name = "Passes_2";
-                        itemno = 80;
+                        itemno = 79;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -940,7 +941,7 @@ class FSM
                                 /*%FSM<LINK "false">*/
                                 class false
                                 {
-                                        itemno = 82;
+                                        itemno = 81;
                                         priority = 1.000000;
                                         to="FPS____20";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -951,7 +952,7 @@ class FSM
                                 /*%FSM<LINK "true">*/
                                 class true
                                 {
-                                        itemno = 81;
+                                        itemno = 80;
                                         priority = 0.000000;
                                         to="Execute";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -966,7 +967,7 @@ class FSM
                 class Passes_3
                 {
                         name = "Passes_3";
-                        itemno = 83;
+                        itemno = 82;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -974,7 +975,7 @@ class FSM
                                 /*%FSM<LINK "false">*/
                                 class false
                                 {
-                                        itemno = 85;
+                                        itemno = 84;
                                         priority = 1.000000;
                                         to="FPS____20";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -985,7 +986,7 @@ class FSM
                                 /*%FSM<LINK "true">*/
                                 class true
                                 {
-                                        itemno = 84;
+                                        itemno = 83;
                                         priority = 0.000000;
                                         to="Execute";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -1000,7 +1001,7 @@ class FSM
                 class Passes_4
                 {
                         name = "Passes_4";
-                        itemno = 86;
+                        itemno = 85;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -1008,7 +1009,7 @@ class FSM
                                 /*%FSM<LINK "false">*/
                                 class false
                                 {
-                                        itemno = 88;
+                                        itemno = 87;
                                         priority = 1.000000;
                                         to="FPS____20";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -1019,7 +1020,7 @@ class FSM
                                 /*%FSM<LINK "true">*/
                                 class true
                                 {
-                                        itemno = 87;
+                                        itemno = 86;
                                         priority = 0.000000;
                                         to="Execute";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -1034,7 +1035,7 @@ class FSM
                 class Passes_5
                 {
                         name = "Passes_5";
-                        itemno = 89;
+                        itemno = 88;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -1042,7 +1043,7 @@ class FSM
                                 /*%FSM<LINK "false">*/
                                 class false
                                 {
-                                        itemno = 91;
+                                        itemno = 90;
                                         priority = 1.000000;
                                         to="FPS____20";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -1053,7 +1054,7 @@ class FSM
                                 /*%FSM<LINK "true">*/
                                 class true
                                 {
-                                        itemno = 90;
+                                        itemno = 89;
                                         priority = 0.000000;
                                         to="Execute";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -1068,7 +1069,7 @@ class FSM
                 class Interval_has_pas
                 {
                         name = "Interval_has_pas";
-                        itemno = 98;
+                        itemno = 97;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -1076,7 +1077,7 @@ class FSM
                                 /*%FSM<LINK "false">*/
                                 class false
                                 {
-                                        itemno = 58;
+                                        itemno = 57;
                                         priority = 1.000000;
                                         to="Interval_has_pas";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -1087,7 +1088,7 @@ class FSM
                                 /*%FSM<LINK "true">*/
                                 class true
                                 {
-                                        itemno = 57;
+                                        itemno = 56;
                                         priority = 0.000000;
                                         to="Maximum_repeats";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -1098,11 +1099,45 @@ class FSM
                         };
                 };
                 /*%FSM</STATE>*/
+                /*%FSM<STATE "Has_the_AP_executed">*/
+                class Has_the_AP_executed
+                {
+                        name = "Has_the_AP_executed";
+                        itemno = 101;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "false">*/
+                                class false
+                                {
+                                        itemno = 102;
+                                        priority = 1.000000;
+                                        to="Has_the_AP_executed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"RHNET_AB_G_AP_EXECUTED find _ap == -1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="Valid_activation";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
                 /*%FSM<STATE "____FAKE____">*/
                 class ____FAKE____
                 {
                         name = "____FAKE____";
-                        itemno = 103;
+                        itemno = 104;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
