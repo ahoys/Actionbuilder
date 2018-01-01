@@ -33,7 +33,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 					value = "VARIABLE"
 					default = 1;
 				};
-        class RP_AT_VALUE {
+				class RP_AT_VALUE {
 					name = "Value";
 					value = "VALUE"
 				};
@@ -99,9 +99,9 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 					default = 1;
 				};
 				class RP_VT_LESSTHANINDEPENDENT {
-          name = "INDEPENDENT unit count is less than Value";
+					name = "INDEPENDENT unit count is less than Value";
 					value = "INDEPENDENT"
-        };
+				};
 				class RP_VT_LESSTHANCIVILIAN {
 					name = "CIVILIAN unit count is less than Value";
 					value = "CIVILIAN"
