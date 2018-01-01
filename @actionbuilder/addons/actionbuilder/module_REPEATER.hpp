@@ -12,6 +12,15 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 	isDisposable = 0;
 
 	class Attributes: AttributesBase {
+		class RepeaterDescription: Edit {
+			property = "RHNET_ab_moduleREPEATER_F_RepeaterDescription";
+			description = "Repeaters repeat Actionpoints.";
+			displayName = "";
+			tooltip = "";
+			control = "SubCategoryNoHeader1";
+			data = "AttributeSystemSubcategory"
+		};
+
 		class ActivationMethod: Combo {
 			property = "RHNET_ab_moduleREPEATER_F_ActivationMethod";
 			displayName = "Activated by";

@@ -12,13 +12,13 @@ class RHNET_ab_moduleWP_F: Module_F {
 	isDisposable = 0;
 
 	class Attributes: AttributesBase {
-		class TypeDescription: Edit {
-			property = "RHNET_ab_moduleWP_F_TypeDescription";
-            description = "Waypoints can be e.g. regular MOVE commands or more advanced ""ACTION"" commands. Actions are executed instantaneously.";
+		class WaypointDescription: Edit {
+			property = "RHNET_ab_moduleAP_F_WaypointDescription";
+			description = "Waypoints are orders that the spawned units execute.";
 			displayName = "";
 			tooltip = "";
-			control = "SubCategoryNoHeader2";
-            data = "AttributeSystemSubcategory"
+			control = "SubCategoryNoHeader1";
+			data = "AttributeSystemSubcategory"
 		};
 
 		class WpType: Combo {
@@ -250,15 +250,6 @@ class RHNET_ab_moduleWP_F: Module_F {
 					value = 1;
 				};
 			};
-		};
-
-		class SpecialDescription: Edit {
-			property = "RHNET_ab_moduleWP_F_SpecialDescription";
-            description = "Special attributes can e.g. dictate how the group prioritizes this waypoint compared to other Waypoints available.";
-			displayName = "";
-			tooltip = "";
-			control = "SubCategoryNoHeader2";
-            data = "AttributeSystemSubcategory"
 		};
 
 		class WpSpecial: Combo {

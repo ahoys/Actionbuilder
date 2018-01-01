@@ -12,6 +12,15 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 	isDisposable = 0;
 
 	class Attributes: AttributesBase {
+		class PortalDescription: Edit {
+			property = "RHNET_ab_modulePORTAL_F_PortalDescription";
+			description = "Portals are in charge of unit spawning.";
+			displayName = "";
+			tooltip = "";
+			control = "SubCategoryNoHeader1";
+			data = "AttributeSystemSubcategory"
+		};
+
 		class p_Positioning: Combo {
 			property = "RHNET_ab_modulePORTAL_F_p_Positioning";
 			displayName = "Positioning";
@@ -29,15 +38,6 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 					value = "PORTAL";
 				};
 			};
-		};
-
-		class MinDistDescription: Edit {
-			property = "RHNET_ab_modulePORTAL_F_MinDistDescription";
-            description = "This portal will skip the spawning event if there are players closer to this portal than the ""No players radius"" setting indicates.";
-			displayName = "";
-			tooltip = "";
-			control = "SubCategoryNoHeader2";
-            data = "AttributeSystemSubcategory"
 		};
 
 		class p_MinDist: Edit {
@@ -84,19 +84,10 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			control = "Slider";
 		};
 
-		class SpecialDescription: Edit {
-			property = "RHNET_ab_modulePORTAL_F_SpecialDescription";
-            description = "With special attributes you can e.g. make planes fly and set items to ignore automatic collision prevention.";
-			displayName = "";
-			tooltip = "";
-			control = "SubCategoryNoHeader2";
-            data = "AttributeSystemSubcategory"
-		};
-
 		class p_Special: Combo {
 			property = "RHNET_ab_modulePORTAL_F_p_Special";
 			displayName = "Special";
-			tooltip = "Special attributes available.";
+			tooltip = "With special attributes you can make planes fly or set items to ignore automatic collision prevention. Some specialities only affect certain type of units.";
 			typeName = "STRING";
 			defaultValue = """NONE""";
 			class Values {

@@ -12,18 +12,18 @@ class RHNET_ab_moduleAP_F: Module_F {
 	isDisposable = 0;
 
 	class Attributes: AttributesBase {
-		class ConditionDescription: Edit {
-			property = "RHNET_ab_moduleAP_F_ConditionDescription";
-            description = "The following conditions must be met for this Actionpoint to function.";
+		class ActionpointDescription: Edit {
+			property = "RHNET_ab_moduleAP_F_ActionpointDescription";
+			description = "Actionpoints activate synchronized Portals when the given conditions are met. You can restrict Actionpoints with triggers.";
 			displayName = "";
 			tooltip = "";
-			control = "SubCategoryNoHeader1";
-            data = "AttributeSystemSubcategory"
+			control = "SubCategoryNoHeader2";
+			data = "AttributeSystemSubcategory"
 		};
 
 		class PlayersAlive: Edit {
 			property = "RHNET_ab_moduleAP_F_PlayersAlive";
-			displayName = "Minimum players alive count";
+			displayName = "Minimum players alive";
 			tooltip = "How many playable units there must be alive for this actionpoint to activate (0: no limit).";
 			typeName = "NUMBER";
 			defaultValue = "1";
@@ -32,20 +32,11 @@ class RHNET_ab_moduleAP_F: Module_F {
 
 		class SafeLock: Edit {
 			property = "RHNET_ab_moduleAP_F_SafeLock";
-			displayName = "Maximum units alive count";
+			displayName = "Maximum units alive";
 			tooltip = "This actionpoint will not activate if there are more units alive than allowed (-1: no limit).";
 			typeName = "NUMBER";
 			defaultValue = "128";
 			control = "EditShort";
-		};
-
-		class MultiplePortalsDescription: Edit {
-			property = "RHNET_ab_moduleAP_F_MultiplePortalsDescription";
-            description = "One Actionpoint can hold multiple portals.";
-			displayName = "";
-			tooltip = "";
-			control = "SubCategoryNoHeader1";
-            data = "AttributeSystemSubcategory"
 		};
 
 		class ExecutePortals: Combo {
