@@ -111,18 +111,4 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 			};
 		};
 	};
-
-	class ModuleDescription : ModuleDescription {
-		description = "A portal controls the unit spawning.";
-		sync[] = {"RHNET_ab_moduleAP_F","RHNET_ab_moduleWP_F"};
-
-		position = 1;
-		direction = 1;
-
-		class RHNET_ab_moduleWP_F {
-			description = "If there are multiple waypoints available only one will be randomly selected.";
-			position = 1;
-			duplicate = 1;
-		};
-	};
 };

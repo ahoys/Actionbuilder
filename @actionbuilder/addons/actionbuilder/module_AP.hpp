@@ -94,16 +94,4 @@ class RHNET_ab_moduleAP_F: Module_F {
 			};
 		};
 	};
-
-	class ModuleDescription: ModuleDescription {
-		description = "Actionpoint controls the synchronized portals.";
-		sync[] = {"EmptyDetector","RHNET_ab_modulePORTAL_F","RHNET_ab_moduleREPEATER_F"};
-
-		class RHNET_ab_modulePORTAL_F {
-			description = "There can be multiple portals synchronized.";
-			position = 1;
-			direction = 1;
-			duplicate = 1;
-		};
-	};
 };

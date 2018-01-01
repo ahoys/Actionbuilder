@@ -283,19 +283,4 @@ class RHNET_ab_moduleWP_F: Module_F {
 			};
 		};
 	};
-
-	class ModuleDescription: ModuleDescription {
-		description = "Waypoints order the spawned units to execute actions.";
-		sync[] = {"RHNET_ab_modulePORTAL_F"};
-
-		position = 1;
-		duplicate = 1;
-
-		class RHNET_ab_modulePORTAL_F {
-			description = "A portal controls the unit spawning.";
-			position = 1;
-			direction = 1;
-			duplicate = 1;
-		};
-	};
 };
