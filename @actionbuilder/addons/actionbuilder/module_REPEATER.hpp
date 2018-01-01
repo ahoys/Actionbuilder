@@ -62,16 +62,16 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 			displayName = "Toggle variable";
 			tooltip = "If enabled, the boolean variable will be switched to FALSE after a successful execution.";
 			typeName = "BOOL";
-      defaultValue = "true";
+			defaultValue = "true";
 		};
 
     class ValueDescription: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_ValueDescription";
-      description = "Value activator activates the repeater when the given condition is TRUE.";
+			description = "Value activator activates the repeater when the given condition is TRUE.";
 			displayName = "";
 			tooltip = "";
 			control = "SubCategoryNoHeader1";
-      data = "AttributeSystemSubcategory"
+			data = "AttributeSystemSubcategory"
 		};
 
     class ValueCondition: Combo {
