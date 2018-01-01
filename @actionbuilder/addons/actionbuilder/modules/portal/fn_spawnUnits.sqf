@@ -163,8 +163,11 @@ if (count _groups > 0) then {
 			_v setVehicleAmmo _varAmmo;
 			_v setFuel _varFuel;
 			{
-				_x setSkill _varSkill;
 				_x setVehicleAmmo _varAmmo;
+				// Automatic skill can be disabled.
+				if (isNil "RHNET_AB_L_DISABLE_SET_SKILL") then {
+					_x setSkill _varSkill;
+				};
 			} forEach crew _v;
 			// Planes can't hover.
 			if (_varSpecial == "FLY" && _v isKindOf "Plane") then {
@@ -196,10 +199,13 @@ if (count _groups > 0) then {
 			_u setDir (_x select 2);
 			_u setFormDir (_x select 2);
 			_u setDamage _varDamage;
-			_u setSkill _varSkill;
 			_u setVehicleAmmo _varAmmo;
 			_u setUnitPos (_x select 3);
 			_u setUnitLoadout (_x select 4);
+			// Automatic skill can be disabled.
+			if (isNil "RHNET_AB_L_DISABLE_SET_SKILL") then {
+				_u setSkill _varSkill;
+			};
 		} forEach (_x select 2);
 		// Register [id, portal, current location, next location, banned location].
 		RHNET_AB_L_GROUPPROGRESS pushBack _g;
