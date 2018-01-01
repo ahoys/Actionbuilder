@@ -14,7 +14,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 	class Attributes: AttributesBase {
 		class RepeaterDescription: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_RepeaterDescription";
-			description = "Repeaters repeat Actionpoints.";
+			description = "Repeaters repeat Actionpoints. You can restrict Repeaters with triggers.";
 			displayName = "";
 			tooltip = "";
 			control = "SubCategoryNoHeader1";

@@ -14,7 +14,7 @@ class RHNET_ab_moduleWP_F: Module_F {
 	class Attributes: AttributesBase {
 		class WaypointDescription: Edit {
 			property = "RHNET_ab_moduleAP_F_WaypointDescription";
-			description = "Waypoints are orders that the spawned units execute.";
+			description = "Waypoints are orders that the spawned units execute. You can restrict Waypoints with triggers.";
 			displayName = "";
 			tooltip = "";
 			control = "SubCategoryNoHeader1";
