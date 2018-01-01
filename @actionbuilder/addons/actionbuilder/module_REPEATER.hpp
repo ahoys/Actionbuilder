@@ -33,23 +33,23 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 					value = "VARIABLE"
 					default = 1;
 				};
-                class RP_AT_VALUE {
+        class RP_AT_VALUE {
 					name = "Value";
 					value = "VALUE"
 				};
 			};
 		};
 
-        class BooleanDescription: Edit {
+		class BooleanDescription: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_BooleanDescription";
-            description = "Boolean variable activator activates the repeater when the variable's value is TRUE. If the variable is toggled, the variable will switch to FALSE after a successful repeat.";
+			description = "Boolean variable activator activates the repeater when the variable's value is TRUE. If the variable is toggled, the variable will switch to FALSE after a successful repeat.";
 			displayName = "";
 			tooltip = "";
 			control = "SubCategoryNoHeader2";
-            data = "AttributeSystemSubcategory"
+			data = "AttributeSystemSubcategory"
 		};
 
-        class BooleanVariable: Edit {
+		class BooleanVariable: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_BooleanVariable";
 			displayName = "Boolean variable";
 			tooltip = "Custom boolean variable to be monitored.";
@@ -57,31 +57,31 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 			control = "EditShort";
 		};
 
-        class ToggleVariable: Checkbox {
+    class ToggleVariable: Checkbox {
 			property = "RHNET_ab_moduleREPEATER_F_ToggleVariable";
 			displayName = "Toggle variable";
 			tooltip = "If enabled, the boolean variable will be switched to FALSE after a successful execution.";
 			typeName = "BOOL";
-            defaultValue = "true";
+      defaultValue = "true";
 		};
 
-        class ValueDescription: Edit {
+    class ValueDescription: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_ValueDescription";
-            description = "Value activator activates the repeater when the given condition is TRUE.";
+      description = "Value activator activates the repeater when the given condition is TRUE.";
 			displayName = "";
 			tooltip = "";
 			control = "SubCategoryNoHeader1";
-            data = "AttributeSystemSubcategory"
+      data = "AttributeSystemSubcategory"
 		};
 
-        class ValueCondition: Combo {
+    class ValueCondition: Combo {
 			property = "RHNET_ab_moduleREPEATER_F_ValueCondition";
 			displayName = "Value condition";
 			tooltip = "Defines meaning for the value setting.";
 			typeName = "STRING";
 			defaultValue = """VARIABLE""";
 			class Values {
-                class RP_VT_MOREPLAYERS {
+				class RP_VT_MOREPLAYERS {
 					name = "Total player count is higher than Value";
 					value = "PLAYERS"
 				};
@@ -89,68 +89,68 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 					name = "Total unit count is less than Value";
 					value = "UNITS"
 				};
-                class RP_VT_LESSTHANWEST {
-                    name = "BLUFOR unit count is less than Value";
+				class RP_VT_LESSTHANWEST {
+					name = "BLUFOR unit count is less than Value";
 					value = "WEST"
-                };
-                class RP_VT_LESSTHANEAST {
-                    name = "OPFOR unit count is less than Value";
+				};
+				class RP_VT_LESSTHANEAST {
+					name = "OPFOR unit count is less than Value";
 					value = "EAST"
 					default = 1;
-                };
-                class RP_VT_LESSTHANINDEPENDENT {
-                    name = "INDEPENDENT unit count is less than Value";
+				};
+				class RP_VT_LESSTHANINDEPENDENT {
+          name = "INDEPENDENT unit count is less than Value";
 					value = "INDEPENDENT"
-                };
-                class RP_VT_LESSTHANCIVILIAN {
-                    name = "CIVILIAN unit count is less than Value";
+        };
+				class RP_VT_LESSTHANCIVILIAN {
+					name = "CIVILIAN unit count is less than Value";
 					value = "CIVILIAN"
-                };
+				};
 			};
 		};
 
-        class Value: Edit {
+		class Value: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_Value";
 			displayName = "Value";
 			tooltip = "Custom value to be monitored.";
 			typeName = "NUMBER";
-            defaultValue = "0";
+			defaultValue = "0";
 			control = "EditShort";
 		};
 
-        class OptionsDescription: Edit {
+		class OptionsDescription: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_OptionsDescription";
-            description = "With options below you can further adjust this repeater, no matter which activator you have selected.";
+			description = "With options below you can further adjust this repeater, no matter which activator you have selected.";
 			displayName = "";
 			tooltip = "";
 			control = "SubCategoryNoHeader2";
-            data = "AttributeSystemSubcategory"
+			data = "AttributeSystemSubcategory"
 		};
 
-        class RepeatInterval: Edit {
+		class RepeatInterval: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_DelayBetweenRepeats";
 			displayName = "Repeat interval";
 			tooltip = "Delay between repeats in seconds (1: minimum allowed).";
 			typeName = "NUMBER";
-            defaultValue = "1";
+			defaultValue = "1";
 			control = "EditShort";
 		};
 
-        class MaximumRepeats: Edit {
+		class MaximumRepeats: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_MaximumRepeats";
 			displayName = "Maximum repeats";
 			tooltip = "How many times can this repeater trigger (-1: no limit).";
 			typeName = "NUMBER";
-            defaultValue = "-1";
+			defaultValue = "-1";
 			control = "EditShort";
 		};
 
-        class HighFPS: Checkbox {
+		class HighFPS: Checkbox {
 			property = "RHNET_ab_moduleREPEATER_F_HighFPS";
 			displayName = "Sustain performance";
 			tooltip = "If enabled, the execution will halt until the server FPS is higher than 25, otherwise the limit is 15.";
 			typeName = "BOOL";
-            defaultValue = "true";
+			defaultValue = "true";
 		};
 	};
 };
