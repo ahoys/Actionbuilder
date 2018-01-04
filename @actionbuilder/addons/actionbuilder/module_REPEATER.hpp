@@ -118,7 +118,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 			displayName = "Value";
 			tooltip = "Custom value to be monitored.";
 			typeName = "NUMBER";
-			defaultValue = "0";
+			defaultValue = "1";
 			control = "EditShort";
 		};
 
