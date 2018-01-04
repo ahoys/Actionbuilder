@@ -18,9 +18,22 @@ if (!isServer && hasInterface) exitWith {};
 
 private _portal = param [0, objNull, [objNull]]; // This portal.
 private _owner = param [1, 0, [0]]; // Processing owner of the portal (eg. server or headless client).
+private _ap = param [2, objNull, [objNull]]; // The master AP.
 
 // Portal must exist!
 if (isNull _portal) exitWith {false};
+
+// Find/create a spawning index for Repeater monitoring.
+private _i = (RHNET_AB_G_AP_SPAWNED find _ap) + 1;
+private _spawned = [];
+// Clear the buffer now and then, this will ease the more demanding
+// loops containing counting.
+if (!((RHNET_AB_G_AP_SPAWNED select _i) isEqualTo [])) then {
+	if ({alive _x} count (RHNET_AB_G_AP_SPAWNED select _i) == 0) then {
+		// No-one alive. Clear the array.
+		RHNET_AB_G_AP_SPAWNED set [_i, []];
+	};
+};
 
 // Conditions -------------------------------------------------------------------------------------
 
@@ -86,6 +99,7 @@ if (count _groups > 0) then {
 		};
 		// Spawn the object.
 		private _v = createVehicle [_x select 0, _x select 1, [], 0, _varSpecial];
+		_spawned pushBack _v;
 		_v setDir (_x select 2);
 		_v setDamage _varDamage;
 		_v setVehicleAmmo _varAmmo;
@@ -155,6 +169,7 @@ if (count _groups > 0) then {
 				_x set [2, _dirPortal];
 			};
 			private _v = createVehicle [_x select 0, _x select 1, [], 0, _varSpecial];
+			_spawned pushBack _v;
 			createVehicleCrew _v;
 			(crew _v) joinSilent _g;
 			_v setDir (_x select 2);
@@ -196,6 +211,7 @@ if (count _groups > 0) then {
 				_x set [2, _dirPortal];
 			};
 			private _u = _g createUnit [_x select 0, _x select 1, [], 0, _varSpecial];
+			_spawned pushBack _u;
 			_u setDir (_x select 2);
 			_u setFormDir (_x select 2);
 			_u setDamage _varDamage;
@@ -214,5 +230,8 @@ if (count _groups > 0) then {
 		[_g] spawn Actionbuilder_fnc_addWaypoint;
 	};
 } forEach _groups;
+
+// Register the spawned units.
+RHNET_AB_G_AP_SPAWNED set [_i, _spawned];
 
 true

@@ -43,6 +43,14 @@ if (isNil "RHNET_AB_G_AP_SIZE") then {
 	};
 };
 
+// Initialize spawned-array for this AP.
+// This is used to monitor the spawned units.
+if (isNil "RHNET_AB_G_AP_SPAWNED") then {RHNET_AB_G_AP_SPAWNED = []};
+if ((RHNET_AB_G_AP_SPAWNED find _ap) == -1) then {
+	RHNET_AB_G_AP_SPAWNED pushBack _ap;
+	RHNET_AB_G_AP_SPAWNED pushBack [];
+};
+
 // Count actionpoint's payload size (how many units).
 // This will be used to decide whether the AP can activate.
 private _s = 0;

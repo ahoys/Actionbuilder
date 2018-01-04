@@ -107,8 +107,8 @@ link51[] = {2,50};
 link52[] = {50,2};
 link53[] = {3,50};
 link54[] = {50,3};
-globals[] = {0.000000,0,0,0,0,640,480,1,59,6316128,1,-736.945068,958.601929,1858.989502,690.740112,1820,1254,1};
-window[] = {2,-1,-1,-1,-1,1193,156,2076,156,3,1838};
+globals[] = {0.000000,0,0,0,0,640,480,1,59,6316128,1,-802.159546,893.387451,1589.746216,421.496948,1820,1254,1};
+window[] = {2,-1,-1,-1,-1,1141,104,2024,104,3,1838};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -289,7 +289,7 @@ class FSM
                                         to="more_portals";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"_clients isEqualTo [] || _isHcDisabled"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"[_portal, 0] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[_portal, 0, _ap] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
                                 /*%FSM<LINK "headless_clients">*/
@@ -533,7 +533,7 @@ class FSM
                                         to="more_portals";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"[_portal, owner _master] remoteExec [""Actionbuilder_fnc_spawnUnits"", _master];"/*%FSM</ACTION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[_portal, owner _master, _ap] remoteExec [""Actionbuilder_fnc_spawnUnits"", _master];"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
                         };

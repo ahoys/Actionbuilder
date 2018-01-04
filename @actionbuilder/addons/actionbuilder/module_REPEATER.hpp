@@ -81,9 +81,10 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 			typeName = "STRING";
 			defaultValue = """VARIABLE""";
 			class Values {
-				class RP_VT_MOREPLAYERS {
-					name = "Total player count is higher than Value";
-					value = "PLAYERS"
+				class RP_VT_LESSSPAWNEDUNITS {
+					name = "Spawned units count is less than Value";
+					value = "SPAWNEDUNITS";
+					default = 1;
 				};
 				class RP_VT_LESSUNITS {
 					name = "Total unit count is less than Value";
@@ -96,7 +97,6 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 				class RP_VT_LESSTHANEAST {
 					name = "OPFOR unit count is less than Value";
 					value = "EAST"
-					default = 1;
 				};
 				class RP_VT_LESSTHANINDEPENDENT {
 					name = "INDEPENDENT unit count is less than Value";
@@ -105,6 +105,10 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 				class RP_VT_LESSTHANCIVILIAN {
 					name = "CIVILIAN unit count is less than Value";
 					value = "CIVILIAN"
+				};
+				class RP_VT_MOREPLAYERS {
+					name = "Total player count is higher than Value";
+					value = "PLAYERS"
 				};
 			};
 		};

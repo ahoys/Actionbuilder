@@ -22,11 +22,17 @@ if (_actionpoints isEqualTo []) exitWith {
 
 // Repeater can execute only after the Actionpoint has triggered.
 // RHNET_AB_G_AP_EXECUTED lists all the executed APs.
-waitUntil {!isNil "RHNET_AB_G_AP_EXECUTED"};
+waitUntil {!isNil "RHNET_AB_G_AP_EXECUTED" && !isNil "RHNET_AB_G_AP_SPAWNED"};
 
 // Start AP monitoring.
 {
-	[_repeater, _x] execFSM "RHNET\rhnet_actionbuilder\modules\repeater\rhfsm_repeater.fsm";
+	// Read units spawned by the AP.
+	waitUntil {(RHNET_AB_G_AP_SPAWNED find _x) != -1};
+	[
+		_repeater,
+		_x,
+		(RHNET_AB_G_AP_SPAWNED find _x) + 1
+	] execFSM "RHNET\rhnet_actionbuilder\modules\repeater\rhfsm_repeater.fsm";
 } forEach _actionpoints;
 
 true
