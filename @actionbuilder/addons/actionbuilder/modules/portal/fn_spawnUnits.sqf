@@ -23,18 +23,6 @@ private _ap = param [2, objNull, [objNull]]; // The master AP.
 // Portal must exist!
 if (isNull _portal) exitWith {false};
 
-// Find/create a spawning index for Repeater monitoring.
-private _i = (RHNET_AB_G_AP_SPAWNED find _ap) + 1;
-private _spawned = [];
-// Clear the buffer now and then, this will ease the more demanding
-// loops containing counting.
-if (!((RHNET_AB_G_AP_SPAWNED select _i) isEqualTo [])) then {
-	if ({alive _x} count (RHNET_AB_G_AP_SPAWNED select _i) == 0) then {
-		// No-one alive. Clear the array.
-		RHNET_AB_G_AP_SPAWNED set [_i, []];
-	};
-};
-
 // Conditions -------------------------------------------------------------------------------------
 
 // Request global variables if not available.
@@ -48,6 +36,18 @@ if ((isNil "RHNET_AB_G_PORTAL_OBJECTS" || isNil "RHNET_AB_G_PORTAL_GROUPS") && !
 
 // Do not continue until all the required variables are available
 waitUntil {!isNil "RHNET_AB_G_PORTAL_OBJECTS" && !isNil "RHNET_AB_G_PORTAL_GROUPS"};
+
+// Repeating --------------------------------------------------------------------------------------
+
+// Find the spawning index of the master Actionpoint.
+private _i = (RHNET_AB_G_AP_SPAWNED find _ap) + 1;
+// Load the currently spawned units.
+private _spawned = RHNET_AB_G_AP_SPAWNED select _i;
+// Clear the buffer now and then.
+if ({alive _x} count _spawned == 0) then {
+	// No-one alive. Clear the array.
+	_spawned = [];
+};
 
 // Processing -------------------------------------------------------------------------------------
 
