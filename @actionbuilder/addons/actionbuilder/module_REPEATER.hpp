@@ -82,7 +82,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 			defaultValue = """VARIABLE""";
 			class Values {
 				class RP_VT_LESSSPAWNEDUNITS {
-					name = "Spawned units count is less than Value";
+					name = "Actionpoint unit count is less than Value";
 					value = "SPAWNEDUNITS";
 					default = 1;
 				};
