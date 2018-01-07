@@ -14,7 +14,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 	class Attributes: AttributesBase {
 		class RepeaterDescription: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_RepeaterDescription";
-			description = "Repeaters repeat Actionpoints. You can restrict Repeaters with triggers.";
+			description = "Repeaters repeat synchronized Actionpoints. You can restrict Repeaters with triggers.";
 			displayName = "";
 			tooltip = "";
 			control = "SubCategoryNoHeader1";
@@ -77,7 +77,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
     class ValueCondition: Combo {
 			property = "RHNET_ab_moduleREPEATER_F_ValueCondition";
 			displayName = "Value condition";
-			tooltip = "Defines meaning for the value setting.";
+			tooltip = "Defines meaning for the Value setting.";
 			typeName = "STRING";
 			defaultValue = """VARIABLE""";
 			class Values {
@@ -132,7 +132,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 
 		class OptionsDescription: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_OptionsDescription";
-			description = "With options below you can further adjust this repeater, no matter which activator you have selected.";
+			description = "With the options below you can further adjust this Repeater, no matter which activator is selected.";
 			displayName = "";
 			tooltip = "";
 			control = "SubCategoryNoHeader2";

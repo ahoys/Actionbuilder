@@ -14,10 +14,10 @@ class RHNET_ab_modulePORTAL_F: Module_F {
 	class Attributes: AttributesBase {
 		class PortalDescription: Edit {
 			property = "RHNET_ab_modulePORTAL_F_PortalDescription";
-			description = "Portals are in charge of unit spawning.";
+			description = "Portals can spawn synchronized men, vehicles, objects and groups. To synchronize an entire group, only a one unit is required to be synchronized to the Portal.";
 			displayName = "";
 			tooltip = "";
-			control = "SubCategoryNoHeader1";
+			control = "SubCategoryNoHeader2";
 			data = "AttributeSystemSubcategory"
 		};
 
