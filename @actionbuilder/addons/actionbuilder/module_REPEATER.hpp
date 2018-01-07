@@ -122,6 +122,14 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 			control = "EditShort";
 		};
 
+		class IncludeVehicles: Checkbox {
+			property = "RHNET_ab_moduleREPEATER_F_IncludeVehicles";
+			displayName = "Include vehicles";
+			tooltip = "If enabled, vehicles are included to Value.";
+			typeName = "BOOL";
+			defaultValue = "false";
+		};
+
 		class OptionsDescription: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_OptionsDescription";
 			description = "With options below you can further adjust this repeater, no matter which activator you have selected.";
