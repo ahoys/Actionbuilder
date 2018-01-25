@@ -127,7 +127,9 @@ item122[] = {"false",4,218,1325.000000,1525.000000,1425.000000,1575.000000,1.000
 item123[] = {"Include_vehicles_4",3,250,1450.000000,1425.000000,1550.000000,1475.000000,0.000000,"Include vehicles"};
 item124[] = {"true",8,218,1425.000000,1500.000000,1525.000000,1550.000000,0.000000,"true"};
 item125[] = {"false",4,218,1475.000000,1525.000000,1575.000000,1575.000000,1.000000,"false"};
-item126[] = {"____FAKE____",9,100,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+item126[] = {"Clean_up",3,250,400.000000,1750.000000,500.000000,1800.000000,0.000000,"Clean up"};
+item127[] = {"done",8,218,250.000000,1750.000000,350.000000,1800.000000,0.000000,"done"};
+item128[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
 link0[] = {0,27};
 link1[] = {0,42};
 link2[] = {1,103};
@@ -253,7 +255,7 @@ link121[] = {106,109};
 link122[] = {107,110};
 link123[] = {108,67};
 link124[] = {108,104};
-link125[] = {109,8};
+link125[] = {109,126};
 link126[] = {110,47};
 link127[] = {111,112};
 link128[] = {111,113};
@@ -275,12 +277,14 @@ link143[] = {123,124};
 link144[] = {123,125};
 link145[] = {124,88};
 link146[] = {125,88};
-link147[] = {3,126};
-link148[] = {126,3};
-link149[] = {4,126};
-link150[] = {126,4};
-globals[] = {0.000000,0,0,0,0,640,480,1,166,6316128,1,-471.659485,1829.702148,2264.455078,897.375854,2111,1254,1};
-window[] = {2,-1,-1,-1,-1,1013,156,1596,156,3,2129};
+link147[] = {126,127};
+link148[] = {127,8};
+link149[] = {3,128};
+link150[] = {128,3};
+link151[] = {4,128};
+link152[] = {128,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,168,6316128,1,-138.873108,1239.535400,2175.212891,1356.393921,2111,1254,1};
+window[] = {2,-1,-1,-1,-1,987,130,1570,130,3,2129};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -950,7 +954,7 @@ class FSM
                                 {
                                         itemno = 74;
                                         priority = 0.000000;
-                                        to="Execute";
+                                        to="Clean_up";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -984,7 +988,7 @@ class FSM
                                 {
                                         itemno = 77;
                                         priority = 0.000000;
-                                        to="Execute";
+                                        to="Clean_up";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -1018,7 +1022,7 @@ class FSM
                                 {
                                         itemno = 80;
                                         priority = 0.000000;
-                                        to="Execute";
+                                        to="Clean_up";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -1052,7 +1056,7 @@ class FSM
                                 {
                                         itemno = 83;
                                         priority = 0.000000;
-                                        to="Execute";
+                                        to="Clean_up";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -1086,7 +1090,7 @@ class FSM
                                 {
                                         itemno = 86;
                                         priority = 0.000000;
-                                        to="Execute";
+                                        to="Clean_up";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -1120,7 +1124,7 @@ class FSM
                                 {
                                         itemno = 89;
                                         priority = 0.000000;
-                                        to="Execute";
+                                        to="Clean_up";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -1213,7 +1217,7 @@ class FSM
                                         priority = 1.000000;
                                         to="FPS____20";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count _units >= _Value"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{!isNull _x && alive _x} count _units >= _Value"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -1222,7 +1226,7 @@ class FSM
                                 {
                                         itemno = 106;
                                         priority = 0.000000;
-                                        to="Execute";
+                                        to="Clean_up";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -1401,11 +1405,40 @@ class FSM
                         };
                 };
                 /*%FSM</STATE>*/
+                /*%FSM<STATE "Clean_up">*/
+                class Clean_up
+                {
+                        name = "Clean_up";
+                        itemno = 126;
+                        init = /*%FSM<STATEINIT""">*/"private _validUnits = [];" \n
+                         "{" \n
+                         "	if (!isNull _x) then {" \n
+                         "		_validUnits pushBack _x;" \n
+                         "	};" \n
+                         "} forEach (RHNET_AB_G_AP_SPAWNED select _apIndex);" \n
+                         "RHNET_AB_G_AP_SPAWNED set [_apIndex, _validUnits];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "done">*/
+                                class done
+                                {
+                                        itemno = 127;
+                                        priority = 0.000000;
+                                        to="Execute";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
                 /*%FSM<STATE "____FAKE____">*/
                 class ____FAKE____
                 {
                         name = "____FAKE____";
-                        itemno = 126;
+                        itemno = 128;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links

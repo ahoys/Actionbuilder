@@ -43,11 +43,6 @@ waitUntil {!isNil "RHNET_AB_G_PORTAL_OBJECTS" && !isNil "RHNET_AB_G_PORTAL_GROUP
 private _i = (RHNET_AB_G_AP_SPAWNED find _ap) + 1;
 // Load the currently spawned units.
 private _spawned = RHNET_AB_G_AP_SPAWNED select _i;
-// Clear the buffer now and then.
-if ({alive _x} count _spawned == 0) then {
-	// No-one alive. Clear the array.
-	_spawned = [];
-};
 
 // Processing -------------------------------------------------------------------------------------
 

@@ -107,7 +107,7 @@ link51[] = {2,50};
 link52[] = {50,2};
 link53[] = {3,50};
 link54[] = {50,3};
-globals[] = {0.000000,0,0,0,0,640,480,1,59,6316128,1,-802.159546,893.387451,1589.746216,421.496948,1820,1254,1};
+globals[] = {0.000000,0,0,0,0,640,480,1,59,6316128,1,-904.335205,1241.832886,1558.057617,79.324341,1820,1254,1};
 window[] = {2,-1,-1,-1,-1,1141,104,2024,104,3,1838};
 *//*%FSM</HEAD>*/
 class FSM
@@ -578,7 +578,9 @@ class FSM
                 {
                         name = "done";
                         itemno = 46;
-                        init = /*%FSM<STATEINIT""">*/"RHNET_AB_G_AP_EXECUTED pushBack _ap;" \n
+                        init = /*%FSM<STATEINIT""">*/"if ((RHNET_AB_G_AP_EXECUTED find _ap) == -1) then {" \n
+                         "	RHNET_AB_G_AP_EXECUTED pushBack _ap;" \n
+                         "};" \n
                          "true"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
