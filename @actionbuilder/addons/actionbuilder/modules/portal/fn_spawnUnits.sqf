@@ -154,6 +154,7 @@ if (count _groups > 0) then {
 			};
 		};
 		private _g = createGroup (_x select 0);
+		_g deleteGroupWhenEmpty true;
 		// Spawn vehicles first.
 		{
 			// 0: type,
