@@ -1,356 +1,71 @@
-/*%FSM<COMPILE "scriptedFSM.cfg, rhfsm_repeater">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, rhfsm_repeater">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"FPS____20",3,250,-200.000000,1275.000000,-100.000000,1325.000000,0.000000,"FPS >= 20"};
-item1[] = {"REPEATER",0,250,-50.000000,-225.000000,50.000000,-175.000000,0.000000,"REPEATER"};
-item2[] = {"_",3,250,-100.000000,-325.000000,0.000000,-275.000000,0.000000,""};
-item3[] = {"true",8,218,25.000000,-325.000000,125.000000,-275.000000,0.000000,"true"};
-item4[] = {"false",4,218,150.000000,-325.000000,250.000000,-275.000000,1.000000,"false"};
-item5[] = {"__1",1,250,-225.000000,-325.000000,-125.000000,-275.000000,0.000000,""};
-item6[] = {"",7,210,270.999939,-303.999908,279.000061,-296.000122,0.000000,""};
-item7[] = {"done",8,218,-50.000000,1750.000000,50.000000,1800.000000,0.000000,"done"};
-item8[] = {"Execute",3,250,100.000000,1750.000000,200.000000,1800.000000,0.000000,"Execute"};
-item9[] = {"true",8,218,-50.000000,75.000000,50.000000,125.000000,0.000000,"true"};
-item10[] = {"",7,210,770.999939,1821.000122,779.000061,1828.999878,0.000000,""};
-item11[] = {"Valid_activation",3,250,-50.000000,175.000000,50.000000,225.000000,0.000000,"Valid activation" \n "method"};
-item12[] = {"false",4,218,100.000000,175.000000,200.000000,225.000000,1.000000,"false"};
-item13[] = {"No_need_to_conti",1,250,250.000000,175.000000,350.000000,225.000000,0.000000,"No need to" \n "continue"};
-item14[] = {"true",8,218,-50.000000,275.000000,50.000000,325.000000,0.000000,"true"};
-item15[] = {"Variable_exists",3,250,-50.000000,375.000000,50.000000,425.000000,0.000000,"Variable exists"};
-item16[] = {"true",8,218,-50.000000,475.000000,50.000000,525.000000,0.000000,"true"};
-item17[] = {"false",4,218,100.000000,375.000000,200.000000,425.000000,1.000000,"false"};
-item18[] = {"Initialize_a_default",3,250,100.000000,475.000000,200.000000,525.000000,0.000000,"Initialize a" \n "default variable"};
-item19[] = {"",7,210,920.999939,1821.000122,929.000061,1828.999878,0.000000,""};
-item20[] = {"Valid_repeating",3,250,-50.000000,575.000000,50.000000,625.000000,0.000000,"Valid repeating" \n "interval"};
-item21[] = {"true",8,218,-50.000000,675.000000,50.000000,725.000000,0.000000,"true"};
-item22[] = {"false",4,218,100.000000,575.000000,200.000000,625.000000,1.000000,"false"};
-item23[] = {"No_need_to_conti_1",1,250,250.000000,575.000000,350.000000,625.000000,0.000000,"No need to" \n "continue"};
-item24[] = {"Valid_loop_setti",3,250,-50.000000,775.000000,50.000000,825.000000,0.000000,"Valid loop" \n "settings"};
-item25[] = {"true",8,218,-50.000000,875.000000,50.000000,925.000000,0.000000,"true"};
-item26[] = {"false",4,218,100.000000,775.000000,200.000000,825.000000,1.000000,"false"};
-item27[] = {"false",4,218,-350.000000,1275.000000,-250.000000,1325.000000,1.000000,"false"};
-item28[] = {"No_need_to_conti_2",1,250,-50.000000,1175.000000,50.000000,1225.000000,0.000000,"No need to" \n "continue"};
-item29[] = {"Maximum_repeats",3,250,-50.000000,975.000000,50.000000,1025.000000,0.000000,"Maximum repeats" \n "reached"};
-item30[] = {"true",8,218,-50.000000,1075.000000,50.000000,1125.000000,0.000000,"true"};
-item31[] = {"false",4,218,100.000000,975.000000,200.000000,1025.000000,1.000000,"false"};
-item32[] = {"Activation_metho",3,250,250.000000,975.000000,350.000000,1025.000000,0.000000,"Activation method"};
-item33[] = {"NONE",8,218,400.000000,975.000000,500.000000,1025.000000,0.000000,"NONE"};
-item34[] = {"VARIABLE",4,218,250.000000,1125.000000,350.000000,1175.000000,1.000000,"VARIABLE"};
-item35[] = {"VALUE",4,218,400.000000,1125.000000,500.000000,1175.000000,1.000000,"VALUE"};
-item36[] = {"",7,210,295.999939,1071.000122,304.000061,1078.999878,0.000000,""};
-item37[] = {"Boolean_is_TRUE",3,250,250.000000,1425.000000,350.000000,1475.000000,0.000000,"Boolean is" \n "TRUE"};
-item38[] = {"",7,210,445.999939,1071.000122,454.000061,1078.999878,0.000000,""};
-item39[] = {"true",8,218,250.000000,1525.000000,350.000000,1575.000000,0.000000,"true"};
-item40[] = {"No_need_to_conti_3",1,250,250.000000,775.000000,350.000000,825.000000,0.000000,"No need to" \n "continue"};
-item41[] = {"No_need_to_conti_4",1,250,550.000000,975.000000,650.000000,1025.000000,0.000000,"No need to" \n "continue"};
-item42[] = {"true",8,218,-200.000000,1175.000000,-100.000000,1225.000000,0.000000,"true"};
-item43[] = {"",7,210,1071.000000,1821.000122,1079.000000,1828.999878,0.000000,""};
-item44[] = {"",7,210,1220.999878,1821.000122,1229.000122,1828.999878,0.000000,""};
-item45[] = {"",7,210,1370.999878,1821.000122,1379.000122,1828.999878,0.000000,""};
-item46[] = {"",7,210,1520.999878,1821.000122,1529.000122,1828.999878,0.000000,""};
-item47[] = {"",7,210,-154.000076,1821.000122,-145.999924,1828.999878,0.000000,""};
-item48[] = {"Toggle_variable",3,250,100.000000,1525.000000,200.000000,1575.000000,0.000000,"Toggle variable"};
-item49[] = {"true",8,218,100.000000,1625.000000,200.000000,1675.000000,0.000000,"true"};
-item50[] = {"false",4,218,-50.000000,1525.000000,50.000000,1575.000000,1.000000,"false"};
-item51[] = {"Has_proper__type",3,250,250.000000,1225.000000,350.000000,1275.000000,0.000000,"Has proper " \n "typeName"};
-item52[] = {"true",8,218,250.000000,1325.000000,350.000000,1375.000000,0.000000,"true"};
-item53[] = {"false",4,218,100.000000,1225.000000,200.000000,1275.000000,1.000000,"false"};
-item54[] = {"false",4,218,100.000000,1425.000000,200.000000,1475.000000,1.000000,"false"};
-item55[] = {"",7,210,145.999939,1346.000122,154.000061,1353.999878,0.000000,""};
-item56[] = {"true",8,218,-200.000000,975.000000,-100.000000,1025.000000,0.000000,"true"};
-item57[] = {"false",4,218,-350.000000,1075.000000,-250.000000,1125.000000,1.000000,"false"};
-item58[] = {"Value_condition",3,250,400.000000,1225.000000,500.000000,1275.000000,0.000000,"Value condition"};
-item59[] = {"NONE",8,218,400.000000,1325.000000,500.000000,1375.000000,0.000000,"NONE"};
-item60[] = {"PLAYERS",4,218,700.000000,1325.000000,800.000000,1375.000000,1.000000,"PLAYERS"};
-item61[] = {"UNITS",4,218,850.000000,1325.000000,950.000000,1375.000000,1.000000,"UNITS"};
-item62[] = {"WEST",4,218,1000.000000,1325.000000,1100.000000,1375.000000,1.000000,"WEST"};
-item63[] = {"EAST",4,218,1150.000000,1325.000000,1250.000000,1375.000000,1.000000,"EAST"};
-item64[] = {"INDEPENDENT",4,218,1300.000000,1325.000000,1400.000000,1375.000000,1.000000,"INDEPENDENT"};
-item65[] = {"CIVILIAN",4,218,1450.000000,1325.000000,1550.000000,1375.000000,1.000000,"CIVILIAN"};
-item66[] = {"No_need_to_conti_5",1,250,400.000000,1425.000000,500.000000,1475.000000,0.000000,"No need to" \n "continue"};
-item67[] = {"",7,210,745.999939,1246.000122,754.000061,1253.999878,0.000000,""};
-item68[] = {"",7,210,895.999939,1246.000122,904.000061,1253.999878,0.000000,""};
-item69[] = {"",7,210,1045.999878,1246.000122,1054.000122,1253.999878,0.000000,""};
-item70[] = {"",7,210,1195.999878,1246.000122,1204.000122,1253.999878,0.000000,""};
-item71[] = {"",7,210,1345.999878,1246.000122,1354.000122,1253.999878,0.000000,""};
-item72[] = {"",7,210,1495.999878,1246.000122,1504.000122,1253.999878,0.000000,""};
-item73[] = {"Passes",3,250,700.000000,1425.000000,800.000000,1475.000000,0.000000,"Passes"};
-item74[] = {"true",8,218,675.000000,1500.000000,775.000000,1550.000000,0.000000,"true"};
-item75[] = {"false",4,218,725.000000,1525.000000,825.000000,1575.000000,1.000000,"false"};
-item76[] = {"Passes_1",3,250,850.000000,1600.000000,950.000000,1650.000000,0.000000,"Passes"};
-item77[] = {"true",8,218,825.000000,1675.000000,925.000000,1725.000000,0.000000,"true"};
-item78[] = {"false",4,218,875.000000,1700.000000,975.000000,1750.000000,1.000000,"false"};
-item79[] = {"Passes_2",3,250,1000.000000,1600.000000,1100.000000,1650.000000,0.000000,"Passes"};
-item80[] = {"true",8,218,975.000000,1675.000000,1075.000000,1725.000000,0.000000,"true"};
-item81[] = {"false",4,218,1025.000000,1700.000000,1125.000000,1750.000000,1.000000,"false"};
-item82[] = {"Passes_3",3,250,1150.000000,1600.000000,1250.000000,1650.000000,0.000000,"Passes"};
-item83[] = {"true",8,218,1125.000000,1675.000000,1225.000000,1725.000000,0.000000,"true"};
-item84[] = {"false",4,218,1175.000000,1700.000000,1275.000000,1750.000000,1.000000,"false"};
-item85[] = {"Passes_4",3,250,1300.000000,1600.000000,1400.000000,1650.000000,0.000000,"Passes"};
-item86[] = {"true",8,218,1275.000000,1675.000000,1375.000000,1725.000000,0.000000,"true"};
-item87[] = {"false",4,218,1325.000000,1700.000000,1425.000000,1750.000000,1.000000,"false"};
-item88[] = {"Passes_5",3,250,1450.000000,1600.000000,1550.000000,1650.000000,0.000000,"Passes"};
-item89[] = {"true",8,218,1425.000000,1675.000000,1525.000000,1725.000000,0.000000,"true"};
-item90[] = {"false",4,218,1475.000000,1700.000000,1575.000000,1750.000000,1.000000,"false"};
-item91[] = {"",7,210,720.999939,1771.000122,729.000061,1778.999878,0.000000,""};
-item92[] = {"",7,210,870.999939,1771.000122,879.000061,1778.999878,0.000000,""};
-item93[] = {"",7,210,1021.000000,1771.000122,1029.000000,1778.999878,0.000000,""};
-item94[] = {"",7,210,1171.000122,1771.000122,1178.999878,1778.999878,0.000000,""};
-item95[] = {"",7,210,1320.999878,1771.000122,1329.000122,1778.999878,0.000000,""};
-item96[] = {"",7,210,1471.000000,1771.000122,1479.000000,1778.999878,0.000000,""};
-item97[] = {"Interval_has_pas",3,250,-200.000000,1075.000000,-100.000000,1125.000000,0.000000,"Interval has" \n "passed"};
-item98[] = {"",7,210,-154.000061,1771.000122,-145.999939,1778.999878,0.000000,""};
-item99[] = {"",7,210,-154.000061,1346.000122,-145.999939,1353.999878,0.000000,""};
-item100[] = {"",7,210,-4.000061,1646.000122,4.000061,1653.999878,0.000000,""};
-item101[] = {"Has_the_AP_executed",3,250,-50.000000,-25.000000,50.000000,25.000000,0.000000,"Has the AP" \n "executed?"};
-item102[] = {"false",4,218,100.000000,-25.000000,200.000000,25.000000,1.000000,"false"};
-item103[] = {"true",8,218,-50.000000,-125.000000,50.000000,-75.000000,0.000000,"true"};
-item104[] = {"SPAWNED_UNITS",4,218,550.000000,1325.000000,650.000000,1375.000000,1.000000,"SPAWNED" \n "UNITS"};
-item105[] = {"Passes_6",3,250,550.000000,1425.000000,650.000000,1475.000000,0.000000,"Passes"};
-item106[] = {"true",8,218,525.000000,1500.000000,625.000000,1550.000000,0.000000,"true"};
-item107[] = {"false",4,218,575.000000,1525.000000,675.000000,1575.000000,1.000000,"false"};
-item108[] = {"",7,210,595.999939,1246.000122,604.000061,1253.999878,0.000000,""};
-item109[] = {"",7,210,570.999939,1771.000122,579.000061,1778.999878,0.000000,""};
-item110[] = {"",7,210,620.999939,1821.000122,629.000061,1828.999878,0.000000,""};
-item111[] = {"Include_vehicles",3,250,850.000000,1425.000000,950.000000,1475.000000,0.000000,"Include vehicles"};
-item112[] = {"true",8,218,825.000000,1500.000000,925.000000,1550.000000,0.000000,"true"};
-item113[] = {"false",4,218,875.000000,1525.000000,975.000000,1575.000000,1.000000,"false"};
-item114[] = {"Include_vehicles_1",3,250,1000.000000,1425.000000,1100.000000,1475.000000,0.000000,"Include vehicles"};
-item115[] = {"true",8,218,975.000000,1500.000000,1075.000000,1550.000000,0.000000,"true"};
-item116[] = {"false",4,218,1025.000000,1525.000000,1125.000000,1575.000000,1.000000,"false"};
-item117[] = {"Include_vehicles_2",3,250,1150.000000,1425.000000,1250.000000,1475.000000,0.000000,"Include vehicles"};
-item118[] = {"true",8,218,1125.000000,1500.000000,1225.000000,1550.000000,0.000000,"true"};
-item119[] = {"false",4,218,1175.000000,1525.000000,1275.000000,1575.000000,1.000000,"false"};
-item120[] = {"Include_vehicles_3",3,250,1300.000000,1425.000000,1400.000000,1475.000000,0.000000,"Include vehicles"};
-item121[] = {"true",8,218,1275.000000,1500.000000,1375.000000,1550.000000,0.000000,"true"};
-item122[] = {"false",4,218,1325.000000,1525.000000,1425.000000,1575.000000,1.000000,"false"};
-item123[] = {"Include_vehicles_4",3,250,1450.000000,1425.000000,1550.000000,1475.000000,0.000000,"Include vehicles"};
-item124[] = {"true",8,218,1425.000000,1500.000000,1525.000000,1550.000000,0.000000,"true"};
-item125[] = {"false",4,218,1475.000000,1525.000000,1575.000000,1575.000000,1.000000,"false"};
-item126[] = {"Clean_up",3,250,400.000000,1750.000000,500.000000,1800.000000,0.000000,"Clean up"};
-item127[] = {"done",8,218,250.000000,1750.000000,350.000000,1800.000000,0.000000,"done"};
-item128[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
-link0[] = {0,27};
-link1[] = {0,42};
-link2[] = {1,103};
-link3[] = {7,98};
-link4[] = {8,7};
+item0[] = {"REPEATER",0,250,-50.000000,-125.000000,50.000000,-75.000000,0.000000,"REPEATER"};
+item1[] = {"_",3,250,-225.000000,-250.000000,-125.000000,-200.000000,0.000000,""};
+item2[] = {"_",4,218,-100.000000,-250.000000,0.000000,-200.000000,1.000000,""};
+item3[] = {"__1",8,218,25.000000,-250.000000,125.000000,-200.000000,0.000000,""};
+item4[] = {"__1",1,250,150.000000,-250.000000,250.000000,-200.000000,0.000000,""};
+item5[] = {"",7,210,296.000031,-229.000000,304.000000,-221.000000,0.000000,""};
+item6[] = {"invalid_init",4,218,100.000000,-125.000000,200.000000,-75.000000,1.000000,"invalid init"};
+item7[] = {"initialized",8,218,-50.000000,-25.000000,50.000000,25.000000,0.000000,"initialized"};
+item8[] = {"cannot_continue",1,250,250.000000,-125.000000,350.000000,-75.000000,0.000000,"cannot" \n "continue"};
+item9[] = {"a_new_round_clear",3,250,-50.000000,75.000000,50.000000,125.000000,0.000000,"a new round" \n "clear temp"};
+item10[] = {"no_repeaters_",4,218,100.000000,-25.000000,200.000000,25.000000,1.000000,"no repeaters "};
+item11[] = {"continue",8,218,100.000000,75.000000,200.000000,125.000000,0.000000,"continue"};
+item12[] = {"pick_a_repeater",3,250,250.000000,75.000000,350.000000,125.000000,0.000000,"pick a" \n "repeater"};
+item13[] = {"not_found",4,218,250.000000,175.000000,350.000000,225.000000,1.000000,"not found"};
+item14[] = {"",7,210,-3.999985,196.000000,3.999985,204.000000,0.000000,""};
+item15[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,6};
+link1[] = {0,7};
+link2[] = {6,8};
+link3[] = {7,9};
+link4[] = {9,10};
 link5[] = {9,11};
-link6[] = {10,110};
+link6[] = {10,9};
 link7[] = {11,12};
-link8[] = {11,14};
-link9[] = {12,13};
-link10[] = {14,15};
-link11[] = {15,16};
-link12[] = {15,17};
-link13[] = {16,20};
-link14[] = {17,18};
-link15[] = {18,16};
-link16[] = {19,10};
-link17[] = {20,21};
-link18[] = {20,22};
-link19[] = {21,24};
-link20[] = {22,23};
-link21[] = {24,25};
-link22[] = {24,26};
-link23[] = {25,29};
-link24[] = {26,40};
-link25[] = {27,0};
-link26[] = {29,30};
-link27[] = {29,31};
-link28[] = {30,28};
-link29[] = {31,32};
-link30[] = {32,33};
-link31[] = {32,36};
-link32[] = {33,41};
-link33[] = {34,51};
-link34[] = {35,58};
-link35[] = {36,34};
-link36[] = {36,38};
-link37[] = {37,39};
-link38[] = {37,54};
-link39[] = {38,35};
-link40[] = {39,48};
-link41[] = {42,97};
-link42[] = {43,19};
-link43[] = {44,43};
-link44[] = {45,44};
-link45[] = {46,45};
-link46[] = {47,98};
-link47[] = {48,49};
-link48[] = {48,50};
-link49[] = {49,8};
-link50[] = {50,100};
-link51[] = {51,52};
-link52[] = {51,53};
-link53[] = {52,37};
-link54[] = {53,55};
-link55[] = {54,55};
-link56[] = {55,99};
-link57[] = {56,29};
-link58[] = {57,97};
-link59[] = {58,59};
-link60[] = {58,108};
-link61[] = {59,66};
-link62[] = {60,73};
-link63[] = {61,111};
-link64[] = {62,114};
-link65[] = {63,117};
-link66[] = {64,120};
-link67[] = {65,123};
-link68[] = {67,60};
-link69[] = {67,68};
-link70[] = {68,61};
-link71[] = {68,69};
-link72[] = {69,62};
-link73[] = {69,70};
-link74[] = {70,63};
-link75[] = {70,71};
-link76[] = {71,64};
-link77[] = {71,72};
-link78[] = {72,65};
-link79[] = {73,74};
-link80[] = {73,75};
-link81[] = {74,91};
-link82[] = {75,10};
-link83[] = {76,77};
-link84[] = {76,78};
-link85[] = {77,92};
-link86[] = {78,19};
-link87[] = {79,80};
-link88[] = {79,81};
-link89[] = {80,93};
-link90[] = {81,43};
-link91[] = {82,83};
-link92[] = {82,84};
-link93[] = {83,94};
-link94[] = {84,44};
-link95[] = {85,86};
-link96[] = {85,87};
-link97[] = {86,95};
-link98[] = {87,45};
-link99[] = {88,89};
-link100[] = {88,90};
-link101[] = {89,96};
-link102[] = {90,46};
-link103[] = {91,109};
-link104[] = {92,91};
-link105[] = {93,92};
-link106[] = {94,93};
-link107[] = {95,94};
-link108[] = {96,95};
-link109[] = {97,56};
-link110[] = {97,57};
-link111[] = {98,99};
-link112[] = {99,0};
-link113[] = {100,8};
-link114[] = {101,9};
-link115[] = {101,102};
-link116[] = {102,101};
-link117[] = {103,101};
-link118[] = {104,105};
-link119[] = {105,106};
-link120[] = {105,107};
-link121[] = {106,109};
-link122[] = {107,110};
-link123[] = {108,67};
-link124[] = {108,104};
-link125[] = {109,126};
-link126[] = {110,47};
-link127[] = {111,112};
-link128[] = {111,113};
-link129[] = {112,76};
-link130[] = {113,76};
-link131[] = {114,115};
-link132[] = {114,116};
-link133[] = {115,79};
-link134[] = {116,79};
-link135[] = {117,118};
-link136[] = {117,119};
-link137[] = {118,82};
-link138[] = {119,82};
-link139[] = {120,121};
-link140[] = {120,122};
-link141[] = {121,85};
-link142[] = {122,85};
-link143[] = {123,124};
-link144[] = {123,125};
-link145[] = {124,88};
-link146[] = {125,88};
-link147[] = {126,127};
-link148[] = {127,8};
-link149[] = {3,128};
-link150[] = {128,3};
-link151[] = {4,128};
-link152[] = {128,4};
-globals[] = {0.000000,0,0,0,0,640,480,1,168,6316128,1,-138.873108,1239.535400,2175.212891,1356.393921,2111,1254,1};
-window[] = {2,-1,-1,-1,-1,987,130,1570,130,3,2129};
+link8[] = {12,13};
+link9[] = {13,14};
+link10[] = {14,9};
+link11[] = {2,15};
+link12[] = {15,2};
+link13[] = {3,15};
+link14[] = {15,3};
+globals[] = {0.000000,0,0,0,0,640,480,1,22,6316128,1,-467.124329,737.082764,507.822327,-293.704041,1884,1254,1};
+window[] = {2,-1,-1,-1,-1,1141,104,2024,104,3,1902};
 *//*%FSM</HEAD>*/
 class FSM
 {
         fsmName = "rhfsm_repeater";
         class States
         {
-                /*%FSM<STATE "FPS____20">*/
-                class FPS____20
+                /*%FSM<STATE "REPEATER">*/
+                class REPEATER
                 {
-                        name = "FPS____20";
+                        name = "REPEATER";
                         itemno = 0;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
-                                /*%FSM<LINK "false">*/
-                                class false
+                                /*%FSM<LINK "invalid_init">*/
+                                class invalid_init
                                 {
-                                        itemno = 27;
+                                        itemno = 6;
                                         priority = 1.000000;
-                                        to="FPS____20";
+                                        to="cannot_continue";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"(_HighFPS && diag_fps < 25) || (diag_fps < 15)"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""RHNET_AB_L_REPEATERS"" || isNil ""RHNET_AB_L_REPEATED_ACTIONPOINTS"""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
+                                /*%FSM<LINK "initialized">*/
+                                class initialized
                                 {
-                                        itemno = 42;
+                                        itemno = 7;
                                         priority = 0.000000;
-                                        to="Interval_has_pas";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "REPEATER">*/
-                class REPEATER
-                {
-                        name = "REPEATER";
-                        itemno = 1;
-                        init = /*%FSM<STATEINIT""">*/"private _repeater = param [0, objnull, [objnull]];" \n
-                         "private _ap = param [1, objnull, [objnull]];" \n
-                         "private _apIndex = param [2, 1, [1]];" \n
-                         "private _ActivationMethod = _repeater getVariable [""ActivationMethod"", ""VARIABLE""];" \n
-                         "private _BooleanVariable = _repeater getVariable [""BooleanVariable"", """"];" \n
-                         "private _ToggleVariable = _repeater getVariable [""ToggleVariable"", true];" \n
-                         "private _ValueCondition = _repeater getVariable [""ValueCondition"", ""EAST""];" \n
-                         "private _Value = _repeater getVariable [""Value"", 0];" \n
-                         "private _IncludeVehicles = _repeater getVariable [""IncludeVehicles"", false];" \n
-                         "private _RepeatInterval = _repeater getVariable [""RepeatInterval"", 1];" \n
-                         "private _MaximumRepeats = _repeater getVariable [""MaximumRepeats"", 0];" \n
-                         "private _HighFPS = _repeater getVariable [""HighFPS"", true];"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 103;
-                                        priority = 0.000000;
-                                        to="Has_the_AP_executed";
+                                        to="a_new_round_clear";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -363,7 +78,7 @@ class FSM
                 class _
                 {
                         name = "_";
-                        itemno = 2;
+                        itemno = 1;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -375,7 +90,7 @@ class FSM
                 class __1
                 {
                         name = "__1";
-                        itemno = 5;
+                        itemno = 4;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -383,73 +98,12 @@ class FSM
                         };
                 };
                 /*%FSM</STATE>*/
-                /*%FSM<STATE "Execute">*/
-                class Execute
+                /*%FSM<STATE "cannot_continue">*/
+                class cannot_continue
                 {
-                        name = "Execute";
+                        name = "cannot_continue";
                         itemno = 8;
-                        init = /*%FSM<STATEINIT""">*/"[" \n
-                         "	_ap," \n
-                         "	[_ap, false] call Actionbuilder_fnc_modulePortals" \n
-                         "] execFSM ""RHNET\rhnet_actionbuilder\modules\actionpoint\rhfsm_actionpoint.fsm"";" \n
-                         "_c = _c + 1;"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "done">*/
-                                class done
-                                {
-                                        itemno = 7;
-                                        priority = 0.000000;
-                                        to="FPS____20";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Valid_activation">*/
-                class Valid_activation
-                {
-                        name = "Valid_activation";
-                        itemno = 11;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 12;
-                                        priority = 1.000000;
-                                        to="No_need_to_conti";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_ActivationMethod == ""VARIABLE"" && _BooleanVariable == """""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 14;
-                                        priority = 0.000000;
-                                        to="Variable_exists";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "No_need_to_conti">*/
-                class No_need_to_conti
-                {
-                        name = "No_need_to_conti";
-                        itemno = 13;
-                        init = /*%FSM<STATEINIT""">*/"[""Boolean variable cannot be empty! Check %1."", _repeater] call BIS_fnc_error;" \n
+                        init = /*%FSM<STATEINIT""">*/"[""REPEATER"", objNull, ""Invalid initialization.""] spawn Actionbuilder_fnc_debug;" \n
                          "false"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -457,32 +111,35 @@ class FSM
                         };
                 };
                 /*%FSM</STATE>*/
-                /*%FSM<STATE "Variable_exists">*/
-                class Variable_exists
+                /*%FSM<STATE "a_new_round_clear">*/
+                class a_new_round_clear
                 {
-                        name = "Variable_exists";
-                        itemno = 15;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        name = "a_new_round_clear";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"private _i = 0;" \n
+                         "private _len = count RHNET_AB_L_REPEATERS;" \n
+                         "private _repeater = objNull;" \n
+                         "private _rIndex = -1;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
-                                /*%FSM<LINK "false">*/
-                                class false
+                                /*%FSM<LINK "no_repeaters_">*/
+                                class no_repeaters_
                                 {
-                                        itemno = 17;
+                                        itemno = 10;
                                         priority = 1.000000;
-                                        to="Initialize_a_default";
+                                        to="a_new_round_clear";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_ActivationMethod == ""VARIABLE"" && isNil _BooleanVariable"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_len == 0"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
+                                /*%FSM<LINK "continue">*/
+                                class continue
                                 {
-                                        itemno = 16;
+                                        itemno = 11;
                                         priority = 0.000000;
-                                        to="Valid_repeating";
+                                        to="pick_a_repeater";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -491,943 +148,24 @@ class FSM
                         };
                 };
                 /*%FSM</STATE>*/
-                /*%FSM<STATE "Initialize_a_default">*/
-                class Initialize_a_default
+                /*%FSM<STATE "pick_a_repeater">*/
+                class pick_a_repeater
                 {
-                        name = "Initialize_a_default";
-                        itemno = 18;
-                        init = /*%FSM<STATEINIT""">*/"missionNamespace setVariable [_BooleanVariable, false];"/*%FSM</STATEINIT""">*/;
+                        name = "pick_a_repeater";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"_repeater = RHNET_AB_L_REPEATERS select _i;" \n
+                         "_rIndex = RHNET_AB_L_REPEATED_ACTIONPOINTS find _repeater;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
-                                /*%FSM<LINK "true">*/
-                                class true
+                                /*%FSM<LINK "not_found">*/
+                                class not_found
                                 {
-                                        itemno = 16;
-                                        priority = 0.000000;
-                                        to="Valid_repeating";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Valid_repeating">*/
-                class Valid_repeating
-                {
-                        name = "Valid_repeating";
-                        itemno = 20;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 22;
+                                        itemno = 13;
                                         priority = 1.000000;
-                                        to="No_need_to_conti_1";
+                                        to="a_new_round_clear";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_RepeatInterval < 1"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 21;
-                                        priority = 0.000000;
-                                        to="Valid_loop_setti";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "No_need_to_conti_1">*/
-                class No_need_to_conti_1
-                {
-                        name = "No_need_to_conti_1";
-                        itemno = 23;
-                        init = /*%FSM<STATEINIT""">*/"[""Repeat interval cannot be shorter than a one second! Check %1."", _repeater] call BIS_fnc_error;" \n
-                         "false"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Valid_loop_setti">*/
-                class Valid_loop_setti
-                {
-                        name = "Valid_loop_setti";
-                        itemno = 24;
-                        init = /*%FSM<STATEINIT""">*/"private _c = 0;" \n
-                         "private _execTime = time + _RepeatInterval;" \n
-                         "private _countedUnits = [];"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 26;
-                                        priority = 1.000000;
-                                        to="No_need_to_conti_3";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_MaximumRepeats == 0"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 25;
-                                        priority = 0.000000;
-                                        to="Maximum_repeats";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "No_need_to_conti_2">*/
-                class No_need_to_conti_2
-                {
-                        name = "No_need_to_conti_2";
-                        itemno = 28;
-                        init = /*%FSM<STATEINIT""">*/"true"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Maximum_repeats">*/
-                class Maximum_repeats
-                {
-                        name = "Maximum_repeats";
-                        itemno = 29;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 31;
-                                        priority = 1.000000;
-                                        to="Activation_metho";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_MaximumRepeats == -1 || _c < _MaximumRepeats"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 30;
-                                        priority = 0.000000;
-                                        to="No_need_to_conti_2";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Activation_metho">*/
-                class Activation_metho
-                {
-                        name = "Activation_metho";
-                        itemno = 32;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "VARIABLE">*/
-                                class VARIABLE
-                                {
-                                        itemno = 34;
-                                        priority = 1.000000;
-                                        to="Has_proper__type";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_ActivationMethod == ""VARIABLE"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "VALUE">*/
-                                class VALUE
-                                {
-                                        itemno = 35;
-                                        priority = 1.000000;
-                                        to="Value_condition";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_ActivationMethod == ""VALUE"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "NONE">*/
-                                class NONE
-                                {
-                                        itemno = 33;
-                                        priority = 0.000000;
-                                        to="No_need_to_conti_4";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Boolean_is_TRUE">*/
-                class Boolean_is_TRUE
-                {
-                        name = "Boolean_is_TRUE";
-                        itemno = 37;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 54;
-                                        priority = 1.000000;
-                                        to="FPS____20";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!_value"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 39;
-                                        priority = 0.000000;
-                                        to="Toggle_variable";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "No_need_to_conti_3">*/
-                class No_need_to_conti_3
-                {
-                        name = "No_need_to_conti_3";
-                        itemno = 40;
-                        init = /*%FSM<STATEINIT""">*/"[""Maximum repeat of 0 makes the repeater useless! Check %1."", _repeater] call BIS_fnc_error;" \n
-                         "false"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "No_need_to_conti_4">*/
-                class No_need_to_conti_4
-                {
-                        name = "No_need_to_conti_4";
-                        itemno = 41;
-                        init = /*%FSM<STATEINIT""">*/"[""Invalid activation method! Check %1."", _repeater] call BIS_fnc_error;" \n
-                         "false"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Toggle_variable">*/
-                class Toggle_variable
-                {
-                        name = "Toggle_variable";
-                        itemno = 48;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 50;
-                                        priority = 1.000000;
-                                        to="Execute";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!_ToggleVariable"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 49;
-                                        priority = 0.000000;
-                                        to="Execute";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"missionNamespace setVariable [_BooleanVariable, false];"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Has_proper__type">*/
-                class Has_proper__type
-                {
-                        name = "Has_proper__type";
-                        itemno = 51;
-                        init = /*%FSM<STATEINIT""">*/"private _value = missionNamespace getVariable _BooleanVariable;"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 53;
-                                        priority = 1.000000;
-                                        to="FPS____20";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"typeName _value != ""BOOL"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 52;
-                                        priority = 0.000000;
-                                        to="Boolean_is_TRUE";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Value_condition">*/
-                class Value_condition
-                {
-                        name = "Value_condition";
-                        itemno = 58;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "SPAWNED_UNITS">*/
-                                class SPAWNED_UNITS
-                                {
-                                        itemno = 104;
-                                        priority = 1.000000;
-                                        to="Passes_6";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""SPAWNEDUNITS"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "PLAYERS">*/
-                                class PLAYERS
-                                {
-                                        itemno = 60;
-                                        priority = 1.000000;
-                                        to="Passes";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""PLAYERS"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "UNITS">*/
-                                class UNITS
-                                {
-                                        itemno = 61;
-                                        priority = 1.000000;
-                                        to="Include_vehicles";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""UNITS"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "WEST">*/
-                                class WEST
-                                {
-                                        itemno = 62;
-                                        priority = 1.000000;
-                                        to="Include_vehicles_1";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""WEST"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "EAST">*/
-                                class EAST
-                                {
-                                        itemno = 63;
-                                        priority = 1.000000;
-                                        to="Include_vehicles_2";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""EAST"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "INDEPENDENT">*/
-                                class INDEPENDENT
-                                {
-                                        itemno = 64;
-                                        priority = 1.000000;
-                                        to="Include_vehicles_3";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""INDEPENDENT"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "CIVILIAN">*/
-                                class CIVILIAN
-                                {
-                                        itemno = 65;
-                                        priority = 1.000000;
-                                        to="Include_vehicles_4";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_ValueCondition == ""CIVILIAN"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "NONE">*/
-                                class NONE
-                                {
-                                        itemno = 59;
-                                        priority = 0.000000;
-                                        to="No_need_to_conti_5";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "No_need_to_conti_5">*/
-                class No_need_to_conti_5
-                {
-                        name = "No_need_to_conti_5";
-                        itemno = 66;
-                        init = /*%FSM<STATEINIT""">*/"[""Invalid value condition! Check %1."", _repeater] call BIS_fnc_error;" \n
-                         "false"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Passes">*/
-                class Passes
-                {
-                        name = "Passes";
-                        itemno = 73;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 75;
-                                        priority = 1.000000;
-                                        to="FPS____20";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"count (playableUnits + switchableUnits) <= _Value"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 74;
-                                        priority = 0.000000;
-                                        to="Clean_up";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Passes_1">*/
-                class Passes_1
-                {
-                        name = "Passes_1";
-                        itemno = 76;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 78;
-                                        priority = 1.000000;
-                                        to="FPS____20";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"count _countedUnits >= _Value"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 77;
-                                        priority = 0.000000;
-                                        to="Clean_up";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Passes_2">*/
-                class Passes_2
-                {
-                        name = "Passes_2";
-                        itemno = 79;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 81;
-                                        priority = 1.000000;
-                                        to="FPS____20";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"{(side _x) == west} count _countedUnits >= _Value"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 80;
-                                        priority = 0.000000;
-                                        to="Clean_up";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Passes_3">*/
-                class Passes_3
-                {
-                        name = "Passes_3";
-                        itemno = 82;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 84;
-                                        priority = 1.000000;
-                                        to="FPS____20";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"{(side _x) == east} count _countedUnits >= _Value"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 83;
-                                        priority = 0.000000;
-                                        to="Clean_up";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Passes_4">*/
-                class Passes_4
-                {
-                        name = "Passes_4";
-                        itemno = 85;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 87;
-                                        priority = 1.000000;
-                                        to="FPS____20";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"{(side _x) == independent} count _countedUnits >= _Value"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 86;
-                                        priority = 0.000000;
-                                        to="Clean_up";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Passes_5">*/
-                class Passes_5
-                {
-                        name = "Passes_5";
-                        itemno = 88;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 90;
-                                        priority = 1.000000;
-                                        to="FPS____20";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"{(side _x) == civilian} count _countedUnits >= _Value"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 89;
-                                        priority = 0.000000;
-                                        to="Clean_up";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Interval_has_pas">*/
-                class Interval_has_pas
-                {
-                        name = "Interval_has_pas";
-                        itemno = 97;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 57;
-                                        priority = 1.000000;
-                                        to="Interval_has_pas";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time < _execTime"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 56;
-                                        priority = 0.000000;
-                                        to="Maximum_repeats";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_execTime = time + _RepeatInterval;"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Has_the_AP_executed">*/
-                class Has_the_AP_executed
-                {
-                        name = "Has_the_AP_executed";
-                        itemno = 101;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 102;
-                                        priority = 1.000000;
-                                        to="Has_the_AP_executed";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"RHNET_AB_G_AP_EXECUTED find _ap == -1"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 9;
-                                        priority = 0.000000;
-                                        to="Valid_activation";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Passes_6">*/
-                class Passes_6
-                {
-                        name = "Passes_6";
-                        itemno = 105;
-                        init = /*%FSM<STATEINIT""">*/"private _units = RHNET_AB_G_AP_SPAWNED select _apIndex;"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 107;
-                                        priority = 1.000000;
-                                        to="FPS____20";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"{!isNull _x && alive _x} count _units >= _Value"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 106;
-                                        priority = 0.000000;
-                                        to="Clean_up";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Include_vehicles">*/
-                class Include_vehicles
-                {
-                        name = "Include_vehicles";
-                        itemno = 111;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 113;
-                                        priority = 1.000000;
-                                        to="Passes_1";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!_IncludeVehicles"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_countedUnits = allUnits;"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 112;
-                                        priority = 0.000000;
-                                        to="Passes_1";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_countedUnits = allUnits + vehicles;"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Include_vehicles_1">*/
-                class Include_vehicles_1
-                {
-                        name = "Include_vehicles_1";
-                        itemno = 114;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 116;
-                                        priority = 1.000000;
-                                        to="Passes_2";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!_IncludeVehicles"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_countedUnits = allUnits;"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 115;
-                                        priority = 0.000000;
-                                        to="Passes_2";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_countedUnits = allUnits + vehicles;"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Include_vehicles_2">*/
-                class Include_vehicles_2
-                {
-                        name = "Include_vehicles_2";
-                        itemno = 117;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 119;
-                                        priority = 1.000000;
-                                        to="Passes_3";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!_IncludeVehicles"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_countedUnits = allUnits;"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 118;
-                                        priority = 0.000000;
-                                        to="Passes_3";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_countedUnits = allUnits + vehicles;"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Include_vehicles_3">*/
-                class Include_vehicles_3
-                {
-                        name = "Include_vehicles_3";
-                        itemno = 120;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 122;
-                                        priority = 1.000000;
-                                        to="Passes_4";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!_IncludeVehicles"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_countedUnits = allUnits;"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 121;
-                                        priority = 0.000000;
-                                        to="Passes_4";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_countedUnits = allUnits + vehicles;"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Include_vehicles_4">*/
-                class Include_vehicles_4
-                {
-                        name = "Include_vehicles_4";
-                        itemno = 123;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "false">*/
-                                class false
-                                {
-                                        itemno = 125;
-                                        priority = 1.000000;
-                                        to="Passes_5";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!_IncludeVehicles"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_countedUnits = allUnits;"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
-                                {
-                                        itemno = 124;
-                                        priority = 0.000000;
-                                        to="Passes_5";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_countedUnits = allUnits + vehicles;"/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Clean_up">*/
-                class Clean_up
-                {
-                        name = "Clean_up";
-                        itemno = 126;
-                        init = /*%FSM<STATEINIT""">*/"private _validUnits = [];" \n
-                         "{" \n
-                         "	if (!isNull _x) then {" \n
-                         "		_validUnits pushBack _x;" \n
-                         "	};" \n
-                         "} forEach (RHNET_AB_G_AP_SPAWNED select _apIndex);" \n
-                         "RHNET_AB_G_AP_SPAWNED set [_apIndex, _validUnits];"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "done">*/
-                                class done
-                                {
-                                        itemno = 127;
-                                        priority = 0.000000;
-                                        to="Execute";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_rIndex == -1"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -1438,15 +176,15 @@ class FSM
                 class ____FAKE____
                 {
                         name = "____FAKE____";
-                        itemno = 128;
+                        itemno = 15;
                         init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
-                                /*%FSM<LINK "false">*/
-                                class false
+                                /*%FSM<LINK "_">*/
+                                class _
                                 {
-                                        itemno = 4;
+                                        itemno = 2;
                                         priority = 1.000000;
                                         to="____FAKE____";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -1454,8 +192,8 @@ class FSM
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
-                                /*%FSM<LINK "true">*/
-                                class true
+                                /*%FSM<LINK "__1">*/
+                                class __1
                                 {
                                         itemno = 3;
                                         priority = 0.000000;
@@ -1473,12 +211,7 @@ class FSM
         finalStates[] =
         {
                 "__1",
-                "No_need_to_conti",
-                "No_need_to_conti_1",
-                "No_need_to_conti_2",
-                "No_need_to_conti_3",
-                "No_need_to_conti_4",
-                "No_need_to_conti_5",
+                "cannot_continue",
         };
 };
 /*%FSM</COMPILE>*/

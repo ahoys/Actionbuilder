@@ -51,7 +51,7 @@ item46[] = {"done",1,250,-50.000000,1250.000000,50.000000,1300.000000,0.000000,"
 item47[] = {"",7,210,-154.000061,871.000122,-145.999939,878.999878,0.000000,""};
 item48[] = {"init_headless_cl",3,250,-50.000000,650.000000,50.000000,700.000000,0.000000,"init" \n "headless clients"};
 item49[] = {"spawning_starts",8,218,-50.000000,750.000000,50.000000,800.000000,0.000000,"spawning" \n "starts"};
-item50[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+item50[] = {"____FAKE____",9,100,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
 link0[] = {0,10};
 link1[] = {6,11};
 link2[] = {6,12};
@@ -107,8 +107,8 @@ link51[] = {2,50};
 link52[] = {50,2};
 link53[] = {3,50};
 link54[] = {50,3};
-globals[] = {0.000000,0,0,0,0,640,480,1,59,6316128,1,-904.335205,1241.832886,1558.057617,79.324341,1820,1254,1};
-window[] = {2,-1,-1,-1,-1,1141,104,2024,104,3,1838};
+globals[] = {0.000000,0,0,0,0,640,480,1,59,6316128,1,-859.141296,728.912659,1479.400146,385.213745,1820,1254,1};
+window[] = {2,-1,-1,-1,-1,1323,286,2206,286,3,1838};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -120,8 +120,9 @@ class FSM
                 {
                         name = "ACTIONPOINT";
                         itemno = 0;
-                        init = /*%FSM<STATEINIT""">*/"private _ap = _this select 0;" \n
-                         "private _portals = _this select 1;" \n
+                        init = /*%FSM<STATEINIT""">*/"private _ap = param [0, objNull, [objNull]];" \n
+                         "private _portals = param [1, [], [[]]];" \n
+                         "private _repeater = param [2, objNull, [objNull]];" \n
                          "private _isHcDisabled = false;" \n
                          "// Disable Headless Client if requested." \n
                          "if (!isNil ""RHNET_AB_L_DISABLE_HC_SUPPORT"") then {" \n
@@ -289,7 +290,22 @@ class FSM
                                         to="more_portals";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"_clients isEqualTo [] || _isHcDisabled"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"[_portal, 0, _ap] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
+                                        action=/*%FSM<ACTION""">*/"if (!isNull _repeater) then {" \n
+                                         "	private _repeaterIndex = RHNET_AB_L_REPEATER_QUEUE find _repeater;" \n
+                                         "	if (_repeaterIndex != -1) then {" \n
+                                         "		private _queue = RHNET_AB_L_REPEATER_QUEUE select (_repeaterIndex + 1);" \n
+                                         "		if (typeName _queue == ""BOOL"") then {" \n
+                                         "			_queue = [_portal];" \n
+                                         "		} else {" \n
+                                         "			_queue pushBack _portal;" \n
+                                         "		};" \n
+                                         "		RHNET_AB_L_REPEATER_QUEUE set [" \n
+                                         "			(_repeaterIndex + 1)," \n
+                                         "			_queue" \n
+                                         "		];" \n
+                                         "	};" \n
+                                         "};" \n
+                                         "[_portal, 0, _ap, _repeater] spawn Actionbuilder_fnc_spawnUnits;"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
                                 /*%FSM<LINK "headless_clients">*/
@@ -578,10 +594,18 @@ class FSM
                 {
                         name = "done";
                         itemno = 46;
-                        init = /*%FSM<STATEINIT""">*/"if ((RHNET_AB_G_AP_EXECUTED find _ap) == -1) then {" \n
-                         "	RHNET_AB_G_AP_EXECUTED pushBack _ap;" \n
+                        init = /*%FSM<STATEINIT""">*/"private _id = RHNET_AB_L_AP_EXECUTED find _ap;" \n
+                         "if (_id == -1) then {" \n
+                         "	RHNET_AB_L_AP_EXECUTED pushBack _ap;" \n
+                         "	RHNET_AB_L_AP_EXECUTED pushBack 0;" \n
+                         "} else {" \n
+                         "	RHNET_AB_L_AP_EXECUTED set [" \n
+                         "		(_id + 1)," \n
+                         "		(RHNET_AB_L_AP_EXECUTED select (_id + 1)) + 1" \n
+                         "	];" \n
                          "};" \n
-                         "true"/*%FSM</STATEINIT""">*/;
+                         "true" \n
+                         ""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {

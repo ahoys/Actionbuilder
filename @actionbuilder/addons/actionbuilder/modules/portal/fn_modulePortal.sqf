@@ -15,7 +15,7 @@ private _portal = param [0, objNull, [objNull]];
 private _synced = synchronizedObjects _portal;
 
 // The portal should have an actionpoint as a master ----------------------------------------------
-if ([_portal, false] call Actionbuilder_fnc_moduleActionpoints isEqualTo []) exitWith {
+if ([_portal] call Actionbuilder_fnc_moduleActionpoints isEqualTo []) exitWith {
 	["Portal %1 has no master. Synchronize portals to actionpoints.", _portal] call BIS_fnc_error;
 	false
 };
@@ -30,6 +30,7 @@ if (_synced isEqualTo []) exitWith {
 if (isNil "RHNET_AB_G_PORTALS") then {RHNET_AB_G_PORTALS = []};
 if (isNil "RHNET_AB_G_PORTAL_OBJECTS") then {RHNET_AB_G_PORTAL_OBJECTS = []};
 if (isNil "RHNET_AB_G_PORTAL_GROUPS") then {RHNET_AB_G_PORTAL_GROUPS = []};
+if (isNil "RHNET_AB_L_GROUPS") then {RHNET_AB_L_GROUPS = []};
 
 // Save the portal to global variables ------------------------------------------------------------
 RHNET_AB_G_PORTAL_OBJECTS pushBack _portal;

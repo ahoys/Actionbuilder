@@ -82,7 +82,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 			defaultValue = """VARIABLE""";
 			class Values {
 				class RP_VT_LESSSPAWNEDUNITS {
-					name = "Actionpoint unit count is less than Value";
+					name = "Synchronized APs unit count is less than Value";
 					value = "SPAWNEDUNITS";
 					default = 1;
 				};
@@ -142,7 +142,7 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 		class RepeatInterval: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_DelayBetweenRepeats";
 			displayName = "Repeat interval";
-			tooltip = "Delay between repeats in seconds (1: minimum allowed).";
+			tooltip = "Delay between repeats in seconds.";
 			typeName = "NUMBER";
 			defaultValue = "1";
 			control = "EditShort";
@@ -151,18 +151,10 @@ class RHNET_ab_moduleREPEATER_F: Module_F {
 		class MaximumRepeats: Edit {
 			property = "RHNET_ab_moduleREPEATER_F_MaximumRepeats";
 			displayName = "Maximum repeats";
-			tooltip = "How many times can this repeater trigger (-1: no limit).";
+			tooltip = "How many times can this repeater trigger (0: no limit).";
 			typeName = "NUMBER";
-			defaultValue = "-1";
+			defaultValue = "0";
 			control = "EditShort";
-		};
-
-		class HighFPS: Checkbox {
-			property = "RHNET_ab_moduleREPEATER_F_HighFPS";
-			displayName = "Sustain performance";
-			tooltip = "If enabled, the execution will halt until the server FPS is higher than 25, otherwise the limit is 15.";
-			typeName = "BOOL";
-			defaultValue = "true";
 		};
 	};
 };

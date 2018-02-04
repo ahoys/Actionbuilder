@@ -19,6 +19,7 @@ if (!isServer && hasInterface) exitWith {};
 private _portal = param [0, objNull, [objNull]]; // This portal.
 private _owner = param [1, 0, [0]]; // Processing owner of the portal (eg. server or headless client).
 private _ap = param [2, objNull, [objNull]]; // The master AP.
+private _repeater = param [3, objNull, [objNull]];
 
 // Portal must exist!
 if (isNull _portal) exitWith {false};
@@ -40,9 +41,9 @@ waitUntil {!isNil "RHNET_AB_G_PORTAL_OBJECTS" && !isNil "RHNET_AB_G_PORTAL_GROUP
 // Repeating --------------------------------------------------------------------------------------
 
 // Find the spawning index of the master Actionpoint.
-private _i = (RHNET_AB_G_AP_SPAWNED find _ap) + 1;
+private _i = (RHNET_AB_L_AP_SPAWNED find _ap) + 1;
 // Load the currently spawned units.
-private _spawned = RHNET_AB_G_AP_SPAWNED select _i;
+private _spawned = RHNET_AB_L_AP_SPAWNED select _i;
 
 // Processing -------------------------------------------------------------------------------------
 
@@ -154,6 +155,7 @@ if (count _groups > 0) then {
 			};
 		};
 		private _g = createGroup (_x select 0);
+		RHNET_AB_L_GROUPS pushBack _g;
 		_g deleteGroupWhenEmpty true;
 		// Spawn vehicles first.
 		{
@@ -228,6 +230,17 @@ if (count _groups > 0) then {
 } forEach _groups;
 
 // Register the spawned units.
-RHNET_AB_G_AP_SPAWNED set [_i, _spawned];
+RHNET_AB_L_AP_SPAWNED set [_i, _spawned];
+
+// Refresh repeating queue if necessary.
+if (!isNull _repeater) then {
+	private _index = (RHNET_AB_L_REPEATER_QUEUE find _repeater) + 1;
+	private _queue = RHNET_AB_L_REPEATER_QUEUE select _index;
+	private _portalIndex = _queue find _portal;
+	if (_portalIndex != -1) then {
+		_queue deleteAt _portalIndex;
+		RHNET_AB_L_REPEATER_QUEUE set [_index, _queue];
+	};
+};
 
 true

@@ -53,6 +53,7 @@ class CfgFunctions {
 		class Repeater {
 			file = "\RHNET\rhnet_actionbuilder\modules\repeater";
 			class moduleRepeater {};
+			class repeater {};
 		};
 		class Utility {
 			file = "\RHNET\rhnet_actionbuilder\util";
@@ -66,6 +67,7 @@ class CfgFunctions {
 			class command {};
 			class moduleActionpoints {};
 			class modulePortals {};
+			class moduleRepeaters {};
 			class selectRandom {};
 			class selectRandomPortal {};
 			class getSynchronizedOfType {};

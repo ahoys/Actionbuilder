@@ -12,8 +12,8 @@
 	Nothing
 */
 private _ap = param [0, objnull, [objnull]];
-private _clients = param [1, [], [[]]];
-private _portals = [_ap, true] call Actionbuilder_fnc_modulePortals;
+private _portals = [_ap] call Actionbuilder_fnc_modulePortals;
+private _repeaters = [_ap] call Actionbuilder_fnc_moduleRepeaters;
 
 // The actionpoint should have portals as slaves --------------------------------------------------
 if (_portals isEqualTo []) exitWith {
@@ -32,9 +32,9 @@ if (isNil "RHNET_AB_L_DEBUG") then {
 
 // Initialize master variables if required --------------------------------------------------------
 if (isNil "RHNET_AB_G_AP_SIZE") then {
-	RHNET_AB_G_AP_SIZE			= [];
-	RHNET_AB_G_AP_EXECUTED		= [];
-	RHNET_AB_L_BUFFER 			= 0.02;
+	RHNET_AB_G_AP_SIZE = [];
+	RHNET_AB_L_AP_EXECUTED = [];
+	RHNET_AB_L_AP_SPAWNED = [];
 	"RHNET_AB_G_REQUEST" addPublicVariableEventHandler {
 		// 1 is the id of the owner.
 		_this select 1 publicVariableClient "RHNET_AB_G_PORTALS";
@@ -45,10 +45,9 @@ if (isNil "RHNET_AB_G_AP_SIZE") then {
 
 // Initialize spawned-array for this AP.
 // This is used to monitor the spawned units.
-if (isNil "RHNET_AB_G_AP_SPAWNED") then {RHNET_AB_G_AP_SPAWNED = []};
-if ((RHNET_AB_G_AP_SPAWNED find _ap) == -1) then {
-	RHNET_AB_G_AP_SPAWNED pushBack _ap;
-	RHNET_AB_G_AP_SPAWNED pushBack [];
+if ((RHNET_AB_L_AP_SPAWNED find _ap) == -1) then {
+	RHNET_AB_L_AP_SPAWNED pushBack _ap;
+	RHNET_AB_L_AP_SPAWNED pushBack [];
 };
 
 // Count actionpoint's payload size (how many units).
