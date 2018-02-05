@@ -79,7 +79,6 @@ private _isConditionFulfilledFnc = {
 	private _result = false;
 	switch (_condition) do {
 		case "SPAWNEDUNITS": {
-			diag_log format ["AB start: %1", RHNET_AB_L_AP_SPAWNED];
 			private _alive = 0;
 			{
 				private _apIndex = (RHNET_AB_L_AP_SPAWNED find _x) + 1;
@@ -94,7 +93,6 @@ private _isConditionFulfilledFnc = {
 			if (_alive < _value) then {
 				_result = true;
 			};
-			diag_log format ["AB end: %1, %2", RHNET_AB_L_AP_SPAWNED, _result];
 		};
 		case "UNITS": {
 			if (({_x isKindOf "AllVehicles" && alive _x} count allUnits) < _value) then {
@@ -267,7 +265,7 @@ while {true} do {
 						// Activation method: value.
 						_activated = [_repeater] call _doTriggerValue;
 					};
-					// UPDATE RECORDS -------------------------------------------------------------------------
+					// UPDATE RECORDS -----------------------------------------------------------------------
 					if (_activated) then {
 						_REPEATS_RECORD set [
 							(_REPEATS_RECORD find _repeater) + 1,
@@ -276,6 +274,12 @@ while {true} do {
 						_INTERVALS_RECORD set [
 							(_INTERVALS_RECORD find _repeater) + 1,
 							time
+						];
+					} else {
+						// Remove the reservation.
+						RHNET_AB_L_REPEATER_QUEUE set [
+							(RHNET_AB_L_REPEATER_QUEUE find _repeater) + 1,
+							[]
 						];
 					};
 				};
