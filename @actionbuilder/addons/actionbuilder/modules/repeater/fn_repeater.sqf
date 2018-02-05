@@ -81,15 +81,17 @@ private _isConditionFulfilledFnc = {
 		case "SPAWNEDUNITS": {
 			private _alive = 0;
 			{
-				private _apIndex = (RHNET_AB_L_AP_SPAWNED find _x) + 1;
-				{
-					if (!isNull _x) then {
-						if (alive _x) then {
-							_alive = _alive + 1;
+				private _apIndex = RHNET_AB_L_AP_SPAWNED find _x;
+				if (_apIndex != -1) then {
+					{
+						if (!isNull _x) then {
+							if (alive _x) then {
+								_alive = _alive + 1;
+							};
 						};
-					};
-				} forEach RHNET_AB_L_AP_SPAWNED select _apIndex;
-			} forEach [_repeater] call Actionbuilder_fnc_moduleActionpoints;
+					} forEach (RHNET_AB_L_AP_SPAWNED select (_apIndex + 1));
+				};
+			} forEach ([_repeater] call Actionbuilder_fnc_moduleActionpoints);
 			if (_alive < _value) then {
 				_result = true;
 			};
