@@ -14,7 +14,11 @@
 if (!isServer) exitWith {false};
 
 // A list of repeaters must exist.
-waitUntil {!isNil "RHNET_AB_L_REPEATERS"};
+waitUntil {
+	!isNil "RHNET_AB_L_REPEATERS"
+	&& !isNil "RHNET_AB_L_AP_SPAWNED"
+	&& !isNil "RHNET_AB_L_AP_EXECUTED"
+};
 
 // Ability to pause the repeater core.
 RHNET_AB_L_REPEATER_RUN = true;
